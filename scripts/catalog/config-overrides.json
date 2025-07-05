@@ -1,0 +1,11 @@
+{
+    "sqlite:d190b596": {
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+            "mcp-server-sqlite",
+            "--db-path",
+            "/path/to/db.sqlite"
+        ]
+    }
+}
