@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build catalog data
+        run: pnpm catalog:build
+
       - name: Setup Pages
         id: setup_pages
         uses: actions/configure-pages@v5
