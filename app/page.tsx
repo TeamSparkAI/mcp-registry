@@ -23,6 +23,12 @@ interface ServerEntry {
   };
 }
 
+// Centralized function to get resource paths
+const getResourcePath = (path: string): string => {
+  const basePath = window.location.pathname.includes('/ToolCatalog') ? '/ToolCatalog' : '';
+  return `${basePath}${path}`;
+};
+
 export default function Home() {
   const [servers, setServers] = useState<ServerEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,9 +37,7 @@ export default function Home() {
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   useEffect(() => {
-    // Get the base path for GitHub Pages
-    const basePath = window.location.pathname.includes('/ToolCatalog') ? '/ToolCatalog' : '';
-    fetch(`${basePath}/servers-local.json`)
+    fetch(getResourcePath('/servers-local.json'))
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -160,7 +164,7 @@ export default function Home() {
                   </div>
                   {server.icon && (
                     <img 
-                      src={server.icon} 
+                      src={getResourcePath(server.icon)} 
                       alt={`${server.name} icon`}
                       className="w-8 h-8 rounded object-cover ml-3"
                     />
