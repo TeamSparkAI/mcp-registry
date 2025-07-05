@@ -11,7 +11,7 @@ import { ConfigPrioritizer } from './services/ConfigPrioritizer';
 import { IconProcessor } from './services/IconProcessor';
 import { createUrlSafeServerName } from './utils/id';
 
-dotenv.config({ path: path.join(__dirname, '..', '..', '..', '..', '.env') });
+dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
 
 // We can use these for testing, either limit the total number of servers to process, or a list of server ids to process
 const MAX_SERVERS = 0; // 0 means no limit
@@ -153,6 +153,14 @@ export class CatalogBuilder {
 
   private async writeServers(servers: ServerEntry[], filename: string = 'servers.json'): Promise<void> {
     const outputPath = path.join(__dirname, '..', '..', 'public', filename);
+    
+    // Ensure the public directory exists
+    const publicDir = path.dirname(outputPath);
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir, { recursive: true });
+      console.log(`Created directory: ${publicDir}`);
+    }
+    
     fs.writeFileSync(outputPath, JSON.stringify(servers, null, 2), 'utf8');
     console.log(`Successfully wrote ${servers.length} servers to ${outputPath}`);
   }
