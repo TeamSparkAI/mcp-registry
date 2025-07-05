@@ -31,7 +31,9 @@ export default function Home() {
   const [selectedTag, setSelectedTag] = useState<string>('all');
 
   useEffect(() => {
-    fetch('/servers-local.json')
+    // Get the base path for GitHub Pages
+    const basePath = window.location.pathname.includes('/ToolCatalog') ? '/ToolCatalog' : '';
+    fetch(`${basePath}/servers-local.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
