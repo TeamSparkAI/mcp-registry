@@ -375,7 +375,7 @@ export default function Home() {
               <p className="text-sm text-gray-400">
                 Data Feed:{' '}
                 <a
-                  href="/servers.json"
+                  href={getResourcePath('/servers.json')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline"
