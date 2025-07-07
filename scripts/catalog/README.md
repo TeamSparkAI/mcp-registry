@@ -79,6 +79,9 @@ Replace this whole thing with what results from: https://github.com/modelcontext
 
 ## Misc
 
+BUG: Currenly the icon logic tries to guess the name and checks for an icon with that name.  This causes a lot of unnecesary downloading (where
+the downloaded icon has a different extension).  The logic should check to see if any icon exists (id.*) and skip download if it does.
+
 Note on parsing config
 - Multiple servers in config and/or repo (right now we only grab the first one)
   - Adfin has it's own server config and then a filesystem config to the adfin local directory
