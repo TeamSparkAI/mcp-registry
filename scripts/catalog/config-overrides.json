@@ -1,7 +1,7 @@
 {
     "sqlite:d190b596": {
         "type": "stdio",
-        "command": "npx",
+        "command": "uvx",
         "args": [
             "mcp-server-sqlite",
             "--db-path",
