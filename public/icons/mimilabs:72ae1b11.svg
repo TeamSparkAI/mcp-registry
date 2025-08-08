@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+  <rect
+    className="fill-red-400 dark:fill-zinc-50"
+    fill="#f87171"
+    width="6"
+    height="6"
+    x="1"
+    y="2"
+  />
+  <rect
+    className="fill-orange-400 dark:fill-zinc-100"
+    fill="#fb923c"
+    width="6"
+    height="6"
+    x="8"
+    y="2"
+  />
+  <rect
+    className="fill-yellow-400 dark:fill-zinc-200"
+    fill="#facc15"
+    width="6"
+    height="6"
+    x="15"
+    y="2"
+  />
+  <rect
+    className="fill-lime-400 dark:fill-zinc-300"
+    fill="#a3e635"
+    width="6"
+    height="6"
+    x="1"
+    y="9"
+  />
+  <rect
+    className="fill-sky-400 dark:fill-zinc-400"
+    fill="#38bdf8"
+    width="6"
+    height="6"
+    x="8"
+    y="9"
+  />
+  <rect
+    className="fill-indigo-400 dark:fill-zinc-500"
+    fill="#818cf8"
+    width="6"
+    height="6"
+    x="15"
+    y="9"
+  />
+  <rect
+    className="fill-purple-400 dark:fill-zinc-600"
+    fill="#c084fc"
+    width="6"
+    height="6"
+    x="1"
+    y="16"
+  />
+  <rect
+    className="fill-zinc-400 dark:fill-zinc-700"
+    fill="#a1a1aa"
+    width="6"
+    height="6"
+    x="8"
+    y="16"
+  />
+</svg>
