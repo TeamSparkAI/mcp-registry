@@ -52,13 +52,13 @@ The [TeamSpark MCP Server Catalog](https://teamsparkai.github.io/ToolCatalog/) i
 
 ### Why did you choose [@modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers/)?
 
-We reviewed many MCP catalogs and didn't find any that we liked and that met our needs.  Many of them are poorly curated grab bags of many thousands of MCP servers, the vast majority of which are problematic (obsolete, discontinued, vibe coded, insecure, and just generally creepy).  We found some catalogs that were maybe a little too curated (very high quality, but also a very small list missing many important MCP servers).
+We reviewed many MCP catalogs and didn't find any that we liked and that met our needs.  First, we needed something that was publicly available and free to use.  We noticed that many of those catalogs were poorly curated grab bags of many thousands of MCP servers, the vast majority of which were problematic (obsolete, discontinued, vibe coded, insecure, and just generally creepy).  We found some catalogs that were maybe a little too curated (very high quality, but also a very small list missing many important MCP servers).
 
 Even thought the list at `@modelcontextprotocol/servers` isn't really intented to be a machine consumable directory, we found it to be the best curated list (for our needs) with reference servers, a few hundred first-party (official) servers, and another 500 or so third-party servers of generally decent quality.  We decided that making that directory machine consumable (and augmenting it in automated way) would produce what we needed for our own apps (and others) and we're happy with the result.
 
 ### Do you know about [@modelcontextprotocol/registry](https://github.com/modelcontextprotocol/registry)?
 
-Yes, we are aware of the standards effort in this area and we are particpating.  If this results in something that meets our needs, we'll glady adopt it (and adapt this repo to support it).  As of right now, it's still a little too raw, and it doesn't meed our needs, so we built something that does exactly what we need in the interim.
+Yes, we are aware of the standards effort in this area and are actively working on integrating it into our own products.  It may very well obsolete this project, or this project may turn into a lightly moderated/enriched version of the standard/official registry at some point.
 
 ### What about the icons?
 
