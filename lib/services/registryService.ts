@@ -1,5 +1,5 @@
-import { ServerJSON, ServerListResponse } from '../types/mcp-registry';
-import { McpRegistryFilters, McpRegistrySearchResult, ListServersParams } from '../types/registry-api';
+import { ServerJSON, ServerListResponse } from '../../types/mcp-registry';
+import { McpRegistryFilters, McpRegistrySearchResult, ListServersParams } from '../../types/registry-api';
 import fs from 'fs';
 import path from 'path';
 

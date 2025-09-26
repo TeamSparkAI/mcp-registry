@@ -11,7 +11,7 @@ Both interfaces allow users to search, filter, and explore MCP servers, includin
 
 The curated catalog uses a scheduled GitHub Action to do daily processing of the [@modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers/) repo README.md file to get the list of MCP servers found there (extracting metadata, including tags based on the section each server is listed in). It then validates the GitHub repo for each server hosted on GitHub (most of them), including getting repo metadata and parsing the repo README to extract sample configuration. The result is the [servers.json](./public/servers.json) file that can be found in this repo.
 
-![Catalog Screenshot](./public/catalog.png)
+![Catalog Screenshot](./public/catalog.png)Fixed 
 
 For more technical details, see: [scripts/catalog/README.md](/scripts/catalog/README.md).
 
