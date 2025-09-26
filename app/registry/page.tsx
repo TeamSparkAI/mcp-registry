@@ -57,6 +57,11 @@ export default function RegistryPage() {
 
   const handleServerClick = (server: ServerJSON) => {
     setSelectedServer(server);
+    // Reset configuration state when selecting a new server
+    setConfiguringPackage(null);
+    setConfiguringRemote(null);
+    setPackageConfig({});
+    setRemoteConfig({});
   };
 
   const handleBackToRegistry = () => {
@@ -511,9 +516,10 @@ export default function RegistryPage() {
             )}
 
             {/* Details Grid */}
-            <div className="space-y-6">
-              {/* Repository Information */}
-              {server.repository && server.repository.url && server.repository.url.trim() !== '' && (
+            {!configuringPackage && !configuringRemote && (
+              <div className="space-y-6">
+                {/* Repository Information */}
+                {server.repository && server.repository.url && server.repository.url.trim() !== '' && (
                 <div className="bg-white rounded-lg border p-6">
                   <h2 className="text-lg font-semibold text-gray-900 mb-4">Repository</h2>
                   <div className="space-y-3">
@@ -757,6 +763,7 @@ export default function RegistryPage() {
                 </div>
               )}
             </div>
+            )}
           </div>
         </div>
       </div>
