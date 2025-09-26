@@ -9,7 +9,7 @@ export default function LandingPage() {
           <div className="flex items-center justify-center">
             <div className="flex items-center space-x-3">
               <img 
-                src="/icon.png" 
+                src="./icon.png" 
                 alt="TeamSpark" 
                 className="w-16 h-16 object-contain"
               />
@@ -37,7 +37,7 @@ export default function LandingPage() {
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-6">
                 <img 
-                  src="/mcp_black.png" 
+                  src="./mcp_black.png" 
                   alt="Catalog" 
                   className="w-12 h-12 object-contain"
                 />
@@ -67,7 +67,7 @@ export default function LandingPage() {
               </div>
 
               <a
-                href="/catalog"
+                href="./catalog"
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center block"
               >
                 Browse Catalog
@@ -80,7 +80,7 @@ export default function LandingPage() {
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-6">
                 <img 
-                  src="/mcp_black.png" 
+                  src="./mcp_black.png" 
                   alt="Registry" 
                   className="w-12 h-12 object-contain"
                 />
@@ -110,7 +110,7 @@ export default function LandingPage() {
               </div>
 
               <a
-                href="/registry"
+                href="./registry"
                 className="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors font-medium text-center block"
               >
                 Browse Registry
