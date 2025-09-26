@@ -20,6 +20,7 @@ export default function RegistryPage() {
   const [configuringRemote, setConfiguringRemote] = useState<{remote: any, index: number} | null>(null);
   const [packageConfig, setPackageConfig] = useState<Record<string, any>>({});
   const [remoteConfig, setRemoteConfig] = useState<Record<string, any>>({});
+  const [showRawModal, setShowRawModal] = useState(false);
 
   useEffect(() => {
     loadServerRegistry();
@@ -329,6 +330,14 @@ export default function RegistryPage() {
                       {server.status && <span>Status: {server.status}</span>}
                     </div>
                   </div>
+                </div>
+                <div className="flex-shrink-0">
+                  <button
+                    onClick={() => setShowRawModal(true)}
+                    className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                  >
+                    server.json
+                  </button>
                 </div>
               </div>
             </div>
@@ -763,6 +772,30 @@ export default function RegistryPage() {
                 </div>
               )}
             </div>
+            )}
+
+            {/* Raw JSON Modal */}
+            {showRawModal && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-6">
+                      <h2 className="text-xl font-bold text-gray-900">Raw Server JSON</h2>
+                      <button
+                        onClick={() => setShowRawModal(false)}
+                        className="text-gray-400 hover:text-gray-600"
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
+                      {JSON.stringify(server, null, 2)}
+                    </pre>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>
