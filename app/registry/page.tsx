@@ -3,6 +3,12 @@
 import { useState, useEffect } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
 
+// Centralized function to get resource paths
+const getResourcePath = (path: string): string => {
+  const basePath = window.location.pathname.includes('/ToolCatalog') ? '/ToolCatalog' : '';
+  return `${basePath}${path}`;
+};
+
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerJSON[]>([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +23,7 @@ export default function RegistryPage() {
   const loadServerRegistry = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/server-registry.json');
+      const response = await fetch(getResourcePath('/server-registry.json'));
       if (!response.ok) {
         throw new Error('Failed to load server registry');
       }
@@ -146,7 +152,7 @@ export default function RegistryPage() {
               </button>
               <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <img 
-                  src="/mcp_black.png" 
+                  src={getResourcePath('/mcp_black.png')} 
                   alt="MCP Registry" 
                   className="w-5 h-5 object-contain"
                 />
@@ -164,7 +170,7 @@ export default function RegistryPage() {
               <div className="flex items-start justify-between">
                 <div className="flex items-start space-x-4 min-w-0 flex-1 mr-6">
                   <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <img src="/mcp_black.png" alt="MCP Server" className="w-10 h-10" />
+                    <img src={getResourcePath('/mcp_black.png')} alt="MCP Server" className="w-10 h-10" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h1 className="text-2xl font-bold text-gray-900">{server.name}</h1>
@@ -432,7 +438,7 @@ export default function RegistryPage() {
             <div className="mb-4 sm:mb-0">
               <div className="flex items-start space-x-3">
                 <img 
-                  src="/mcp_black.png" 
+                  src={getResourcePath('/mcp_black.png')} 
                   alt="MCP Registry" 
                   className="w-16 h-16 object-contain"
                 />
@@ -546,7 +552,7 @@ export default function RegistryPage() {
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <img src="/mcp_black.png" alt="MCP Server" className="w-8 h-8" />
+                            <img src={getResourcePath('/mcp_black.png')} alt="MCP Server" className="w-8 h-8" />
                           </div>
                         </div>
                         
