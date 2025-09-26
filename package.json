@@ -4,7 +4,8 @@
 		"dev": "next dev --turbo",
 		"build": "next build",
 		"catalog:build": "tsx scripts/catalog/index.ts",
-		"catalog:build:debug": "tsx scripts/catalog/index.ts --debug"
+		"catalog:build:debug": "tsx scripts/catalog/index.ts --debug",
+		"registry:download": "tsx scripts/registry/download-registry.ts"
 	},
 	"dependencies": {
 		"next": "^15.1.7",
