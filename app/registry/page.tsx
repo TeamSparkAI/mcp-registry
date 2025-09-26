@@ -15,10 +15,115 @@ export default function RegistryPage() {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>(['Latest']);
+  const [selectedServer, setSelectedServer] = useState<ServerJSON | null>(null);
+  const [configuringPackage, setConfiguringPackage] = useState<{pkg: any, index: number} | null>(null);
+  const [configuringRemote, setConfiguringRemote] = useState<{remote: any, index: number} | null>(null);
+  const [packageConfig, setPackageConfig] = useState<Record<string, any>>({});
+  const [remoteConfig, setRemoteConfig] = useState<Record<string, any>>({});
 
   useEffect(() => {
     loadServerRegistry();
   }, []);
+
+  // Helper functions to check if package/remote has configuration
+  const hasPackageConfiguration = (pkg: any) => {
+    const hasConfig = pkg.runtimeHint || 
+           (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) ||
+           (pkg.packageArguments && pkg.packageArguments.length > 0) ||
+           (pkg.environmentVariables && pkg.environmentVariables.length > 0);
+    console.log('Package config check:', pkg.identifier, hasConfig, pkg);
+    return hasConfig;
+  };
+
+  const hasRemoteConfiguration = (remote: any) => {
+    return remote.headers && remote.headers.length > 0;
+  };
+
+  // Configuration handlers
+  const handleConfigurePackage = (pkg: any, index: number) => {
+    console.log('Configure package clicked:', pkg, index);
+    setConfiguringPackage({ pkg, index });
+    setPackageConfig({});
+  };
+
+  const handleConfigureRemote = (remote: any, index: number) => {
+    setConfiguringRemote({ remote, index });
+    setRemoteConfig({});
+  };
+
+  const closeConfiguration = () => {
+    setConfiguringPackage(null);
+    setConfiguringRemote(null);
+    setPackageConfig({});
+    setRemoteConfig({});
+  };
+
+  const handleServerClick = (server: ServerJSON) => {
+    setSelectedServer(server);
+  };
+
+  const handleBackToRegistry = () => {
+    setSelectedServer(null);
+  };
+
+  // Generate configured JSON
+  const generateConfiguredServer = () => {
+    if (!selectedServer) return null;
+
+    const configuredServer = { ...selectedServer };
+
+    if (configuringPackage && selectedServer.packages) {
+      const updatedPackages = [...selectedServer.packages];
+      const pkg = { ...updatedPackages[configuringPackage.index] };
+
+      // Apply package configuration
+      if (pkg.runtimeArguments) {
+        pkg.runtimeArguments = pkg.runtimeArguments.map((arg: any) => ({
+          ...arg,
+          value: packageConfig[`runtimeArg_${arg.name || arg.value}`] || arg.value || arg.default
+        }));
+      }
+
+      if (pkg.packageArguments) {
+        pkg.packageArguments = pkg.packageArguments.map((arg: any) => ({
+          ...arg,
+          value: packageConfig[`packageArg_${arg.name || arg.value}`] || arg.value || arg.default
+        }));
+      }
+
+      if (pkg.environmentVariables) {
+        pkg.environmentVariables = pkg.environmentVariables.map((env: any) => ({
+          ...env,
+          value: packageConfig[`env_${env.name}`] || env.value || env.default
+        }));
+      }
+
+      if (packageConfig.runtimeHint) {
+        pkg.runtimeHint = packageConfig.runtimeHint;
+      }
+
+      updatedPackages[configuringPackage.index] = pkg;
+      configuredServer.packages = updatedPackages;
+    }
+
+    if (configuringRemote && selectedServer.remotes) {
+      const updatedRemotes = [...selectedServer.remotes];
+      const remote = { ...updatedRemotes[configuringRemote.index] };
+
+      // Apply remote configuration
+      if ('headers' in remote && remote.headers) {
+        remote.headers = remote.headers.map((header: any) => ({
+          ...header,
+          value: remoteConfig[`header_${header.name}`] || header.value
+        }));
+      }
+
+      updatedRemotes[configuringRemote.index] = remote;
+      configuredServer.remotes = updatedRemotes;
+    }
+
+    return configuredServer;
+  };
 
   const loadServerRegistry = async () => {
     try {
@@ -96,16 +201,6 @@ export default function RegistryPage() {
         ? prev.filter(f => f !== filter)
         : [...prev, filter]
     );
-  };
-
-  const [selectedServer, setSelectedServer] = useState<ServerJSON | null>(null);
-
-  const handleServerClick = (server: ServerJSON) => {
-    setSelectedServer(server);
-  };
-
-  const handleBackToRegistry = () => {
-    setSelectedServer(null);
   };
 
   if (loading) {
@@ -256,6 +351,16 @@ export default function RegistryPage() {
                               )}
                             </div>
                           </div>
+                          {hasRemoteConfiguration(remote) && (
+                            <div className="ml-4">
+                              <button
+                                onClick={() => handleConfigureRemote(remote, index)}
+                                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                              >
+                                Configure
+                              </button>
+                            </div>
+                          )}
                         </div>
                         {(remote.type === 'streamable-http' || remote.type === 'sse') && remote.headers && remote.headers.length > 0 && (
                           <div className="mt-4">
@@ -323,6 +428,16 @@ export default function RegistryPage() {
                               </div>
                             </div>
                           </div>
+                          {hasPackageConfiguration(pkg) && (
+                            <div className="ml-4">
+                              <button
+                                onClick={() => handleConfigurePackage(pkg, index)}
+                                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                              >
+                                Configure
+                              </button>
+                            </div>
+                          )}
                         </div>
 
                         {pkg.runtimeHint && (
@@ -604,6 +719,171 @@ export default function RegistryPage() {
           </div>
         </div>
       </div>
+
+      {/* Configuration Modal */}
+      {(configuringPackage || configuringRemote) && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl font-bold text-gray-900">
+                  Configure {configuringPackage ? 'Package' : 'Remote'}
+                </h2>
+                {console.log('Modal state:', { configuringPackage, configuringRemote })}
+                <button
+                  onClick={closeConfiguration}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                {/* Configuration Form */}
+                <div className="space-y-4">
+                  {configuringPackage && (
+                    <>
+                      {configuringPackage.pkg.runtimeHint && (
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Runtime Hint
+                          </label>
+                          <input
+                            type="text"
+                            value={packageConfig.runtimeHint || configuringPackage.pkg.runtimeHint}
+                            onChange={(e) => setPackageConfig(prev => ({ ...prev, runtimeHint: e.target.value }))}
+                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                        </div>
+                      )}
+
+                      {configuringPackage.pkg.runtimeArguments && configuringPackage.pkg.runtimeArguments.length > 0 && (
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Runtime Arguments
+                          </label>
+                          <div className="space-y-2">
+                            {configuringPackage.pkg.runtimeArguments.map((arg: any, argIndex: number) => (
+                              <div key={argIndex} className="flex items-center space-x-2">
+                                <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
+                                  {arg.name || 'arg'}
+                                </span>
+                                <input
+                                  type="text"
+                                  value={packageConfig[`runtimeArg_${arg.name || arg.value}`] || arg.value || arg.default || ''}
+                                  onChange={(e) => setPackageConfig(prev => ({ 
+                                    ...prev, 
+                                    [`runtimeArg_${arg.name || arg.value}`]: e.target.value 
+                                  }))}
+                                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                  placeholder={arg.default || 'Enter value'}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {configuringPackage.pkg.packageArguments && configuringPackage.pkg.packageArguments.length > 0 && (
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Package Arguments
+                          </label>
+                          <div className="space-y-2">
+                            {configuringPackage.pkg.packageArguments.map((arg: any, argIndex: number) => (
+                              <div key={argIndex} className="flex items-center space-x-2">
+                                <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
+                                  {arg.name || 'arg'}
+                                </span>
+                                <input
+                                  type="text"
+                                  value={packageConfig[`packageArg_${arg.name || arg.value}`] || arg.value || arg.default || ''}
+                                  onChange={(e) => setPackageConfig(prev => ({ 
+                                    ...prev, 
+                                    [`packageArg_${arg.name || arg.value}`]: e.target.value 
+                                  }))}
+                                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                  placeholder={arg.default || 'Enter value'}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {configuringPackage.pkg.environmentVariables && configuringPackage.pkg.environmentVariables.length > 0 && (
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Environment Variables
+                          </label>
+                          <div className="space-y-2">
+                            {configuringPackage.pkg.environmentVariables.map((env: any, envIndex: number) => (
+                              <div key={envIndex} className="flex items-center space-x-2">
+                                <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
+                                  {env.name}
+                                </span>
+                                <input
+                                  type="text"
+                                  value={packageConfig[`env_${env.name}`] || env.value || env.default || ''}
+                                  onChange={(e) => setPackageConfig(prev => ({ 
+                                    ...prev, 
+                                    [`env_${env.name}`]: e.target.value 
+                                  }))}
+                                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                  placeholder={env.default || 'Enter value'}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {configuringRemote && configuringRemote.remote.headers && configuringRemote.remote.headers.length > 0 && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Headers
+                      </label>
+                      <div className="space-y-2">
+                        {configuringRemote.remote.headers.map((header: any, headerIndex: number) => (
+                          <div key={headerIndex} className="flex items-center space-x-2">
+                            <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
+                              {header.name}
+                            </span>
+                            <input
+                              type="text"
+                              value={remoteConfig[`header_${header.name}`] || header.value || ''}
+                              onChange={(e) => setRemoteConfig(prev => ({ 
+                                ...prev, 
+                                [`header_${header.name}`]: e.target.value 
+                              }))}
+                              className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                              placeholder="Enter header value"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* JSON Output */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Configured Server JSON
+                  </label>
+                  <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto">
+                    {JSON.stringify(generateConfiguredServer(), null, 2)}
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
