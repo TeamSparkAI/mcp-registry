@@ -9,6 +9,9 @@ interface FieldConfig {
   isRequired?: boolean;
   isSecret?: boolean;
   description?: string;
+  format?: 'string' | 'number' | 'boolean' | 'filepath';
+  choices?: string[];
+  variables?: Record<string, FieldConfig>;
 }
 
 interface PackageConfig {
@@ -34,6 +37,31 @@ interface RequiredFieldWarningProps {
   remoteConfig: Record<string, any>;
 }
 
+// Helper function to check if a field with variables has required variables that are missing
+const checkRequiredVariables = (
+  field: FieldConfig,
+  config: Record<string, any>,
+  fieldId: string
+): boolean => {
+  if (!field.variables || Object.keys(field.variables).length === 0) {
+    return false;
+  }
+
+  const template = field.value || field.default || '';
+  const variableNames = template.match(/\{([^}]+)\}/g)?.map(match => match.slice(1, -1)) || [];
+  
+  return variableNames.some(varName => {
+    const varField = field.variables![varName];
+    if (varField.isRequired) {
+      const varFieldId = `${fieldId}_var_${varName}`;
+      const userHasSetValue = config.hasOwnProperty(varFieldId);
+      const currentValue = userHasSetValue ? config[varFieldId] : (varField.default || '');
+      return !currentValue || currentValue.trim() === '';
+    }
+    return false;
+  });
+};
+
 export default function RequiredFieldWarning({
   configuringPackage,
   configuringRemote,
@@ -48,36 +76,57 @@ export default function RequiredFieldWarning({
     // Check runtime arguments
     if (pkg.runtimeArguments) {
       hasRequiredFields = pkg.runtimeArguments.some((arg: FieldConfig) => {
+        const fieldId = `runtimeArg_${arg.name || arg.value}`;
+        
+        // Check if the main field is required and missing
         if (arg.isRequired && !arg.value) {
-          const fieldId = `runtimeArg_${arg.name || arg.value}`;
-          const currentValue = packageConfig[fieldId] || arg.default || '';
-          return !currentValue || currentValue.trim() === '';
+          const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (arg.default || '');
+          if (!currentValue || currentValue.trim() === '') {
+            return true;
+          }
         }
-        return false;
+        
+        // Check if any variables are required and missing
+        return checkRequiredVariables(arg, packageConfig, fieldId);
       });
     }
     
     // Check package arguments
     if (!hasRequiredFields && pkg.packageArguments) {
       hasRequiredFields = pkg.packageArguments.some((arg: FieldConfig) => {
+        const fieldId = `packageArg_${arg.name || arg.value}`;
+        
+        // Check if the main field is required and missing
         if (arg.isRequired && !arg.value) {
-          const fieldId = `packageArg_${arg.name || arg.value}`;
-          const currentValue = packageConfig[fieldId] || arg.default || '';
-          return !currentValue || currentValue.trim() === '';
+          const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (arg.default || '');
+          if (!currentValue || currentValue.trim() === '') {
+            return true;
+          }
         }
-        return false;
+        
+        // Check if any variables are required and missing
+        return checkRequiredVariables(arg, packageConfig, fieldId);
       });
     }
     
     // Check environment variables
     if (!hasRequiredFields && pkg.environmentVariables) {
       hasRequiredFields = pkg.environmentVariables.some((env: FieldConfig) => {
+        const fieldId = `env_${env.name}`;
+        
+        // Check if the main field is required and missing
         if (env.isRequired && !env.value) {
-          const fieldId = `env_${env.name}`;
-          const currentValue = packageConfig[fieldId] || env.default || '';
-          return !currentValue || currentValue.trim() === '';
+          const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (env.default || '');
+          if (!currentValue || currentValue.trim() === '') {
+            return true;
+          }
         }
-        return false;
+        
+        // Check if any variables are required and missing
+        return checkRequiredVariables(env, packageConfig, fieldId);
       });
     }
   }
@@ -88,12 +137,19 @@ export default function RequiredFieldWarning({
     // Check headers
     if (!hasRequiredFields && remote.headers) {
       hasRequiredFields = remote.headers.some((header: FieldConfig) => {
+        const fieldId = `header_${header.name}`;
+        
+        // Check if the main field is required and missing
         if (header.isRequired && !header.value) {
-          const fieldId = `header_${header.name}`;
-          const currentValue = remoteConfig[fieldId] || header.default || '';
-          return !currentValue || currentValue.trim() === '';
+          const userHasSetValue = remoteConfig.hasOwnProperty(fieldId);
+          const currentValue = userHasSetValue ? remoteConfig[fieldId] : (header.default || '');
+          if (!currentValue || currentValue.trim() === '') {
+            return true;
+          }
         }
-        return false;
+        
+        // Check if any variables are required and missing
+        return checkRequiredVariables(header, remoteConfig, fieldId);
       });
     }
   }
