@@ -18,3 +18,9 @@ Add support for other registry types (npm and pypi should work)
 - oci (docker)
 - mcpb
 - nuget
+
+Test Mode
+- Test Your server.json link in header bar
+- Creates test view
+  - Input server.json (enter to complete, way to re-edit later)
+- Render registry details page with Configure support
