@@ -9,6 +9,8 @@ interface FieldConfig {
   isRequired?: boolean;
   isSecret?: boolean;
   description?: string;
+  format?: 'string' | 'number' | 'boolean' | 'filepath';
+  choices?: string[];
 }
 
 interface PackageConfig {
@@ -70,6 +72,123 @@ export default function ConfigurationForm({
     const hasValue = field.value !== undefined && field.value !== null && field.value !== '';
     const isReadOnly = hasValue;
     const isRequired = field.isRequired && !hasValue;
+    const format = field.format || 'string';
+    const currentValue = config[fieldId] || field.value || field.default || '';
+
+    // Determine input type and render appropriate control
+    const renderInput = () => {
+      if (isReadOnly) {
+        return (
+          <input
+            type="text"
+            value={currentValue}
+            readOnly
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-gray-50 text-gray-600 cursor-not-allowed"
+          />
+        );
+      }
+
+      // Boolean field - dropdown with true/false
+      if (format === 'boolean') {
+        const booleanOptions = [
+          { value: '', label: isRequired ? 'Select value' : 'No value' },
+          { value: 'true', label: 'true' },
+          { value: 'false', label: 'false' }
+        ];
+
+        // Determine default selection
+        const defaultValue = field.default || (isRequired ? '' : '');
+
+        return (
+          <select
+            value={config[fieldId] !== undefined ? config[fieldId] : defaultValue}
+            onChange={(e) => {
+              onConfigChange({
+                ...config,
+                [fieldId]: e.target.value
+              });
+            }}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            {booleanOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        );
+      }
+
+      // String field with choices - dropdown
+      if (format === 'string' && field.choices && field.choices.length > 0) {
+        const choiceOptions = [
+          { value: '', label: isRequired ? 'Select value' : 'No value' },
+          ...field.choices.map((choice) => ({ value: choice, label: choice }))
+        ];
+
+        // Determine default selection
+        const defaultValue = field.default || (isRequired ? '' : '');
+
+        return (
+          <select
+            value={config[fieldId] !== undefined ? config[fieldId] : defaultValue}
+            onChange={(e) => {
+              onConfigChange({
+                ...config,
+                [fieldId]: e.target.value
+              });
+            }}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            {choiceOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        );
+      }
+
+      // Number field
+      if (format === 'number') {
+        const showEyeIcon = isSecret && !isReadOnly;
+        return (
+          <input
+            type="number"
+            value={currentValue}
+            onChange={(e) => {
+              onConfigChange({
+                ...config,
+                [fieldId]: e.target.value
+              });
+            }}
+            className={`w-full border border-gray-300 rounded-lg px-3 py-2 ${showEyeIcon ? 'pr-10' : 'pr-3'} focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              isSecret && !isVisible ? 'masked-input' : ''
+            }`}
+            placeholder={placeholder || field.default || 'Enter number'}
+          />
+        );
+      }
+
+      // Default: string/text field
+      const showEyeIcon = isSecret && !isReadOnly && !(format === 'string' && field.choices && field.choices.length > 0);
+      return (
+        <input
+          type="text"
+          value={currentValue}
+          onChange={(e) => {
+            onConfigChange({
+              ...config,
+              [fieldId]: e.target.value
+            });
+          }}
+          className={`w-full border border-gray-300 rounded-lg px-3 py-2 ${showEyeIcon ? 'pr-10' : 'pr-3'} focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            isSecret && !isVisible ? 'masked-input' : ''
+          }`}
+          placeholder={placeholder || field.default || 'Enter value'}
+        />
+      );
+    };
 
     return (
       <div className="space-y-1">
@@ -81,22 +200,8 @@ export default function ConfigurationForm({
             {isRequired && <span className="text-red-500 ml-1">*</span>}
           </span>
           <div className="flex-1 relative">
-            <input
-              type="text"
-              value={config[fieldId] || field.value || field.default || ''}
-              onChange={isReadOnly ? undefined : (e) => {
-                onConfigChange({
-                  ...config,
-                  [fieldId]: e.target.value
-                });
-              }}
-              readOnly={isReadOnly}
-              className={`w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                isReadOnly ? 'bg-gray-50 text-gray-600 cursor-not-allowed' : ''
-              } ${isSecret && !isVisible ? 'masked-input' : ''}`}
-              placeholder={placeholder || field.default || 'Enter value'}
-            />
-            {isSecret && !isReadOnly && (
+            {renderInput()}
+            {isSecret && !isReadOnly && format !== 'boolean' && !(format === 'string' && field.choices && field.choices.length > 0) && (
               <button
                 type="button"
                 onClick={() => onToggleFieldVisibility(fieldId)}
