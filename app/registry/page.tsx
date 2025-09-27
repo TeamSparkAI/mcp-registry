@@ -47,7 +47,8 @@ const substituteFieldVariables = (
     const varFieldId = `${fieldId}_var_${varName}`;
     // Only use default if user hasn't explicitly set a value (including empty)
     const userHasSetValue = config.hasOwnProperty(varFieldId);
-    variableValues[varName] = userHasSetValue ? config[varFieldId] : (field.variables[varName].default || '');
+    const varField = field.variables[varName];
+    variableValues[varName] = userHasSetValue ? config[varFieldId] : (varField?.default || '');
   });
 
   return substituteVariables(template, variableValues);
@@ -143,6 +144,11 @@ export default function RegistryPage() {
     setTestServerJson('');
     setTestServer(null);
     setSelectedServer(null);
+    setConfiguringPackage(null);
+    setConfiguringRemote(null);
+    setPackageConfig({});
+    setRemoteConfig({});
+    setVisibleFields(new Set());
   };
 
   const handleSubmitTestServerJson = () => {
@@ -157,13 +163,68 @@ export default function RegistryPage() {
   };
 
   const handleUpdateTestServerJson = (newJson: string) => {
+    // Only update the textarea value, don't process the server until submitted
+    setTestServerJson(newJson);
+  };
+
+  const handleApplyTestServerJson = (newJson: string) => {
+    // Process the server data when user applies changes
     try {
       const parsedServer = JSON.parse(newJson);
+      const oldServer = selectedServer;
+      
       setTestServer(parsedServer);
       setSelectedServer(parsedServer);
       setTestServerJson(newJson);
+      
+      // Smart configuration mode handling based on package/remote counts
+      if (configuringPackage && oldServer && parsedServer) {
+        const oldPackageCount = oldServer.packages?.length || 0;
+        const newPackageCount = parsedServer.packages?.length || 0;
+        
+        // Stay in package config mode if there was exactly 1 package before and after
+        if (oldPackageCount === 1 && newPackageCount === 1) {
+          // Re-trigger configuration with the updated package (preserve structure)
+          setConfiguringPackage({ pkg: parsedServer.packages![0], index: 0 });
+          // Clear form data to reflect the new package structure
+          setPackageConfig({});
+          setVisibleFields(new Set());
+        } else {
+          // Exit configuration mode for multiple packages or count changes
+          setConfiguringPackage(null);
+          setPackageConfig({});
+          setRemoteConfig({});
+          setVisibleFields(new Set());
+        }
+      } else if (configuringRemote && oldServer && parsedServer) {
+        const oldRemoteCount = oldServer.remotes?.length || 0;
+        const newRemoteCount = parsedServer.remotes?.length || 0;
+        
+        // Stay in remote config mode if there was exactly 1 remote before and after
+        if (oldRemoteCount === 1 && newRemoteCount === 1) {
+          // Re-trigger configuration with the updated remote (preserve structure)
+          setConfiguringRemote({ remote: parsedServer.remotes![0], index: 0 });
+          // Clear form data to reflect the new remote structure
+          setRemoteConfig({});
+          setVisibleFields(new Set());
+        } else {
+          // Exit configuration mode for multiple remotes or count changes
+          setConfiguringPackage(null);
+          setConfiguringRemote(null);
+          setPackageConfig({});
+          setRemoteConfig({});
+          setVisibleFields(new Set());
+        }
+      } else {
+        // Not in configuration mode, just clear any stale state
+        setConfiguringPackage(null);
+        setConfiguringRemote(null);
+        setPackageConfig({});
+        setRemoteConfig({});
+        setVisibleFields(new Set());
+      }
     } catch (error) {
-      // Don't update if invalid JSON - let user fix it
+      alert('Invalid JSON. Please check your server.json format.');
     }
   };
 
@@ -182,6 +243,13 @@ export default function RegistryPage() {
   // Generate MCP client configuration
   const generateConfiguredServer = () => {
     if (!selectedServer) return null;
+    
+    // Don't generate config if server data is invalid (e.g., during JSON editing)
+    try {
+      JSON.stringify(selectedServer);
+    } catch (error) {
+      return null;
+    }
 
     const serverName = selectedServer.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
     
@@ -413,6 +481,7 @@ export default function RegistryPage() {
         isTestMode={!!testServer}
         testServerJson={testServerJson}
         onUpdateTestServerJson={handleUpdateTestServerJson}
+        onApplyTestServerJson={handleApplyTestServerJson}
       />
     );
   }

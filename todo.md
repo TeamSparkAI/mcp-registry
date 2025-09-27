@@ -20,7 +20,5 @@ Add support for other registry types (npm and pypi should work)
 - nuget
 
 Test Mode
-- Test Your server.json link in header bar
-- Creates test view
-  - Input server.json (enter to complete, way to re-edit later)
-- Render registry details page with Configure support
+- Generally working
+- There is still some bug in rendering MCP client config (added api key variable to existing auth header - smithery example)
