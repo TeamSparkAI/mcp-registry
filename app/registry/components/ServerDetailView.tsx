@@ -49,6 +49,9 @@ interface ServerDetailViewProps {
   onConfigurePackage: (pkg: PackageConfig, index: number) => void;
   onConfigureRemote: (remote: RemoteConfig, index: number) => void;
   getResourcePath: (path: string) => string;
+  isTestMode?: boolean;
+  testServerJson?: string;
+  onUpdateTestServerJson?: (json: string) => void;
 }
 
 export default function ServerDetailView({
@@ -68,7 +71,10 @@ export default function ServerDetailView({
   onShowRawModal,
   onConfigurePackage,
   onConfigureRemote,
-  getResourcePath
+  getResourcePath,
+  isTestMode = false,
+  testServerJson = '',
+  onUpdateTestServerJson
 }: ServerDetailViewProps) {
   const hasPackageConfiguration = (pkg: PackageConfig) => {
     return pkg.runtimeHint || 
@@ -102,7 +108,7 @@ export default function ServerDetailView({
                 alt="MCP Registry" 
                 className="w-5 h-5 object-contain"
               />
-              <span>MCP Server Registry</span>
+              <span>{isTestMode ? 'Test Mode' : 'MCP Server Registry'}</span>
             </div>
           </div>
         </div>
@@ -142,9 +148,13 @@ export default function ServerDetailView({
               <div className="flex-shrink-0">
                 <button
                   onClick={() => onShowRawModal(true)}
-                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                  className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
+                    isTestMode 
+                      ? 'bg-green-600 text-white hover:bg-green-700' 
+                      : 'bg-gray-600 text-white hover:bg-gray-700'
+                  }`}
                 >
-                  server.json
+                  {isTestMode ? 'Edit server.json' : 'server.json'}
                 </button>
               </div>
             </div>
@@ -432,7 +442,9 @@ export default function ServerDetailView({
               <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-bold text-gray-900">Raw Server JSON</h2>
+                    <h2 className="text-xl font-bold text-gray-900">
+                      {isTestMode ? 'Edit Server JSON' : 'Raw Server JSON'}
+                    </h2>
                     <button
                       onClick={() => onShowRawModal(false)}
                       className="text-gray-400 hover:text-gray-600"
@@ -442,9 +454,33 @@ export default function ServerDetailView({
                       </svg>
                     </button>
                   </div>
-                  <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
-                    {JSON.stringify(server, null, 2)}
-                  </pre>
+                  {isTestMode ? (
+                    <div>
+                      <textarea
+                        value={testServerJson}
+                        onChange={(e) => onUpdateTestServerJson?.(e.target.value)}
+                        className="w-full h-96 p-4 border border-gray-300 rounded-lg font-mono text-sm"
+                      />
+                      <div className="mt-4 flex justify-end space-x-3">
+                        <button
+                          onClick={() => onShowRawModal(false)}
+                          className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          onClick={() => onShowRawModal(false)}
+                          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                        >
+                          Apply Changes
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
+                      {JSON.stringify(server, null, 2)}
+                    </pre>
+                  )}
                 </div>
               </div>
             </div>

@@ -35,7 +35,9 @@ const substituteFieldVariables = (
 ): string => {
   const template = field.value || field.default || '';
   if (!field.variables || Object.keys(field.variables).length === 0) {
-    return template;
+    // For fields without variables, check if user has entered a value
+    const userHasSetValue = config.hasOwnProperty(fieldId);
+    return userHasSetValue ? config[fieldId] : template;
   }
 
   const variableNames = extractVariableNames(template);
@@ -64,6 +66,9 @@ export default function RegistryPage() {
   const [remoteConfig, setRemoteConfig] = useState<Record<string, any>>({});
   const [showRawModal, setShowRawModal] = useState(false);
   const [visibleFields, setVisibleFields] = useState<Set<string>>(new Set());
+  const [testMode, setTestMode] = useState(false);
+  const [testServerJson, setTestServerJson] = useState('');
+  const [testServer, setTestServer] = useState<ServerJSON | null>(null);
 
   useEffect(() => {
     loadServerRegistry();
@@ -131,6 +136,47 @@ export default function RegistryPage() {
 
   const handleBackToRegistry = () => {
     setSelectedServer(null);
+  };
+
+  const handleTestServerJson = () => {
+    setTestMode(true);
+    setTestServerJson('');
+    setTestServer(null);
+    setSelectedServer(null);
+  };
+
+  const handleSubmitTestServerJson = () => {
+    try {
+      const parsedServer = JSON.parse(testServerJson);
+      setTestServer(parsedServer);
+      setSelectedServer(parsedServer);
+      setTestMode(false);
+    } catch (error) {
+      alert('Invalid JSON. Please check your server.json format.');
+    }
+  };
+
+  const handleUpdateTestServerJson = (newJson: string) => {
+    try {
+      const parsedServer = JSON.parse(newJson);
+      setTestServer(parsedServer);
+      setSelectedServer(parsedServer);
+      setTestServerJson(newJson);
+    } catch (error) {
+      // Don't update if invalid JSON - let user fix it
+    }
+  };
+
+  const handleExitTestMode = () => {
+    setTestMode(false);
+    setTestServerJson('');
+    setTestServer(null);
+    setSelectedServer(null);
+    setConfiguringPackage(null);
+    setConfiguringRemote(null);
+    setPackageConfig({});
+    setRemoteConfig({});
+    setVisibleFields(new Set());
   };
 
   // Generate MCP client configuration
@@ -355,7 +401,7 @@ export default function RegistryPage() {
         visibleFields={visibleFields}
         showRawModal={showRawModal}
         configuredServer={generateConfiguredServer()}
-        onBackToRegistry={handleBackToRegistry}
+        onBackToRegistry={testServer ? handleExitTestMode : handleBackToRegistry}
         onPackageConfigChange={setPackageConfig}
         onRemoteConfigChange={setRemoteConfig}
         onToggleFieldVisibility={toggleFieldVisibility}
@@ -364,7 +410,74 @@ export default function RegistryPage() {
         onConfigurePackage={handleConfigurePackage}
         onConfigureRemote={handleConfigureRemote}
         getResourcePath={getResourcePath}
+        isTestMode={!!testServer}
+        testServerJson={testServerJson}
+        onUpdateTestServerJson={handleUpdateTestServerJson}
       />
+    );
+  }
+
+  // Show test mode input
+  if (testMode) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+        {/* Header */}
+        <header className="bg-white shadow-sm border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex items-center justify-between">
+              <button
+                onClick={handleExitTestMode}
+                className="flex items-center text-gray-600 hover:text-gray-800"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Registry
+              </button>
+              <div className="flex items-center space-x-2 text-sm text-gray-500">
+                <img 
+                  src={getResourcePath('/mcp_black.png')} 
+                  alt="MCP Registry" 
+                  className="w-5 h-5 object-contain"
+                />
+                <span>Test Mode</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg border p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Test Your Server Configuration</h2>
+              <p className="text-gray-600 mb-4">
+                Paste your server.json below to test it using our configuration interface.
+              </p>
+              <textarea
+                value={testServerJson}
+                onChange={(e) => setTestServerJson(e.target.value)}
+                className="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm"
+                placeholder='{"name": "my-server", "description": "My test server", ...}'
+              />
+              <div className="mt-4 flex justify-end space-x-3">
+                <button
+                  onClick={handleExitTestMode}
+                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSubmitTestServerJson}
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                >
+                  Test Configuration
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -378,6 +491,7 @@ export default function RegistryPage() {
       onFilterToggle={handleFilterToggle}
       onClearFilters={() => setSelectedFilters([])}
       onServerClick={handleServerClick}
+      onTestServerJson={handleTestServerJson}
       getResourcePath={getResourcePath}
     />
   );
