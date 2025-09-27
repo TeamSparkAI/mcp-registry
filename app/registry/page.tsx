@@ -11,6 +11,46 @@ const getResourcePath = (path: string): string => {
   return `${basePath}${path}`;
 };
 
+// Helper function to extract variable names from a template string
+const extractVariableNames = (template: string): string[] => {
+  const matches = template.match(/\{([^}]+)\}/g);
+  return matches ? matches.map(match => match.slice(1, -1)) : [];
+};
+
+// Helper function to substitute variables in a template string
+const substituteVariables = (
+  template: string, 
+  variables: Record<string, any>
+): string => {
+  return template.replace(/\{([^}]+)\}/g, (match, varName) => {
+    return variables[varName] || match;
+  });
+};
+
+// Helper function to substitute variables in a field value
+const substituteFieldVariables = (
+  field: any,
+  config: Record<string, any>,
+  fieldId: string
+): string => {
+  const template = field.value || field.default || '';
+  if (!field.variables || Object.keys(field.variables).length === 0) {
+    return template;
+  }
+
+  const variableNames = extractVariableNames(template);
+  const variableValues: Record<string, string> = {};
+  
+  variableNames.forEach(varName => {
+    const varFieldId = `${fieldId}_var_${varName}`;
+    // Only use default if user hasn't explicitly set a value (including empty)
+    const userHasSetValue = config.hasOwnProperty(varFieldId);
+    variableValues[varName] = userHasSetValue ? config[varFieldId] : (field.variables[varName].default || '');
+  });
+
+  return substituteVariables(template, variableValues);
+};
+
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerJSON[]>([]);
   const [loading, setLoading] = useState(true);
@@ -109,7 +149,8 @@ export default function RegistryPage() {
       // Add runtime arguments
       if (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) {
         pkg.runtimeArguments.forEach((arg: any) => {
-          const value = packageConfig[`runtimeArg_${arg.name || arg.value}`] || arg.value || arg.default;
+          const fieldId = `runtimeArg_${arg.name || arg.value}`;
+          const value = substituteFieldVariables(arg, packageConfig, fieldId);
           if (value) {
             if (arg.name) {
               // Add two leading dashes if name doesn't already start with dashes
@@ -128,7 +169,8 @@ export default function RegistryPage() {
       // Add package arguments
       if (pkg.packageArguments) {
         pkg.packageArguments.forEach((arg: any) => {
-          const value = packageConfig[`packageArg_${arg.name || arg.value}`] || arg.value || arg.default;
+          const fieldId = `packageArg_${arg.name || arg.value}`;
+          const value = substituteFieldVariables(arg, packageConfig, fieldId);
           if (value) {
             if (arg.name) {
               // Add two leading dashes if name doesn't already start with dashes
@@ -145,7 +187,8 @@ export default function RegistryPage() {
       const env: Record<string, string> = {};
       if (pkg.environmentVariables) {
         pkg.environmentVariables.forEach((envVar: any) => {
-          const value = packageConfig[`env_${envVar.name}`] || envVar.value || envVar.default;
+          const fieldId = `env_${envVar.name}`;
+          const value = substituteFieldVariables(envVar, packageConfig, fieldId);
           if (value) {
             env[envVar.name] = value;
           }

@@ -11,6 +11,7 @@ interface FieldConfig {
   description?: string;
   format?: 'string' | 'number' | 'boolean' | 'filepath';
   choices?: string[];
+  variables?: Record<string, FieldConfig>;
 }
 
 interface PackageConfig {
@@ -45,6 +46,22 @@ const isSecretField = (field: FieldConfig) => {
   return field.isSecret === true;
 };
 
+// Helper function to extract variable names from a template string
+const extractVariableNames = (template: string): string[] => {
+  const matches = template.match(/\{([^}]+)\}/g);
+  return matches ? matches.map(match => match.slice(1, -1)) : [];
+};
+
+// Helper function to substitute variables in a template string
+const substituteVariables = (
+  template: string, 
+  variables: Record<string, any>
+): string => {
+  return template.replace(/\{([^}]+)\}/g, (match, varName) => {
+    return variables[varName] || match;
+  });
+};
+
 export default function ConfigurationForm({
   configuringPackage,
   configuringRemote,
@@ -65,7 +82,8 @@ export default function ConfigurationForm({
     fieldId: string,
     config: Record<string, any>,
     onConfigChange: (config: Record<string, any>) => void,
-    placeholder?: string
+    placeholder?: string,
+    labelOverride?: string
   ) => {
     const isSecret = isSecretField(field);
     const isVisible = visibleFields.has(fieldId);
@@ -73,7 +91,9 @@ export default function ConfigurationForm({
     const isReadOnly = hasValue;
     const isRequired = field.isRequired && !hasValue;
     const format = field.format || 'string';
-    const currentValue = config[fieldId] || field.value || field.default || '';
+    // Only use default if user hasn't explicitly set a value (including empty)
+    const userHasSetValue = config.hasOwnProperty(fieldId);
+    const currentValue = userHasSetValue ? config[fieldId] : (field.value || field.default || '');
 
     // Determine input type and render appropriate control
     const renderInput = () => {
@@ -196,7 +216,7 @@ export default function ConfigurationForm({
           <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
             isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
           }`}>
-            {field.name || 'arg'}
+            {labelOverride || field.name || 'arg'}
             {isRequired && <span className="text-red-500 ml-1">*</span>}
           </span>
           <div className="flex-1 relative">
@@ -224,6 +244,77 @@ export default function ConfigurationForm({
         {field.description && (
           <p className="text-xs text-gray-600 ml-2">{field.description}</p>
         )}
+      </div>
+    );
+  };
+
+  // Function to render fields with variable substitution
+  const renderFieldWithVariables = (
+    field: FieldConfig,
+    fieldId: string,
+    config: Record<string, any>,
+    onConfigChange: (config: Record<string, any>) => void,
+    placeholder?: string
+  ) => {
+    const hasVariables = field.variables && Object.keys(field.variables).length > 0;
+    
+    if (!hasVariables) {
+      // No variables, render as normal field
+      return renderFieldInput(field, fieldId, config, onConfigChange, placeholder);
+    }
+
+    // Has variables - render parent field + variable inputs
+    const template = field.value || field.default || '';
+    const variableNames = extractVariableNames(template);
+    
+    // Get current variable values
+    const variableValues: Record<string, string> = {};
+    variableNames.forEach(varName => {
+      const varFieldId = `${fieldId}_var_${varName}`;
+      variableValues[varName] = config[varFieldId] || field.variables![varName].default || '';
+    });
+
+    return (
+      <div className="space-y-3">
+        {/* Parent field showing template */}
+        <div className="space-y-1">
+          <div className="flex items-center space-x-2">
+            <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
+              field.isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
+            }`}>
+              {field.name || 'arg'}
+              {field.isRequired && <span className="text-red-500 ml-1">*</span>}
+            </span>
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                value={template}
+                readOnly
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-gray-50 text-gray-600 cursor-not-allowed"
+                placeholder="Template with variables"
+              />
+            </div>
+          </div>
+          {field.description && (
+            <p className="text-xs text-gray-600 ml-2">{field.description}</p>
+          )}
+        </div>
+
+        {/* Variable inputs */}
+        <div className="ml-4 space-y-2 border-l-2 border-gray-200 pl-4">
+          <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+            Variables
+          </div>
+          {variableNames.map(varName => {
+            const varField = field.variables![varName];
+            const varFieldId = `${fieldId}_var_${varName}`;
+            return (
+              <div key={varName}>
+                {renderFieldInput(varField, varFieldId, config, onConfigChange, `Enter ${varName}`, varName)}
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   };
@@ -296,7 +387,7 @@ export default function ConfigurationForm({
                       const fieldId = `runtimeArg_${arg.name || arg.value}`;
                       return (
                         <div key={argIndex}>
-                          {renderFieldInput(arg, fieldId, packageConfig, onPackageConfigChange)}
+                          {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
                         </div>
                       );
                     })}
@@ -314,7 +405,7 @@ export default function ConfigurationForm({
                       const fieldId = `packageArg_${arg.name || arg.value}`;
                       return (
                         <div key={argIndex}>
-                          {renderFieldInput(arg, fieldId, packageConfig, onPackageConfigChange)}
+                          {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
                         </div>
                       );
                     })}
@@ -332,7 +423,7 @@ export default function ConfigurationForm({
                       const fieldId = `env_${env.name}`;
                       return (
                         <div key={envIndex}>
-                          {renderFieldInput(env, fieldId, packageConfig, onPackageConfigChange)}
+                          {renderFieldWithVariables(env, fieldId, packageConfig, onPackageConfigChange)}
                         </div>
                       );
                     })}
@@ -354,7 +445,7 @@ export default function ConfigurationForm({
                   const fieldId = `header_${header.name}`;
                   return (
                     <div key={headerIndex}>
-                      {renderFieldInput(header, fieldId, remoteConfig, onRemoteConfigChange, "Enter header value")}
+                      {renderFieldWithVariables(header, fieldId, remoteConfig, onRemoteConfigChange, "Enter header value")}
                     </div>
                   );
                 })}
