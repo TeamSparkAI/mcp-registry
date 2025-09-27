@@ -52,6 +52,7 @@ interface ServerDetailViewProps {
   isTestMode?: boolean;
   testServerJson?: string;
   onUpdateTestServerJson?: (json: string) => void;
+  onApplyTestServerJson?: (json: string) => void;
 }
 
 export default function ServerDetailView({
@@ -74,7 +75,8 @@ export default function ServerDetailView({
   getResourcePath,
   isTestMode = false,
   testServerJson = '',
-  onUpdateTestServerJson
+  onUpdateTestServerJson,
+  onApplyTestServerJson
 }: ServerDetailViewProps) {
   const hasPackageConfiguration = (pkg: PackageConfig) => {
     return pkg.runtimeHint || 
@@ -469,7 +471,16 @@ export default function ServerDetailView({
                           Cancel
                         </button>
                         <button
-                          onClick={() => onShowRawModal(false)}
+                          onClick={() => {
+                            try {
+                              const parsedServer = JSON.parse(testServerJson);
+                              // Apply the server changes
+                              onApplyTestServerJson?.(testServerJson);
+                              onShowRawModal(false);
+                            } catch (error) {
+                              alert('Invalid JSON. Please check your server.json format.');
+                            }
+                          }}
                           className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
                         >
                           Apply Changes
