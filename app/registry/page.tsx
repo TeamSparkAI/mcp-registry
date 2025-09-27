@@ -21,6 +21,7 @@ export default function RegistryPage() {
   const [packageConfig, setPackageConfig] = useState<Record<string, any>>({});
   const [remoteConfig, setRemoteConfig] = useState<Record<string, any>>({});
   const [showRawModal, setShowRawModal] = useState(false);
+  const [visibleFields, setVisibleFields] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     loadServerRegistry();
@@ -54,7 +55,27 @@ export default function RegistryPage() {
     setConfiguringRemote(null);
     setPackageConfig({});
     setRemoteConfig({});
+    setVisibleFields(new Set());
   };
+
+  // Helper function to check if a field should be treated as secret
+  const isSecretField = (field: any) => {
+    return field.isSecret === true;
+  };
+
+  // Helper function to toggle field visibility
+  const toggleFieldVisibility = (fieldId: string) => {
+    setVisibleFields(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(fieldId)) {
+        newSet.delete(fieldId);
+      } else {
+        newSet.add(fieldId);
+      }
+      return newSet;
+    });
+  };
+
 
   const handleServerClick = (server: ServerJSON) => {
     setSelectedServer(server);
@@ -63,6 +84,7 @@ export default function RegistryPage() {
     setConfiguringRemote(null);
     setPackageConfig({});
     setRemoteConfig({});
+    setVisibleFields(new Set());
   };
 
   const handleBackToRegistry = () => {
@@ -80,20 +102,25 @@ export default function RegistryPage() {
       
       // Build command and args
       const runtimeHint = packageConfig.runtimeHint || pkg.runtimeHint || 'npx';
-      const args = [pkg.identifier];
+      const args: string[] = [];
       
       // Add runtime arguments
-      if (pkg.runtimeArguments) {
+      if (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) {
         pkg.runtimeArguments.forEach((arg: any) => {
           const value = packageConfig[`runtimeArg_${arg.name || arg.value}`] || arg.value || arg.default;
           if (value) {
             if (arg.name) {
-              args.push(`--${arg.name}`, value);
+              // Add two leading dashes if name doesn't already start with dashes
+              const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
+              args.push(argName, value);
             } else {
               args.push(value);
             }
           }
         });
+      } else {
+        // Only add package identifier if there are no runtime arguments
+        args.push(pkg.identifier);
       }
       
       // Add package arguments
@@ -102,7 +129,9 @@ export default function RegistryPage() {
           const value = packageConfig[`packageArg_${arg.name || arg.value}`] || arg.value || arg.default;
           if (value) {
             if (arg.name) {
-              args.push(`--${arg.name}`, value);
+              // Add two leading dashes if name doesn't already start with dashes
+              const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
+              args.push(argName, value);
             } else {
               args.push(value);
             }
@@ -393,9 +422,9 @@ export default function RegistryPage() {
                             </label>
                             <input
                               type="text"
-                              value={packageConfig.runtimeHint || configuringPackage.pkg.runtimeHint}
-                              onChange={(e) => setPackageConfig(prev => ({ ...prev, runtimeHint: e.target.value }))}
-                              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              value={configuringPackage.pkg.runtimeHint}
+                              readOnly
+                              className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-gray-50 text-gray-600 cursor-not-allowed"
                             />
                           </div>
                         )}
@@ -406,23 +435,60 @@ export default function RegistryPage() {
                               Runtime Arguments
                             </label>
                             <div className="space-y-2">
-                              {configuringPackage.pkg.runtimeArguments.map((arg: any, argIndex: number) => (
-                                <div key={argIndex} className="flex items-center space-x-2">
-                                  <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
-                                    {arg.name || 'arg'}
-                                  </span>
-                                  <input
-                                    type="text"
-                                    value={packageConfig[`runtimeArg_${arg.name || arg.value}`] || arg.value || arg.default || ''}
-                                    onChange={(e) => setPackageConfig(prev => ({ 
-                                      ...prev, 
-                                      [`runtimeArg_${arg.name || arg.value}`]: e.target.value 
-                                    }))}
-                                    className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder={arg.default || 'Enter value'}
-                                  />
-                                </div>
-                              ))}
+                              {configuringPackage.pkg.runtimeArguments.map((arg: any, argIndex: number) => {
+                                const fieldId = `runtimeArg_${arg.name || arg.value}`;
+                                const isSecret = isSecretField(arg);
+                                const isVisible = visibleFields.has(fieldId);
+                                const hasValue = arg.value !== undefined && arg.value !== null && arg.value !== '';
+                                const isReadOnly = hasValue;
+                                const isRequired = arg.isRequired && !hasValue;
+                                
+                                return (
+                                  <div key={argIndex} className="flex items-center space-x-2">
+                                    <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
+                                      isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
+                                    }`}>
+                                      {arg.name || 'arg'}
+                                      {isRequired && <span className="text-red-500 ml-1">*</span>}
+                                    </span>
+                                    <div className="flex-1 relative">
+                                      <input
+                                        type={isSecret && !isVisible ? "password" : "text"}
+                                        value={packageConfig[fieldId] || arg.value || arg.default || ''}
+                                        onChange={isReadOnly ? undefined : (e) => {
+                                          setPackageConfig(prev => ({ 
+                                            ...prev, 
+                                            [fieldId]: e.target.value 
+                                          }));
+                                        }}
+                                        readOnly={isReadOnly}
+                                        className={`w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                                          isReadOnly ? 'bg-gray-50 text-gray-600 cursor-not-allowed' : ''
+                                        }`}
+                                        placeholder={arg.default || 'Enter value'}
+                                      />
+                                      {isSecret && !isReadOnly && (
+                                        <button
+                                          type="button"
+                                          onClick={() => toggleFieldVisibility(fieldId)}
+                                          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                        >
+                                          {isVisible ? (
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                                            </svg>
+                                          ) : (
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                          )}
+                                        </button>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}
@@ -433,23 +499,60 @@ export default function RegistryPage() {
                               Package Arguments
                             </label>
                             <div className="space-y-2">
-                              {configuringPackage.pkg.packageArguments.map((arg: any, argIndex: number) => (
-                                <div key={argIndex} className="flex items-center space-x-2">
-                                  <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
-                                    {arg.name || 'arg'}
-                                  </span>
-                                  <input
-                                    type="text"
-                                    value={packageConfig[`packageArg_${arg.name || arg.value}`] || arg.value || arg.default || ''}
-                                    onChange={(e) => setPackageConfig(prev => ({ 
-                                      ...prev, 
-                                      [`packageArg_${arg.name || arg.value}`]: e.target.value 
-                                    }))}
-                                    className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder={arg.default || 'Enter value'}
-                                  />
-                                </div>
-                              ))}
+                              {configuringPackage.pkg.packageArguments.map((arg: any, argIndex: number) => {
+                                const fieldId = `packageArg_${arg.name || arg.value}`;
+                                const isSecret = isSecretField(arg);
+                                const isVisible = visibleFields.has(fieldId);
+                                const hasValue = arg.value !== undefined && arg.value !== null && arg.value !== '';
+                                const isReadOnly = hasValue;
+                                const isRequired = arg.isRequired && !hasValue;
+                                
+                                return (
+                                  <div key={argIndex} className="flex items-center space-x-2">
+                                    <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
+                                      isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
+                                    }`}>
+                                      {arg.name || 'arg'}
+                                      {isRequired && <span className="text-red-500 ml-1">*</span>}
+                                    </span>
+                                    <div className="flex-1 relative">
+                                      <input
+                                        type={isSecret && !isVisible ? "password" : "text"}
+                                        value={packageConfig[fieldId] || arg.value || arg.default || ''}
+                                        onChange={isReadOnly ? undefined : (e) => {
+                                          setPackageConfig(prev => ({ 
+                                            ...prev, 
+                                            [fieldId]: e.target.value 
+                                          }));
+                                        }}
+                                        readOnly={isReadOnly}
+                                        className={`w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                                          isReadOnly ? 'bg-gray-50 text-gray-600 cursor-not-allowed' : ''
+                                        }`}
+                                        placeholder={arg.default || 'Enter value'}
+                                      />
+                                      {isSecret && !isReadOnly && (
+                                        <button
+                                          type="button"
+                                          onClick={() => toggleFieldVisibility(fieldId)}
+                                          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                        >
+                                          {isVisible ? (
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                                            </svg>
+                                          ) : (
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                          )}
+                                        </button>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}
@@ -460,23 +563,60 @@ export default function RegistryPage() {
                               Environment Variables
                             </label>
                             <div className="space-y-2">
-                              {configuringPackage.pkg.environmentVariables.map((env: any, envIndex: number) => (
-                                <div key={envIndex} className="flex items-center space-x-2">
-                                  <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
-                                    {env.name}
-                                  </span>
-                                  <input
-                                    type="text"
-                                    value={packageConfig[`env_${env.name}`] || env.value || env.default || ''}
-                                    onChange={(e) => setPackageConfig(prev => ({ 
-                                      ...prev, 
-                                      [`env_${env.name}`]: e.target.value 
-                                    }))}
-                                    className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder={env.default || 'Enter value'}
-                                  />
-                                </div>
-                              ))}
+                              {configuringPackage.pkg.environmentVariables.map((env: any, envIndex: number) => {
+                                const fieldId = `env_${env.name}`;
+                                const isSecret = isSecretField(env);
+                                const isVisible = visibleFields.has(fieldId);
+                                const hasValue = env.value !== undefined && env.value !== null && env.value !== '';
+                                const isReadOnly = hasValue;
+                                const isRequired = env.isRequired && !hasValue;
+                                
+                                return (
+                                  <div key={envIndex} className="flex items-center space-x-2">
+                                    <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
+                                      isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
+                                    }`}>
+                                      {env.name}
+                                      {isRequired && <span className="text-red-500 ml-1">*</span>}
+                                    </span>
+                                    <div className="flex-1 relative">
+                                      <input
+                                        type={isSecret && !isVisible ? "password" : "text"}
+                                        value={packageConfig[fieldId] || env.value || env.default || ''}
+                                        onChange={isReadOnly ? undefined : (e) => {
+                                          setPackageConfig(prev => ({ 
+                                            ...prev, 
+                                            [fieldId]: e.target.value 
+                                          }));
+                                        }}
+                                        readOnly={isReadOnly}
+                                        className={`w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                                          isReadOnly ? 'bg-gray-50 text-gray-600 cursor-not-allowed' : ''
+                                        }`}
+                                        placeholder={env.default || 'Enter value'}
+                                      />
+                                      {isSecret && !isReadOnly && (
+                                        <button
+                                          type="button"
+                                          onClick={() => toggleFieldVisibility(fieldId)}
+                                          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                        >
+                                          {isVisible ? (
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                                            </svg>
+                                          ) : (
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                          )}
+                                        </button>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}
@@ -489,27 +629,141 @@ export default function RegistryPage() {
                           Headers
                         </label>
                         <div className="space-y-2">
-                          {configuringRemote.remote.headers.map((header: any, headerIndex: number) => (
-                            <div key={headerIndex} className="flex items-center space-x-2">
-                              <span className="text-sm font-mono bg-gray-100 px-2 py-1 rounded min-w-0 flex-shrink-0">
-                                {header.name}
-                              </span>
-                              <input
-                                type="text"
-                                value={remoteConfig[`header_${header.name}`] || header.value || ''}
-                                onChange={(e) => setRemoteConfig(prev => ({ 
-                                  ...prev, 
-                                  [`header_${header.name}`]: e.target.value 
-                                }))}
-                                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                                placeholder="Enter header value"
-                              />
-                            </div>
-                          ))}
+                          {configuringRemote.remote.headers.map((header: any, headerIndex: number) => {
+                            const fieldId = `header_${header.name}`;
+                            const isSecret = isSecretField(header);
+                            const isVisible = visibleFields.has(fieldId);
+                            const hasValue = header.value !== undefined && header.value !== null && header.value !== '';
+                            const isReadOnly = hasValue;
+                            const isRequired = header.isRequired && !hasValue;
+                            
+                            return (
+                              <div key={headerIndex} className="flex items-center space-x-2">
+                                <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
+                                  isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
+                                }`}>
+                                  {header.name}
+                                  {isRequired && <span className="text-red-500 ml-1">*</span>}
+                                </span>
+                                <div className="flex-1 relative">
+                                  <input
+                                    type={isSecret && !isVisible ? "password" : "text"}
+                                    value={remoteConfig[fieldId] || header.value || ''}
+                                    onChange={isReadOnly ? undefined : (e) => {
+                                      setRemoteConfig(prev => ({ 
+                                        ...prev, 
+                                        [fieldId]: e.target.value 
+                                      }));
+                                    }}
+                                    readOnly={isReadOnly}
+                                    className={`w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500 ${
+                                      isReadOnly ? 'bg-gray-50 text-gray-600 cursor-not-allowed' : ''
+                                    }`}
+                                    placeholder="Enter header value"
+                                  />
+                                  {isSecret && !isReadOnly && (
+                                    <button
+                                      type="button"
+                                      onClick={() => toggleFieldVisibility(fieldId)}
+                                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    >
+                                      {isVisible ? (
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                                        </svg>
+                                      ) : (
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                      )}
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
                   </div>
+
+                  {/* Required Fields Warning */}
+                  {(() => {
+                    let hasRequiredFields = false;
+
+                    if (configuringPackage && configuringPackage.pkg) {
+                      const pkg = configuringPackage.pkg;
+                      
+                      // Check runtime arguments
+                      if (pkg.runtimeArguments) {
+                        hasRequiredFields = pkg.runtimeArguments.some((arg: any) => {
+                          if (arg.isRequired && !arg.value) {
+                            const fieldId = `runtimeArg_${arg.name || arg.value}`;
+                            const currentValue = packageConfig[fieldId] || arg.default || '';
+                            return !currentValue || currentValue.trim() === '';
+                          }
+                          return false;
+                        });
+                      }
+                      
+                      // Check package arguments
+                      if (!hasRequiredFields && pkg.packageArguments) {
+                        hasRequiredFields = pkg.packageArguments.some((arg: any) => {
+                          if (arg.isRequired && !arg.value) {
+                            const fieldId = `packageArg_${arg.name || arg.value}`;
+                            const currentValue = packageConfig[fieldId] || arg.default || '';
+                            return !currentValue || currentValue.trim() === '';
+                          }
+                          return false;
+                        });
+                      }
+                      
+                      // Check environment variables
+                      if (!hasRequiredFields && pkg.environmentVariables) {
+                        hasRequiredFields = pkg.environmentVariables.some((env: any) => {
+                          if (env.isRequired && !env.value) {
+                            const fieldId = `env_${env.name}`;
+                            const currentValue = packageConfig[fieldId] || env.default || '';
+                            return !currentValue || currentValue.trim() === '';
+                          }
+                          return false;
+                        });
+                      }
+                    }
+
+                    if (configuringRemote && configuringRemote.remote) {
+                      const remote = configuringRemote.remote;
+                      
+                      // Check headers
+                      if (!hasRequiredFields && remote.headers) {
+                        hasRequiredFields = remote.headers.some((header: any) => {
+                          if (header.isRequired && !header.value) {
+                            const fieldId = `header_${header.name}`;
+                            const currentValue = remoteConfig[fieldId] || header.default || '';
+                            return !currentValue || currentValue.trim() === '';
+                          }
+                          return false;
+                        });
+                      }
+                    }
+
+                    if (hasRequiredFields) {
+                      return (
+                        <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                          <div className="flex items-center">
+                            <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                            </svg>
+                            <p className="text-sm text-yellow-800">
+                              Some required fields are not provided. Please fill in all fields marked with * to generate a complete configuration.
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()}
 
                   {/* JSON Preview */}
                   <div className="mt-6">
