@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Custom masked input for secret fields */
+.masked-input {
+  -webkit-text-security: disc; /* Webkit browsers */
+  text-security: disc; /* Standard */
+  font-family: text-security-disc, -apple-system, BlinkMacSystemFont;
+} 
