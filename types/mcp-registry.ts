@@ -28,6 +28,7 @@ export interface PositionalArgument extends InputWithVariables {
 export interface NamedArgument extends InputWithVariables {
   type: 'named';
   name: string;
+  valueHint?: string;
   isRepeated?: boolean;
 }
 

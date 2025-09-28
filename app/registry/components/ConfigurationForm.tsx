@@ -8,7 +8,9 @@ interface FieldConfig {
   default?: string;
   isRequired?: boolean;
   isSecret?: boolean;
+  isRepeated?: boolean;
   description?: string;
+  valueHint?: string;
   format?: 'string' | 'number' | 'boolean' | 'filepath';
   choices?: string[];
   variables?: Record<string, FieldConfig>;
@@ -45,6 +47,7 @@ interface ConfigurationFormProps {
 const isSecretField = (field: FieldConfig) => {
   return field.isSecret === true;
 };
+
 
 // Helper function to extract variable names from a template string
 const extractVariableNames = (template: string): string[] => {
@@ -185,7 +188,7 @@ export default function ConfigurationForm({
             className={`w-full border border-gray-300 rounded-lg px-3 py-2 ${showEyeIcon ? 'pr-10' : 'pr-3'} focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               isSecret && !isVisible ? 'masked-input' : ''
             }`}
-            placeholder={placeholder || field.default || 'Enter number'}
+            placeholder={field.valueHint || placeholder || field.default || 'Enter number'}
           />
         );
       }
@@ -205,13 +208,16 @@ export default function ConfigurationForm({
           className={`w-full border border-gray-300 rounded-lg px-3 py-2 ${showEyeIcon ? 'pr-10' : 'pr-3'} focus:outline-none focus:ring-2 focus:ring-blue-500 ${
             isSecret && !isVisible ? 'masked-input' : ''
           }`}
-          placeholder={placeholder || field.default || 'Enter value'}
+          placeholder={field.valueHint || placeholder || field.default || 'Enter value'}
         />
       );
     };
 
     return (
       <div className="space-y-1">
+        {field.description && (
+          <p className="text-xs text-gray-600">{field.description}</p>
+        )}
         <div className="flex items-center space-x-2">
           <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
             isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
@@ -241,9 +247,6 @@ export default function ConfigurationForm({
             )}
           </div>
         </div>
-        {field.description && (
-          <p className="text-xs text-gray-600 ml-2">{field.description}</p>
-        )}
       </div>
     );
   };
@@ -256,6 +259,11 @@ export default function ConfigurationForm({
     onConfigChange: (config: Record<string, any>) => void,
     placeholder?: string
   ) => {
+    // Check if this field is repeated
+    if (field.isRepeated) {
+      return renderRepeatedField(field, fieldId, config, onConfigChange, placeholder);
+    }
+    
     const hasVariables = field.variables && Object.keys(field.variables).length > 0;
     
     if (!hasVariables) {
@@ -278,6 +286,9 @@ export default function ConfigurationForm({
       <div className="space-y-3">
         {/* Parent field showing template */}
         <div className="space-y-1">
+          {field.description && (
+            <p className="text-xs text-gray-600">{field.description}</p>
+          )}
           <div className="flex items-center space-x-2">
             <span className={`text-sm font-mono px-2 py-1 rounded min-w-0 flex-shrink-0 ${
               field.isRequired ? 'bg-red-100 text-red-800' : 'bg-gray-100'
@@ -295,9 +306,6 @@ export default function ConfigurationForm({
               />
             </div>
           </div>
-          {field.description && (
-            <p className="text-xs text-gray-600 ml-2">{field.description}</p>
-          )}
         </div>
 
         {/* Variable inputs */}
@@ -315,6 +323,71 @@ export default function ConfigurationForm({
             );
           })}
         </div>
+      </div>
+    );
+  };
+
+  // Helper function to render repeated fields
+  const renderRepeatedField = (
+    field: FieldConfig,
+    baseFieldId: string,
+    config: Record<string, any>,
+    onConfigChange: (config: Record<string, any>) => void,
+    placeholder?: string
+  ) => {
+    // Get current instances for this field
+    const instances = config[`${baseFieldId}_instances`] || [0]; // Always have at least one instance
+    
+    return (
+      <div className="space-y-2">
+        {instances.map((instanceIndex: number, arrayIndex: number) => {
+          const fieldId = `${baseFieldId}_${instanceIndex}`;
+          const isFirst = arrayIndex === 0;
+          
+          return (
+            <div key={instanceIndex} className="flex items-center space-x-2">
+              <div className="flex-1">
+                {renderFieldWithVariables({...field, isRepeated: false, description: arrayIndex === 0 ? field.description : undefined}, fieldId, config, onConfigChange, placeholder)}
+              </div>
+              {!isFirst && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newInstances = instances.filter((i: number) => i !== instanceIndex);
+                    onConfigChange({
+                      ...config,
+                      [`${baseFieldId}_instances`]: newInstances,
+                      [fieldId]: undefined // Remove the field data
+                    });
+                  }}
+                  className="text-red-600 hover:text-red-800 flex items-center space-x-1 px-2 py-2 text-sm font-medium self-center"
+                  title="Remove this instance"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>Remove</span>
+                </button>
+              )}
+            </div>
+          );
+        })}
+        <button
+          type="button"
+          onClick={() => {
+            const newIndex = Math.max(...instances) + 1;
+            onConfigChange({
+              ...config,
+              [`${baseFieldId}_instances`]: [...instances, newIndex]
+            });
+          }}
+          className="text-blue-600 hover:text-blue-800 text-sm flex items-center space-x-1"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+          <span>Add {field.name || 'argument'}</span>
+        </button>
       </div>
     );
   };
@@ -365,9 +438,9 @@ export default function ConfigurationForm({
             <>
               {configuringPackage.pkg.runtimeHint && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Runtime Hint
-                  </label>
+                  </h3>
                   <input
                     type="text"
                     value={configuringPackage.pkg.runtimeHint}
@@ -379,15 +452,20 @@ export default function ConfigurationForm({
 
               {configuringPackage.pkg.runtimeArguments && configuringPackage.pkg.runtimeArguments.length > 0 && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Runtime Arguments
-                  </label>
-                  <div className="space-y-2">
+                  </h3>
+                  <div className="space-y-0">
                     {configuringPackage.pkg.runtimeArguments.map((arg, argIndex) => {
                       const fieldId = `runtimeArg_${arg.name || arg.value}`;
                       return (
                         <div key={argIndex}>
-                          {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
+                          <div className="pb-3">
+                            {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
+                          </div>
+                          {argIndex < (configuringPackage.pkg.runtimeArguments?.length || 0) - 1 && (
+                            <hr className="border-gray-200 mb-3" />
+                          )}
                         </div>
                       );
                     })}
@@ -397,15 +475,20 @@ export default function ConfigurationForm({
 
               {configuringPackage.pkg.packageArguments && configuringPackage.pkg.packageArguments.length > 0 && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Package Arguments
-                  </label>
-                  <div className="space-y-2">
+                  </h3>
+                  <div className="space-y-0">
                     {configuringPackage.pkg.packageArguments.map((arg, argIndex) => {
                       const fieldId = `packageArg_${arg.name || arg.value}`;
                       return (
                         <div key={argIndex}>
-                          {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
+                          <div className="pb-3">
+                            {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
+                          </div>
+                          {argIndex < (configuringPackage.pkg.packageArguments?.length || 0) - 1 && (
+                            <hr className="border-gray-200 mb-3" />
+                          )}
                         </div>
                       );
                     })}
@@ -415,15 +498,20 @@ export default function ConfigurationForm({
 
               {configuringPackage.pkg.environmentVariables && configuringPackage.pkg.environmentVariables.length > 0 && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Environment Variables
-                  </label>
-                  <div className="space-y-2">
+                  </h3>
+                  <div className="space-y-0">
                     {configuringPackage.pkg.environmentVariables.map((env, envIndex) => {
                       const fieldId = `env_${env.name}`;
                       return (
                         <div key={envIndex}>
-                          {renderFieldWithVariables(env, fieldId, packageConfig, onPackageConfigChange)}
+                          <div className="pb-3">
+                            {renderFieldWithVariables(env, fieldId, packageConfig, onPackageConfigChange)}
+                          </div>
+                          {envIndex < (configuringPackage.pkg.environmentVariables?.length || 0) - 1 && (
+                            <hr className="border-gray-200 mb-3" />
+                          )}
                         </div>
                       );
                     })}
@@ -437,15 +525,20 @@ export default function ConfigurationForm({
           {configuringRemote && configuringRemote.remote.headers && configuringRemote.remote.headers.length > 0 && (
             <form className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <h3 className="text-base font-semibold text-gray-900 mb-3">
                 Headers
-              </label>
-              <div className="space-y-2">
+              </h3>
+              <div className="space-y-0">
                 {configuringRemote.remote.headers.map((header, headerIndex) => {
                   const fieldId = `header_${header.name}`;
                   return (
                     <div key={headerIndex}>
-                      {renderFieldWithVariables(header, fieldId, remoteConfig, onRemoteConfigChange, "Enter header value")}
+                      <div className="pb-3">
+                        {renderFieldWithVariables(header, fieldId, remoteConfig, onRemoteConfigChange, "Enter header value")}
+                      </div>
+                      {headerIndex < (configuringRemote.remote.headers?.length || 0) - 1 && (
+                        <hr className="border-gray-200 mb-3" />
+                      )}
                     </div>
                   );
                 })}

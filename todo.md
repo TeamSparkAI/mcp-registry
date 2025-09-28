@@ -1,11 +1,5 @@
 # TODO
 
-Support valueHint in positional arguments
-
-Support isRepeated for positional and named arguments
-- Add another instance
-- Remove any instance other than first one
-
 Add support for "strict" mode
 - No inference of things like packageHint
 - No auto add of package ref
