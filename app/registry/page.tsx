@@ -54,6 +54,27 @@ const substituteFieldVariables = (
   return substituteVariables(template, variableValues);
 };
 
+// Helper function to process repeated arguments
+const processRepeatedArguments = (
+  args: any[],
+  config: Record<string, any>,
+  baseFieldId: string
+): void => {
+  const instances = config[`${baseFieldId}_instances`] || [0];
+  instances.forEach((instanceIndex: number) => {
+    const fieldId = `${baseFieldId}_${instanceIndex}`;
+    const value = substituteFieldVariables(args[0], config, fieldId);
+    if (value) {
+      if (args[0].name) {
+        const argName = args[0].name.startsWith('-') ? args[0].name : `--${args[0].name}`;
+        args.push(argName, value);
+      } else {
+        args.push(value);
+      }
+    }
+  });
+};
+
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerJSON[]>([]);
   const [loading, setLoading] = useState(true);
@@ -263,15 +284,33 @@ export default function RegistryPage() {
       // Add runtime arguments
       if (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) {
         pkg.runtimeArguments.forEach((arg: any) => {
-          const fieldId = `runtimeArg_${arg.name || arg.value}`;
-          const value = substituteFieldVariables(arg, packageConfig, fieldId);
-          if (value) {
-            if (arg.name) {
-              // Add two leading dashes if name doesn't already start with dashes
-              const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
-              args.push(argName, value);
-            } else {
-              args.push(value);
+          if (arg.isRepeated) {
+            // Handle repeated arguments
+            const baseFieldId = `runtimeArg_${arg.name || arg.value}`;
+            const instances = packageConfig[`${baseFieldId}_instances`] || [0];
+            instances.forEach((instanceIndex: number) => {
+              const fieldId = `${baseFieldId}_${instanceIndex}`;
+              const value = substituteFieldVariables(arg, packageConfig, fieldId);
+              if (value) {
+                if (arg.name) {
+                  const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
+                  args.push(argName, value);
+                } else {
+                  args.push(value);
+                }
+              }
+            });
+          } else {
+            // Handle single arguments
+            const fieldId = `runtimeArg_${arg.name || arg.value}`;
+            const value = substituteFieldVariables(arg, packageConfig, fieldId);
+            if (value) {
+              if (arg.name) {
+                const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
+                args.push(argName, value);
+              } else {
+                args.push(value);
+              }
             }
           }
         });
@@ -283,15 +322,33 @@ export default function RegistryPage() {
       // Add package arguments
       if (pkg.packageArguments) {
         pkg.packageArguments.forEach((arg: any) => {
-          const fieldId = `packageArg_${arg.name || arg.value}`;
-          const value = substituteFieldVariables(arg, packageConfig, fieldId);
-          if (value) {
-            if (arg.name) {
-              // Add two leading dashes if name doesn't already start with dashes
-              const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
-              args.push(argName, value);
-            } else {
-              args.push(value);
+          if (arg.isRepeated) {
+            // Handle repeated arguments
+            const baseFieldId = `packageArg_${arg.name || arg.value}`;
+            const instances = packageConfig[`${baseFieldId}_instances`] || [0];
+            instances.forEach((instanceIndex: number) => {
+              const fieldId = `${baseFieldId}_${instanceIndex}`;
+              const value = substituteFieldVariables(arg, packageConfig, fieldId);
+              if (value) {
+                if (arg.name) {
+                  const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
+                  args.push(argName, value);
+                } else {
+                  args.push(value);
+                }
+              }
+            });
+          } else {
+            // Handle single arguments
+            const fieldId = `packageArg_${arg.name || arg.value}`;
+            const value = substituteFieldVariables(arg, packageConfig, fieldId);
+            if (value) {
+              if (arg.name) {
+                const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
+                args.push(argName, value);
+              } else {
+                args.push(value);
+              }
             }
           }
         });
