@@ -1,7 +1,5 @@
 # TODO
 
-Limitation: Input format boolean or input with choices shows dropdown, whose selection is not masked if isSecret is specified
-
 Support valueHint in positional arguments
 
 Support isRepeated for positional and named arguments
@@ -19,6 +17,6 @@ Add support for other registry types (npm and pypi should work)
 - mcpb
 - nuget
 
-Test Mode
-- Generally working
-- There is still some bug in rendering MCP client config (added api key variable to existing auth header - smithery example)
+Limitations (isSecret):
+- Fields with fixed "value" and "isSecret" are not currently obscured in the UX (it's not clear they should be)
+- Input format boolean or input with choices shows dropdown, whose selection is not masked if "isSecret" is specified
