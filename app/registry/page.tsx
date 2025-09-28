@@ -327,7 +327,8 @@ export default function RegistryPage() {
       const headers: Record<string, string> = {};
       if ('headers' in remote && remote.headers) {
         remote.headers.forEach((header: any) => {
-          const value = remoteConfig[`header_${header.name}`] || header.value;
+          const fieldId = `header_${header.name}`;
+          const value = substituteFieldVariables(header, remoteConfig, fieldId);
           if (value) {
             headers[header.name] = value;
           }
