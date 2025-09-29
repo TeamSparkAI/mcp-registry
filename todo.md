@@ -15,36 +15,6 @@ Limitations (isSecret):
 - Fields with fixed "value" and "isSecret" are not currently obscured in the UX (it's not clear they should be)
 - Input format boolean or input with choices shows dropdown, whose selection is not masked if "isSecret" is specified
 
------
-
-## Official MCP Registry project
-
-Clarify named arguments, docs say: "A command-line `--flag={value}`."
-- In actualy use it is `--flag {value}` (in all cases spot-checked in current registry)
-- If you needed `--flag={value}` the more appropriate config would be a positional arg with a variable
-
-"value" description - remove "default" from description (several published servers use "value" as "default")
-- io.github.ChiR24/unreal-engine-mcp
-- io.github.florentine-ai/mcp
-- io.github.saucelabs-sample-test-frameworks/sauce-api-mcp
-- All Smithery servers use "value": "Bearer {smithery_api_key}" (which should either be "default", or they should have a variable for the token value)
-
-valueHint - only on positional args - why not on all values (named args, env vars, and headers)?
-- Why is value or valueHint required in schema?  (with description it's reasonable to have neither even for a positional arg)
-
-Update Generic Registry openapi spec
-- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/openapi.yaml
-- With Transport changes (as in: https://github.com/modelcontextprotocol/registry/pull/345)
-- Assuming this file was manually created given that it has drifted and is checked-in (as opposed the official version which is generated from Go code)
-
-Update Official Registry openapi spec:
-- This the source of truth: https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/server.schema.json
-- But https://registry.modelcontextprotocol.io/openapi.yaml (and https://registry.modelcontextprotocol.io/docs) are not driven by the schema, they are driven by the Go struct field tags which don't include the docs (I don't see any clean way to fix that without manually maintaining them in both places - yuck)
-
-These docs are great and should probably be linked in the Publish My Server doc
-- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/generic-server-json.md
-- Underlying docs: server.json spec (links to server.schema.json)
-
 ## Config Validation in our UX
 
 server.schema.json is a JSON Schema Draft 7 file
@@ -61,12 +31,48 @@ Apply additional linter rules that schema won't catch:
 - Value not consistent with format (number and not number, boolean and not string true/false)
 - Value with tokens/variables and isSecret (could be, probably not, actually a secret)
 - Variable in parent string and not required (maybe real, likely error)
+- Discription contains a comma-separated list of quoted values, but no choices, esp if default is one of those values (?)
 
-### Issues with current servers
+# Official MCP registry
 
-Uses of "value" that were intended to be default (see above)
+## server.json schema recommendations
 
-Use of value with token and no variable
+https://github.com/modelcontextprotocol/registry/discussions/572
+
+NamedArgument description change to `--flag {value}`
+
+Input properties description remove "default" from first sentence
+
+PositionalArgument valueHint - add to all Input objects, remove anyOf value/valueHint requirement on PositionalArgument
+
+## Docs improvements
+
+Update Generic Registry openapi spec
+- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/openapi.yaml
+- With Transport changes (as in: https://github.com/modelcontextprotocol/registry/pull/345)
+- Assuming this file was manually created given that it has drifted and is checked-in (as opposed the official version which is generated from Go code)
+
+Update Official Registry openapi spec:
+- This the source of truth: https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/server.schema.json
+- But https://registry.modelcontextprotocol.io/openapi.yaml (and https://registry.modelcontextprotocol.io/docs) are not driven by the schema, they are driven by the Go struct field tags which don't include the docs (I don't see any clean way to fix that without manually maintaining them in both places - yuck)
+
+These docs are great and should probably be linked in the Publish My Server doc
+- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/generic-server-json.md
+- Underlying docs: server.json spec (links to server.schema.json)
+
+
+## Issues with current servers
+
+Servers using default with what should be valueHint:
+- io.github.SamYuan1990/i18n-agent-action
+- io.github.cr7258/elasticsearch-mcp-server (maybe)
+
+Servers using "value" as "default":
+- io.github.ChiR24/unreal-engine-mcp
+- io.github.florentine-ai/mcp
+- io.github.saucelabs-sample-test-frameworks/sauce-api-mcp
+
+Use of value with token and no variable (dozens of these)
 
 "remotes": [
   {
