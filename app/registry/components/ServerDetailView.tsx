@@ -53,6 +53,7 @@ interface ServerDetailViewProps {
   testServerJson?: string;
   onUpdateTestServerJson?: (json: string) => void;
   onApplyTestServerJson?: (json: string) => void;
+  onEditTestServerJson?: () => void;
 }
 
 export default function ServerDetailView({
@@ -76,7 +77,8 @@ export default function ServerDetailView({
   isTestMode = false,
   testServerJson = '',
   onUpdateTestServerJson,
-  onApplyTestServerJson
+  onApplyTestServerJson,
+  onEditTestServerJson
 }: ServerDetailViewProps) {
   const hasPackageConfiguration = (pkg: PackageConfig) => {
     return pkg.runtimeHint || 
@@ -149,7 +151,13 @@ export default function ServerDetailView({
               </div>
               <div className="flex-shrink-0">
                 <button
-                  onClick={() => onShowRawModal(true)}
+                  onClick={() => {
+                    if (isTestMode) {
+                      onEditTestServerJson?.();
+                    } else {
+                      onShowRawModal(true);
+                    }
+                  }}
                   className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
                     isTestMode 
                       ? 'bg-green-600 text-white hover:bg-green-700' 

@@ -5,9 +5,12 @@
 		"build": "next build",
 		"catalog:build": "tsx scripts/catalog/index.ts",
 		"catalog:build:debug": "tsx scripts/catalog/index.ts --debug",
-		"registry:download": "tsx scripts/registry/download-registry.ts"
+		"registry:download": "tsx scripts/registry/download-registry.ts",
+		"registry:validate": "tsx scripts/registry/validate-registry.ts"
 	},
 	"dependencies": {
+		"ajv": "^8.17.1",
+		"ajv-formats": "^3.0.1",
 		"next": "^15.1.7",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"

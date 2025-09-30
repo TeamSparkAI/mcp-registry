@@ -1,5 +1,7 @@
 # TODO
 
+Render tokens in package transport uri fields - things like {port}
+
 Add support for "strict" mode
 - No inference of things like packageHint
 - No auto add of package ref
@@ -17,12 +19,16 @@ Limitations (isSecret):
 
 ## Config Validation in our UX
 
-server.schema.json is a JSON Schema Draft 7 file
-Ajv (in Javascript) is the most popular validator
+1. Validate JSON
+2. Validate server.schema.json (via Ajv)
+3. Run linter rules
 
-Parse as JSON (done, maybe better error reporting)
-Validate schema with Ajv
-Apply additional linter rules that schema won't catch:
+Consistent result format consolidated across all checks and displayed
+
+Schema and linter return JSON path indicating error
+- We could use jsonc to highlight the JSON element corresponding to the schema/linter issue
+
+Linter rules that schema won't catch:
 - No config for package/remote (per package/remote) - explain why this could be better ;)
 - Named arg with no leading dashes (field)
 - Value with token in braces and no corresponding variable (field)
