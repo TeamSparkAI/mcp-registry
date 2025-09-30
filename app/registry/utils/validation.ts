@@ -467,6 +467,74 @@ export const linterRules: LinterRule[] = [
       
       return issues;
     }
+  },
+  {
+    name: 'value-with-irrelevant-properties',
+    description: 'Field with value should not have default, isRequired, or choices',
+    check: (data: any, basePath: string) => {
+      const issues: ValidationIssue[] = [];
+      
+      // Check all argument fields
+      if (data.packages) {
+        data.packages.forEach((pkg: any, pkgIndex: number) => {
+          ['runtimeArguments', 'packageArguments', 'environmentVariables'].forEach(section => {
+            if (pkg[section]) {
+              pkg[section].forEach((field: any, fieldIndex: number) => {
+                if (field.value && (field.default || field.isRequired || field.choices)) {
+                  const path = getJsonPath(`/packages/${pkgIndex}/${section}`, fieldIndex);
+                  const irrelevantProps = [];
+                  if (field.default) irrelevantProps.push('default');
+                  if (field.isRequired) irrelevantProps.push('isRequired');
+                  if (field.choices) irrelevantProps.push('choices');
+                  
+                  issues.push({
+                    source: 'linter',
+                    severity: 'warning',
+                    path: path,
+                    message: `Field with 'value' should not have: ${irrelevantProps.join(', ')} - these properties have no effect when value is present`,
+                    rule: 'value-with-irrelevant-properties'
+                  });
+                }
+              });
+            }
+          });
+        });
+      }
+      
+      return issues;
+    }
+  },
+  {
+    name: 'value-should-not-be-secret',
+    description: 'Field with static value should not be marked as secret',
+    check: (data: any, basePath: string) => {
+      const issues: ValidationIssue[] = [];
+      
+      // Check all argument fields
+      if (data.packages) {
+        data.packages.forEach((pkg: any, pkgIndex: number) => {
+          ['runtimeArguments', 'packageArguments', 'environmentVariables'].forEach(section => {
+            if (pkg[section]) {
+              pkg[section].forEach((field: any, fieldIndex: number) => {
+                if (field.value && field.isSecret) {
+                  const path = getJsonPath(`/packages/${pkgIndex}/${section}`, fieldIndex);
+                  
+                  issues.push({
+                    source: 'linter',
+                    severity: 'warning',
+                    path: path,
+                    message: 'Field with static value should not be marked as secret - consider using variables instead',
+                    rule: 'value-should-not-be-secret'
+                  });
+                }
+              });
+            }
+          });
+        });
+      }
+      
+      return issues;
+    }
   }
 ];
 
