@@ -16,8 +16,19 @@ export interface ValidationResult {
 
 export interface LinterRule {
   name: string;
-  description: string;
+  message: string;
   check: (data: any, path: string) => ValidationIssue[];
+  docs?: {
+    purpose: string;
+    triggers?: string[];
+    examples?: {
+      bad?: string;
+      good?: string;
+    };
+    guidance?: string[];
+    scope?: string[];
+    notes?: string[];
+  };
 }
 
 // Load schema once and cache it
@@ -126,8 +137,8 @@ function extractVariableNames(template: string): string[] {
 
 export const linterRules: LinterRule[] = [
   {
-    name: 'no-config-for-package',
-    description: 'Package has no configuration options',
+    name: 'require-config-for-package',
+    message: 'Package has no configuration options',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       if (data.packages) {
@@ -142,7 +153,7 @@ export const linterRules: LinterRule[] = [
               severity: 'warning',
               path: getJsonPath(basePath, 'packages', index),
               message: 'Package has no configuration - consider adding runtimeArguments, packageArguments, or environmentVariables',
-              rule: 'no-config-for-package'
+              rule: 'require-config-for-package'
             });
           }
         });
@@ -151,8 +162,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'no-config-for-remote',
-    description: 'Remote has no configuration options',
+    name: 'prefer-config-for-remote',
+    message: 'Remote has no configuration options',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       if (data.remotes) {
@@ -164,7 +175,7 @@ export const linterRules: LinterRule[] = [
               severity: 'info',
               path: getJsonPath(basePath, 'remotes', index),
               message: 'Remote has no headers configuration',
-              rule: 'no-config-for-remote'
+              rule: 'prefer-config-for-remote'
             });
           }
         });
@@ -173,8 +184,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'named-arg-no-leading-dashes',
-    description: 'Named argument missing leading dashes',
+    name: 'require-leading-dashes',
+    message: 'Named argument missing leading dashes',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -189,7 +200,7 @@ export const linterRules: LinterRule[] = [
                   severity: 'warning',
                   path: getJsonPath(`/packages/${pkgIndex}/runtimeArguments`, argIndex),
                   message: `Named argument "${arg.name}" should start with "--" or "-"`,
-                  rule: 'named-arg-no-leading-dashes'
+                  rule: 'require-leading-dashes'
                 });
               }
             });
@@ -204,7 +215,7 @@ export const linterRules: LinterRule[] = [
                   severity: 'warning',
                   path: getJsonPath(`/packages/${pkgIndex}/packageArguments`, argIndex),
                   message: `Named argument "${arg.name}" should start with "--" or "-"`,
-                  rule: 'named-arg-no-leading-dashes'
+                  rule: 'require-leading-dashes'
                 });
               }
             });
@@ -216,8 +227,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'template-without-variables',
-    description: 'Template string has no corresponding variables',
+    name: 'no-template-variables-missing',
+    message: 'Template string has no corresponding variables',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -237,7 +248,7 @@ export const linterRules: LinterRule[] = [
                     severity: 'error',
                     path: getJsonPath(`/packages/${pkgIndex}/runtimeArguments`, argIndex),
                     message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
-                    rule: 'template-without-variables'
+                    rule: 'no-template-variables-missing'
                   });
                 }
               }
@@ -258,7 +269,7 @@ export const linterRules: LinterRule[] = [
                     severity: 'error',
                     path: getJsonPath(`/packages/${pkgIndex}/packageArguments`, argIndex),
                     message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
-                    rule: 'template-without-variables'
+                    rule: 'no-template-variables-missing'
                   });
                 }
               }
@@ -279,7 +290,7 @@ export const linterRules: LinterRule[] = [
                     severity: 'error',
                     path: getJsonPath(`/packages/${pkgIndex}/environmentVariables`, envIndex),
                     message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
-                    rule: 'template-without-variables'
+                    rule: 'no-template-variables-missing'
                   });
                 }
               }
@@ -304,7 +315,7 @@ export const linterRules: LinterRule[] = [
                     severity: 'error',
                     path: getJsonPath(basePath, `remotes/${remoteIndex}/headers`, headerIndex),
                     message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
-                    rule: 'template-without-variables'
+                    rule: 'no-template-variables-missing'
                   });
                 }
               }
@@ -317,8 +328,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'inconsistent-value-format',
-    description: 'Value format inconsistent with field type',
+    name: 'require-valid-value-format',
+    message: 'Value format inconsistent with field type',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -334,7 +345,7 @@ export const linterRules: LinterRule[] = [
                   severity: 'error',
                   path,
                   message: `Value "${value}" is not a valid number`,
-                  rule: 'inconsistent-value-format'
+                  rule: 'require-valid-value-format'
                 });
               }
               break;
@@ -345,7 +356,7 @@ export const linterRules: LinterRule[] = [
                   severity: 'error',
                   path,
                   message: `Value "${value}" is not a valid boolean (should be "true" or "false")`,
-                  rule: 'inconsistent-value-format'
+                  rule: 'require-valid-value-format'
                 });
               }
               break;
@@ -371,8 +382,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'secret-template-warning',
-    description: 'Secret field contains template variables',
+    name: 'no-secret-template',
+    message: 'Secret field contains template variables',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -383,7 +394,7 @@ export const linterRules: LinterRule[] = [
             severity: 'warning',
             path,
             message: 'Secret field contains template variables - ensure this is intentional',
-            rule: 'secret-template-warning'
+            rule: 'no-secret-template'
           });
         }
       };
@@ -417,8 +428,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'unused-variables',
-    description: 'Defined variables not used in template',
+    name: 'no-unused-variables',
+    message: 'Defined variables not used in template',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -434,7 +445,7 @@ export const linterRules: LinterRule[] = [
               severity: 'warning',
               path,
               message: `Defined variables not used in template: ${unusedVars.join(', ')}`,
-              rule: 'unused-variables'
+              rule: 'no-unused-variables'
             });
           }
         }
@@ -469,8 +480,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'value-with-irrelevant-properties',
-    description: 'Field with value should not have default, isRequired, or choices',
+    name: 'no-value-with-irrelevant-properties',
+    message: 'Field with value should not have default, isRequired, or choices',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -492,7 +503,7 @@ export const linterRules: LinterRule[] = [
                     severity: 'warning',
                     path: path,
                     message: `Field with 'value' should not have: ${irrelevantProps.join(', ')} - these properties have no effect when value is present`,
-                    rule: 'value-with-irrelevant-properties'
+                    rule: 'no-value-with-irrelevant-properties'
                   });
                 }
               });
@@ -505,8 +516,8 @@ export const linterRules: LinterRule[] = [
     }
   },
   {
-    name: 'value-should-not-be-secret',
-    description: 'Field with static value should not be marked as secret',
+    name: 'no-secret-static-value',
+    message: 'Field with static value should not be marked as secret',
     check: (data: any, basePath: string) => {
       const issues: ValidationIssue[] = [];
       
@@ -524,9 +535,46 @@ export const linterRules: LinterRule[] = [
                     severity: 'warning',
                     path: path,
                     message: 'Field with static value should not be marked as secret - consider using variables instead',
-                    rule: 'value-should-not-be-secret'
+                    rule: 'no-secret-static-value'
                   });
                 }
+              });
+            }
+          });
+        });
+      }
+      
+      return issues;
+    }
+  },
+  {
+    name: 'require-valid-default-choice',
+    message: 'Default value must be one of the available choices',
+    check: (data: any, basePath: string) => {
+      const issues: ValidationIssue[] = [];
+      
+      const checkDefaultChoice = (field: any, path: string) => {
+        if (field.default !== undefined && field.choices && Array.isArray(field.choices)) {
+          if (!field.choices.includes(field.default)) {
+            issues.push({
+              source: 'linter',
+              severity: 'error',
+              path,
+              message: `Default value "${field.default}" is not one of the available choices: [${field.choices.join(', ')}]`,
+              rule: 'require-valid-default-choice'
+            });
+          }
+        }
+      };
+      
+      // Check all argument fields
+      if (data.packages) {
+        data.packages.forEach((pkg: any, pkgIndex: number) => {
+          ['runtimeArguments', 'packageArguments', 'environmentVariables'].forEach(section => {
+            if (pkg[section]) {
+              pkg[section].forEach((field: any, fieldIndex: number) => {
+                const path = getJsonPath(`/packages/${pkgIndex}/${section}`, fieldIndex);
+                checkDefaultChoice(field, path);
               });
             }
           });
@@ -551,4 +599,9 @@ async function runLinterRules(data: any): Promise<ValidationIssue[]> {
   }
   
   return issues;
+}
+
+// Exported helper to run linter outside the UI (e.g., in scripts)
+export async function lintServerData(data: any): Promise<ValidationIssue[]> {
+  return runLinterRules(data);
 }
