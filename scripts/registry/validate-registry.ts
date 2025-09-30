@@ -5,6 +5,7 @@ import addFormats from 'ajv-formats';
 import fs from 'fs';
 import path from 'path';
 import { lintServerData, ValidationIssue } from '../../app/registry/utils/validation';
+import { linterRules } from '../../app/registry/utils/linter';
 
 interface ValidationResult {
   serverId: string;
@@ -15,6 +16,78 @@ interface ValidationResult {
 }
 
 async function validateRegistry() {
+  // CLI: --linter-docs [ruleName]
+  const argv = process.argv.slice(2);
+  const docsFlagIndex = argv.findIndex(arg => arg === '--linter-docs' || arg.startsWith('--linter-docs='));
+  if (docsFlagIndex !== -1) {
+    let ruleName: string | undefined;
+    const arg = argv[docsFlagIndex];
+    if (arg.includes('=')) {
+      ruleName = arg.split('=')[1];
+    } else if (argv[docsFlagIndex + 1] && !argv[docsFlagIndex + 1].startsWith('-')) {
+      ruleName = argv[docsFlagIndex + 1];
+    }
+
+    const printRuleDocs = (rule: any, isLast: boolean = false) => {
+      console.log(`\n🔎 ${rule.name}`);
+      console.log('');
+      console.log(`Message: ${rule.message}`);
+      const docs = rule.docs || {};
+      if (docs.purpose) console.log(`Purpose: ${docs.purpose}`);
+      if (docs.triggers && docs.triggers.length) {
+        console.log('Triggers:');
+        docs.triggers.forEach((t: string) => console.log(`  - ${t}`));
+      }
+      if (docs.examples && (docs.examples.bad || docs.examples.good)) {
+        if (docs.examples.bad) {
+          console.log('Bad example:');
+          console.log('  ' + docs.examples.bad.split('\n').join('\n  '));
+        }
+        if (docs.examples.good) {
+          console.log('Good example:');
+          console.log('  ' + docs.examples.good.split('\n').join('\n  '));
+        }
+      }
+      if (docs.guidance && docs.guidance.length) {
+        console.log('Guidance:');
+        docs.guidance.forEach((g: string) => console.log(`  - ${g}`));
+      }
+      if (docs.scope && docs.scope.length) {
+        console.log('Scope:');
+        docs.scope.forEach((s: string) => console.log(`  - ${s}`));
+      }
+      if (docs.notes && docs.notes.length) {
+        console.log('Notes:');
+        docs.notes.forEach((n: string) => console.log(`  - ${n}`));
+      }
+      if (!isLast) {
+        console.log('');
+        console.log('─'.repeat(50));
+      }
+    };
+
+    if (ruleName) {
+      const rule = linterRules.find(r => r.name === ruleName);
+      if (!rule) {
+        console.error(`Rule not found: ${ruleName}`);
+        console.log('Available rules:');
+        linterRules.forEach(r => console.log(` - ${r.name}`));
+        process.exit(1);
+      }
+      console.log('📚 LINTER RULE DOCS');
+      console.log('='.repeat(50));
+      printRuleDocs(rule, true);
+    } else {
+      console.log('📚 LINTER RULE DOCS (ALL)');
+      console.log('='.repeat(50));
+      linterRules.forEach((rule, index) => {
+        const isLast = index === linterRules.length - 1;
+        printRuleDocs(rule, isLast);
+      });
+    }
+    process.exit(0);
+  }
+
   console.log('🔍 Validating server registry against schema...\n');
 
   // Load the schema

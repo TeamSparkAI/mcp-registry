@@ -4,6 +4,33 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'require-valid-value-format',
   message: 'Value format inconsistent with field type',
+  docs: {
+    purpose: 'Validate that field values match their declared format (number, boolean, etc.)',
+    triggers: [
+      'Field has format: "number" but value cannot be parsed as a number',
+      'Field has format: "boolean" but value is not "true" or "false"',
+      'Value doesn\'t match the expected data type'
+    ],
+    examples: {
+      bad: `{ "value": "not-a-number", "format": "number" }`,
+      good: `{ "value": "42", "format": "number" }`
+    },
+    guidance: [
+      'Ensure numeric values are valid numbers (can be strings like "42")',
+      'Use "true" or "false" for boolean values (case-insensitive)',
+      'Remove format constraint if value type is flexible'
+    ],
+    scope: [
+      'packages.runtimeArguments',
+      'packages.packageArguments',
+      'packages.environmentVariables'
+    ],
+    notes: [
+      'Format validation helps catch configuration errors early',
+      'String values are always valid regardless of format',
+      'Consider if the format constraint is necessary'
+    ]
+  },
   check: (data: any, basePath: string) => {
     const issues: any[] = [];
     
