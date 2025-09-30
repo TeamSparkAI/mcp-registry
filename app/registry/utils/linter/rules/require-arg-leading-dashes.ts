@@ -2,7 +2,7 @@ import { LinterRule } from '../types';
 import { getJsonPath } from '../utils/jsonPath';
 
 export const rule: LinterRule = {
-  name: 'require-leading-dashes',
+  name: 'require-arg-leading-dashes',
   message: 'Named argument missing leading dashes',
   docs: {
     purpose: 'Ensure named arguments follow standard command-line conventions with leading dashes',
@@ -23,7 +23,7 @@ export const rule: LinterRule = {
       'packages.packageArguments'
     ],
     notes: [
-      'Some tools may accept arguments without dashes, but it\'s not recommended'
+      'Some tools may accept argument names without leading dashes, but it\'s not recommended'
     ]
   },
   check: (data: any, basePath: string) => {
@@ -39,7 +39,7 @@ export const rule: LinterRule = {
                 severity: 'warning',
                 path: getJsonPath(`/packages/${pkgIndex}/runtimeArguments`, argIndex),
                 message: `Named argument "${arg.name}" should start with "--" or "-"`,
-                rule: 'require-leading-dashes'
+                rule: 'require-args-leading-dashes'
               });
             }
           });
@@ -53,7 +53,7 @@ export const rule: LinterRule = {
                 severity: 'warning',
                 path: getJsonPath(`/packages/${pkgIndex}/packageArguments`, argIndex),
                 message: `Named argument "${arg.name}" should start with "--" or "-"`,
-                rule: 'require-leading-dashes'
+                rule: 'require-args-leading-dashes'
               });
             }
           });

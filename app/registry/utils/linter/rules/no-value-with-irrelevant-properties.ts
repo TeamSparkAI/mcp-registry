@@ -28,6 +28,7 @@ export const rule: LinterRule = {
       'remotes.headers'
     ],
     notes: [
+      'This sometimes happens when value is used in error, and user input is expected (sometimes when value is used instead of default)',
       'Clean, consistent value specifications produce predictable configuration and reduce confusion'
     ]
   },
