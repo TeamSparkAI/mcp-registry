@@ -24,9 +24,10 @@ export interface LinterRule {
 let schema: any = null;
 let validate: any = null;
 
-async function loadSchema() {
+async function loadSchema(getResourcePath?: (path: string) => string) {
   if (!schema) {
-    const response = await fetch('/server.schema.json');
+    const schemaPath = getResourcePath ? getResourcePath('/server.schema.json') : '/server.schema.json';
+    const response = await fetch(schemaPath);
     schema = await response.json();
     
     const ajv = new Ajv({ 
@@ -41,7 +42,7 @@ async function loadSchema() {
   return { schema, validate };
 }
 
-export async function validateServerJson(serverJson: string): Promise<ValidationResult> {
+export async function validateServerJson(serverJson: string, getResourcePath?: (path: string) => string): Promise<ValidationResult> {
   const issues: ValidationIssue[] = [];
   
   // Step 1: JSON Parse Validation
@@ -63,7 +64,7 @@ export async function validateServerJson(serverJson: string): Promise<Validation
   
   // Step 2: Schema Validation
   try {
-    const { validate: schemaValidate } = await loadSchema();
+    const { validate: schemaValidate } = await loadSchema(getResourcePath);
     const valid = schemaValidate(data);
     if (!valid) {
       const schemaErrors = schemaValidate.errors || [];
