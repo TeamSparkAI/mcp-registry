@@ -4,6 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'require-valid-default-choice',
   message: 'Default value must be one of the available choices',
+  severity: 'error',
   docs: {
     purpose: 'Ensure default values are valid options when choices are provided',
     triggers: [
@@ -42,7 +43,7 @@ export const rule: LinterRule = {
         if (!field.choices.includes(field.default)) {
           issues.push({
             source: 'linter',
-            severity: 'error',
+            severity: rule.severity,
             path,
             message: `Default value "${field.default}" is not one of the available choices: [${field.choices.join(', ')}]`,
             rule: 'require-valid-default-choice'

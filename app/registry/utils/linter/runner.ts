@@ -7,7 +7,12 @@ async function runLinterRules(data: any): Promise<ValidationIssue[]> {
   for (const rule of linterRules) {
     try {
       const ruleIssues = rule.check(data, '/');
-      issues.push(...ruleIssues);
+      // Update severity to use rule's default severity if not specified
+      const updatedIssues = ruleIssues.map(issue => ({
+        ...issue,
+        severity: issue.severity || rule.severity
+      }));
+      issues.push(...updatedIssues);
     } catch (error) {
       console.warn(`Linter rule ${rule.name} failed:`, error);
     }

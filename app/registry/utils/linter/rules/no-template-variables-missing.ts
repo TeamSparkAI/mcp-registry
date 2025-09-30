@@ -5,6 +5,7 @@ import { hasTemplateVariables, extractVariableNames } from '../utils/templates';
 export const rule: LinterRule = {
   name: 'no-template-variables-missing',
   message: 'Template string has no corresponding variables',
+  severity: 'error',
   docs: {
     purpose: 'Catch templates referencing variables that are not defined in field.variables',
     triggers: [
@@ -50,7 +51,7 @@ export const rule: LinterRule = {
               if (missingVars.length > 0) {
                 issues.push({
                   source: 'linter',
-                  severity: 'error',
+                  severity: rule.severity,
                   path: getJsonPath(`/packages/${pkgIndex}/runtimeArguments`, argIndex),
                   message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
                   rule: 'no-template-variables-missing'
@@ -71,7 +72,7 @@ export const rule: LinterRule = {
               if (missingVars.length > 0) {
                 issues.push({
                   source: 'linter',
-                  severity: 'error',
+                  severity: rule.severity,
                   path: getJsonPath(`/packages/${pkgIndex}/packageArguments`, argIndex),
                   message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
                   rule: 'no-template-variables-missing'
@@ -92,7 +93,7 @@ export const rule: LinterRule = {
               if (missingVars.length > 0) {
                 issues.push({
                   source: 'linter',
-                  severity: 'error',
+                  severity: rule.severity,
                   path: getJsonPath(`/packages/${pkgIndex}/environmentVariables`, envIndex),
                   message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
                   rule: 'no-template-variables-missing'
@@ -117,7 +118,7 @@ export const rule: LinterRule = {
               if (missingVars.length > 0) {
                 issues.push({
                   source: 'linter',
-                  severity: 'error',
+                  severity: rule.severity,
                   path: getJsonPath(basePath, `remotes/${remoteIndex}/headers`, headerIndex),
                   message: `Template contains variables without definitions: ${missingVars.join(', ')}`,
                   rule: 'no-template-variables-missing'

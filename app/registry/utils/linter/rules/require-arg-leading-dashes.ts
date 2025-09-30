@@ -4,7 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'require-arg-leading-dashes',
   message: 'Named argument missing leading dashes',
-  docs: {
+  severity: 'warning',  docs: {
     purpose: 'Ensure named arguments follow standard command-line conventions with leading dashes',
     triggers: [
       'Named argument has a name but doesn\'t start with -- or -'
@@ -14,9 +14,7 @@ export const rule: LinterRule = {
       good: `{ "name": "--port", "description": "Port number" }`
     },
     guidance: [
-      'Use -- for long-form options (e.g., --port, --verbose)',
-      'Use - for short-form options (e.g., -p, -v)',
-      'Follow standard command-line argument conventions'
+      'Use - or -- as appropriate (e.g., -y, --port)',
     ],
     scope: [
       'packages.runtimeArguments',
@@ -36,7 +34,7 @@ export const rule: LinterRule = {
             if (arg.name && !arg.name.startsWith('-')) {
               issues.push({
                 source: 'linter',
-                severity: 'warning',
+                severity: rule.severity,
                 path: getJsonPath(`/packages/${pkgIndex}/runtimeArguments`, argIndex),
                 message: `Named argument "${arg.name}" should start with "--" or "-"`,
                 rule: 'require-args-leading-dashes'
@@ -50,7 +48,7 @@ export const rule: LinterRule = {
             if (arg.name && !arg.name.startsWith('-')) {
               issues.push({
                 source: 'linter',
-                severity: 'warning',
+                severity: rule.severity,
                 path: getJsonPath(`/packages/${pkgIndex}/packageArguments`, argIndex),
                 message: `Named argument "${arg.name}" should start with "--" or "-"`,
                 rule: 'require-args-leading-dashes'

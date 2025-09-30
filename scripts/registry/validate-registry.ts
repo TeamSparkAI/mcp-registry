@@ -29,7 +29,7 @@ async function validateRegistry() {
     }
 
     const printRuleDocs = (rule: any, isLast: boolean = false) => {
-      console.log(`\n🔎 ${rule.name}`);
+      console.log(`\n🔎 ${rule.name} (${rule.severity})`);
       console.log('');
       console.log(`Message: ${rule.message}`);
       const docs = rule.docs || {};

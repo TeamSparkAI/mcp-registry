@@ -4,7 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'no-secret-static-value',
   message: 'Field with static value should not be marked as secret',
-  docs: {
+  severity: 'warning',  docs: {
     purpose: 'Warn about static values marked as secret, which  will likelt not have the desired effect',
     triggers: [
       'Field has a static value and is marked as isSecret'
@@ -45,7 +45,7 @@ export const rule: LinterRule = {
                 
                 issues.push({
                   source: 'linter',
-                  severity: 'warning',
+                  severity: rule.severity,
                   path: path,
                   message: 'Field with static value should not be marked as secret - consider using variables instead',
                   rule: 'no-secret-static-value'
@@ -67,7 +67,7 @@ export const rule: LinterRule = {
               
               issues.push({
                 source: 'linter',
-                severity: 'warning',
+                severity: rule.severity,
                 path: path,
                 message: 'Field with static value should not be marked as secret - consider using variables instead',
                 rule: 'no-secret-static-value'

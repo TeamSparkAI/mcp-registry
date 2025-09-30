@@ -6,7 +6,8 @@
 		"catalog:build": "tsx scripts/catalog/index.ts",
 		"catalog:build:debug": "tsx scripts/catalog/index.ts --debug",
 		"registry:download": "tsx scripts/registry/download-registry.ts",
-		"registry:validate": "tsx scripts/registry/validate-registry.ts"
+		"registry:validate": "tsx scripts/registry/validate-registry.ts",
+		"registry:docs": "tsx scripts/registry/generate-linter-docs.ts"
 	},
 	"dependencies": {
 		"ajv": "^8.17.1",

@@ -4,6 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'require-valid-value-format',
   message: 'Value format inconsistent with field type',
+  severity: 'error',
   docs: {
     purpose: 'Validate that field values match their declared format (number, boolean, etc.)',
     triggers: [
@@ -41,7 +42,7 @@ export const rule: LinterRule = {
             if (isNaN(Number(value))) {
               issues.push({
                 source: 'linter',
-                severity: 'error',
+                severity: rule.severity,
                 path,
                 message: `Value "${value}" is not a valid number`,
                 rule: 'require-valid-value-format'
@@ -52,7 +53,7 @@ export const rule: LinterRule = {
             if (!['true', 'false'].includes(String(value).toLowerCase())) {
               issues.push({
                 source: 'linter',
-                severity: 'error',
+                severity: rule.severity,
                 path,
                 message: `Value "${value}" is not a valid boolean (should be "true" or "false")`,
                 rule: 'require-valid-value-format'
