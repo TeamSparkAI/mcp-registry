@@ -4,12 +4,14 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import fs from 'fs';
 import path from 'path';
+import { lintServerData, ValidationIssue } from '../../app/registry/utils/validation';
 
 interface ValidationResult {
   serverId: string;
   name: string;
   valid: boolean;
-  errors: string[];
+  schemaIssues: ValidationIssue[];
+  linterIssues: ValidationIssue[];
 }
 
 async function validateRegistry() {
@@ -39,6 +41,7 @@ async function validateRegistry() {
   let validCount = 0;
   let invalidCount = 0;
   let skippedCount = 0;
+  let lintErrorCount = 0;
 
   console.log(`Validating ${registry.servers.length} servers...\n`);
 
@@ -49,21 +52,30 @@ async function validateRegistry() {
     const serverSchema = server.$schema;
     
     if (serverSchema !== expectedSchemaId) {
-      const versionId = server._meta?.['io.modelcontextprotocol.registry/official']?.versionId || 'unknown';
-      console.log(`⏭️  Skipping ${server.name} (versionId: ${versionId}) - schema mismatch: ${serverSchema}`);
       skippedCount++;
       continue;
     }
     const valid = validate(server);
-    const errors = valid ? [] : (validate.errors || []).map(err => 
-      `${err.instancePath || 'root'}: ${err.message}`
-    );
+    const schemaIssues: ValidationIssue[] = valid
+      ? []
+      : (validate.errors || []).map(err => ({
+          source: 'schema',
+          severity: 'error',
+          path: err.instancePath || '/',
+          message: err.message || 'Schema validation error',
+          rule: err.schemaPath
+        }));
+
+    // Run linter once
+    const linterIssues = await lintServerData(server);
+    lintErrorCount += linterIssues.filter(i => i.severity === 'error').length;
 
     results.push({
       serverId: server._meta?.['io.modelcontextprotocol.registry/official']?.serverId || 'unknown',
       name: server.name || 'unnamed',
       valid,
-      errors
+      schemaIssues,
+      linterIssues
     });
 
     if (valid) {
@@ -73,49 +85,45 @@ async function validateRegistry() {
     }
   }
 
-  // Print summary
-  console.log('📊 VALIDATION SUMMARY');
+  // Print servers with any issues (schema or linter) similar to UX
+  const serversWithIssues = results.filter(r => r.schemaIssues.length > 0 || r.linterIssues.length > 0);
+  if (serversWithIssues.length > 0) {
+    console.log('\n🧭 SERVERS WITH ISSUES');
+    console.log('═'.repeat(50));
+    serversWithIssues.forEach(result => {
+      console.log(`\n${result.name} (${result.serverId})`);
+      // Schema issues
+      result.schemaIssues.forEach(issue => {
+        const rule = issue.rule ? ` (${issue.rule})` : '';
+        console.log(`   • [SCHEMA][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}${rule}`);
+      });
+      // Linter issues
+      result.linterIssues.forEach(issue => {
+        const rule = issue.rule ? ` (${issue.rule})` : '';
+        console.log(`   • [LINTER][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}${rule}`);
+      });
+    });
+  }
+
+  // Print summary at the end
+  console.log('\n📊 SCHEMA VALIDATION SUMMARY');
   console.log('═'.repeat(50));
-  console.log(`✅ Valid servers: ${validCount}`);
-  console.log(`❌ Invalid servers: ${invalidCount}`);
-  console.log(`⏭️  Skipped servers: ${skippedCount}`);
-  console.log(`📈 Success rate: ${((validCount / (validCount + invalidCount)) * 100).toFixed(1)}%\n`);
+  console.log(`✅ Valid schema: ${validCount} servers`);
+  console.log(`❌ Invalid schema: ${invalidCount} servers`);
+  console.log(`⏭️  Skipped (non-current schema): ${skippedCount} servers`);
+  console.log(`📈 Schema success rate: ${((validCount / (validCount + invalidCount)) * 100).toFixed(1)}%`);
 
-  // Print detailed results for invalid servers
-  if (invalidCount > 0) {
-    console.log('❌ INVALID SERVERS');
-    console.log('═'.repeat(50));
-    
-    results
-      .filter(r => !r.valid)
-      .forEach(result => {
-        console.log(`\n🔴 ${result.name} (${result.serverId})`);
-        result.errors.forEach(error => {
-          console.log(`   • ${error}`);
-        });
-      });
-  }
-
-  // Print some valid servers for reference
-  if (validCount > 0) {
-    console.log('\n✅ SAMPLE VALID SERVERS');
-    console.log('═'.repeat(50));
-    
-    results
-      .filter(r => r.valid)
-      .slice(0, 5)
-      .forEach(result => {
-        console.log(`   • ${result.name} (${result.serverId})`);
-      });
-    
-    if (validCount > 5) {
-      console.log(`   ... and ${validCount - 5} more`);
-    }
-  }
+  // Linter summary (by servers)
+  const serversWithLintErrors = results.filter(r => r.linterIssues.some(i => i.severity === 'error')).length;
+  const serversWithAnyLintIssues = results.filter(r => r.linterIssues.length > 0).length;
+  console.log('\n🧭 LINTER SUMMARY');
+  console.log('═'.repeat(50));
+  console.log(`🚫 Failed linter (error): ${serversWithLintErrors} servers`);
+  console.log(`⚠️  Any linter issues: ${serversWithAnyLintIssues} servers`);
 
   // Exit with error code if any servers are invalid
-  if (invalidCount > 0) {
-    console.log(`\n❌ Validation failed: ${invalidCount} servers have errors`);
+  if (invalidCount > 0 || lintErrorCount > 0) {
+    console.log(`\n❌ Validation Failed: ${invalidCount} server(s) failed schema validation, ${serversWithLintErrors} server(s) failed linter (error)`);
     process.exit(1);
   } else {
     console.log('\n🎉 All servers are valid!');
