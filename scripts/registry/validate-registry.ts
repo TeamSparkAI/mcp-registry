@@ -115,6 +115,7 @@ async function validateRegistry() {
   let invalidCount = 0;
   let skippedCount = 0;
   let lintErrorCount = 0;
+  const linterRuleCounts: { [rule: string]: number } = {};
 
   console.log(`Validating ${registry.servers.length} servers...\n`);
 
@@ -142,6 +143,13 @@ async function validateRegistry() {
     // Run linter once
     const linterIssues = await lintServerData(server);
     lintErrorCount += linterIssues.filter(i => i.severity === 'error').length;
+    
+    // Count linter rule instances
+    linterIssues.forEach(issue => {
+      if (issue.rule) {
+        linterRuleCounts[issue.rule] = (linterRuleCounts[issue.rule] || 0) + 1;
+      }
+    });
 
     results.push({
       serverId: server._meta?.['io.modelcontextprotocol.registry/official']?.serverId || 'unknown',
@@ -193,6 +201,17 @@ async function validateRegistry() {
   console.log('═'.repeat(50));
   console.log(`🚫 Failed linter (error): ${serversWithLintErrors} servers`);
   console.log(`⚠️  Any linter issues: ${serversWithAnyLintIssues} servers`);
+  
+  // Linter rule breakdown
+  if (Object.keys(linterRuleCounts).length > 0) {
+    console.log('\n📊 LINTER RULE BREAKDOWN');
+    console.log('─'.repeat(50));
+    const sortedRules = Object.entries(linterRuleCounts)
+      .sort(([,a], [,b]) => b - a);
+    sortedRules.forEach(([rule, count]) => {
+      console.log(`  ${rule}: ${count} instances`);
+    });
+  }
 
   // Exit with error code if any servers are invalid
   if (invalidCount > 0 || lintErrorCount > 0) {
