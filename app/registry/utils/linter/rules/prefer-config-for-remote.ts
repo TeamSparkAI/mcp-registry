@@ -4,6 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'prefer-config-for-remote',
   message: 'Remote has no configuration options',
+  severity: 'info',
   docs: {
     purpose: 'Suggest adding headers configuration for remotes that may need authentication or custom headers',
     triggers: [
@@ -37,7 +38,7 @@ export const rule: LinterRule = {
         if (!hasConfig) {
           issues.push({
             source: 'linter',
-            severity: 'info',
+            severity: rule.severity,
             path: getJsonPath(basePath, 'remotes', index),
             message: 'Remote has no headers configuration',
             rule: 'prefer-config-for-remote'

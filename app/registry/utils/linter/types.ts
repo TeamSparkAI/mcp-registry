@@ -14,6 +14,7 @@ export interface ValidationResult {
 export interface LinterRule {
   name: string;
   message: string;
+  severity: 'error' | 'warning' | 'info';
   check: (data: any, path: string) => ValidationIssue[];
   docs?: {
     purpose: string;

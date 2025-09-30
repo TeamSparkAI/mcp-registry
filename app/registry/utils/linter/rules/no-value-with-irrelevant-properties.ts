@@ -4,7 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'no-value-with-irrelevant-properties',
   message: 'Field with value should not have default, isRequired, or choices',
-  docs: {
+  severity: 'warning',  docs: {
     purpose: 'Identify fields with static values that also have properties that only apply to user input fields',
     triggers: [
       'Field has a static value but also has default, isRequired, or choices (properties that only apply to user input fields)'
@@ -49,7 +49,7 @@ export const rule: LinterRule = {
                 
                 issues.push({
                   source: 'linter',
-                  severity: 'warning',
+                  severity: rule.severity,
                   path: path,
                   message: `Field with 'value' should not have: ${irrelevantProps.join(', ')} - these properties have no effect when value is present`,
                   rule: 'no-value-with-irrelevant-properties'
@@ -75,7 +75,7 @@ export const rule: LinterRule = {
               
               issues.push({
                 source: 'linter',
-                severity: 'warning',
+                severity: rule.severity,
                 path: path,
                 message: `Field with 'value' should not have: ${irrelevantProps.join(', ')} - these properties have no effect when value is present`,
                 rule: 'no-value-with-irrelevant-properties'

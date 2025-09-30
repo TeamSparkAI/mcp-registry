@@ -4,6 +4,7 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'require-config-for-package',
   message: 'Package has no configuration options',
+  severity: 'warning',
   docs: {
     purpose: 'Encourage packages to provide configuration options for better user experience',
     triggers: [
@@ -42,7 +43,7 @@ export const rule: LinterRule = {
         if (!hasConfig) {
           issues.push({
             source: 'linter',
-            severity: 'warning',
+            severity: rule.severity,
             path: getJsonPath(basePath, 'packages', index),
             message: 'Package has no configuration - consider adding runtimeArguments, packageArguments, or environmentVariables',
             rule: 'require-config-for-package'

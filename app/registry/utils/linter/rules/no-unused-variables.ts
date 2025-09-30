@@ -5,7 +5,7 @@ import { extractVariableNames } from '../utils/templates';
 export const rule: LinterRule = {
   name: 'no-unused-variables',
   message: 'Defined variables not used in template',
-  docs: {
+  severity: 'warning',  docs: {
     purpose: 'Identify variables that are defined but never referenced in the template string',
     triggers: [
       'Field.variables contains keys that don\'t appear in field.value'
@@ -52,7 +52,7 @@ export const rule: LinterRule = {
         if (unusedVars.length > 0) {
           issues.push({
             source: 'linter',
-            severity: 'warning',
+            severity: rule.severity,
             path,
             message: `Defined variables not used in template: ${unusedVars.join(', ')}`,
             rule: 'no-unused-variables'

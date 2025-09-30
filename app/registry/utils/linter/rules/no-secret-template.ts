@@ -5,7 +5,7 @@ import { hasTemplateVariables } from '../utils/templates';
 export const rule: LinterRule = {
   name: 'no-secret-template',
   message: 'Secret field contains template variables',
-  docs: {
+  severity: 'warning',  docs: {
     purpose: 'Warn about secret fields that contain template variables',
     triggers: [
       'Field is marked as isSecret and contains {variables}'
@@ -39,7 +39,7 @@ export const rule: LinterRule = {
       if (field.isSecret && field.value && hasTemplateVariables(field.value)) {
         issues.push({
           source: 'linter',
-          severity: 'warning',
+          severity: rule.severity,
           path,
           message: 'Secret field contains template variables - ensure this is intentional',
           rule: 'no-secret-template'
