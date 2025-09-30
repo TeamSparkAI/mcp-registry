@@ -212,7 +212,7 @@ export default function RegistryPage() {
 
     setIsValidating(true);
     try {
-      const result = await validateServerJson(testServerJson);
+      const result = await validateServerJson(testServerJson, getResourcePath);
       setValidationResult(result);
       
       // Scroll to validation results after they appear
@@ -261,7 +261,7 @@ export default function RegistryPage() {
     setIsValidating(true);
     try {
       // Only run parse validation (Step 1)
-      const result = await validateServerJson(testServerJson);
+      const result = await validateServerJson(testServerJson, getResourcePath);
       
       // Check if there are any parse errors (source: 'parse')
       const parseErrors = result.issues.filter(issue => issue.source === 'parse');
