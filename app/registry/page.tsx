@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
 import ServerList from './components/ServerList';
 import ServerDetailView from './components/ServerDetailView';
+import ValidationIssues from './components/ValidationIssues';
+import { validateServerJson, ValidationResult } from './utils/validation';
 
 // Centralized function to get resource paths
 const getResourcePath = (path: string): string => {
@@ -91,10 +93,37 @@ export default function RegistryPage() {
   const [testMode, setTestMode] = useState(false);
   const [testServerJson, setTestServerJson] = useState('');
   const [testServer, setTestServer] = useState<ServerJSON | null>(null);
+  const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
+  const [isValidating, setIsValidating] = useState(false);
+  const [isEditingTestServer, setIsEditingTestServer] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     loadServerRegistry();
   }, []);
+
+  // Auto-size textarea when content changes
+  useEffect(() => {
+    if (textareaRef.current && testServerJson) {
+      const textarea = textareaRef.current;
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.min(textarea.scrollHeight, window.innerHeight - 300) + 'px';
+    }
+  }, [testServerJson]);
+
+  // Auto-size textarea when entering edit mode
+  useEffect(() => {
+    if (isEditingTestServer && textareaRef.current) {
+      // Small delay to ensure the textarea is rendered
+      setTimeout(() => {
+        if (textareaRef.current) {
+          const textarea = textareaRef.current;
+          textarea.style.height = 'auto';
+          textarea.style.height = Math.min(textarea.scrollHeight, window.innerHeight - 300) + 'px';
+        }
+      }, 50);
+    }
+  }, [isEditingTestServer]);
 
   // Helper functions to check if package/remote has configuration
   const hasPackageConfiguration = (pkg: any) => {
@@ -162,6 +191,7 @@ export default function RegistryPage() {
 
   const handleTestServerJson = () => {
     setTestMode(true);
+    setIsEditingTestServer(true);
     setTestServerJson('');
     setTestServer(null);
     setSelectedServer(null);
@@ -170,16 +200,124 @@ export default function RegistryPage() {
     setPackageConfig({});
     setRemoteConfig({});
     setVisibleFields(new Set());
+    setValidationResult(null);
+    setIsValidating(false); // Reset validation state
   };
 
-  const handleSubmitTestServerJson = () => {
+  const handleValidateJson = async () => {
+    if (!testServerJson.trim()) {
+      setValidationResult(null);
+      return;
+    }
+
+    setIsValidating(true);
     try {
+      const result = await validateServerJson(testServerJson);
+      setValidationResult(result);
+      
+      // Scroll to validation results after they appear
+      setTimeout(() => {
+        const resultsElement = document.getElementById('validation-results');
+        if (resultsElement) {
+          resultsElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+      }, 100); // Small delay to ensure DOM is updated
+    } catch (error) {
+      console.error('Validation error:', error);
+      setValidationResult({
+        valid: false,
+        issues: [{
+          source: 'schema',
+          severity: 'error',
+          path: '/',
+          message: `Validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          rule: 'validation-error'
+        }]
+      });
+      
+      // Scroll to validation results even for errors
+      setTimeout(() => {
+        const resultsElement = document.getElementById('validation-results');
+        if (resultsElement) {
+          resultsElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+      }, 100);
+    } finally {
+      setIsValidating(false);
+    }
+  };
+
+  const handleSubmitTestServerJson = async () => {
+    if (!testServerJson.trim()) {
+      return;
+    }
+
+    setIsValidating(true);
+    try {
+      // Only run parse validation (Step 1)
+      const result = await validateServerJson(testServerJson);
+      
+      // Check if there are any parse errors (source: 'parse')
+      const parseErrors = result.issues.filter(issue => issue.source === 'parse');
+      
+      if (parseErrors.length > 0) {
+        // Show parse errors and stay in edit mode
+        setValidationResult({
+          valid: false,
+          issues: parseErrors
+        });
+        setIsValidating(false);
+        
+        // Scroll to validation results
+        setTimeout(() => {
+          const resultsElement = document.getElementById('validation-results');
+          if (resultsElement) {
+            resultsElement.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }
+        }, 100);
+        return;
+      }
+      
+      // If no parse errors, proceed to registry entry details
       const parsedServer = JSON.parse(testServerJson);
       setTestServer(parsedServer);
       setSelectedServer(parsedServer);
-      setTestMode(false);
+      setIsEditingTestServer(false);
+      setValidationResult(null); // Clear any previous validation results
+      
     } catch (error) {
-      alert('Invalid JSON. Please check your server.json format.');
+      console.error('Parse validation error:', error);
+      setValidationResult({
+        valid: false,
+        issues: [{
+          source: 'parse',
+          severity: 'error',
+          path: '/',
+          message: `JSON parse error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          rule: 'json-parse'
+        }]
+      });
+      setIsValidating(false);
+      
+      // Scroll to validation results
+      setTimeout(() => {
+        const resultsElement = document.getElementById('validation-results');
+        if (resultsElement) {
+          resultsElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+      }, 100);
     }
   };
 
@@ -251,6 +389,7 @@ export default function RegistryPage() {
 
   const handleExitTestMode = () => {
     setTestMode(false);
+    setIsEditingTestServer(false);
     setTestServerJson('');
     setTestServer(null);
     setSelectedServer(null);
@@ -259,6 +398,23 @@ export default function RegistryPage() {
     setPackageConfig({});
     setRemoteConfig({});
     setVisibleFields(new Set());
+    setValidationResult(null);
+  };
+
+  const handleEditTestServerJson = () => {
+    // Go back to validation mode with current server JSON
+    if (testServer) {
+      setTestServerJson(JSON.stringify(testServer, null, 2));
+      setSelectedServer(null);
+      setConfiguringPackage(null);
+      setConfiguringRemote(null);
+      setPackageConfig({});
+      setRemoteConfig({});
+      setVisibleFields(new Set());
+      setValidationResult(null);
+      setIsValidating(false); // Reset validation state
+      setIsEditingTestServer(true);
+    }
   };
 
   // Generate MCP client configuration
@@ -515,37 +671,8 @@ export default function RegistryPage() {
     );
   }
 
-  // Show server details view
-  if (selectedServer) {
-    return (
-      <ServerDetailView
-        server={selectedServer}
-        configuringPackage={configuringPackage}
-        configuringRemote={configuringRemote}
-        packageConfig={packageConfig}
-        remoteConfig={remoteConfig}
-        visibleFields={visibleFields}
-        showRawModal={showRawModal}
-        configuredServer={generateConfiguredServer()}
-        onBackToRegistry={testServer ? handleExitTestMode : handleBackToRegistry}
-        onPackageConfigChange={setPackageConfig}
-        onRemoteConfigChange={setRemoteConfig}
-        onToggleFieldVisibility={toggleFieldVisibility}
-        onCloseConfiguration={closeConfiguration}
-        onShowRawModal={setShowRawModal}
-        onConfigurePackage={handleConfigurePackage}
-        onConfigureRemote={handleConfigureRemote}
-        getResourcePath={getResourcePath}
-        isTestMode={!!testServer}
-        testServerJson={testServerJson}
-        onUpdateTestServerJson={handleUpdateTestServerJson}
-        onApplyTestServerJson={handleApplyTestServerJson}
-      />
-    );
-  }
-
-  // Show test mode input
-  if (testMode) {
+  // Show test mode input (when editing JSON)
+  if (testMode && isEditingTestServer) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
         {/* Header */}
@@ -582,29 +709,98 @@ export default function RegistryPage() {
                 Paste your server.json below to test it using our configuration interface.
               </p>
               <textarea
+                ref={textareaRef}
                 value={testServerJson}
                 onChange={(e) => setTestServerJson(e.target.value)}
-                className="w-full h-64 p-4 border border-gray-300 rounded-lg font-mono text-sm"
+                className="w-full p-4 border border-gray-300 rounded-lg font-mono text-sm resize-none"
+                style={{
+                  minHeight: '200px',
+                  maxHeight: 'calc(100vh - 300px)',
+                  height: 'auto'
+                }}
+                onInput={(e) => {
+                  const target = e.target as HTMLTextAreaElement;
+                  target.style.height = 'auto';
+                  target.style.height = Math.min(target.scrollHeight, window.innerHeight - 300) + 'px';
+                }}
                 placeholder='{"name": "my-server", "description": "My test server", ...}'
               />
-              <div className="mt-4 flex justify-end space-x-3">
+              <div className="mt-4 flex justify-between items-center">
                 <button
-                  onClick={handleExitTestMode}
-                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                  onClick={handleValidateJson}
+                  disabled={!testServerJson.trim() || isValidating}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
                 >
-                  Cancel
+                  {isValidating ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Validating...
+                    </>
+                  ) : (
+                    'Validate'
+                  )}
                 </button>
-                <button
-                  onClick={handleSubmitTestServerJson}
-                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
-                >
-                  Test Configuration
-                </button>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={handleExitTestMode}
+                    className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSubmitTestServerJson}
+                    disabled={!testServerJson.trim() || isValidating}
+                    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  >
+                    {isValidating ? 'Testing...' : 'Test Configuration'}
+                  </button>
+                </div>
               </div>
             </div>
+
+            {/* Validation Results */}
+            {validationResult && (
+              <div id="validation-results" className="bg-white rounded-lg border p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Validation Results</h3>
+                <ValidationIssues issues={validationResult.issues} />
+              </div>
+            )}
           </div>
         </div>
       </div>
+    );
+  }
+
+  // Show server details view
+  if (selectedServer) {
+    return (
+      <ServerDetailView
+        server={selectedServer}
+        configuringPackage={configuringPackage}
+        configuringRemote={configuringRemote}
+        packageConfig={packageConfig}
+        remoteConfig={remoteConfig}
+        visibleFields={visibleFields}
+        showRawModal={showRawModal}
+        configuredServer={generateConfiguredServer()}
+        onBackToRegistry={testServer ? handleExitTestMode : handleBackToRegistry}
+        onPackageConfigChange={setPackageConfig}
+        onRemoteConfigChange={setRemoteConfig}
+        onToggleFieldVisibility={toggleFieldVisibility}
+        onCloseConfiguration={closeConfiguration}
+        onShowRawModal={setShowRawModal}
+        onConfigurePackage={handleConfigurePackage}
+        onConfigureRemote={handleConfigureRemote}
+        getResourcePath={getResourcePath}
+        isTestMode={!!testServer}
+        testServerJson={testServerJson}
+        onUpdateTestServerJson={handleUpdateTestServerJson}
+        onApplyTestServerJson={handleApplyTestServerJson}
+        onEditTestServerJson={handleEditTestServerJson}
+      />
     );
   }
 
