@@ -4,6 +4,36 @@ import { getJsonPath } from '../utils/jsonPath';
 export const rule: LinterRule = {
   name: 'no-value-with-irrelevant-properties',
   message: 'Field with value should not have default, isRequired, or choices',
+  docs: {
+    purpose: 'Identify fields with static values that also have properties that only apply to user input fields',
+    triggers: [
+      'Field has a static value but also has default, isRequired, or choices',
+      'Static value field includes properties meant for dynamic configuration'
+    ],
+    examples: {
+      bad: `{
+  "value": "static-value",
+  "default": "other-value",
+  "isRequired": true
+}`,
+      good: `{ "value": "static-value" }`
+    },
+    guidance: [
+      'Remove default, isRequired, and choices from fields with static values',
+      'These properties only apply to fields that users configure',
+      'Keep static value fields simple and clean'
+    ],
+    scope: [
+      'packages.runtimeArguments',
+      'packages.packageArguments',
+      'packages.environmentVariables'
+    ],
+    notes: [
+      'Static values are fixed and don\'t need user input properties',
+      'This helps distinguish between static and dynamic configuration',
+      'Cleaner configuration reduces confusion'
+    ]
+  },
   check: (data: any, basePath: string) => {
     const issues: any[] = [];
     

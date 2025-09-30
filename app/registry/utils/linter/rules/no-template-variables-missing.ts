@@ -5,6 +5,38 @@ import { hasTemplateVariables, extractVariableNames } from '../utils/templates';
 export const rule: LinterRule = {
   name: 'no-template-variables-missing',
   message: 'Template string has no corresponding variables',
+  docs: {
+    purpose: 'Catch templates referencing variables that are not defined in field.variables',
+    triggers: [
+      'Field.value contains {var} but field.variables lacks that key',
+      'Template uses {placeholder} but no corresponding variable definition exists'
+    ],
+    examples: {
+      bad: `{ "value": "Bearer {token}" }`,
+      good: `{
+  "value": "Bearer {token}",
+  "variables": {
+    "token": { "format": "string", "isRequired": true }
+  }
+}`
+    },
+    guidance: [
+      'Add missing variable definitions under field.variables',
+      'Or remove unused {placeholders} from the template',
+      'Use consistent variable naming across your server config'
+    ],
+    scope: [
+      'packages.runtimeArguments',
+      'packages.packageArguments', 
+      'packages.environmentVariables',
+      'remotes.headers'
+    ],
+    notes: [
+      'Variables are case-sensitive',
+      'Empty variables object {} is valid but won\'t substitute anything',
+      'Template variables must use {variable} syntax'
+    ]
+  },
   check: (data: any, basePath: string) => {
     const issues: any[] = [];
     

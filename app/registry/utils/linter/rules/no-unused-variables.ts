@@ -5,6 +5,44 @@ import { extractVariableNames } from '../utils/templates';
 export const rule: LinterRule = {
   name: 'no-unused-variables',
   message: 'Defined variables not used in template',
+  docs: {
+    purpose: 'Identify variables that are defined but never referenced in the template string',
+    triggers: [
+      'Field.variables contains keys that don\'t appear in field.value',
+      'Defined variables are not referenced in the template'
+    ],
+    examples: {
+      bad: `{
+  "value": "Hello {name}",
+  "variables": {
+    "name": {},
+    "unused": {}
+  }
+}`,
+      good: `{
+  "value": "Hello {name}",
+  "variables": {
+    "name": { "format": "string" }
+  }
+}`
+    },
+    guidance: [
+      'Remove unused variable definitions',
+      'Or add references to unused variables in the template',
+      'Keep variable definitions clean and minimal'
+    ],
+    scope: [
+      'packages.runtimeArguments',
+      'packages.packageArguments',
+      'packages.environmentVariables',
+      'remotes.headers'
+    ],
+    notes: [
+      'This is a warning - unused variables don\'t break functionality',
+      'Clean up helps with maintainability',
+      'Variables are case-sensitive in template matching'
+    ]
+  },
   check: (data: any, basePath: string) => {
     const issues: any[] = [];
     

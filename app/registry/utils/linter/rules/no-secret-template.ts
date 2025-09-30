@@ -5,6 +5,37 @@ import { hasTemplateVariables } from '../utils/templates';
 export const rule: LinterRule = {
   name: 'no-secret-template',
   message: 'Secret field contains template variables',
+  docs: {
+    purpose: 'Warn about secret fields that contain template variables, which may expose sensitive information',
+    triggers: [
+      'Field is marked as isSecret: true but contains {variables}',
+      'Secret field value includes template substitution patterns'
+    ],
+    examples: {
+      bad: `{ "value": "Bearer {api_key}", "isSecret": true }`,
+      good: `{
+  "value": "Bearer {api_key}",
+  "isSecret": false,
+  "variables": { "api_key": { "isSecret": true } }
+}`
+    },
+    guidance: [
+      'Move secret marking to the variable level instead of the template',
+      'Use non-secret templates with secret variables',
+      'Consider if the template itself should be secret'
+    ],
+    scope: [
+      'packages.runtimeArguments',
+      'packages.packageArguments',
+      'packages.environmentVariables',
+      'remotes.headers'
+    ],
+    notes: [
+      'This is a warning - the configuration may still work',
+      'Template substitution happens before secret masking',
+      'Consider the security implications of template-based secrets'
+    ]
+  },
   check: (data: any, basePath: string) => {
     const issues: any[] = [];
     
