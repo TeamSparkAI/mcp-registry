@@ -8,8 +8,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Catch templates referencing variables that are not defined in field.variables',
     triggers: [
-      'Field.value contains {var} but field.variables lacks that key',
-      'Template uses {placeholder} but no corresponding variable definition exists'
+      'Field.value contains {var} but field.variables lacks that key'
     ],
     examples: {
       bad: `{ "value": "Bearer {token}" }`,
@@ -22,8 +21,7 @@ export const rule: LinterRule = {
     },
     guidance: [
       'Add missing variable definitions under field.variables',
-      'Or remove unused {placeholders} from the template',
-      'Use consistent variable naming across your server config'
+      'Or remove unused {placeholders} from the template'
     ],
     scope: [
       'packages.runtimeArguments',
@@ -32,9 +30,8 @@ export const rule: LinterRule = {
       'remotes.headers'
     ],
     notes: [
-      'Variables are case-sensitive',
-      'Empty variables object {} is valid but won\'t substitute anything',
-      'Template variables must use {variable} syntax'
+      'Variables are case-sensitive'
+
     ]
   },
   check: (data: any, basePath: string) => {

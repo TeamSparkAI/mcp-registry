@@ -7,8 +7,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Ensure default values are valid options when choices are provided',
     triggers: [
-      'Field has both default and choices, but default is not in the choices array',
-      'Default value doesn\'t match any of the allowed options'
+      'Field has both default and choices, but default is not in the choices array'
     ],
     examples: {
       bad: `{
@@ -28,11 +27,10 @@ export const rule: LinterRule = {
     scope: [
       'packages.runtimeArguments',
       'packages.packageArguments',
-      'packages.environmentVariables'
+      'packages.environmentVariables',
+      'remotes.headers'
     ],
     notes: [
-      'This prevents configuration errors where default is invalid',
-      'Choices define the valid options for the field',
       'Default should always be a valid choice when choices are specified'
     ]
   },
@@ -63,6 +61,18 @@ export const rule: LinterRule = {
             });
           }
         });
+      });
+    }
+    
+    // Check remote headers
+    if (data.remotes) {
+      data.remotes.forEach((remote: any, remoteIndex: number) => {
+        if (remote.headers) {
+          remote.headers.forEach((header: any, headerIndex: number) => {
+            const path = getJsonPath(`/remotes/${remoteIndex}/headers`, headerIndex);
+            checkDefaultChoice(header, path);
+          });
+        }
       });
     }
     

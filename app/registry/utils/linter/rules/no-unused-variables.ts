@@ -8,8 +8,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Identify variables that are defined but never referenced in the template string',
     triggers: [
-      'Field.variables contains keys that don\'t appear in field.value',
-      'Defined variables are not referenced in the template'
+      'Field.variables contains keys that don\'t appear in field.value'
     ],
     examples: {
       bad: `{
@@ -28,8 +27,7 @@ export const rule: LinterRule = {
     },
     guidance: [
       'Remove unused variable definitions',
-      'Or add references to unused variables in the template',
-      'Keep variable definitions clean and minimal'
+      'Or add references to unused variables in the template'
     ],
     scope: [
       'packages.runtimeArguments',
@@ -38,8 +36,7 @@ export const rule: LinterRule = {
       'remotes.headers'
     ],
     notes: [
-      'This is a warning - unused variables don\'t break functionality',
-      'Clean up helps with maintainability',
+
       'Variables are case-sensitive in template matching'
     ]
   },

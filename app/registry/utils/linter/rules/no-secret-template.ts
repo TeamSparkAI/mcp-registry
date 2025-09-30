@@ -6,10 +6,9 @@ export const rule: LinterRule = {
   name: 'no-secret-template',
   message: 'Secret field contains template variables',
   docs: {
-    purpose: 'Warn about secret fields that contain template variables, which may expose sensitive information',
+    purpose: 'Warn about secret fields that contain template variables',
     triggers: [
-      'Field is marked as isSecret: true but contains {variables}',
-      'Secret field value includes template substitution patterns'
+      'Field is marked as isSecret and contains {variables}'
     ],
     examples: {
       bad: `{ "value": "Bearer {api_key}", "isSecret": true }`,
@@ -21,8 +20,7 @@ export const rule: LinterRule = {
     },
     guidance: [
       'Move secret marking to the variable level instead of the template',
-      'Use non-secret templates with secret variables',
-      'Consider if the template itself should be secret'
+      'Use non-secret templates with secret variables'
     ],
     scope: [
       'packages.runtimeArguments',
@@ -31,9 +29,7 @@ export const rule: LinterRule = {
       'remotes.headers'
     ],
     notes: [
-      'This is a warning - the configuration may still work',
-      'Template substitution happens before secret masking',
-      'Consider the security implications of template-based secrets'
+      'It is typicslly undesriable to hide the template value',
     ]
   },
   check: (data: any, basePath: string) => {

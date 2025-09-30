@@ -7,8 +7,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Encourage packages to provide configuration options for better user experience',
     triggers: [
-      'Package has no runtimeArguments, packageArguments, environmentVariables, or runtimeHint',
-      'Package appears to be a simple command without any customization options'
+      'Package has no runtimeArguments, packageArguments, environmentVariables, or runtimeHint'
     ],
     examples: {
       bad: `{ "identifier": "my-package", "version": "1.0.0" }`,
@@ -28,9 +27,8 @@ export const rule: LinterRule = {
     ],
     scope: ['packages'],
     notes: [
-      'Some packages may legitimately not need configuration',
-      'This is a warning, not an error - simple packages are valid',
-      'Focus on packages that could benefit from user customization'
+      'Some packages may legitimately not need configuration, but those are rare',
+      'Consider provide an empty configuration object (such as packageArguments) if no configuration is needed'
     ]
   },
   check: (data: any, basePath: string) => {

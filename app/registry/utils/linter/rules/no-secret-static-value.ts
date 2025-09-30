@@ -5,10 +5,9 @@ export const rule: LinterRule = {
   name: 'no-secret-static-value',
   message: 'Field with static value should not be marked as secret',
   docs: {
-    purpose: 'Warn about static values marked as secret, which may not provide the intended security benefit',
+    purpose: 'Warn about static values marked as secret, which  will likelt not have the desired effect',
     triggers: [
-      'Field has a static value but is marked as isSecret: true',
-      'Fixed value field is treated as sensitive information'
+      'Field has a static value and is marked as isSecret'
     ],
     examples: {
       bad: `{ "value": "public-api-key", "isSecret": true }`,
@@ -19,19 +18,18 @@ export const rule: LinterRule = {
 }`
     },
     guidance: [
-      'Remove isSecret from static values - they\'re already visible in the config',
-      'Use variables with isSecret for truly sensitive values',
-      'Consider if the static value should actually be secret'
+      'Remove isSecret from static values',
+      'Use variables with isSecret for truly sensitive values'
     ],
     scope: [
       'packages.runtimeArguments',
       'packages.packageArguments',
-      'packages.environmentVariables'
+      'packages.environmentVariables',
+      'remotes.headers'
     ],
     notes: [
-      'Static values are visible in the server configuration',
-      'Marking them as secret provides no security benefit',
-      'Use variables for values that should be kept secret'
+      'Static values will generally be displayed during configuraiton, even if marked as secret',
+      'And if the value is hidden during configuration that will be a poor user experience',
     ]
   },
   check: (data: any, basePath: string) => {
@@ -56,6 +54,27 @@ export const rule: LinterRule = {
             });
           }
         });
+      });
+    }
+    
+    // Check remote headers
+    if (data.remotes) {
+      data.remotes.forEach((remote: any, remoteIndex: number) => {
+        if (remote.headers) {
+          remote.headers.forEach((header: any, headerIndex: number) => {
+            if (header.value && header.isSecret) {
+              const path = getJsonPath(`/remotes/${remoteIndex}/headers`, headerIndex);
+              
+              issues.push({
+                source: 'linter',
+                severity: 'warning',
+                path: path,
+                message: 'Field with static value should not be marked as secret - consider using variables instead',
+                rule: 'no-secret-static-value'
+              });
+            }
+          });
+        }
       });
     }
     

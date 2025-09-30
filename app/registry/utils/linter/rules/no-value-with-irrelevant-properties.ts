@@ -7,8 +7,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Identify fields with static values that also have properties that only apply to user input fields',
     triggers: [
-      'Field has a static value but also has default, isRequired, or choices',
-      'Static value field includes properties meant for dynamic configuration'
+      'Field has a static value but also has default, isRequired, or choices (properties that only apply to user input fields)'
     ],
     examples: {
       bad: `{
@@ -20,18 +19,16 @@ export const rule: LinterRule = {
     },
     guidance: [
       'Remove default, isRequired, and choices from fields with static values',
-      'These properties only apply to fields that users configure',
-      'Keep static value fields simple and clean'
+      'These properties only apply to fields that users configure'
     ],
     scope: [
       'packages.runtimeArguments',
       'packages.packageArguments',
-      'packages.environmentVariables'
+      'packages.environmentVariables',
+      'remotes.headers'
     ],
     notes: [
-      'Static values are fixed and don\'t need user input properties',
-      'This helps distinguish between static and dynamic configuration',
-      'Cleaner configuration reduces confusion'
+      'Clean, consistent value specifications produce predictable configuration and reduce confusion'
     ]
   },
   check: (data: any, basePath: string) => {
@@ -60,6 +57,31 @@ export const rule: LinterRule = {
             });
           }
         });
+      });
+    }
+    
+    // Check remote headers
+    if (data.remotes) {
+      data.remotes.forEach((remote: any, remoteIndex: number) => {
+        if (remote.headers) {
+          remote.headers.forEach((header: any, headerIndex: number) => {
+            if (header.value && (header.default || header.isRequired || header.choices)) {
+              const path = getJsonPath(`/remotes/${remoteIndex}/headers`, headerIndex);
+              const irrelevantProps = [];
+              if (header.default) irrelevantProps.push('default');
+              if (header.isRequired) irrelevantProps.push('isRequired');
+              if (header.choices) irrelevantProps.push('choices');
+              
+              issues.push({
+                source: 'linter',
+                severity: 'warning',
+                path: path,
+                message: `Field with 'value' should not have: ${irrelevantProps.join(', ')} - these properties have no effect when value is present`,
+                rule: 'no-value-with-irrelevant-properties'
+              });
+            }
+          });
+        }
       });
     }
     
