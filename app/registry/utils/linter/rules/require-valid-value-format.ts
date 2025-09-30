@@ -7,8 +7,6 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Validate that field values match their declared format (number, boolean, etc.)',
     triggers: [
-      'Field has format: "number" but value cannot be parsed as a number',
-      'Field has format: "boolean" but value is not "true" or "false"',
       'Value doesn\'t match the expected data type'
     ],
     examples: {
@@ -23,12 +21,12 @@ export const rule: LinterRule = {
     scope: [
       'packages.runtimeArguments',
       'packages.packageArguments',
-      'packages.environmentVariables'
+      'packages.environmentVariables',
+      'remotes.headers'
     ],
     notes: [
-      'Format validation helps catch configuration errors early',
-      'String values are always valid regardless of format',
-      'Consider if the format constraint is necessary'
+      'Format validation helps catch configuration errors'
+
     ]
   },
   check: (data: any, basePath: string) => {
@@ -75,6 +73,18 @@ export const rule: LinterRule = {
             });
           }
         });
+      });
+    }
+    
+    // Check remote headers
+    if (data.remotes) {
+      data.remotes.forEach((remote: any, remoteIndex: number) => {
+        if (remote.headers) {
+          remote.headers.forEach((header: any, headerIndex: number) => {
+            const path = getJsonPath(`/remotes/${remoteIndex}/headers`, headerIndex);
+            checkField(header, path);
+          });
+        }
       });
     }
     

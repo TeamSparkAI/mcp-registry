@@ -7,8 +7,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Suggest adding headers configuration for remotes that may need authentication or custom headers',
     triggers: [
-      'Remote has no headers configuration',
-      'Remote appears to be a simple endpoint without authentication requirements'
+      'Remote has no headers configuration'
     ],
     examples: {
       bad: `{ "type": "streamable-http", "url": "https://api.example.com/mcp" }`,
@@ -22,14 +21,12 @@ export const rule: LinterRule = {
     },
     guidance: [
       'Add headers configuration if the remote requires authentication',
-      'Include common headers like Authorization, Content-Type, or custom API keys',
-      'Consider if the remote endpoint needs any special headers'
+      'This typicslly includes headers like Authorization, or custom API keys',
     ],
     scope: ['remotes'],
     notes: [
-      'This is an info-level suggestion, not a requirement',
       'Some remotes may not need headers (public endpoints)',
-      'Focus on remotes that likely require authentication'
+      'Consider providing an empty headers object if no headers are needed'
     ]
   },
   check: (data: any, basePath: string) => {

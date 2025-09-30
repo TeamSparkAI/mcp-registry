@@ -7,8 +7,7 @@ export const rule: LinterRule = {
   docs: {
     purpose: 'Ensure named arguments follow standard command-line conventions with leading dashes',
     triggers: [
-      'Named argument has a name but doesn\'t start with -- or -',
-      'Argument appears to be a flag or option but lacks proper prefix'
+      'Named argument has a name but doesn\'t start with -- or -'
     ],
     examples: {
       bad: `{ "name": "port", "description": "Port number" }`,
@@ -24,9 +23,7 @@ export const rule: LinterRule = {
       'packages.packageArguments'
     ],
     notes: [
-      'This follows standard Unix/Linux command-line conventions',
-      'Some tools may accept arguments without dashes, but it\'s not recommended',
-      'Consistent formatting improves user experience'
+      'Some tools may accept arguments without dashes, but it\'s not recommended'
     ]
   },
   check: (data: any, basePath: string) => {
