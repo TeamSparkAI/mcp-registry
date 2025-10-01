@@ -1,0 +1,275 @@
+#!/usr/bin/env node
+
+import fs from 'fs';
+import path from 'path';
+import { validateServerJson, lintServerData, linterRules } from './index';
+
+interface ValidationResult {
+  serverId: string;
+  name: string;
+  valid: boolean;
+  schemaIssues: any[];
+  linterIssues: any[];
+}
+
+async function validateRegistry(registryPath: string, schemaPath?: string) {
+  console.log('🔍 Validating server registry against schema...\n');
+
+  // Load the registry
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  const schema = JSON.parse(fs.readFileSync(schemaPath || path.join(__dirname, 'schema', 'server.schema.json'), 'utf8'));
+
+  const results: ValidationResult[] = [];
+  let validCount = 0;
+  let invalidCount = 0;
+  let skippedCount = 0;
+  const linterRuleCounts: { [rule: string]: number } = {};
+  const schemaErrorCounts: { [errorType: string]: number } = {};
+  const schemaErrorPathCounts: { [errorTypePath: string]: number } = {};
+
+  console.log(`Validating ${registry.servers.length} servers...\n`);
+
+  // Validate each server
+  for (const server of registry.servers) {
+    // Check if server has matching $schema field
+    const expectedSchemaId = schema.$id;
+    const serverSchema = server.$schema;
+    
+    if (serverSchema !== expectedSchemaId) {
+      skippedCount++;
+      continue;
+    }
+
+    const result = await validateServerJson(JSON.stringify(server), schemaPath);
+    const schemaIssues = result.issues.filter(i => i.source === 'schema');
+    const linterIssues = result.issues.filter(i => i.source === 'linter');
+
+    // Count linter rule instances
+    linterIssues.forEach(issue => {
+      if (issue.rule) {
+        linterRuleCounts[issue.rule] = (linterRuleCounts[issue.rule] || 0) + 1;
+      }
+    });
+
+    // Count schema error types and paths
+    schemaIssues.forEach(issue => {
+      const errorType = issue.rule?.split('/').pop() || 'unknown';
+      const path = issue.path;
+      const normalizedPath = path.replace(/\/\d+/g, '/*');
+      const errorTypePath = `${errorType}@${normalizedPath}`;
+      
+      schemaErrorCounts[errorType] = (schemaErrorCounts[errorType] || 0) + 1;
+      schemaErrorPathCounts[errorTypePath] = (schemaErrorPathCounts[errorTypePath] || 0) + 1;
+    });
+
+    results.push({
+      serverId: server._meta?.['io.modelcontextprotocol.registry/official']?.serverId || 'unknown',
+      name: server.name || 'unnamed',
+      valid: result.valid,
+      schemaIssues,
+      linterIssues
+    });
+
+    if (result.valid) {
+      validCount++;
+    } else {
+      invalidCount++;
+    }
+  }
+
+  // Print servers with any issues
+  const serversWithIssues = results.filter(r => r.schemaIssues.length > 0 || r.linterIssues.length > 0);
+  if (serversWithIssues.length > 0) {
+    console.log('\n🧭 SERVERS WITH ISSUES');
+    console.log('═'.repeat(50));
+    serversWithIssues.forEach(result => {
+      console.log(`\n${result.name} (${result.serverId})`);
+      result.schemaIssues.forEach(issue => {
+        const rule = issue.rule ? ` (${issue.rule})` : '';
+        console.log(`   • [SCHEMA][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}${rule}`);
+      });
+      result.linterIssues.forEach(issue => {
+        const rule = issue.rule ? ` (${issue.rule})` : '';
+        console.log(`   • [LINTER][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}${rule}`);
+      });
+    });
+  }
+
+  // Print summary
+  console.log('\n📊 SCHEMA VALIDATION SUMMARY');
+  console.log('═'.repeat(50));
+  console.log(`✅ Valid schema: ${validCount} servers`);
+  console.log(`❌ Invalid schema: ${invalidCount} servers`);
+  console.log(`⏭️  Skipped (non-current schema): ${skippedCount} servers`);
+  console.log(`📈 Schema success rate: ${((validCount / (validCount + invalidCount)) * 100).toFixed(1)}%`);
+  
+  // Schema error breakdown
+  if (Object.keys(schemaErrorPathCounts).length > 0) {
+    console.log('\n📊 SCHEMA ERROR BREAKDOWN');
+    console.log('─'.repeat(50));
+    const sortedErrorPaths = Object.entries(schemaErrorPathCounts)
+      .sort(([,a], [,b]) => b - a);
+    sortedErrorPaths.forEach(([errorTypePath, count]) => {
+      console.log(`  ${errorTypePath}: ${count} instances`);
+    });
+  }
+
+  // Linter summary
+  const serversWithLintErrors = results.filter(r => r.linterIssues.some(i => i.severity === 'error')).length;
+  const serversWithAnyLintIssues = results.filter(r => r.linterIssues.length > 0).length;
+  console.log('\n🧭 LINTER SUMMARY');
+  console.log('═'.repeat(50));
+  console.log(`🚫 Failed linter (error): ${serversWithLintErrors} servers`);
+  console.log(`⚠️  Any linter issues: ${serversWithAnyLintIssues} servers`);
+  
+  // Linter rule breakdown
+  if (Object.keys(linterRuleCounts).length > 0) {
+    console.log('\n📊 LINTER RULE BREAKDOWN');
+    console.log('─'.repeat(50));
+    const sortedRules = Object.entries(linterRuleCounts)
+      .sort(([,a], [,b]) => b - a);
+    sortedRules.forEach(([rule, count]) => {
+      console.log(`  ${rule}: ${count} instances`);
+    });
+  }
+
+  // Exit with error code if any servers are invalid
+  if (invalidCount > 0 || serversWithLintErrors > 0) {
+    console.log(`\n❌ Validation Failed: ${invalidCount} server(s) failed schema validation, ${serversWithLintErrors} server(s) failed linter (error)`);
+    process.exit(1);
+  } else {
+    console.log('\n🎉 All servers are valid!');
+    process.exit(0);
+  }
+}
+
+async function validateSingleServer(serverPath: string, schemaPath?: string) {
+  console.log(`🔍 Validating server: ${serverPath}\n`);
+  
+  const serverJson = fs.readFileSync(serverPath, 'utf8');
+  const result = await validateServerJson(serverJson, schemaPath);
+  
+  if (result.valid) {
+    console.log('✅ Server is valid!');
+  } else {
+    console.log('❌ Server has issues:');
+    result.issues.forEach(issue => {
+      console.log(`   • [${issue.source.toUpperCase()}][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}`);
+    });
+    process.exit(1);
+  }
+}
+
+function printLinterDocs(ruleName?: string) {
+  const printRuleDocs = (rule: any, isLast: boolean = false) => {
+    console.log(`\n🔎 ${rule.name} (${rule.severity})`);
+    console.log('');
+    console.log(`Message: ${rule.message}`);
+    const docs = rule.docs || {};
+    if (docs.purpose) console.log(`Purpose: ${docs.purpose}`);
+    if (docs.triggers && docs.triggers.length) {
+      console.log('Triggers:');
+      docs.triggers.forEach((t: string) => console.log(`  - ${t}`));
+    }
+    if (docs.examples && (docs.examples.bad || docs.examples.good)) {
+      if (docs.examples.bad) {
+        console.log('Bad example:');
+        console.log('  ' + docs.examples.bad.split('\n').join('\n  '));
+      }
+      if (docs.examples.good) {
+        console.log('Good example:');
+        console.log('  ' + docs.examples.good.split('\n').join('\n  '));
+      }
+    }
+    if (docs.guidance && docs.guidance.length) {
+      console.log('Guidance:');
+      docs.guidance.forEach((g: string) => console.log(`  - ${g}`));
+    }
+    if (docs.scope && docs.scope.length) {
+      console.log('Scope:');
+      docs.scope.forEach((s: string) => console.log(`  - ${s}`));
+    }
+    if (docs.notes && docs.notes.length) {
+      console.log('Notes:');
+      docs.notes.forEach((n: string) => console.log(`  - ${n}`));
+    }
+
+    if (!isLast) {
+      console.log('');
+      console.log('─'.repeat(50));
+    }
+  };
+
+  if (ruleName) {
+    const rule = linterRules.find(r => r.name === ruleName);
+    if (!rule) {
+      console.error(`Rule not found: ${ruleName}`);
+      console.log('Available rules:');
+      linterRules.forEach(r => console.log(` - ${r.name}`));
+      process.exit(1);
+    }
+    console.log('📚 LINTER RULE DOCS');
+    console.log('='.repeat(50));
+    printRuleDocs(rule, true);
+  } else {
+    console.log('📚 LINTER RULE DOCS (ALL)');
+    console.log('='.repeat(50));
+    linterRules.forEach((rule, index) => {
+      const isLast = index === linterRules.length - 1;
+      printRuleDocs(rule, isLast);
+    });
+  }
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  
+  if (args.length === 0) {
+    console.log(`
+MCP Registry Validator
+
+Usage:
+  mcp-validate validate <server.json>           Validate a single server file
+  mcp-validate validate-registry <registry.json> Validate entire registry
+  mcp-validate --linter-docs [ruleName]        Show linter rule documentation
+
+Examples:
+  mcp-validate validate server.json
+  mcp-validate validate-registry server-registry.json
+  mcp-validate --linter-docs prefer-dynamic-port
+    `);
+    process.exit(0);
+  }
+
+  const command = args[0];
+
+  if (command === '--linter-docs') {
+    const ruleName = args[1];
+    printLinterDocs(ruleName);
+  } else if (command === 'validate') {
+    const serverPath = args[1];
+    if (!serverPath) {
+      console.error('Error: Please provide a server file path');
+      process.exit(1);
+    }
+    await validateSingleServer(serverPath);
+  } else if (command === 'validate-registry') {
+    const registryPath = args[1];
+    if (!registryPath) {
+      console.error('Error: Please provide a registry file path');
+      process.exit(1);
+    }
+    await validateRegistry(registryPath);
+  } else {
+    console.error(`Unknown command: ${command}`);
+    process.exit(1);
+  }
+}
+
+if (require.main === module) {
+  main().catch(error => {
+    console.error('💥 CLI failed:', error);
+    process.exit(1);
+  });
+}
+

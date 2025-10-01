@@ -4,8 +4,7 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import fs from 'fs';
 import path from 'path';
-import { lintServerData, ValidationIssue } from '../../app/registry/utils/validation';
-import { linterRules } from '../../app/registry/utils/linter';
+import { lintServerData, ValidationIssue, linterRules } from '@toolcatalog/mcp-registry-validator';
 
 interface ValidationResult {
   serverId: string;

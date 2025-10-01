@@ -1,0 +1,43 @@
+{
+  "name": "@toolcatalog/mcp-registry-validator",
+  "version": "1.0.0",
+  "description": "MCP Server Registry Validator - Schema validation and linting for MCP server registry entries",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "browser": "dist/browser.js",
+  "bin": {
+    "mcp-validate": "./bin/mcp-validate"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc && tsc src/browser.ts --outDir dist --target ES2020 --module commonjs --declaration && cp -r src/schema dist/",
+    "dev": "tsx src/cli.ts",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "validation",
+    "schema",
+    "linting",
+    "registry"
+  ],
+  "author": "ToolCatalog",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

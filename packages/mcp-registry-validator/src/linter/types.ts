@@ -28,3 +28,4 @@ export interface LinterRule {
     notes?: string[];
   };
 }
+

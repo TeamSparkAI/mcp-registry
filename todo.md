@@ -1,21 +1,9 @@
 # TODO
 
-Linter - implement suppression by rule:
-
-{
-  "name": "my-server",
-  "_meta": {
-    "io.modelcontextprotocol.registry/official": { ... },
-    "io.modelcontextprotocol.registry/linter": {
-      "suppress": ["require-config-for-package", "prefer-config-for-remote"]
-    }
-  }
-}
-
 Add support for "strict" mode
 - No inference of things like packageHint
 - No auto add of package ref
-- No auto prefix of arg namess that don't start with a dash
+- No auto prefix of arg names that don't start with a dash
 - Review and identify any other non-spec massaging we do
 
 Add support for other registry types (npm and pypi should work)
@@ -26,6 +14,43 @@ Add support for other registry types (npm and pypi should work)
 Limitations (isSecret):
 - Fields with fixed "value" and "isSecret" are not currently obscured in the UX (it's not clear they should be)
 - Input format boolean or input with choices shows dropdown, whose selection is not masked if "isSecret" is specified
+
+## Validator
+
+Separate package (CLI and API)
+- In current repo, or new repo?
+
+If no args, look for server-registry.json as now, if not present, show help
+If arg, look in specified file
+- If contents are array, process as array of servers
+- If contents is object, process as server object
+
+Linter - implement suppression by rule:
+{
+  "name": "my-server",
+  "_meta": {
+    "io.modelcontextprotocol.registry/official": { ... },
+    "io.modelcontextprotocol.registry/linter": {
+      "suppress": ["require-config-for-package", "prefer-config-for-remote"]
+    }
+  }
+}
+
+## Pending registry PRs
+
+### https://github.com/modelcontextprotocol/registry/pull/570
+
+Remote URI template substitution
+- Implement config UX support for remote variables
+- Implement token replacement in generated config for same
+- Update linter rules 
+  - Remove no-remote-transport-variables
+  - Add no-remote-template-variabes-missing or exapand no-template-variables-missing to cover
+  - Same for no-unused-variables
+
+### https://github.com/modelcontextprotocol/registry/pull/601
+
+Implement placeholder support in UX
 
 ## Config Validation in our UX
 
@@ -65,10 +90,9 @@ These docs are great and should probably be linked in the Publish My Server doc
 - https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/generic-server-json.md
 - Underlying docs: server.json spec (links to server.schema.json)
 
-
 ## Issues with current servers
 
-Servers using default with what should be valueHint:
+Servers using default with what should be placeholder:
 - io.github.SamYuan1990/i18n-agent-action
 - io.github.cr7258/elasticsearch-mcp-server (maybe)
 
