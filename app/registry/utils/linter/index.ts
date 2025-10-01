@@ -8,6 +8,9 @@ import { rule as noUnusedVariables } from './rules/no-unused-variables';
 import { rule as noValueWithIrrelevantProperties } from './rules/no-value-with-irrelevant-properties';
 import { rule as noSecretStaticValue } from './rules/no-secret-static-value';
 import { rule as requireValidDefaultChoice } from './rules/require-valid-default-choice';
+import { rule as noTransportUrlVariablesMissing } from './rules/no-transport-url-variables-missing';
+import { rule as noRemoteTransportVariables } from './rules/no-remote-transport-variables';
+import { rule as preferDynamicPort } from './rules/prefer-dynamic-port';
 
 export const linterRules = [
   requireConfigForPackage,
@@ -20,4 +23,7 @@ export const linterRules = [
   noValueWithIrrelevantProperties,
   noSecretStaticValue,
   requireValidDefaultChoice,
+  noTransportUrlVariablesMissing,
+  noRemoteTransportVariables,
+  preferDynamicPort,
 ];

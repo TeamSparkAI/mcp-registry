@@ -23,6 +23,11 @@ interface PackageConfig {
   runtimeArguments?: FieldConfig[];
   packageArguments?: FieldConfig[];
   environmentVariables?: FieldConfig[];
+  transport?: {
+    type: string;
+    url?: string;
+    headers?: FieldConfig[];
+  };
 }
 
 interface RemoteConfig {
@@ -84,7 +89,8 @@ export default function ServerDetailView({
     return pkg.runtimeHint || 
            (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) ||
            (pkg.packageArguments && pkg.packageArguments.length > 0) ||
-           (pkg.environmentVariables && pkg.environmentVariables.length > 0);
+           (pkg.environmentVariables && pkg.environmentVariables.length > 0) ||
+           (pkg.transport?.headers && pkg.transport.headers.length > 0);
   };
 
   const hasRemoteConfiguration = (remote: RemoteConfig) => {
@@ -332,6 +338,32 @@ export default function ServerDetailView({
                                 <label className="text-sm font-medium text-gray-500">Registry Type</label>
                                 <p className="text-gray-900">{pkg.registryType}</p>
                               </div>
+                              {(pkg.transport as any)?.type && (
+                                <div>
+                                  <label className="text-sm font-medium text-gray-500">Transport</label>
+                                  <p className="text-gray-900">{(pkg.transport as any).type}</p>
+                                </div>
+                              )}
+                              {(pkg.transport as any)?.url && (
+                                <div>
+                                  <label className="text-sm font-medium text-gray-500">Transport URL</label>
+                                  <p className="text-gray-900 font-mono text-sm break-all">{(pkg.transport as any).url}</p>
+                                </div>
+                              )}
+                              {(pkg.transport as any)?.headers && (pkg.transport as any).headers.length > 0 && (
+                                <div className="col-span-full">
+                                  <label className="text-sm font-medium text-gray-500">Transport Headers</label>
+                                  <div className="mt-1 space-y-2">
+                                    {(pkg.transport as any).headers.map((header: any, headerIndex: number) => (
+                                      <div key={headerIndex} className="flex items-center space-x-4 text-sm">
+                                        <span className="font-mono bg-gray-100 px-2 py-1 rounded">{header.name}</span>
+                                        <span className="text-gray-600">:</span>
+                                        <span className="font-mono bg-gray-100 px-2 py-1 rounded">{header.value || '(empty)'}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                           {hasPackageConfiguration(pkg as PackageConfig) && (

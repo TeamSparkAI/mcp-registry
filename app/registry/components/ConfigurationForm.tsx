@@ -24,6 +24,11 @@ interface PackageConfig {
   runtimeArguments?: FieldConfig[];
   packageArguments?: FieldConfig[];
   environmentVariables?: FieldConfig[];
+  transport?: {
+    type: string;
+    url?: string;
+    headers?: FieldConfig[];
+  };
 }
 
 interface RemoteConfig {
@@ -417,6 +422,12 @@ export default function ConfigurationForm({
               <p><strong>Version:</strong> v{configuringPackage.pkg.version}</p>
               <p><strong>Registry Type:</strong> {configuringPackage.pkg.registryType}</p>
               {configuringPackage.pkg.runtimeHint && <p><strong>Runtime Hint:</strong> {configuringPackage.pkg.runtimeHint}</p>}
+              {(configuringPackage.pkg.transport as any)?.type && (
+                <p><strong>Transport:</strong> {(configuringPackage.pkg.transport as any).type}</p>
+              )}
+              {(configuringPackage.pkg.transport as any)?.url && (
+                <p><strong>Transport URL:</strong> <span className="font-mono break-all">{(configuringPackage.pkg.transport as any).url}</span></p>
+              )}
             </div>
           </div>
         )}
@@ -510,6 +521,30 @@ export default function ConfigurationForm({
                             {renderFieldWithVariables(env, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
                           {envIndex < (configuringPackage.pkg.environmentVariables?.length || 0) - 1 && (
+                            <hr className="border-gray-200 mb-3" />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Transport Headers */}
+              {configuringPackage.pkg.transport?.headers && configuringPackage.pkg.transport.headers.length > 0 && (
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 mb-3">
+                    Transport Headers
+                  </h3>
+                  <div className="space-y-0">
+                    {configuringPackage.pkg.transport.headers.map((header, headerIndex) => {
+                      const fieldId = `transport_header_${header.name}`;
+                      return (
+                        <div key={headerIndex}>
+                          <div className="pb-3">
+                            {renderFieldWithVariables(header, fieldId, packageConfig, onPackageConfigChange, "Enter header value")}
+                          </div>
+                          {headerIndex < (configuringPackage.pkg.transport?.headers?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
                           )}
                         </div>
