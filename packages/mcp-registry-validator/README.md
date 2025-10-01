@@ -2,6 +2,8 @@
 
 MCP Server Registry Validator - Schema validation and linting for MCP server registry entries.
 
+Validate server.json objects against the schema from [The Official MCP Registry](https://github.com/modelcontextprotocol/registry/) combined with linter rules from this project.
+
 ## Features
 
 - **Schema Validation**: Validates server.json files against the official MCP server schema
