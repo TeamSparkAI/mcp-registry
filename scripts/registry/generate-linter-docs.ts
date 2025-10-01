@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { linterRules } from '../../app/registry/utils/linter';
+import { linterRules } from '@toolcatalog/mcp-registry-validator';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 

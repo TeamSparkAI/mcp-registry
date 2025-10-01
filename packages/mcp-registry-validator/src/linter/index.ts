@@ -27,3 +27,5 @@ export const linterRules = [
   noRemoteTransportVariables,
   preferDynamicPort,
 ];
+
+export { lintServerData } from './runner';
