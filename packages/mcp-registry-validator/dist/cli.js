@@ -204,13 +204,14 @@ async function main() {
 MCP Registry Validator
 
 Usage:
-  mcp-validate validate <server.json>           Validate a single server file
-  mcp-validate validate-registry <registry.json> Validate entire registry
-  mcp-validate --linter-docs [ruleName]        Show linter rule documentation
+  mcp-validate validate <server.json>             Validate a single server file
+  mcp-validate validate-registry <registry.json>  Validate entire registry
+  mcp-validate --linter-docs [ruleName]           Show linter rule documentation [single rule only, else all rules]
 
 Examples:
   mcp-validate validate server.json
   mcp-validate validate-registry server-registry.json
+  mcp-validate --linter-docs
   mcp-validate --linter-docs prefer-dynamic-port
     `);
         process.exit(0);
