@@ -22,6 +22,11 @@ interface PackageConfig {
   runtimeArguments?: FieldConfig[];
   packageArguments?: FieldConfig[];
   environmentVariables?: FieldConfig[];
+  transport?: {
+    type: string;
+    url?: string;
+    headers?: FieldConfig[];
+  };
 }
 
 interface RemoteConfig {
@@ -127,6 +132,25 @@ export default function RequiredFieldWarning({
         
         // Check if any variables are required and missing
         return checkRequiredVariables(env, packageConfig, fieldId);
+      });
+    }
+    
+    // Check transport headers
+    if (!hasRequiredFields && pkg.transport?.headers) {
+      hasRequiredFields = pkg.transport.headers.some((header: FieldConfig) => {
+        const fieldId = `transport_header_${header.name}`;
+        
+        // Check if the main field is required and missing
+        if (header.isRequired && !header.value) {
+          const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (header.default || '');
+          if (!currentValue || currentValue.trim() === '') {
+            return true;
+          }
+        }
+        
+        // Check if any variables are required and missing
+        return checkRequiredVariables(header, packageConfig, fieldId);
       });
     }
   }

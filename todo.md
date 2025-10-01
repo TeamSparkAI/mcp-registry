@@ -1,6 +1,16 @@
 # TODO
 
-Render tokens in package transport uri fields - things like {port}
+Linter - implement suppression by rule:
+
+{
+  "name": "my-server",
+  "_meta": {
+    "io.modelcontextprotocol.registry/official": { ... },
+    "io.modelcontextprotocol.registry/linter": {
+      "suppress": ["require-config-for-package", "prefer-config-for-remote"]
+    }
+  }
+}
 
 Add support for "strict" mode
 - No inference of things like packageHint
@@ -27,17 +37,6 @@ Consistent result format consolidated across all checks and displayed
 
 Schema and linter return JSON path indicating error
 - We could use jsonc to highlight the JSON element corresponding to the schema/linter issue
-
-Linter rules that schema won't catch:
-- No config for package/remote (per package/remote) - explain why this could be better ;)
-- Named arg with no leading dashes (field)
-- Value with token in braces and no corresponding variable (field)
-- Value and default, isRequired, choices (field)
-  - isSecret (static value that is secret, is that a thing?)
-- Value not consistent with format (number and not number, boolean and not string true/false)
-- Value with tokens/variables and isSecret (could be, probably not, actually a secret)
-- Variable in parent string and not required (maybe real, likely error)
-- Discription contains a comma-separated list of quoted values, but no choices, esp if default is one of those values (?)
 
 # Official MCP registry
 

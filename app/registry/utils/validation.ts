@@ -2,6 +2,7 @@ import Ajv, { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
 import { ValidationIssue, ValidationResult } from './linter/types';
 import { lintServerData } from './linter/runner';
+import { hasTemplateVariables, extractVariableNames } from './linter/utils/templates';
 
 // Load schema once and cache it
 let schema: any = null;
@@ -90,3 +91,40 @@ export async function validateServerJson(serverJson: string, getResourcePath?: (
 // Re-export types and functions from the new linter structure
 export type { ValidationIssue, ValidationResult } from './linter/types';
 export { lintServerData } from './linter/runner';
+
+// Transport URL variable substitution for packages
+export function substituteTransportUrl(url: string, packageConfig: any): string {
+  if (!hasTemplateVariables(url)) {
+    return url;
+  }
+  
+  const variables = extractVariableNames(url);
+  let substitutedUrl = url;
+  
+  variables.forEach(variable => {
+    // Look for matching runtime arguments
+    const runtimeArg = packageConfig.runtimeArguments?.find((arg: any) => 
+      arg.valueHint === variable || arg.name === variable
+    );
+    
+    // Look for matching package arguments  
+    const packageArg = packageConfig.packageArguments?.find((arg: any) =>
+      arg.valueHint === variable || arg.name === variable
+    );
+    
+    // Look for matching environment variables
+    const envVar = packageConfig.environmentVariables?.find((env: any) =>
+      env.name === variable
+    );
+    
+    // Use the first match found
+    const match = runtimeArg || packageArg || envVar;
+    if (match) {
+      // For now, keep the variable reference - actual substitution happens in MCP client generation
+      // This function is mainly for validation purposes
+      substitutedUrl = substitutedUrl.replace(`{${variable}}`, `{${variable}}`);
+    }
+  });
+  
+  return substitutedUrl;
+}

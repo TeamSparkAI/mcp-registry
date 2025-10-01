@@ -522,13 +522,80 @@ export default function RegistryPage() {
         });
       }
       
+      // Handle transport URL substitution for packages
+      let transportUrl = (pkg.transport as any)?.url;
+      if (transportUrl && (pkg.transport as any)?.type === 'sse') {
+        // Substitute variables in transport URL using package configuration
+        const variables = extractVariableNames(transportUrl);
+        variables.forEach(variable => {
+          // Look for matching runtime arguments
+          const runtimeArg = pkg.runtimeArguments?.find((arg: any) => 
+            arg.valueHint === variable || arg.name === variable
+          );
+          
+          // Look for matching package arguments  
+          const packageArg = pkg.packageArguments?.find((arg: any) =>
+            arg.valueHint === variable || arg.name === variable
+          );
+          
+          // Look for matching environment variables
+          const envVar = pkg.environmentVariables?.find((env: any) =>
+            env.name === variable
+          );
+          
+          // Use the first match found and substitute with user input
+          const match = runtimeArg || packageArg || envVar;
+          if (match) {
+            let fieldId = '';
+            if (runtimeArg) {
+              fieldId = `runtimeArg_${(runtimeArg as any).name || (runtimeArg as any).value}`;
+            } else if (packageArg) {
+              fieldId = `packageArg_${(packageArg as any).name || (packageArg as any).value}`;
+            } else if (envVar) {
+              fieldId = `env_${(envVar as any).name}`;
+            }
+            
+            const value = substituteFieldVariables(match, packageConfig, fieldId);
+            if (value) {
+              transportUrl = transportUrl.replace(`{${variable}}`, value);
+            }
+          }
+        });
+      }
+      
+      const serverConfig: any = {
+        command: runtimeHint,
+        args: args,
+        ...(Object.keys(env).length > 0 && { env })
+      };
+      
+      // Add transport configuration if present
+      if (pkg.transport) {
+        serverConfig.transport = {
+          type: pkg.transport.type,
+          url: transportUrl
+        };
+        
+        // Add transport headers if present
+        if ((pkg.transport as any).headers && (pkg.transport as any).headers.length > 0) {
+          const transportHeaders: Record<string, string> = {};
+          (pkg.transport as any).headers.forEach((header: any) => {
+            const fieldId = `transport_header_${header.name}`;
+            const value = substituteFieldVariables(header, packageConfig, fieldId);
+            if (value) {
+              transportHeaders[header.name] = value;
+            }
+          });
+          
+          if (Object.keys(transportHeaders).length > 0) {
+            serverConfig.transport.headers = transportHeaders;
+          }
+        }
+      }
+      
       return {
         mcpServers: {
-          [serverName]: {
-            command: runtimeHint,
-            args: args,
-            ...(Object.keys(env).length > 0 && { env })
-          }
+          [serverName]: serverConfig
         }
       };
     }

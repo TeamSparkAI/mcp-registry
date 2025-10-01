@@ -18,6 +18,9 @@ These linter rules detect issues that are not possble to enforce or detect via J
 - [no-value-with-irrelevant-properties](#no-value-with-irrelevant-properties)
 - [no-secret-static-value](#no-secret-static-value)
 - [require-valid-default-choice](#require-valid-default-choice)
+- [no-transport-url-variables-missing](#no-transport-url-variables-missing)
+- [no-remote-transport-variables](#no-remote-transport-variables)
+- [prefer-dynamic-port](#prefer-dynamic-port)
 
 ## require-config-for-package
 
@@ -391,4 +394,163 @@ These linter rules detect issues that are not possble to enforce or detect via J
 
 **Notes:**
 - Default should always be a valid choice when choices are specified
+
+## no-transport-url-variables-missing
+
+**Purpose:** Ensure transport URL variables in packages are defined in package configuration
+
+**Message:** Package transport URL contains variables without matching configuration
+
+**Severity:** error
+
+**Triggers:**
+- Package transport URL contains {variable} but no matching runtime argument, package argument, or environment variable
+
+**Examples:**
+
+❌ **Bad:**
+```json
+{
+  "packages": [{
+    "identifier": "my-server",
+    "transport": {
+      "type": "sse",
+      "url": "http://localhost:{port}/sse"
+    },
+    "runtimeArguments": [{
+      "name": "--host",
+      "valueHint": "host"
+    }]
+  }]
+}
+```
+
+✅ **Good:**
+```json
+{
+  "packages": [{
+    "identifier": "my-server", 
+    "transport": {
+      "type": "sse",
+      "url": "http://localhost:{port}/sse"
+    },
+    "runtimeArguments": [{
+      "name": "--port",
+      "valueHint": "port"
+    }]
+  }]
+}
+```
+
+**Guidance:**
+- Add runtime arguments with matching valueHint or name
+- Add package arguments with matching valueHint or name
+- Add environment variables with matching name
+- Or remove variables from the transport URL
+
+**Scope:** packages.transport.url
+
+**Notes:**
+- Variables in transport URLs must be resolvable to package configuration
+- Check valueHint, name fields in runtimeArguments, packageArguments, and environmentVariables
+
+## no-remote-transport-variables
+
+**Purpose:** Prevent variable references in remote transport URLs since there is no configuration context to resolve them
+
+**Message:** Remote transport URL cannot contain variable references
+
+**Severity:** error
+
+**Triggers:**
+- Remote transport URL contains {variable} references
+
+**Examples:**
+
+❌ **Bad:**
+```json
+{
+  "remotes": [{
+    "type": "sse",
+    "url": "http://localhost:{port}/sse"
+  }]
+}
+```
+
+✅ **Good:**
+```json
+{
+  "remotes": [{
+    "type": "sse", 
+    "url": "http://localhost:8080/sse"
+  }]
+}
+```
+
+**Guidance:**
+- Use static URLs for remote transports
+- Remove variable references from remote transport URLs
+- Use package transports if variable substitution is needed
+
+**Scope:** remotes.transport.url
+
+**Notes:**
+- Remote transports have no configuration context to resolve variables
+- Only package transports can use variable substitution
+
+## prefer-dynamic-port
+
+**Purpose:** Encourage use of dynamic port variables instead of hard-coded port numbers for better flexibility
+
+**Message:** Package transport URL contains hard-coded port number, prefer dynamic port via variable substitution
+
+**Severity:** warning
+
+**Triggers:**
+- Package transport URL contains hard-coded port numbers (e.g., :8080, :3000, :9000)
+
+**Examples:**
+
+❌ **Bad:**
+```json
+{
+  "packages": [{
+    "identifier": "my-server",
+    "transport": {
+      "type": "sse",
+      "url": "http://localhost:8080/sse"
+    }
+  }]
+}
+```
+
+✅ **Good:**
+```json
+{
+  "packages": [{
+    "identifier": "my-server",
+    "transport": {
+      "type": "sse",
+      "url": "http://localhost:{port}/sse"
+    },
+    "runtimeArguments": [{
+      "name": "--port",
+      "valueHint": "port",
+      "description": "Port number for the server"
+    }]
+  }]
+}
+```
+
+**Guidance:**
+- Replace hard-coded port numbers with {port} variable substitution
+- Add runtime argument or package argument with matching valueHint or name
+- Consider common port ranges: 3000-9999, 8000-8999, 9000-9999
+
+**Scope:** packages.transport.url
+
+**Notes:**
+- Hard-coded ports make packages less flexible for different environments
+- Dynamic ports allow users to configure ports based on their setup
+- Common hard-coded ports include :8080, :3000, :8000, :9000, :5000
 
