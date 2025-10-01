@@ -545,12 +545,10 @@ These linter rules detect issues that are not possble to enforce or detect via J
 **Guidance:**
 - Replace hard-coded port numbers with {port} variable substitution
 - Add runtime argument or package argument with matching valueHint or name
-- Consider common port ranges: 3000-9999, 8000-8999, 9000-9999
 
 **Scope:** packages.transport.url
 
 **Notes:**
 - Hard-coded ports make packages less flexible for different environments
 - Dynamic ports allow users to configure ports based on their setup
-- Common hard-coded ports include :8080, :3000, :8000, :9000, :5000
 
