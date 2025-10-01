@@ -116,6 +116,8 @@ async function validateRegistry() {
   let skippedCount = 0;
   let lintErrorCount = 0;
   const linterRuleCounts: { [rule: string]: number } = {};
+  const schemaErrorCounts: { [errorType: string]: number } = {};
+  const schemaErrorPathCounts: { [errorTypePath: string]: number } = {};
 
   console.log(`Validating ${registry.servers.length} servers...\n`);
 
@@ -132,13 +134,25 @@ async function validateRegistry() {
     const valid = validate(server);
     const schemaIssues: ValidationIssue[] = valid
       ? []
-      : (validate.errors || []).map(err => ({
-          source: 'schema',
-          severity: 'error',
-          path: err.instancePath || '/',
-          message: err.message || 'Schema validation error',
-          rule: err.schemaPath
-        }));
+      : (validate.errors || []).map(err => {
+          // Categorize schema errors by type and path (normalize array indices)
+          const errorType = err.keyword || 'unknown';
+          const path = err.instancePath || '/';
+          // Replace array indices with * to group similar issues
+          const normalizedPath = path.replace(/\/\d+/g, '/*');
+          const errorTypePath = `${errorType}@${normalizedPath}`;
+          
+          schemaErrorCounts[errorType] = (schemaErrorCounts[errorType] || 0) + 1;
+          schemaErrorPathCounts[errorTypePath] = (schemaErrorPathCounts[errorTypePath] || 0) + 1;
+          
+          return {
+            source: 'schema',
+            severity: 'error',
+            path: path,
+            message: err.message || 'Schema validation error',
+            rule: err.schemaPath
+          };
+        });
 
     // Run linter once
     const linterIssues = await lintServerData(server);
@@ -193,6 +207,17 @@ async function validateRegistry() {
   console.log(`❌ Invalid schema: ${invalidCount} servers`);
   console.log(`⏭️  Skipped (non-current schema): ${skippedCount} servers`);
   console.log(`📈 Schema success rate: ${((validCount / (validCount + invalidCount)) * 100).toFixed(1)}%`);
+  
+  // Schema error type + path breakdown
+  if (Object.keys(schemaErrorPathCounts).length > 0) {
+    console.log('\n📊 SCHEMA ERROR BREAKDOWN');
+    console.log('─'.repeat(50));
+    const sortedErrorPaths = Object.entries(schemaErrorPathCounts)
+      .sort(([,a], [,b]) => b - a);
+    sortedErrorPaths.forEach(([errorTypePath, count]) => {
+      console.log(`  ${errorTypePath}: ${count} instances`);
+    });
+  }
 
   // Linter summary (by servers)
   const serversWithLintErrors = results.filter(r => r.linterIssues.some(i => i.severity === 'error')).length;
