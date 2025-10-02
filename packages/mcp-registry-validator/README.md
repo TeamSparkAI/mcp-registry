@@ -1,8 +1,12 @@
-# @toolcatalog/mcp-registry-validator
+# mcp-registry-validator
 
 MCP Server Registry Validator - Schema validation and linting for MCP server registry entries.
 
 Validate server.json objects against the schema from [The Official MCP Registry](https://github.com/modelcontextprotocol/registry/) combined with linter rules from this project.
+
+This is the same validation performed in developer test mode on the [ToolVault ToolCatalog MCP Server Registry](https://teamsparkai.github.io/ToolCatalog/registry).
+
+Available as a command-line app or via API.
 
 ## Features
 
@@ -14,34 +18,65 @@ Validate server.json objects against the schema from [The Official MCP Registry]
 ## Installation
 
 ```bash
-npm install @toolcatalog/mcp-registry-validator
+npm install mcp-registry-validator
 ```
 
 ## CLI Usage
 
-### Validate a single server file
+The CLI can be used in three ways:
+
+### Option 1: Direct Installation
 ```bash
-npx @toolcatalog/mcp-registry-validator validate server.json
+# Install globally
+npm install -g mcp-registry-validator
+
+# Use directly
+mcp-validate validate server.json
+mcp-validate validate-registry server-registry.json
+mcp-validate --linter-docs prefer-dynamic-port
 ```
 
-### Validate entire registry
+### Option 2: npx (no installation required)
 ```bash
-npx @toolcatalog/mcp-registry-validator validate-registry server-registry.json
+npx mcp-registry-validator validate server.json
+npx mcp-registry-validator validate-registry server-registry.json
+npx mcp-registry-validator --linter-docs prefer-dynamic-port
 ```
 
-### Show linter rule documentation
+### Option 3: Local Installation
+```bash
+# Install in your project
+npm install mcp-registry-validator
+
+# Use via npm scripts or node_modules
+npx mcp-validate validate server.json
+```
+
+### Available Commands
+
+#### Validate a single server file
+```bash
+mcp-validate validate server.json
+```
+
+#### Validate entire registry
+```bash
+mcp-validate validate-registry server-registry.json
+```
+
+#### Show linter rule documentation
 ```bash
 # Show all rules
-npx @toolcatalog/mcp-registry-validator --linter-docs
+mcp-validate --linter-docs
 
 # Show specific rule
-npx @toolcatalog/mcp-registry-validator --linter-docs prefer-dynamic-port
+mcp-validate --linter-docs prefer-dynamic-port
 ```
 
 ## Programmatic API
 
 ```typescript
-import { validateServerJson, lintServerData, linterRules } from '@toolcatalog/mcp-registry-validator';
+import { validateServerJson, lintServerData, linterRules } from 'mcp-registry-validator';
 
 // Validate a server JSON string
 const result = await validateServerJson(jsonString);
@@ -55,21 +90,15 @@ console.log(linterRules.map(r => r.name));
 
 ## Linter Rules
 
-The validator includes 13 custom linter rules:
+The validator includes over a dozen comprehensive linter rules for MCP server registry best practices. For detailed documentation of each rule including examples, triggers, and guidance, see:
 
-1. **require-config-for-package** - Encourage packages to provide configuration options
-2. **prefer-config-for-remote** - Suggest adding headers configuration for remotes
-3. **require-arg-leading-dashes** - Ensure named arguments start with dashes
-4. **no-template-variables-missing** - Validate template variables are defined
-5. **require-valid-value-format** - Ensure values match expected data types
-6. **no-secret-template** - Warn about secret fields with template variables
-7. **no-unused-variables** - Detect unused variable definitions
-8. **no-value-with-irrelevant-properties** - Warn about conflicting field properties
-9. **no-secret-static-value** - Warn about static values marked as secret
-10. **require-valid-default-choice** - Validate default values against choices
-11. **no-transport-url-variables-missing** - Ensure transport URL variables are defined
-12. **no-remote-transport-variables** - Prevent variables in remote transport URLs
-13. **prefer-dynamic-port** - Encourage dynamic port variables over hard-coded ports
+**[📚 Complete Linter Rules Documentation](./linter.md)**
+
+You can also view linter rules directly via CLI:
+```bash
+mcp-validate --linter-docs                    # Show all rules
+mcp-validate --linter-docs prefer-dynamic-port  # Show specific rule
+```
 
 ## Validation Types
 

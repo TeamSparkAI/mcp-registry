@@ -8,15 +8,15 @@ importers:
 
   .:
     dependencies:
-      '@toolcatalog/mcp-registry-validator':
-        specifier: workspace:*
-        version: link:packages/mcp-registry-validator
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
       ajv-formats:
         specifier: ^3.0.1
         version: 3.0.1(ajv@8.17.1)
+      mcp-registry-validator:
+        specifier: workspace:*
+        version: link:packages/mcp-registry-validator
       next:
         specifier: ^15.1.7
         version: 15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)

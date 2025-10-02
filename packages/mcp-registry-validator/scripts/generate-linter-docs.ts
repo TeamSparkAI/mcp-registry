@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { linterRules } from '@toolcatalog/mcp-registry-validator';
+import { linterRules } from '../dist/linter';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 
@@ -88,10 +88,17 @@ function generateMarkdown(): string {
 function main() {
   try {
     const markdown = generateMarkdown();
-    const outputPath = join(process.cwd(), 'public', 'linter.md');
     
-    writeFileSync(outputPath, markdown, 'utf8');
-    console.log(`✅ Generated linter documentation: ${outputPath}`);
+    // Write to validator package directory
+    const packagePath = join(process.cwd(), 'linter.md');
+    writeFileSync(packagePath, markdown, 'utf8');
+    console.log(`✅ Generated linter documentation: ${packagePath}`);
+    
+    // Also write to project root (for ToolCatalog project)
+    const rootPath = join(process.cwd(), '..', '..', 'linter.md');
+    writeFileSync(rootPath, markdown, 'utf8');
+    console.log(`✅ Copied to project root: ${rootPath}`);
+    
     console.log(`📄 Generated ${linterRules.length} rule descriptions`);
   } catch (error) {
     console.error('❌ Error generating linter documentation:', error);
