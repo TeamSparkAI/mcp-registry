@@ -10,10 +10,9 @@ Available as a command-line app or via API.
 
 ## Features
 
+- **JSON Validation**: Validates server.json as valid JSON
 - **Schema Validation**: Validates server.json files against the official MCP server schema
-- **Custom Linter Rules**: 13 comprehensive linter rules for best practices
-- **CLI Interface**: Command-line tool for validation and documentation
-- **Programmatic API**: TypeScript API for integration into other tools
+- **Custom Linter Rules**: Applies comprehensive linter rules for best practices
 
 ## Installation
 
