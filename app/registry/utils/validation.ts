@@ -4,7 +4,7 @@ import {
   substituteTransportUrl,
   type ValidationIssue, 
   type ValidationResult 
-} from '@toolcatalog/mcp-registry-validator/dist/browser';
+} from 'mcp-registry-validator/dist/browser';
 
 // Wrapper function to handle GitHub Pages resource path loading
 export async function validateServerJson(serverJson: string, getResourcePath?: (path: string) => string): Promise<ValidationResult> {
@@ -20,5 +20,5 @@ export async function validateServerJson(serverJson: string, getResourcePath?: (
 }
 
 // Re-export types and functions from the validator package
-export type { ValidationIssue, ValidationResult } from '@toolcatalog/mcp-registry-validator/dist/browser';
-export { lintServerData, substituteTransportUrl } from '@toolcatalog/mcp-registry-validator/dist/browser';
+export type { ValidationIssue, ValidationResult } from 'mcp-registry-validator/dist/browser';
+export { lintServerData, substituteTransportUrl } from 'mcp-registry-validator/dist/browser';

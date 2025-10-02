@@ -1,6 +1,6 @@
 {
-  "name": "@toolcatalog/mcp-registry-validator",
-  "version": "1.0.0",
+  "name": "mcp-registry-validator",
+  "version": "1.0.2",
   "description": "MCP Server Registry Validator - Schema validation and linting for MCP server registry entries",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,12 +11,16 @@
   "files": [
     "dist/",
     "bin/",
-    "README.md"
+    "README.md",
+    "linter.md"
   ],
   "scripts": {
     "build": "tsc && tsc src/browser.ts --outDir dist --target ES2020 --module commonjs --declaration && cp -r src/schema dist/",
     "dev": "tsx src/cli.ts",
-    "test": "echo \"No tests yet\""
+    "test": "echo \"No tests yet\"",
+    "prepublishOnly": "pnpm build",
+    "prepack": "pnpm build",
+    "docs": "tsx scripts/generate-linter-docs.ts"
   },
   "keywords": [
     "mcp",
@@ -28,6 +32,15 @@
   ],
   "author": "ToolCatalog",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teamsparkai/ToolCatalog.git",
+    "directory": "packages/mcp-registry-validator"
+  },
+  "homepage": "https://github.com/teamsparkai/ToolCatalog/tree/main/packages/mcp-registry-validator",
+  "bugs": {
+    "url": "https://github.com/teamsparkai/ToolCatalog/issues"
+  },
   "dependencies": {
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1"
