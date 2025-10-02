@@ -1,6 +1,6 @@
 {
   "name": "mcp-registry-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "MCP Server Registry Validator - Schema validation and linting for MCP server registry entries",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

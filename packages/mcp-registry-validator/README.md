@@ -53,23 +53,14 @@ npx mcp-validate validate server.json
 
 ### Available Commands
 
-#### Validate a single server file
+#### Validate a single server file (server.json object)
 ```bash
 mcp-validate validate server.json
 ```
 
-#### Validate entire registry
+#### Validate entire registry (array of server.json objects)
 ```bash
 mcp-validate validate-registry server-registry.json
-```
-
-#### Using the included sample data
-```bash
-# Validate the example server (included in package)
-mcp-validate validate data/server.json
-
-# Validate the full registry (included in package)
-mcp-validate validate-registry data/registry.json
 ```
 
 #### Show linter rule documentation
@@ -79,6 +70,35 @@ mcp-validate --linter-docs
 
 # Show specific rule
 mcp-validate --linter-docs prefer-dynamic-port
+```
+
+## Sample Output
+
+### Valid Server (with linter suggestions)
+```bash
+$ mcp-validate validate server.json
+
+🔍 Validating server: server.json
+
+✅ Server complies with schema!
+
+📋 All Issues:
+   • [LINTER][INFO] /remotes[0]: Remote has no headers configuration (prefer-config-for-remote)
+   • [LINTER][WARNING] /packages/0/transport/url: Transport URL contains hard-coded port 8080, consider using {port} variable substitution (prefer-dynamic-port)
+```
+
+### Invalid Server (with errors)
+```bash
+$ mcp-validate validate server.json
+
+🔍 Validating server: server.json
+
+❌ Server has schema errors:
+   • [SCHEMA][ERROR] /repository/url: must match format "uri" (#/definitions/Repository/properties/url/format)
+
+📋 All Issues:
+   • [SCHEMA][ERROR] /repository/url: must match format "uri" (#/definitions/Repository/properties/url/format)
+   • [LINTER][WARNING] /packages/0/transport/url: Transport URL contains hard-coded port 8080, consider using {port} variable substitution (prefer-dynamic-port)
 ```
 
 ## Programmatic API
@@ -104,7 +124,7 @@ The validator includes over a dozen comprehensive linter rules for MCP server re
 
 You can also view linter rules directly via CLI:
 ```bash
-mcp-validate --linter-docs                    # Show all rules
+mcp-validate --linter-docs                      # Show all rules
 mcp-validate --linter-docs prefer-dynamic-port  # Show specific rule
 ```
 
