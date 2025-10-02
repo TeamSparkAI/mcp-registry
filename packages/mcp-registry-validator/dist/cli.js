@@ -47,14 +47,16 @@ async function validateRegistry(registryPath, schemaPath) {
             schemaErrorCounts[errorType] = (schemaErrorCounts[errorType] || 0) + 1;
             schemaErrorPathCounts[errorTypePath] = (schemaErrorPathCounts[errorTypePath] || 0) + 1;
         });
+        // Determine schema validity based only on schema issues, not linter issues
+        const schemaValid = schemaIssues.length === 0;
         results.push({
             serverId: server._meta?.['io.modelcontextprotocol.registry/official']?.serverId || 'unknown',
             name: server.name || 'unnamed',
-            valid: result.valid,
+            valid: schemaValid,
             schemaIssues,
             linterIssues
         });
-        if (result.valid) {
+        if (schemaValid) {
             validCount++;
         }
         else {
@@ -126,14 +128,28 @@ async function validateSingleServer(serverPath, schemaPath) {
     console.log(`🔍 Validating server: ${serverPath}\n`);
     const serverJson = fs_1.default.readFileSync(serverPath, 'utf8');
     const result = await (0, index_1.validateServerJson)(serverJson, schemaPath);
-    if (result.valid) {
-        console.log('✅ Server is valid!');
+    const schemaIssues = result.issues.filter(i => i.source === 'schema');
+    const linterIssues = result.issues.filter(i => i.source === 'linter');
+    const errorIssues = result.issues.filter(i => i.severity === 'error');
+    if (errorIssues.length === 0) {
+        console.log('✅ Server complies with schema!');
     }
     else {
-        console.log('❌ Server has issues:');
-        result.issues.forEach(issue => {
+        console.log('❌ Server has errors:');
+        errorIssues.forEach(issue => {
             console.log(`   • [${issue.source.toUpperCase()}][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}`);
         });
+    }
+    // Show all issues (including warnings and info)
+    if (result.issues.length > 0) {
+        console.log('\n📋 All Issues:');
+        result.issues.forEach(issue => {
+            const rule = issue.rule ? ` (${issue.rule})` : '';
+            console.log(`   • [${issue.source.toUpperCase()}][${issue.severity.toUpperCase()}] ${issue.path}: ${issue.message}${rule}`);
+        });
+    }
+    // Exit with error code only if there are actual errors
+    if (errorIssues.length > 0) {
         process.exit(1);
     }
 }

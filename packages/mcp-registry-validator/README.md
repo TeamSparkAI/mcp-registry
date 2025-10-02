@@ -63,6 +63,15 @@ mcp-validate validate server.json
 mcp-validate validate-registry server-registry.json
 ```
 
+#### Using the included sample data
+```bash
+# Validate the example server (included in package)
+mcp-validate validate data/server.json
+
+# Validate the full registry (included in package)
+mcp-validate validate-registry data/registry.json
+```
+
 #### Show linter rule documentation
 ```bash
 # Show all rules
