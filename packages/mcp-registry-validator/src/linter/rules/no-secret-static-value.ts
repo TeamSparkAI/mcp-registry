@@ -5,7 +5,7 @@ export const rule: LinterRule = {
   name: 'no-secret-static-value',
   message: 'Field with static value should not be marked as secret',
   severity: 'warning',  docs: {
-    purpose: 'Warn about static values marked as secret, which  will likelt not have the desired effect',
+    purpose: 'Warn about static values marked as secret, which  will likely not have the desired effect',
     triggers: [
       'Field has a static value and is marked as isSecret'
     ],

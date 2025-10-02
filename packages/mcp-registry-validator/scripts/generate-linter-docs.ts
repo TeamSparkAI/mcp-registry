@@ -95,10 +95,10 @@ function main() {
     writeFileSync(packagePath, markdown, 'utf8');
     console.log(`✅ Generated linter documentation: ${packagePath}`);
     
-    // Also write to project root (for ToolCatalog project)
-    const rootPath = join(process.cwd(), '..', '..', 'linter.md');
-    writeFileSync(rootPath, markdown, 'utf8');
-    console.log(`✅ Copied to project root: ${rootPath}`);
+    // Also write to public directory (for web serving)
+    const publicPath = join(process.cwd(), '..', '..', 'public', 'linter.md');
+    writeFileSync(publicPath, markdown, 'utf8');
+    console.log(`✅ Copied to public directory: ${publicPath}`);
     
     console.log(`📄 Generated ${linterRules.length} rule descriptions`);
   } catch (error) {
