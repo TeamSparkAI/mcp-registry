@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build mcp-registry-validator
+        run: cd packages/mcp-registry-validator && pnpm build
+
       - name: Setup Pages
         id: setup_pages
         uses: actions/configure-pages@v5
