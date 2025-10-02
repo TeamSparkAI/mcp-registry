@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { linterRules } from '../dist/linter';
+import { linterRules } from '../src/linter';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 

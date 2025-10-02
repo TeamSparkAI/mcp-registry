@@ -394,7 +394,7 @@ These linter rules detect issues that are not possble to enforce or detect via J
 
 ## no-secret-static-value
 
-**Purpose:** Warn about static values marked as secret, which  will likelt not have the desired effect
+**Purpose:** Warn about static values marked as secret, which will likely not have the desired effect
 
 **Message:** Field with static value should not be marked as secret
 
