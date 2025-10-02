@@ -11,6 +11,47 @@ Add support for other registry types (npm and pypi should work)
 - mcpb
 - nuget
 
+Command is runtimeHunt, unless null, then "docker"
+
+For this:
+  "registryType": "oci",
+  "registryBaseUrl": "https://ghcr.io",
+  "identifier": "yuna0x0/hackmd-mcp",
+  "version": "1.5.2",
+We run
+  docker run -d ghcr.io/yuna0x0/hackmd-mcp:1.5.2
+
+Container referecen:
+- If regustryBaseUrl, remove https?:// and add to parts, add / separator
+- Add identifier to parts
+- If version, add colon and version
+
+
+For a package with transport.type == stdio
+- We generate the MCP server config as a stdio config with command, args, env (simple!)
+For package with transport.type == sse or streamable-http
+- We can generate a command spec like the stdio config (command, args, env) to run the server
+- We need to generate a separate server config from the transport info to connect to the running server
+For a remote we generate remote config (headers, vars)
+
+  {
+    "type": "sse",
+    "url": "https://localhost:8080/sse",
+    "headers": [
+      "Authorization": "Bearer xxxxxxx"
+    ],
+    runCommand: {
+      "commmand": "npx",
+      "args": [
+        "mcp-merchant"
+      ],
+      "env": {
+        "PRODUCT_LIMIT": "100",
+        "REFRESH_INTERVAL_SEC": "600"
+      }
+    }
+  }
+
 Limitations (isSecret):
 - Fields with fixed "value" and "isSecret" are not currently obscured in the UX (it's not clear they should be)
 - Input format boolean or input with choices shows dropdown, whose selection is not masked if "isSecret" is specified

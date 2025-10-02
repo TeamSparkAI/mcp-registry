@@ -434,9 +434,39 @@ export default function RegistryPage() {
       const pkg = selectedServer.packages[configuringPackage.index];
       
       // Build command and args
-      const runtimeHint = packageConfig.runtimeHint || pkg.runtimeHint || 'npx';
+      const defaultRuntimeHints: Record<string, string> = {
+        'npm': 'npx',
+        'pypi': 'uvx',
+        'oci': 'docker',
+        'nuget': 'dnx',
+        'mcpb': 'mcpb'
+      };
+      const runtimeHint = packageConfig.runtimeHint || pkg.runtimeHint || defaultRuntimeHints[pkg.registryType] || 'npx';
       const args: string[] = [];
       
+      // Handle OCI registry type - build image name and set as identifier
+      let packageIdentifier = pkg.identifier;
+      if (pkg.registryType === 'oci') {
+        // Build Docker image name from registryBaseUrl and identifier
+        if (pkg.registryBaseUrl) {
+          try {
+            const url = new URL(pkg.registryBaseUrl);
+            const host = url.host;
+            packageIdentifier = `${host}/${pkg.identifier}`;
+          } catch (e) {
+            // If registryBaseUrl is not a valid URL, use it as-is
+            packageIdentifier = `${pkg.registryBaseUrl}/${pkg.identifier}`;
+          }
+        }
+        
+        // Add version if present
+        if (pkg.version) {
+          packageIdentifier = `${packageIdentifier}:${pkg.version}`;
+        }
+      }
+      
+      let packageIdentifierAdded = false;
+
       // Add runtime arguments
       if (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) {
         pkg.runtimeArguments.forEach((arg: any) => {
@@ -452,6 +482,9 @@ export default function RegistryPage() {
                   const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
                   args.push(argName, value);
                 } else {
+                  if (!packageIdentifierAdded && packageIdentifier === value) {
+                    packageIdentifierAdded = true;
+                  }
                   args.push(value);
                 }
               }
@@ -465,14 +498,19 @@ export default function RegistryPage() {
                 const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
                 args.push(argName, value);
               } else {
+                if (!packageIdentifierAdded && packageIdentifier === value) {
+                  packageIdentifierAdded = true;
+                }
                 args.push(value);
               }
             }
           }
         });
-      } else {
-        // Only add package identifier if there are no runtime arguments
-        args.push(pkg.identifier);
+      }
+      
+      // Add package identifier unless it has already been added in argument processing above
+      if (!packageIdentifierAdded) {
+        args.push(packageIdentifier);
       }
       
       // Add package arguments
