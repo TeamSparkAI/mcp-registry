@@ -1,8 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build output
-dist/
+# Build output (not ignored - needed for GitHub Pages)
+# dist/
 
 # Data files (not checked in)
 data/
