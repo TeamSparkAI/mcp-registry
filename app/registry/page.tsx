@@ -601,15 +601,24 @@ export default function RegistryPage() {
         });
       }
       
-      const serverConfig: any = {
-        command: runtimeHint,
-        args: args,
-        ...(Object.keys(env).length > 0 && { env })
-      };
+      // For stdio transport in package, generate MCP client config only
+      if (pkg.transport?.type === 'stdio') {
+        const serverConfig: any = {
+          type: 'stdio',
+          command: runtimeHint,
+          args: args,
+          ...(Object.keys(env).length > 0 && { env })
+        };
+        
+        return {
+          mcpServerConfig: { [serverName]: serverConfig }
+        };
+      }
       
-      // Add transport configuration if present
-      if (pkg.transport) {
-        serverConfig.transport = {
+      // For sse/streamable-http transport in package, generate TWO configs
+      if (pkg.transport && (pkg.transport.type === 'sse' || pkg.transport.type === 'streamable-http')) {
+        // MCP Client Config (for connecting to the server)
+        const clientConfig: any = {
           type: pkg.transport.type,
           url: transportUrl
         };
@@ -626,15 +635,33 @@ export default function RegistryPage() {
           });
           
           if (Object.keys(transportHeaders).length > 0) {
-            serverConfig.transport.headers = transportHeaders;
+            clientConfig.headers = transportHeaders;
           }
         }
+        
+        // Runtime Config (for running the server)
+        const runtimeConfig = {
+          command: runtimeHint,
+          args: args,
+          ...(Object.keys(env).length > 0 && { env })
+        };
+        
+        return {
+          mcpServerConfig: { [serverName]: clientConfig },
+          runtimeConfig: runtimeConfig
+        };
       }
       
+      // Fallback for no transport or unknown transport type - assume stdio
+      const serverConfig: any = {
+        type: 'stdio',
+        command: runtimeHint,
+        args: args,
+        ...(Object.keys(env).length > 0 && { env })
+      };
+      
       return {
-        mcpServers: {
-          [serverName]: serverConfig
-        }
+        mcpServerConfig: { [serverName]: serverConfig }
       };
     }
     
@@ -666,9 +693,7 @@ export default function RegistryPage() {
       }
       
       return {
-        mcpServers: {
-          [serverName]: config
-        }
+        mcpServerConfig: { [serverName]: config }
       };
     }
     
