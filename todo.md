@@ -18,6 +18,17 @@ Implement linter levels, rule suppression in CLI
 
 Implement linter rule suppression in server.json object
 
+## Build System
+
+**Issue**: mcp-registry-validator dist files are checked into git, causing merge conflicts and repo bloat. However, removing them breaks GitHub Pages deployment since the Next.js app imports directly from `dist/browser`.
+
+**Solution**: Add build step to deploy workflow before Next.js build:
+```yaml
+- name: Build mcp-registry-validator
+  run: cd packages/mcp-registry-validator && pnpm build
+```
+Then remove `dist/` from git tracking and add to `.gitignore`.
+
 Linter - implement suppression by rule:
 {
   "name": "my-server",
