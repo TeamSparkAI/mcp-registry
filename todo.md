@@ -10,6 +10,8 @@ Limitations (isSecret):
 - Fields with fixed "value" and "isSecret" are not currently obscured in the UX (it's not clear they should be)
 - Input format boolean or input with choices shows dropdown, whose selection is not masked if "isSecret" is specified
 
+Linter - valueHint on named args (not allowed / needed)
+
 ## Validator
 
 Separate package (CLI and API) published to npm 

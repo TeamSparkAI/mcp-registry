@@ -332,7 +332,7 @@ export default function ServerDetailView({
                               </div>
                               <div>
                                 <label className="text-sm font-medium text-gray-500">Version</label>
-                                <p className="text-gray-900">v{pkg.version}</p>
+                                <p className="text-gray-900">{pkg.version}</p>
                               </div>
                               <div>
                                 <label className="text-sm font-medium text-gray-500">Registry Type</label>

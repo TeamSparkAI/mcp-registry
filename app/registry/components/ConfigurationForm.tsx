@@ -419,7 +419,7 @@ export default function ConfigurationForm({
             <h3 className="font-medium text-blue-900 mb-2">Package Summary</h3>
             <div className="text-sm text-blue-800">
               <p><strong>Identifier:</strong> {configuringPackage.pkg.identifier}</p>
-              <p><strong>Version:</strong> v{configuringPackage.pkg.version}</p>
+              <p><strong>Version:</strong> {configuringPackage.pkg.version}</p>
               <p><strong>Registry Type:</strong> {configuringPackage.pkg.registryType}</p>
               {configuringPackage.pkg.runtimeHint && <p><strong>Runtime Hint:</strong> {configuringPackage.pkg.runtimeHint}</p>}
               {(configuringPackage.pkg.transport as any)?.type && (
