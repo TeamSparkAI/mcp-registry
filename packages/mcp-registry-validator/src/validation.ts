@@ -102,12 +102,16 @@ export function substituteTransportUrl(url: string, packageConfig: any): string 
   variables.forEach(variable => {
     // Look for matching runtime arguments
     const runtimeArg = packageConfig.runtimeArguments?.find((arg: any) => 
-      arg.valueHint === variable || arg.name === variable
+      arg.valueHint === variable || 
+      arg.name === variable ||
+      (arg.name && arg.name.replace(/^-+/, '') === variable)
     );
     
     // Look for matching package arguments  
     const packageArg = packageConfig.packageArguments?.find((arg: any) =>
-      arg.valueHint === variable || arg.name === variable
+      arg.valueHint === variable || 
+      arg.name === variable ||
+      (arg.name && arg.name.replace(/^-+/, '') === variable)
     );
     
     // Look for matching environment variables

@@ -66,7 +66,11 @@ export const rule: LinterRule = {
           if (pkg.runtimeArguments) {
             pkg.runtimeArguments.forEach((arg: any) => {
               if (arg.valueHint) definedVariables.add(arg.valueHint);
-              if (arg.name) definedVariables.add(arg.name);
+              if (arg.name) {
+                definedVariables.add(arg.name);
+                // Also add the name without leading dashes
+                definedVariables.add(arg.name.replace(/^-+/, ''));
+              }
             });
           }
           
@@ -74,7 +78,11 @@ export const rule: LinterRule = {
           if (pkg.packageArguments) {
             pkg.packageArguments.forEach((arg: any) => {
               if (arg.valueHint) definedVariables.add(arg.valueHint);
-              if (arg.name) definedVariables.add(arg.name);
+              if (arg.name) {
+                definedVariables.add(arg.name);
+                // Also add the name without leading dashes
+                definedVariables.add(arg.name.replace(/^-+/, ''));
+              }
             });
           }
           
