@@ -5,8 +5,8 @@
 		"packages/*"
 	],
 	"scripts": {
-		"dev": "next dev --turbo",
-		"build": "next build",
+		"dev": "pnpm -F mcp-registry-validator build && next dev --turbo",
+		"build": "pnpm -F mcp-registry-validator build && next build",
 		"catalog:build": "tsx scripts/catalog/index.ts",
 		"catalog:build:debug": "tsx scripts/catalog/index.ts --debug",
 		"registry:download": "tsx scripts/registry/download-registry.ts",

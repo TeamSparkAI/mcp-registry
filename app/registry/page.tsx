@@ -444,7 +444,7 @@ export default function RegistryPage() {
       const runtimeHint = packageConfig.runtimeHint || pkg.runtimeHint || defaultRuntimeHints[pkg.registryType] || 'npx';
       const args: string[] = [];
       
-      // Handle OCI registry type - build image name and set as identifier
+      // Build full package identifier based on registry type
       let packageIdentifier = pkg.identifier;
       if (pkg.registryType === 'oci') {
         // Build Docker image name from registryBaseUrl and identifier
@@ -459,13 +459,25 @@ export default function RegistryPage() {
           }
         }
         
-        // Add version if present
+        // Add version if present (Docker uses colon)
         if (pkg.version) {
           packageIdentifier = `${packageIdentifier}:${pkg.version}`;
+        }
+      } else if (pkg.registryType === 'npm' || pkg.registryType === 'pypi') {
+        // For npm/pypi, add version with @ symbol if present
+        if (pkg.version) {
+          packageIdentifier = `${packageIdentifier}@${pkg.version}`;
         }
       }
       
       let packageIdentifierAdded = false;
+      
+      // Extract base package name for comparison (without version)
+      const getBasePackageName = (pkgId: string): string => {
+        // Remove version suffix (@version or :version)
+        return pkgId.replace(/[@:][^@:]*$/, '');
+      };
+      const basePackageName = getBasePackageName(packageIdentifier);
 
       // Add runtime arguments
       if (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) {
@@ -481,8 +493,28 @@ export default function RegistryPage() {
                 if (arg.name) {
                   const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
                   args.push(argName, value);
+                  
+                  // Check if this named argument indicates the package has been specified
+                  if (!packageIdentifierAdded) {
+                    const isPackageSpecified = 
+                      // For npx: -y/--yes with package value, or -p/--package exists
+                      (runtimeHint === 'npx' && (
+                        (argName === '-y' || argName === '--yes') && getBasePackageName(value) === basePackageName ||
+                        (argName === '-p' || argName === '--package')
+                      )) ||
+                      // For uvx: -q with package value, or --from exists  
+                      (runtimeHint === 'uvx' && (
+                        (argName === '-q') && getBasePackageName(value) === basePackageName ||
+                        (argName === '--from')
+                      ));
+                    
+                    if (isPackageSpecified) {
+                      packageIdentifierAdded = true;
+                    }
+                  }
                 } else {
-                  if (!packageIdentifierAdded && packageIdentifier === value) {
+                  // Check if this value is the same package (regardless of version)
+                  if (!packageIdentifierAdded && getBasePackageName(value) === basePackageName) {
                     packageIdentifierAdded = true;
                   }
                   args.push(value);
@@ -497,8 +529,28 @@ export default function RegistryPage() {
               if (arg.name) {
                 const argName = arg.name.startsWith('-') ? arg.name : `--${arg.name}`;
                 args.push(argName, value);
+                
+                // Check if this named argument indicates the package has been specified
+                if (!packageIdentifierAdded) {
+                  const isPackageSpecified = 
+                    // For npx: -y/--yes with package value, or -p/--package exists
+                    (runtimeHint === 'npx' && (
+                      (argName === '-y' || argName === '--yes') && getBasePackageName(value) === basePackageName ||
+                      (argName === '-p' || argName === '--package')
+                    )) ||
+                    // For uvx: -q with package value, or --from exists  
+                    (runtimeHint === 'uvx' && (
+                      (argName === '-q') && getBasePackageName(value) === basePackageName ||
+                      (argName === '--from')
+                    ));
+                  
+                  if (isPackageSpecified) {
+                    packageIdentifierAdded = true;
+                  }
+                }
               } else {
-                if (!packageIdentifierAdded && packageIdentifier === value) {
+                // Check if this value is the same package (regardless of version)
+                if (!packageIdentifierAdded && getBasePackageName(value) === basePackageName) {
                   packageIdentifierAdded = true;
                 }
                 args.push(value);
