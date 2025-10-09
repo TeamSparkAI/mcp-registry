@@ -12,7 +12,6 @@ interface ServerListProps {
   onFilterToggle: (filter: string) => void;
   onClearFilters: () => void;
   onServerClick: (server: ServerJSON) => void;
-  onTestServerJson: () => void;
   getResourcePath: (path: string) => string;
 }
 
@@ -25,7 +24,6 @@ export default function ServerList({
   onFilterToggle,
   onClearFilters,
   onServerClick,
-  onTestServerJson,
   getResourcePath
 }: ServerListProps) {
   const getRemotesSummary = (server: ServerJSON): string | null => {
@@ -69,15 +67,15 @@ export default function ServerList({
               <p className="text-base text-gray-500">
                 Official Registry: <a href="https://registry.modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">registry.modelcontextprotocol.io</a>
               </p>
-              <button
-                onClick={onTestServerJson}
+              <a
+                href={getResourcePath('/registry/tester')}
                 className="flex items-center text-base text-green-600 hover:text-green-800 transition-colors"
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Developers: Test your server.json
-              </button>
+              </a>
             </div>
           </div>
         </div>
