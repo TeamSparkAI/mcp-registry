@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getResourcePath } from '@/app/utils/paths';
 
 interface ServerEntry {
   id: string;
@@ -22,12 +23,6 @@ interface ServerEntry {
     env?: Record<string, string>;
   };
 }
-
-// Centralized function to get resource paths
-const getResourcePath = (path: string): string => {
-  const basePath = window.location.pathname.includes('/ToolCatalog') ? '/ToolCatalog' : '';
-  return `${basePath}${path}`;
-};
 
 export default function CatalogPage() {
   const [servers, setServers] = useState<ServerEntry[]>([]);

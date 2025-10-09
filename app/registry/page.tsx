@@ -5,12 +5,7 @@ import { ServerJSON } from '@/types/mcp-registry';
 import ServerList from './components/ServerList';
 import ServerDetailView from './components/ServerDetailView';
 import { generateConfiguredServer } from './utils/configGenerator';
-
-// Centralized function to get resource paths
-const getResourcePath = (path: string): string => {
-  const basePath = window.location.pathname.includes('/ToolCatalog') ? '/ToolCatalog' : '';
-  return `${basePath}${path}`;
-};
+import { getResourcePath } from '@/app/utils/paths';
 
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerJSON[]>([]);
