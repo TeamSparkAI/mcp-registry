@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { ServerJSON } from '../../../types/mcp-registry';
 import { validateServerJson, ValidationResult } from '../utils/validation';
 import { generateConfiguredServer } from '../utils/configGenerator';
+import { getResourcePath } from '@/app/utils/paths';
 import ServerDetailView from '../components/ServerDetailView';
 import ValidationIssues from '../components/ValidationIssues';
 
@@ -43,11 +44,6 @@ export default function TesterPage() {
       }, 50);
     }
   }, [isEditingTestServer]);
-
-  const getResourcePath = (path: string) => {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-    return `${basePath}${path}`;
-  };
 
   const handleValidateJson = async () => {
     if (!testServerJson.trim()) {
