@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
 import ConfigurationForm from './ConfigurationForm';
 import RequiredFieldWarning from './RequiredFieldWarning';
@@ -45,7 +45,6 @@ interface ServerDetailViewProps {
   visibleFields: Set<string>;
   showRawModal: boolean;
   configuredServer: any;
-  onBackToRegistry: () => void;
   onPackageConfigChange: (config: Record<string, any>) => void;
   onRemoteConfigChange: (config: Record<string, any>) => void;
   onToggleFieldVisibility: (fieldId: string) => void;
@@ -70,7 +69,6 @@ export default function ServerDetailView({
   visibleFields,
   showRawModal,
   configuredServer,
-  onBackToRegistry,
   onPackageConfigChange,
   onRemoteConfigChange,
   onToggleFieldVisibility,
@@ -85,6 +83,8 @@ export default function ServerDetailView({
   onApplyTestServerJson,
   onEditTestServerJson
 }: ServerDetailViewProps) {
+  const [copied, setCopied] = useState(false);
+  
   const hasPackageConfiguration = (pkg: PackageConfig) => {
     return pkg.runtimeHint || 
            (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) ||
@@ -99,31 +99,6 @@ export default function ServerDetailView({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={onBackToRegistry}
-              className="flex items-center text-gray-600 hover:text-gray-800"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Registry
-            </button>
-            <div className="flex items-center space-x-2 text-sm text-gray-500">
-              <img 
-                src={getResourcePath('/mcp_black.png')} 
-                alt="MCP Registry" 
-                className="w-5 h-5 object-contain"
-              />
-              <span>{isTestMode ? 'Test Mode' : 'MCP Server Registry'}</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="space-y-6">
@@ -154,24 +129,6 @@ export default function ServerDetailView({
                     {server.status && <span>Status: {server.status}</span>}
                   </div>
                 </div>
-              </div>
-              <div className="flex-shrink-0">
-                <button
-                  onClick={() => {
-                    if (isTestMode) {
-                      onEditTestServerJson?.();
-                    } else {
-                      onShowRawModal(true);
-                    }
-                  }}
-                  className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
-                    isTestMode 
-                      ? 'bg-green-600 text-white hover:bg-green-700' 
-                      : 'bg-gray-600 text-white hover:bg-gray-700'
-                  }`}
-                >
-                  {isTestMode ? 'Edit server.json' : 'server.json'}
-                </button>
               </div>
             </div>
           </div>
@@ -446,7 +403,15 @@ export default function ServerDetailView({
               {/* Registry Metadata */}
               {server._meta && (
                 <div className="bg-white rounded-lg border p-6">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Registry Information</h2>
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-lg font-semibold text-gray-900">Registry Information</h2>
+                    <button
+                      onClick={() => onShowRawModal(true)}
+                      className="px-4 py-2 rounded-lg bg-gray-600 text-white hover:bg-gray-700 transition-colors text-sm font-medium"
+                    >
+                      server.json
+                    </button>
+                  </div>
                   <div className="space-y-3">
                     {server._meta['io.modelcontextprotocol.registry/official'] && (
                       <>
@@ -484,54 +449,49 @@ export default function ServerDetailView({
               <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-bold text-gray-900">
-                      {isTestMode ? 'Edit Server JSON' : 'Raw Server JSON'}
-                    </h2>
-                    <button
-                      onClick={() => onShowRawModal(false)}
-                      className="text-gray-400 hover:text-gray-600"
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                  </div>
-                  {isTestMode ? (
-                    <div>
-                      <textarea
-                        value={testServerJson}
-                        onChange={(e) => onUpdateTestServerJson?.(e.target.value)}
-                        className="w-full h-96 p-4 border border-gray-300 rounded-lg font-mono text-sm"
-                      />
-                      <div className="mt-4 flex justify-end space-x-3">
-                        <button
-                          onClick={() => onShowRawModal(false)}
-                          className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          onClick={() => {
-                            try {
-                              const parsedServer = JSON.parse(testServerJson);
-                              // Apply the server changes
-                              onApplyTestServerJson?.(testServerJson);
-                              onShowRawModal(false);
-                            } catch (error) {
-                              alert('Invalid JSON. Please check your server.json format.');
-                            }
-                          }}
-                          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
-                        >
-                          Apply Changes
-                        </button>
-                      </div>
+                    <h2 className="text-xl font-bold text-gray-900">Server JSON</h2>
+                    <div className="flex items-center space-x-3">
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(JSON.stringify(server, null, 2));
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }}
+                        className={`flex items-center px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
+                          copied 
+                            ? 'bg-green-600 text-white hover:bg-green-700' 
+                            : 'bg-blue-600 text-white hover:bg-blue-700'
+                        }`}
+                      >
+                        {copied ? (
+                          <>
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            Copied!
+                          </>
+                        ) : (
+                          <>
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            Copy to Clipboard
+                          </>
+                        )}
+                      </button>
+                      <button
+                        onClick={() => onShowRawModal(false)}
+                        className="text-gray-400 hover:text-gray-600"
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
                     </div>
-                  ) : (
-                    <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
-                      {JSON.stringify(server, null, 2)}
-                    </pre>
-                  )}
+                  </div>
+                  <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
+                    {JSON.stringify(server, null, 2)}
+                  </pre>
                 </div>
               </div>
             </div>
