@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+  "$id": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
   "title": "MCP Server Detail",
   "$ref": "#/definitions/ServerDetail",
   "definitions": {
@@ -32,53 +32,6 @@
           "type": "string",
           "description": "Optional relative path from repository root to the server location within a monorepo or nested package structure. Must be a clean relative path.",
           "example": "src/everything"
-        }
-      }
-    },
-    "Server": {
-      "type": "object",
-      "required": [
-        "name",
-        "description",
-        "version"
-      ],
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Server name in reverse-DNS format. Must contain exactly one forward slash separating namespace from server name.",
-          "example": "io.github.user/weather",
-          "pattern": "^[a-zA-Z0-9.-]+/[a-zA-Z0-9._-]+$",
-          "minLength": 3,
-          "maxLength": 200
-        },
-        "description": {
-          "type": "string",
-          "description": "Clear human-readable explanation of server functionality. Should focus on capabilities, not implementation details.",
-          "example": "MCP server providing weather data and forecasts via OpenWeatherMap API",
-          "minLength": 1,
-          "maxLength": 100
-        },
-        "status": {
-          "type": "string",
-          "enum": ["active", "deprecated", "deleted"],
-          "default": "active",
-          "description": "Server lifecycle status. 'deprecated' indicates the server is no longer recommended for new usage. 'deleted' indicates the server should never be installed and existing installations should be uninstalled - this is rare, and usually indicates malware or a legal takedown."
-        },
-        "repository": {
-          "$ref": "#/definitions/Repository",
-          "description": "Optional repository metadata for the MCP server source code. Recommended for transparency and security inspection."
-        },
-        "version": {
-          "type": "string",
-          "maxLength": 255,
-          "example": "1.0.2",
-          "description": "Version string for this server. SHOULD follow semantic versioning (e.g., '1.0.2', '2.1.0-alpha'). Equivalent of Implementation.version in MCP specification. Non-semantic versions are allowed but may not sort predictably. Version ranges are rejected (e.g., '^1.2.3', '~1.2.3', '>=1.2.3', '1.x', '1.*')."
-        },
-        "websiteUrl": {
-          "type": "string",
-          "format": "uri",
-          "description": "Optional URL to the server's homepage, documentation, or project website. This provides a central link for users to learn more about the server. Particularly useful when the server has custom installation instructions or setup requirements.",
-          "example": "https://modelcontextprotocol.io/examples"
         }
       }
     },
@@ -134,17 +87,21 @@
           ]
         },
         "transport": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/StdioTransport"
-            },
-            {
-              "$ref": "#/definitions/StreamableHttpTransport"
-            },
-            {
-              "$ref": "#/definitions/SseTransport"
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["stdio", "streamable-http", "sse"]
             }
-          ],
+          },
+          "required": ["type"],
+          "if": {"properties": {"type": {"const": "stdio"}}},
+          "then": {"$ref": "#/definitions/StdioTransport"},
+          "else": {
+            "if": {"properties": {"type": {"const": "streamable-http"}}},
+            "then": {"$ref": "#/definitions/StreamableHttpTransport"},
+            "else": {"$ref": "#/definitions/SseTransport"}
+          },
           "description": "Transport protocol configuration for the package"
         },
         "runtimeArguments": {
@@ -194,7 +151,7 @@
         },
         "value": {
           "type": "string",
-          "description": "The default value for the input. If this is not set, the user may be prompted to provide a value. If a value is set, it should not be configurable by end users.\n\nIdentifiers wrapped in `{curly_braces}` will be replaced with the corresponding properties from the input `variables` map. If an identifier in braces is not found in `variables`, or if `variables` is not provided, the `{curly_braces}` substring should remain unchanged.\n"
+          "description": "The value for the input. If this is not set, the user may be prompted to provide a value. If a value is set, it should not be configurable by end users.\n\nIdentifiers wrapped in `{curly_braces}` will be replaced with the corresponding properties from the input `variables` map. If an identifier in braces is not found in `variables`, or if `variables` is not provided, the `{curly_braces}` substring should remain unchanged.\n"
         },
         "isSecret": {
           "type": "boolean",
@@ -203,7 +160,11 @@
         },
         "default": {
           "type": "string",
-          "description": "The default value for the input."
+          "description": "The default value for the input.  This should be a valid value for the input.  If you want to provide input examples or guidance, use the `placeholder` field instead."
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "A placeholder for the input to be displaying during configuration. This is used to provide examples or guidance about the expected form or content of the input."
         },
         "choices": {
           "type": "array",
@@ -255,7 +216,7 @@
             },
             "valueHint": {
               "type": "string",
-              "description": "An identifier-like hint for the value. This is not part of the command line, but can be used by client configuration and to provide hints to users.",
+              "description": "An identifier for the positional argument. It is not part of the command line. It may be used by client configuration as a label identifying the argument. It is also used to identify the value in transport URL variable substitution.",
               "example": "file_path"
             },
             "isRepeated": {
@@ -280,7 +241,7 @@
       ]
     },
     "NamedArgument": {
-      "description": "A command-line `--flag={value}`.",
+      "description": "A command-line `--flag {value}`.",
       "allOf": [
         {
           "$ref": "#/definitions/InputWithVariables"
@@ -335,14 +296,17 @@
     },
     "Argument": {
       "description": "Warning: Arguments construct command-line parameters that may contain user-provided input. This creates potential command injection risks if clients execute commands in a shell environment. For example, a malicious argument value like ';rm -rf ~/Development' could execute dangerous commands. Clients should prefer non-shell execution methods (e.g., posix_spawn) when possible to eliminate injection risks entirely. Where not possible, clients should obtain consent from users or agents to run the resolved command before execution.",
-      "anyOf": [
-        {
-          "$ref": "#/definitions/PositionalArgument"
-        },
-        {
-          "$ref": "#/definitions/NamedArgument"
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["positional", "named"]
         }
-      ]
+      },
+      "required": ["type"],
+      "if": {"properties": {"type": {"const": "positional"}}},
+      "then": {"$ref": "#/definitions/PositionalArgument"},
+      "else": {"$ref": "#/definitions/NamedArgument"}
     },
     "StdioTransport": {
       "type": "object",
@@ -408,7 +372,7 @@
         "url": {
           "type": "string",
           "pattern": "^https?://[^\\s]+$",
-          "description": "Server-Sent Events endpoint URL",
+          "description": "URL template for the sse transport. Variables in {curly_braces} reference argument valueHints, argument names, or environment variable names. After variable substitution, this should produce a valid URI.",
           "example": "https://mcp-fs.example.com/sse"
         },
         "headers": {
@@ -420,60 +384,146 @@
         }
       }
     },
+    "Icon": {
+      "type": "object",
+      "description": "An optionally-sized icon that can be displayed in a user interface.",
+      "required": [
+        "src"
+      ],
+      "properties": {
+        "src": {
+          "type": "string",
+          "format": "uri",
+          "description": "A standard URI pointing to an icon resource. Must be an HTTPS URL. Consumers SHOULD take steps to ensure URLs serving icons are from the same domain as the server or a trusted domain. Consumers SHOULD take appropriate precautions when consuming SVGs as they can contain executable JavaScript.",
+          "example": "https://example.com/icon.png",
+          "maxLength": 255
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "Optional MIME type override if the source MIME type is missing or generic. Must be one of: image/png, image/jpeg, image/jpg, image/svg+xml, image/webp.",
+          "enum": [
+            "image/png",
+            "image/jpeg",
+            "image/jpg",
+            "image/svg+xml",
+            "image/webp"
+          ],
+          "example": "image/png"
+        },
+        "sizes": {
+          "type": "array",
+          "description": "Optional array of strings that specify sizes at which the icon can be used. Each string should be in WxH format (e.g., '48x48', '96x96') or 'any' for scalable formats like SVG. If not provided, the client should assume that the icon can be used at any size.",
+          "items": {
+            "type": "string",
+            "pattern": "^(\\d+x\\d+|any)$",
+            "examples": ["48x48", "96x96", "any"]
+          }
+        },
+        "theme": {
+          "type": "string",
+          "description": "Optional specifier for the theme this icon is designed for. 'light' indicates the icon is designed to be used with a light background, and 'dark' indicates the icon is designed to be used with a dark background. If not provided, the client should assume the icon can be used with any theme.",
+          "enum": [
+            "light",
+            "dark"
+          ]
+        }
+      }
+    },
     "ServerDetail": {
       "description": "Schema for a static representation of an MCP server. Used in various contexts related to discovery, installation, and configuration.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Server"
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Server name in reverse-DNS format. Must contain exactly one forward slash separating namespace from server name.",
+          "example": "io.github.user/weather",
+          "pattern": "^[a-zA-Z0-9.-]+/[a-zA-Z0-9._-]+$",
+          "minLength": 3,
+          "maxLength": 200
         },
-        {
+        "description": {
+          "type": "string",
+          "description": "Clear human-readable explanation of server functionality. Should focus on capabilities, not implementation details.",
+          "example": "MCP server providing weather data and forecasts via OpenWeatherMap API",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "description": "Optional human-readable title or display name for the MCP server. MCP subregistries or clients MAY choose to use this for display purposes.",
+          "example": "Weather API",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "repository": {
+          "$ref": "#/definitions/Repository",
+          "description": "Optional repository metadata for the MCP server source code. Recommended for transparency and security inspection."
+        },
+        "version": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "1.0.2",
+          "description": "Version string for this server. SHOULD follow semantic versioning (e.g., '1.0.2', '2.1.0-alpha'). Equivalent of Implementation.version in MCP specification. Non-semantic versions are allowed but may not sort predictably. Version ranges are rejected (e.g., '^1.2.3', '~1.2.3', '>=1.2.3', '1.x', '1.*')."
+        },
+        "websiteUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional URL to the server's homepage, documentation, or project website. This provides a central link for users to learn more about the server. Particularly useful when the server has custom installation instructions or setup requirements.",
+          "example": "https://modelcontextprotocol.io/examples"
+        },
+        "icons": {
+          "type": "array",
+          "description": "Optional set of sized icons that the client can display in a user interface. Clients that support rendering icons MUST support at least the following MIME types: image/png and image/jpeg (safe, universal compatibility). Clients SHOULD also support: image/svg+xml (scalable but requires security precautions) and image/webp (modern, efficient format).",
+          "items": {
+            "$ref": "#/definitions/Icon"
+          }
+        },
+        "$schema": {
+          "type": "string",
+          "format": "uri",
+          "description": "JSON Schema URI for this server.json format",
+          "example": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json"
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Package"
+          }
+        },
+        "remotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["streamable-http", "sse"]
+              }
+            },
+            "required": ["type"],
+            "if": {"properties": {"type": {"const": "streamable-http"}}},
+            "then": {"$ref": "#/definitions/StreamableHttpTransport"},
+            "else": {"$ref": "#/definitions/SseTransport"}
+          }
+        },
+        "_meta": {
           "type": "object",
+          "description": "Extension metadata using reverse DNS namespacing for vendor-specific data",
+          "additionalProperties": true,
           "properties": {
-            "$schema": {
-              "type": "string",
-              "format": "uri",
-              "description": "JSON Schema URI for this server.json format",
-              "example": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json"
-            },
-            "packages": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Package"
-              }
-            },
-            "remotes": {
-              "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/StreamableHttpTransport"
-                  },
-                  {
-                    "$ref": "#/definitions/SseTransport"
-                  }
-                ]
-              }
-            },
-            "_meta": {
+            "io.modelcontextprotocol.registry/publisher-provided": {
               "type": "object",
-              "description": "Extension metadata using reverse DNS namespacing for vendor-specific data",
-              "additionalProperties": true,
-              "properties": {
-                "io.modelcontextprotocol.registry/publisher-provided": {
-                  "type": "object",
-                  "description": "Publisher-provided metadata for downstream registries",
-                  "additionalProperties": true
-                },
-                "io.modelcontextprotocol.registry/official": {
-                  "type": "object",
-                  "description": "Official MCP registry metadata (read-only, added by registry)",
-                  "additionalProperties": true
-                }
-              }
+              "description": "Publisher-provided metadata for downstream registries",
+              "additionalProperties": true
             }
           }
         }
-      ]
+      }
     }
   }
 }
