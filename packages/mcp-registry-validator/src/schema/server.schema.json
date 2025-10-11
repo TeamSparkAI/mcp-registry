@@ -95,13 +95,20 @@
             }
           },
           "required": ["type"],
-          "if": {"properties": {"type": {"const": "stdio"}}},
-          "then": {"$ref": "#/definitions/StdioTransport"},
-          "else": {
-            "if": {"properties": {"type": {"const": "streamable-http"}}},
-            "then": {"$ref": "#/definitions/StreamableHttpTransport"},
-            "else": {"$ref": "#/definitions/SseTransport"}
-          },
+          "allOf": [
+            {
+              "if": {"properties": {"type": {"const": "stdio"}}},
+              "then": {"$ref": "#/definitions/StdioTransport"}
+            },
+            {
+              "if": {"properties": {"type": {"const": "streamable-http"}}},
+              "then": {"$ref": "#/definitions/StreamableHttpTransport"}
+            },
+            {
+              "if": {"properties": {"type": {"const": "sse"}}},
+              "then": {"$ref": "#/definitions/SseTransport"}
+            }
+          ],
           "description": "Transport protocol configuration for the package"
         },
         "runtimeArguments": {

@@ -34,7 +34,9 @@ export const rule: LinterRule = {
     const issues: any[] = [];
     if (data.remotes) {
       data.remotes.forEach((remote: any, index: number) => {
-        const hasConfig = remote.headers?.length;
+        // Only warn if headers is not present at all (undefined)
+        // An empty array explicitly says "no headers needed"
+        const hasConfig = 'headers' in remote;
         if (!hasConfig) {
           issues.push({
             source: 'linter',

@@ -36,10 +36,12 @@ export const rule: LinterRule = {
     const issues: any[] = [];
     if (data.packages) {
       data.packages.forEach((pkg: any, index: number) => {
-        const hasConfig = pkg.runtimeArguments?.length || 
-                         pkg.packageArguments?.length || 
-                         pkg.environmentVariables?.length ||
-                         pkg.runtimeHint;
+        // Check if any configuration field is present (not checking length)
+        // An empty array explicitly says "no config needed for this field"
+        const hasConfig = 'runtimeArguments' in pkg || 
+                         'packageArguments' in pkg || 
+                         'environmentVariables' in pkg ||
+                         'runtimeHint' in pkg;
         if (!hasConfig) {
           issues.push({
             source: 'linter',

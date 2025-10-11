@@ -55,12 +55,48 @@ export async function validateServerJson(serverJson: string, schemaUrl?: string)
     const valid = schemaValidate(data);
     if (!valid) {
       const schemaErrors = schemaValidate.errors || [];
-      schemaErrors.forEach((error: ErrorObject) => {
+      
+      // Filter out redundant if/then/else errors
+      // When a schema uses if/then/else and the validation fails, AJV reports both:
+      // 1. The actual validation error from the then/else branch
+      // 2. A "must match then/else schema" error from the if/then/else itself
+      // We filter out #2 as it's redundant
+      const filteredErrors = schemaErrors.filter((error: ErrorObject) => {
+        // Filter out errors that are just reporting if/then/else failures
+        if (error.keyword === 'if') {
+          return false;
+        }
+        return true;
+      });
+      
+      filteredErrors.forEach((error: ErrorObject) => {
+        let message = error.message || 'Schema validation error';
+        
+        // Enhance error messages with actual values and constraints
+        if (error.keyword === 'enum' && error.params?.allowedValues) {
+          const actualValue = error.data !== undefined ? JSON.stringify(error.data) : 'undefined';
+          const allowedValues = error.params.allowedValues.map((v: any) => JSON.stringify(v)).join(', ');
+          message = `${message}. Got: ${actualValue}, expected one of: ${allowedValues}`;
+        } else if (error.keyword === 'type' && error.params?.type) {
+          const actualValue = error.data !== undefined ? JSON.stringify(error.data) : 'undefined';
+          message = `${message}. Got: ${actualValue}, expected type: ${error.params.type}`;
+        } else if (error.keyword === 'required' && error.params?.missingProperty) {
+          message = `Must have required property '${error.params.missingProperty}'`;
+        } else if (error.keyword === 'pattern' && error.params?.pattern) {
+          const actualValue = error.data !== undefined ? JSON.stringify(error.data) : 'undefined';
+          message = `${message}. Got: ${actualValue}, must match pattern: ${error.params.pattern}`;
+        }
+        
+        // Capitalize first letter if not already capitalized
+        if (message && message[0] === message[0].toLowerCase()) {
+          message = message[0].toUpperCase() + message.slice(1);
+        }
+        
         issues.push({
           source: 'schema',
           severity: 'error',
           path: error.instancePath || '/',
-          message: error.message || 'Schema validation error',
+          message: message,
           rule: error.schemaPath
         });
       });
