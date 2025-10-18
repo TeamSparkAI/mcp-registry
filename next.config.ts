@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Removed 'output: export' to support API routes
   basePath: process.env.PAGES_BASE_PATH,
 };
 

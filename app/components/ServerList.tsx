@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ServerJSON } from '@/types/mcp-registry';
 
 interface ServerListProps {
@@ -167,12 +168,16 @@ export default function ServerList({
                   {filteredServers.map((server) => {
                     const remotesSummary = getRemotesSummary(server);
                     const packagesSummary = getPackagesSummary(server);
+                    const meta = server._meta?.['io.modelcontextprotocol.registry/official'];
+                    const serverId = meta?.serverId || server.name;
+                    const versionId = meta?.versionId || server.version;
+                    const serverPath = `/servers/${encodeURIComponent(serverId)}/${encodeURIComponent(versionId)}`;
 
                     return (
-                      <div
-                        key={`${server.name}-${server.version}`}
-                        className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer"
-                        onClick={() => onServerClick(server)}
+                      <Link
+                        key={`${serverId}-${versionId}`}
+                        href={serverPath}
+                        className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer block"
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -219,7 +224,7 @@ export default function ServerList({
                           )}
                         </div>
                         
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>

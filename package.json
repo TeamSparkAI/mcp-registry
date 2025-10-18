@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"mcp-registry-validator": "workspace:*",
+		"mcp-registry-server": "workspace:*",
 		"ajv": "^8.17.1",
 		"ajv-formats": "^3.0.1",
 		"next": "^15.1.7",
