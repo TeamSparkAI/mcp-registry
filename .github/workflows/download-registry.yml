@@ -76,10 +76,11 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet public/server-registry.json registry/schema/; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
+          # Check for both modified and untracked files
+          if [ -n "$(git status --porcelain public/server-registry.json registry/schema/)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
           
       - name: Commit and push changes
