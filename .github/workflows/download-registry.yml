@@ -14,6 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
+      - name: Checkout static repo
+        uses: actions/checkout@v4
+        with:
+          repository: modelcontextprotocol/static
+          path: static-repo
+        
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -28,13 +34,49 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         
+      - name: Sync schemas from static repo
+        run: |
+          echo "🔍 Syncing schemas from modelcontextprotocol/static..."
+          mkdir -p registry/schema
+          
+          # Copy all versioned schema directories
+          for dir in static-repo/schemas/*/; do
+            if [ -f "$dir/server.schema.json" ]; then
+              version=$(basename "$dir")
+              if [ ! -d "registry/schema/$version" ]; then
+                echo "⬇ Adding $version/"
+                mkdir -p "registry/schema/$version"
+                cp "$dir/server.schema.json" "registry/schema/$version/server.schema.json"
+              fi
+            fi
+          done
+          
+          # Find latest version and update current schema if needed
+          LATEST=$(ls static-repo/schemas/ | sort -r | head -n1)
+          echo "Latest schema version: $LATEST"
+          
+          if [ -f "registry/schema/server.schema.json" ]; then
+            CURRENT=$(jq -r '.$id' registry/schema/server.schema.json | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+            if [ "$CURRENT" != "$LATEST" ]; then
+              echo "⬇ Updating schema from $CURRENT to $LATEST"
+              cp "static-repo/schemas/$LATEST/server.schema.json" registry/schema/server.schema.json
+            else
+              echo "✓ Current schema is already at latest version ($LATEST)"
+            fi
+          else
+            echo "⬇ Creating initial current schema ($LATEST)"
+            cp "static-repo/schemas/$LATEST/server.schema.json" registry/schema/server.schema.json
+          fi
+          
+          echo "✅ Schema sync complete"
+        
       - name: Download MCP Registry
         run: pnpm run registry:download
         
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet public/server-registry.json; then
+          if git diff --quiet public/server-registry.json registry/schema/; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -45,6 +87,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add public/server-registry.json
-          git commit -m "Update MCP registry data [skip ci]"
+          git add public/server-registry.json registry/schema/
+          git commit -m "Update MCP registry data and schemas [skip ci]"
           git push

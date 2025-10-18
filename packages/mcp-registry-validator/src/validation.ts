@@ -1,36 +1,58 @@
 import Ajv, { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
-import fs from 'fs';
-import path from 'path';
 import { ValidationIssue, ValidationResult } from './linter/types';
 import { lintServerData } from './linter/runner';
 import { hasTemplateVariables, extractVariableNames } from './linter/utils/templates';
+// Import bundled schemas
+import * as allSchemas from './schema/all-schemas.json';
 
-// Load schema once and cache it
-let schema: any = null;
-let validate: any = null;
+// Cache for compiled validators
+const schemaCache: Map<string, { schema: any; validate: any }> = new Map();
 
-async function loadSchema(schemaPath?: string) {
-  if (!schema) {
-    const actualSchemaPath = schemaPath || path.join(__dirname, 'schema', 'server.schema.json');
-    const schemaContent = fs.readFileSync(actualSchemaPath, 'utf8');
-    schema = JSON.parse(schemaContent);
-    
-    // Initialize Ajv with formats and allow additional keywords
-    const ajv = new Ajv({ 
-      allErrors: true, 
-      verbose: true,
-      strict: false, // Allow additional keywords like "example"
-      allowUnionTypes: true
-    });
-    addFormats(ajv);
-    
-    validate = ajv.compile(schema);
-  }
-  return { schema, validate };
+// Get current schema version
+const CURRENT_VERSION = allSchemas.current;
+const SCHEMAS = allSchemas.schemas;
+
+// Extract version from schema URL
+function extractSchemaVersion(schemaUrl: string): string | null {
+  // https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json
+  const match = schemaUrl.match(/\/schemas\/([^/]+)\//);
+  return match ? match[1] : null;
 }
 
-export async function validateServerJson(serverJson: string, schemaPath?: string): Promise<ValidationResult> {
+// Load schema by version
+async function loadSchemaByVersion(version: string) {
+  // Check cache first
+  if (schemaCache.has(version)) {
+    return schemaCache.get(version)!;
+  }
+
+  // Look up schema in bundled schemas
+  const schema = SCHEMAS[version as keyof typeof SCHEMAS];
+  if (!schema) {
+    // Schema version not found
+    return null;
+  }
+
+  // Initialize Ajv with formats and allow additional keywords
+  const ajv = new Ajv({
+    allErrors: true,
+    verbose: true,
+    strict: false, // Allow additional keywords like "example"
+    allowUnionTypes: true
+  });
+  addFormats(ajv);
+
+  const validate = ajv.compile(schema);
+  const result = { schema, validate };
+
+  // Cache it
+  schemaCache.set(version, result);
+
+  return result;
+}
+
+export async function validateServerJson(serverJson: string): Promise<ValidationResult> {
   const issues: ValidationIssue[] = [];
   
   // Step 1: JSON Parse Validation
@@ -50,9 +72,86 @@ export async function validateServerJson(serverJson: string, schemaPath?: string
     };
   }
   
-  // Step 2: Schema Validation
+  // Step 2: Schema Version Check and Loading
+  let schemaValidate: any;
+  let isCurrentVersion = true;
+  
   try {
-    const { validate: schemaValidate } = await loadSchema(schemaPath);
+    const serverSchemaUrl = data.$schema;
+    
+    if (!serverSchemaUrl) {
+      return {
+        valid: false,
+        issues: [{
+          source: 'schema',
+          severity: 'error',
+          path: '/',
+          message: 'Missing required $schema field',
+          rule: 'schema-missing'
+        }]
+      };
+    }
+    
+    const serverVersion = extractSchemaVersion(serverSchemaUrl);
+    if (!serverVersion) {
+      return {
+        valid: false,
+        issues: [{
+          source: 'schema',
+          severity: 'error',
+          path: '/$schema',
+          message: `Invalid $schema URL format: ${serverSchemaUrl}`,
+          rule: 'schema-invalid-url'
+        }]
+      };
+    }
+    
+    // Try to load schema for this version
+    const schemaInfo = await loadSchemaByVersion(serverVersion);
+    
+    if (!schemaInfo) {
+      // Schema version not supported
+      return {
+        valid: false,
+        issues: [{
+          source: 'schema',
+          severity: 'error',
+          path: '/$schema',
+          message: `Unsupported schema version: ${serverVersion}. This version is not available for validation. Current version: ${CURRENT_VERSION}`,
+          rule: 'schema-version-unsupported'
+        }]
+      };
+    }
+    
+    schemaValidate = schemaInfo.validate;
+    isCurrentVersion = (serverVersion === CURRENT_VERSION);
+    
+    // Add warning if using non-current schema
+    if (!isCurrentVersion) {
+      issues.push({
+        source: 'schema',
+        severity: 'warning',
+        path: '/$schema',
+        message: `Using non-current schema version: ${serverVersion}. Current version is: ${CURRENT_VERSION}. Consider upgrading to the latest schema version.`,
+        rule: 'schema-version-outdated'
+      });
+    }
+    
+  } catch (error) {
+    return {
+      valid: false,
+      issues: [{
+        source: 'schema',
+        severity: 'error',
+        path: '/',
+        message: `Schema validation setup failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        rule: 'validation-error'
+      }]
+    };
+  }
+  
+  // Step 3: Schema Validation
+  try {
     const valid = schemaValidate(data);
     if (!valid) {
       const schemaErrors = schemaValidate.errors || [];
@@ -104,7 +203,7 @@ export async function validateServerJson(serverJson: string, schemaPath?: string
       });
     }
     
-    // Step 3: Linter Rules
+    // Step 4: Linter Rules
     const linterIssues = await lintServerData(data);
     issues.push(...linterIssues);
     

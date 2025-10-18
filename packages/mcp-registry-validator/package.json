@@ -15,7 +15,8 @@
     "linter.md"
   ],
   "scripts": {
-    "build": "tsc && tsc src/browser.ts --outDir dist --target ES2020 --module commonjs --declaration && cp -r src/schema dist/",
+    "prebuild": "node scripts/bundle-schemas.js",
+    "build": "tsc && tsc src/browser.ts --outDir dist --target ES2020 --module commonjs --declaration && cp src/schema/all-schemas.json dist/schema/",
     "dev": "tsx src/cli.ts",
     "test": "echo \"No tests yet\"",
     "prepublishOnly": "pnpm build",
