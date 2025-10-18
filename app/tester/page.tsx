@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
-import { validateServerJson, ValidationResult } from '@/app/registry-utils/validation';
 import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
 import { getResourcePath } from '@/app/utils/paths';
 import ServerDetailView from '@/app/components/ServerDetailView';
 import ValidationIssues from '@/app/components/ValidationIssues';
+import type { ValidationIssue, ValidationResult } from 'mcp-registry-validator';
 
 export default function TesterPage() {
   const [testServerJson, setTestServerJson] = useState('');
@@ -53,7 +53,20 @@ export default function TesterPage() {
 
     setIsValidating(true);
     try {
-      const result = await validateServerJson(testServerJson, getResourcePath);
+      // Call the server-side validation API
+      const response = await fetch('/api/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ serverJson: testServerJson }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Validation API error: ${response.status}`);
+      }
+
+      const result: ValidationResult = await response.json();
       setValidationResult(result);
       
       // Scroll to validation results after they appear
@@ -100,7 +113,20 @@ export default function TesterPage() {
 
     setIsValidating(true);
     try {
-      const result = await validateServerJson(testServerJson, getResourcePath);
+      // Call the server-side validation API
+      const response = await fetch('/api/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ serverJson: testServerJson }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Validation API error: ${response.status}`);
+      }
+
+      const result: ValidationResult = await response.json();
       
       const parseErrors = result.issues.filter(issue => issue.source === 'parse');
       

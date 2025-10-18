@@ -40,7 +40,7 @@ async function validateRegistry(registryPath: string, schemaPath?: string) {
       continue;
     }
 
-    const result = await validateServerJson(JSON.stringify(server), schemaPath);
+    const result = await validateServerJson(JSON.stringify(server));
     const schemaIssues = result.issues.filter(i => i.source === 'schema');
     const linterIssues = result.issues.filter(i => i.source === 'linter');
 
@@ -150,7 +150,7 @@ async function validateSingleServer(serverPath: string, schemaPath?: string) {
   console.log(`🔍 Validating server: ${serverPath}\n`);
   
   const serverJson = fs.readFileSync(serverPath, 'utf8');
-  const result = await validateServerJson(serverJson, schemaPath);
+  const result = await validateServerJson(serverJson);
   
   const schemaIssues = result.issues.filter(i => i.source === 'schema');
   const linterIssues = result.issues.filter(i => i.source === 'linter');

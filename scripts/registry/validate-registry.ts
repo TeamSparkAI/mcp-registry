@@ -1,10 +1,8 @@
 #!/usr/bin/env tsx
 
-import Ajv from 'ajv';
-import addFormats from 'ajv-formats';
 import fs from 'fs';
 import path from 'path';
-import { lintServerData, ValidationIssue, linterRules } from 'mcp-registry-validator';
+import { validateServerJson, linterRules, type ValidationIssue } from 'mcp-registry-validator';
 
 interface ValidationResult {
   serverId: string;
@@ -89,75 +87,54 @@ async function validateRegistry() {
 
   console.log('🔍 Validating server registry against schema...\n');
 
-  // Load the schema
-  const schemaPath = path.join(process.cwd(), 'public', 'server.schema.json');
-  const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
-
   // Load the registry
   const registryPath = path.join(process.cwd(), 'public', 'server-registry.json');
   const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
 
-  // Initialize Ajv with formats and allow additional keywords
-  const ajv = new Ajv({ 
-    allErrors: true, 
-    verbose: true,
-    strict: false, // Allow additional keywords like "example"
-    allowUnionTypes: true
-  });
-  addFormats(ajv);
-
-  // Compile the schema
-  const validate = ajv.compile(schema);
-
   const results: ValidationResult[] = [];
   let validCount = 0;
   let invalidCount = 0;
-  let skippedCount = 0;
   let lintErrorCount = 0;
   const linterRuleCounts: { [rule: string]: number } = {};
   const schemaErrorCounts: { [errorType: string]: number } = {};
   const schemaErrorPathCounts: { [errorTypePath: string]: number } = {};
+  const schemaVersionCounts: { [version: string]: number } = {};
 
   console.log(`Validating ${registry.servers.length} servers...\n`);
 
   // Validate each server
   for (const server of registry.servers) {
-    // Check if server has matching $schema field
-    const expectedSchemaId = schema.$id;
-    const serverSchema = server.$schema;
-    
-    if (serverSchema !== expectedSchemaId) {
-      skippedCount++;
-      continue;
+    // Track schema versions
+    const schemaUrl = server.$schema;
+    if (schemaUrl) {
+      const versionMatch = schemaUrl.match(/\/schemas\/([^/]+)\//);
+      const version = versionMatch ? versionMatch[1] : 'unknown-format';
+      schemaVersionCounts[version] = (schemaVersionCounts[version] || 0) + 1;
+    } else {
+      schemaVersionCounts['missing'] = (schemaVersionCounts['missing'] || 0) + 1;
     }
-    const valid = validate(server);
-    const schemaIssues: ValidationIssue[] = valid
-      ? []
-      : (validate.errors || []).map(err => {
-          // Categorize schema errors by type and path (normalize array indices)
-          const errorType = err.keyword || 'unknown';
-          const path = err.instancePath || '/';
-          // Replace array indices with * to group similar issues
-          const normalizedPath = path.replace(/\/\d+/g, '/*');
-          const errorTypePath = `${errorType}@${normalizedPath}`;
-          
-          schemaErrorCounts[errorType] = (schemaErrorCounts[errorType] || 0) + 1;
-          schemaErrorPathCounts[errorTypePath] = (schemaErrorPathCounts[errorTypePath] || 0) + 1;
-          
-          return {
-            source: 'schema',
-            severity: 'error',
-            path: path,
-            message: err.message || 'Schema validation error',
-            rule: err.schemaPath
-          };
-        });
-
-    // Run linter once
-    const linterIssues = await lintServerData(server);
-    lintErrorCount += linterIssues.filter(i => i.severity === 'error').length;
+    
+    // Use the validator package instead of duplicating Ajv setup
+    const result = await validateServerJson(JSON.stringify(server));
+    
+    const schemaIssues = result.issues.filter(i => i.source === 'schema');
+    const linterIssues = result.issues.filter(i => i.source === 'linter');
+    const valid = result.valid;
+    
+    // Categorize schema ERRORS by type and path (exclude warnings)
+    schemaIssues.filter(i => i.severity === 'error').forEach(issue => {
+      const errorType = issue.rule?.split('/').pop() || 'unknown';
+      const path = issue.path || '/';
+      // Replace array indices with * to group similar issues
+      const normalizedPath = path.replace(/\/\d+/g, '/*');
+      const errorTypePath = `${errorType}@${normalizedPath}`;
+      
+      schemaErrorCounts[errorType] = (schemaErrorCounts[errorType] || 0) + 1;
+      schemaErrorPathCounts[errorTypePath] = (schemaErrorPathCounts[errorTypePath] || 0) + 1;
+    });
     
     // Count linter rule instances
+    lintErrorCount += linterIssues.filter(i => i.severity === 'error').length;
     linterIssues.forEach(issue => {
       if (issue.rule) {
         linterRuleCounts[issue.rule] = (linterRuleCounts[issue.rule] || 0) + 1;
@@ -200,12 +177,45 @@ async function validateRegistry() {
   }
 
   // Print summary at the end
-  console.log('\n📊 SCHEMA VALIDATION SUMMARY');
+  console.log('\n📊 VALIDATION SUMMARY');
   console.log('═'.repeat(50));
-  console.log(`✅ Valid schema: ${validCount} servers`);
-  console.log(`❌ Invalid schema: ${invalidCount} servers`);
-  console.log(`⏭️  Skipped (non-current schema): ${skippedCount} servers`);
-  console.log(`📈 Schema success rate: ${((validCount / (validCount + invalidCount)) * 100).toFixed(1)}%`);
+  console.log(`✅ Valid: ${validCount} servers`);
+  console.log(`❌ Invalid (schema or linter errors): ${invalidCount} servers`);
+  console.log(`📈 Success rate: ${((validCount / (validCount + invalidCount)) * 100).toFixed(1)}%`);
+  
+  // Schema version breakdown
+  console.log('\n📋 SCHEMA VERSIONS');
+  console.log('─'.repeat(50));
+  
+  // Get current version from validator
+  const allSchemasPath = path.join(process.cwd(), 'packages/mcp-registry-validator/dist/schema/all-schemas.json');
+  const allSchemas = JSON.parse(fs.readFileSync(allSchemasPath, 'utf8'));
+  const currentVersion = allSchemas.current;
+  
+  // Add current version to counts if not present
+  if (!/missing|unknown-format/.test(currentVersion) && !(currentVersion in schemaVersionCounts)) {
+    schemaVersionCounts[currentVersion] = 0;
+  }
+  
+  // Separate date-based versions from other types
+  const dateVersions = Object.entries(schemaVersionCounts)
+    .filter(([v]) => /^\d{4}-\d{2}-\d{2}$/.test(v))
+    .sort(([a], [b]) => b.localeCompare(a)); // Most recent first
+  
+  const otherVersions = Object.entries(schemaVersionCounts)
+    .filter(([v]) => !/^\d{4}-\d{2}-\d{2}$/.test(v))
+    .sort(([,a], [,b]) => b - a); // By count
+  
+  // Print date versions first
+  dateVersions.forEach(([version, count]) => {
+    const label = version === currentVersion ? `${version} (current)` : version;
+    console.log(`  ${label}: ${count} servers`);
+  });
+  
+  // Print other versions
+  otherVersions.forEach(([version, count]) => {
+    console.log(`  ${version}: ${count} servers`);
+  });
   
   // Schema error type + path breakdown
   if (Object.keys(schemaErrorPathCounts).length > 0) {
@@ -237,9 +247,12 @@ async function validateRegistry() {
     });
   }
 
+  // Count servers with schema errors specifically
+  const serversWithSchemaErrors = results.filter(r => r.schemaIssues.some(i => i.severity === 'error')).length;
+  
   // Exit with error code if any servers are invalid
-  if (invalidCount > 0 || lintErrorCount > 0) {
-    console.log(`\n❌ Validation Failed: ${invalidCount} server(s) failed schema validation, ${serversWithLintErrors} server(s) failed linter (error)`);
+  if (invalidCount > 0) {
+    console.log(`\n❌ Validation Failed: ${serversWithSchemaErrors} server(s) with schema errors, ${serversWithLintErrors} server(s) with linter errors (${invalidCount} total invalid)`);
     process.exit(1);
   } else {
     console.log('\n🎉 All servers are valid!');

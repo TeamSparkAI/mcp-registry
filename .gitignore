@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated schema bundle (created during prebuild)
+/packages/mcp-registry-validator/src/schema/all-schemas.json

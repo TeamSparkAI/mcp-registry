@@ -1,5 +1,5 @@
 import React from 'react';
-import { ValidationIssue } from '../utils/validation';
+import type { ValidationIssue } from 'mcp-registry-validator';
 
 interface ValidationIssuesProps {
   issues: ValidationIssue[];
