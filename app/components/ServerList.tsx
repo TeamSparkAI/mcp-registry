@@ -68,7 +68,7 @@ export default function ServerList({
                 Official Registry: <a href="https://registry.modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">registry.modelcontextprotocol.io</a>
               </p>
               <a
-                href={getResourcePath('/registry/tester')}
+                href={getResourcePath('/tester')}
                 className="flex items-center text-base text-green-600 hover:text-green-800 transition-colors"
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
