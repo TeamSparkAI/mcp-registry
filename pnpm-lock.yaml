@@ -14,6 +14,9 @@ importers:
       ajv-formats:
         specifier: ^3.0.1
         version: 3.0.1(ajv@8.17.1)
+      mcp-registry-server:
+        specifier: workspace:*
+        version: link:packages/mcp-registry-server
       mcp-registry-validator:
         specifier: workspace:*
         version: link:packages/mcp-registry-validator
@@ -62,6 +65,19 @@ importers:
         version: 4.20.3
       typescript:
         specifier: ^5.7.3
+        version: 5.7.3
+
+  packages/mcp-registry-server:
+    dependencies:
+      next:
+        specifier: '>=13.0.0'
+        version: 15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^18.0.0
+        version: 18.19.130
+      typescript:
+        specifier: ^5.0.0
         version: 5.7.3
 
   packages/mcp-registry-validator:
@@ -488,6 +504,9 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
+
+  '@types/node@18.19.130':
+    resolution: {integrity: sha512-GRaXQx6jGfL8sKfaIDD6OupbIHBr9jv7Jnaml9tB7l4v068PAOXqfcujMMo5PhbIs6ggR1XODELqahT2R8v0fg==}
 
   '@types/node@20.19.19':
     resolution: {integrity: sha512-pb1Uqj5WJP7wrcbLU7Ru4QtA0+3kAXrkutGiD26wUKzSMgNNaPARTUDQmElUXp64kh3cWdou3Q0C7qwwxqSFmg==}
@@ -1079,6 +1098,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
@@ -1406,6 +1428,10 @@ snapshots:
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
+
+  '@types/node@18.19.130':
+    dependencies:
+      undici-types: 5.26.5
 
   '@types/node@20.19.19':
     dependencies:
@@ -1998,6 +2024,8 @@ snapshots:
       fsevents: 2.3.3
 
   typescript@5.7.3: {}
+
+  undici-types@5.26.5: {}
 
   undici-types@6.21.0: {}
 

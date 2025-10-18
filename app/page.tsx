@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
 import ServerList from '@/app/components/ServerList';
-import ServerDetailView from '@/app/components/ServerDetailView';
-import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
 import { getResourcePath } from '@/app/utils/paths';
 
 export default function RegistryPage() {
@@ -13,88 +11,19 @@ export default function RegistryPage() {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>(['Latest']);
-  const [selectedServer, setSelectedServer] = useState<ServerJSON | null>(null);
-  const [configuringPackage, setConfiguringPackage] = useState<{pkg: any, index: number} | null>(null);
-  const [configuringRemote, setConfiguringRemote] = useState<{remote: any, index: number} | null>(null);
-  const [packageConfig, setPackageConfig] = useState<Record<string, any>>({});
-  const [remoteConfig, setRemoteConfig] = useState<Record<string, any>>({});
-  const [showRawModal, setShowRawModal] = useState(false);
-  const [visibleFields, setVisibleFields] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     loadServerRegistry();
   }, []);
 
-  // Helper functions to check if package/remote has configuration
-  const hasPackageConfiguration = (pkg: any) => {
-    return pkg.runtimeHint || 
-           (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) ||
-           (pkg.packageArguments && pkg.packageArguments.length > 0) ||
-           (pkg.environmentVariables && pkg.environmentVariables.length > 0);
-  };
-
-  const hasRemoteConfiguration = (remote: any) => {
-    return remote.headers && remote.headers.length > 0;
-  };
-
-  // Configuration handlers
-  const handleConfigurePackage = (pkg: any, index: number) => {
-    setConfiguringPackage({ pkg, index });
-    setPackageConfig({});
-  };
-
-  const handleConfigureRemote = (remote: any, index: number) => {
-    setConfiguringRemote({ remote, index });
-    setRemoteConfig({});
-  };
-
-  const closeConfiguration = () => {
-    setConfiguringPackage(null);
-    setConfiguringRemote(null);
-    setPackageConfig({});
-    setRemoteConfig({});
-    setVisibleFields(new Set());
-  };
-
-  // Helper function to check if a field should be treated as secret
-  const isSecretField = (field: any) => {
-    return field.isSecret === true;
-  };
-
-  // Helper function to toggle field visibility
-  const toggleFieldVisibility = (fieldId: string) => {
-    setVisibleFields(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(fieldId)) {
-        newSet.delete(fieldId);
-      } else {
-        newSet.add(fieldId);
-      }
-      return newSet;
-    });
-  };
-
-
-  const handleServerClick = (server: ServerJSON) => {
-    setSelectedServer(server);
-    // Reset configuration state when selecting a new server
-    setConfiguringPackage(null);
-    setConfiguringRemote(null);
-    setPackageConfig({});
-    setRemoteConfig({});
-    setVisibleFields(new Set());
-  };
-
-  const handleBackToRegistry = () => {
-    setSelectedServer(null);
-  };
 
 
 
   const loadServerRegistry = async () => {
     try {
       setLoading(true);
-      const response = await fetch(getResourcePath('/server-registry.json'));
+      // Fetch all servers from the API (with a high limit to get all)
+      const response = await fetch('/api/v0/servers?limit=10000');
       if (!response.ok) {
         throw new Error('Failed to load server registry');
       }
@@ -139,28 +68,6 @@ export default function RegistryPage() {
     return matchesSearch && matchesFilters;
   }).sort((a, b) => a.name.localeCompare(b.name));
 
-  const getRemotesSummary = (server: ServerJSON): string | null => {
-    if (!server.remotes || server.remotes.length === 0) {
-      return null;
-    }
-    const remoteTypes = server.remotes.map(remote => remote.type).join(', ');
-    return remoteTypes;
-  };
-
-  const getPackagesSummary = (server: ServerJSON): string | null => {
-    if (!server.packages || server.packages.length === 0) {
-      return null;
-    }
-    const packageInfos = server.packages.map(pkg => {
-      return `${pkg.registryType}`;
-    }).join(', ');
-    return packageInfos;
-  };
-
-  const isOfficial = (server: ServerJSON) => {
-    return server._meta?.['io.modelcontextprotocol.registry/official']?.isLatest;
-  };
-
   const handleFilterToggle = (filter: string) => {
     setSelectedFilters(prev => 
       prev.includes(filter) 
@@ -192,57 +99,6 @@ export default function RegistryPage() {
     );
   }
 
-  // Show server details view
-  if (selectedServer) {
-    return (
-      <div>
-        {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={handleBackToRegistry}
-                className="flex items-center text-gray-600 hover:text-gray-800"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Back to Registry
-              </button>
-              <div className="flex items-center space-x-2">
-                <img 
-                  src={getResourcePath('/mcp_black.png')} 
-                  alt="MCP Registry" 
-                  className="w-6 h-6 object-contain"
-                />
-                <span className="text-lg font-semibold text-gray-900">MCP Server Registry</span>
-              </div>
-            </div>
-          </div>
-        </header>
-
-      <ServerDetailView
-        server={selectedServer}
-        configuringPackage={configuringPackage}
-        configuringRemote={configuringRemote}
-        packageConfig={packageConfig}
-        remoteConfig={remoteConfig}
-        visibleFields={visibleFields}
-        showRawModal={showRawModal}
-        configuredServer={generateConfiguredServer(selectedServer, configuringPackage, configuringRemote, packageConfig, remoteConfig)}
-        onPackageConfigChange={setPackageConfig}
-        onRemoteConfigChange={setRemoteConfig}
-        onToggleFieldVisibility={toggleFieldVisibility}
-        onCloseConfiguration={closeConfiguration}
-        onShowRawModal={setShowRawModal}
-        onConfigurePackage={handleConfigurePackage}
-        onConfigureRemote={handleConfigureRemote}
-        getResourcePath={getResourcePath}
-      />
-      </div>
-    );
-  }
-
   return (
     <ServerList
       servers={servers}
@@ -252,7 +108,7 @@ export default function RegistryPage() {
       onSearchChange={setSearchTerm}
       onFilterToggle={handleFilterToggle}
       onClearFilters={() => setSelectedFilters([])}
-      onServerClick={handleServerClick}
+      onServerClick={() => {}} // No longer needed with Link navigation
       getResourcePath={getResourcePath}
     />
   );
