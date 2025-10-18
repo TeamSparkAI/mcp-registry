@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { ServerJSON } from '../../../types/mcp-registry';
-import { validateServerJson, ValidationResult } from '../utils/validation';
-import { generateConfiguredServer } from '../utils/configGenerator';
+import { ServerJSON } from '@/types/mcp-registry';
+import { validateServerJson, ValidationResult } from '@/app/registry-utils/validation';
+import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
 import { getResourcePath } from '@/app/utils/paths';
-import ServerDetailView from '../components/ServerDetailView';
-import ValidationIssues from '../components/ValidationIssues';
+import ServerDetailView from '@/app/components/ServerDetailView';
+import ValidationIssues from '@/app/components/ValidationIssues';
 
 export default function TesterPage() {
   const [testServerJson, setTestServerJson] = useState('');
