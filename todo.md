@@ -1,5 +1,9 @@
 # TODO
 
+Linter rule - name implies secret, but isSercet not set ("token", "secret", "password", "pwd", "api*key", "private*key")
+
+In prod, suppress runtimeHint and all fixed args/env vars/headers (only show UX for elements being configured)
+
 Add support for "strict" mode
 - No inference of things like packageHint
 - No auto add of package ref
