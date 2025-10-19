@@ -1,4 +1,4 @@
-import { RegistryDataSource, ServersQuery, ServerList, Server } from './types';
+import { RegistryDataSource, ServersQuery, ServiceResult } from './types';
 
 export interface RegistryServiceConfig {
   dataSource: RegistryDataSource;
@@ -17,7 +17,7 @@ export class RegistryService {
   /**
    * Handle a request by routing to the appropriate endpoint handler
    */
-  async handleRequest(method: string, path: string, query: Record<string, string>): Promise<Response> {
+  async handleRequest(method: string, path: string, query: Record<string, string>): Promise<ServiceResult> {
     // Remove basePrefix if present
     let routePath = path;
     if (path.startsWith(this.basePrefix)) {
@@ -49,17 +49,18 @@ export class RegistryService {
       }
 
       // No route matched
-      return this.createResponse(404, { error: 'Not found' });
+      return { ok: false, status: 404, error: 'Not found' };
     } catch (error) {
       console.error('Registry service error:', error);
-      return this.createResponse(500, { 
-        error: 'Internal server error',
-        message: error instanceof Error ? error.message : 'Unknown error'
-      });
+      return { 
+        ok: false, 
+        status: 500, 
+        error: error instanceof Error ? error.message : 'Internal server error'
+      };
     }
   }
 
-  private async handleGetServers(query: Record<string, string>): Promise<Response> {
+  private async handleGetServers(query: Record<string, string>): Promise<ServiceResult> {
     const serversQuery: ServersQuery = {
       cursor: query.cursor,
       limit: query.limit ? parseInt(query.limit) : undefined,
@@ -69,36 +70,27 @@ export class RegistryService {
     };
 
     const result = await this.dataSource.getServers(serversQuery);
-    return this.createResponse(200, result);
+    return { ok: true, status: 200, data: result };
   }
 
-  private async handleGetServerVersions(serverId: string): Promise<Response> {
+  private async handleGetServerVersions(serverId: string): Promise<ServiceResult> {
     const result = await this.dataSource.getServerVersionsByServerId(serverId);
     
     if (result.servers.length === 0) {
-      return this.createResponse(404, { error: 'Server not found' });
+      return { ok: false, status: 404, error: 'Server not found' };
     }
 
-    return this.createResponse(200, result);
+    return { ok: true, status: 200, data: result };
   }
 
-  private async handleGetServerVersion(serverId: string, versionId: string): Promise<Response> {
+  private async handleGetServerVersion(serverId: string, versionId: string): Promise<ServiceResult> {
     const server = await this.dataSource.getServerByIds(serverId, versionId);
     
     if (!server) {
-      return this.createResponse(404, { error: 'Server version not found' });
+      return { ok: false, status: 404, error: 'Server version not found' };
     }
 
-    return this.createResponse(200, server);
-  }
-
-  private createResponse(status: number, data: any): Response {
-    return new Response(JSON.stringify(data), {
-      status,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    return { ok: true, status: 200, data: server };
   }
 }
 
