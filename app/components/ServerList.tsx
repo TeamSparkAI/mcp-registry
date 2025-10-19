@@ -13,7 +13,6 @@ interface ServerListProps {
   onFilterToggle: (filter: string) => void;
   onClearFilters: () => void;
   onServerClick: (server: ServerJSON) => void;
-  getResourcePath: (path: string) => string;
 }
 
 export default function ServerList({
@@ -24,8 +23,7 @@ export default function ServerList({
   onSearchChange,
   onFilterToggle,
   onClearFilters,
-  onServerClick,
-  getResourcePath
+  onServerClick
 }: ServerListProps) {
   const getRemotesSummary = (server: ServerJSON): string | null => {
     if (!server.remotes || server.remotes.length === 0) {
@@ -54,7 +52,7 @@ export default function ServerList({
             <div className="mb-4 sm:mb-0">
               <div className="flex items-start space-x-3">
                 <img 
-                  src={getResourcePath('/mcp_black.png')} 
+                  src="/mcp_black.png" 
                   alt="MCP Registry" 
                   className="w-16 h-16 object-contain"
                 />
@@ -69,7 +67,7 @@ export default function ServerList({
                 Official Registry: <a href="https://registry.modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">registry.modelcontextprotocol.io</a>
               </p>
               <a
-                href={getResourcePath('/tester')}
+                href="/tester"
                 className="flex items-center text-base text-green-600 hover:text-green-800 transition-colors"
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,7 +179,7 @@ export default function ServerList({
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <img src={getResourcePath('/mcp_black.png')} alt="MCP Server" className="w-8 h-8" />
+                            <img src="/mcp_black.png" alt="MCP Server" className="w-8 h-8" />
                           </div>
                         </div>
                         

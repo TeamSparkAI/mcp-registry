@@ -5,7 +5,6 @@ import { useParams, useRouter } from 'next/navigation';
 import { ServerJSON } from '@/types/mcp-registry';
 import ServerDetailView from '@/app/components/ServerDetailView';
 import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
-import { getResourcePath } from '@/app/utils/paths';
 
 export default function ServerDetailPage() {
   const params = useParams();
@@ -124,7 +123,7 @@ export default function ServerDetailPage() {
             </button>
             <div className="flex items-center space-x-2">
               <img 
-                src={getResourcePath('/mcp_black.png')} 
+                src="/mcp_black.png" 
                 alt="MCP Registry" 
                 className="w-6 h-6 object-contain"
               />
@@ -150,7 +149,6 @@ export default function ServerDetailPage() {
         onShowRawModal={setShowRawModal}
         onConfigurePackage={handleConfigurePackage}
         onConfigureRemote={handleConfigureRemote}
-        getResourcePath={getResourcePath}
       />
     </div>
   );
