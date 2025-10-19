@@ -8,14 +8,15 @@ A TypeScript implementation of the [Model Context Protocol Registry](https://git
 
 ## 🚀 Live Application
 
-*(Coming soon - currently ready for Vercel deployment)*
+**[https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)**
 
 ### Features
 
-- **Registry Explorer** - Browse and search all MCP servers
+- **Registry Explorer** - Browse and search all 668 MCP servers
 - **Server Details** - View full metadata, packages, and configuration options  
 - **Configuration Generator** - Generate MCP client configs with custom settings
 - **Server.json Tester** - Validate and lint server.json files
+- **API Access** - Full REST API at `/api/v0/*` endpoints
 
 ## 📦 Packages
 
@@ -151,36 +152,31 @@ pnpm run registry:validate
 
 ## 📚 Documentation
 
-- [**Design Document**](docs/registry-service-design.md) - Architecture, implementation status, and migration plan
+- [**Design Document**](docs/registry-service-design.md) - Architecture decisions and future enhancement ideas
 - [**Registry Reference**](registry/README.md) - OpenAPI spec and schema management
 - [**Official Protocol**](https://github.com/modelcontextprotocol/registry) - MCP Registry protocol specification
 
 ## 🎯 Current Status
 
-### ✅ Completed (Phases 1-3)
+**Production Deployment**: [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)
 
-- Repository cleanup and organization
-- Schema management and automated syncing
-- `mcp-registry-validator` package
-- `mcp-registry-server` package with Next.js adapter
-- Frontend API migration (100% API-based)
-- Server-side validation
-- UUID-based routing (serverId/versionId)
+### ✅ What's Built
 
-### 🚀 Ready for Deployment (Phase 4)
+- Registry mirror application with API and web UI
+- `mcp-registry-validator` - Schema validation and linting package
+- `mcp-registry-server` - Core API server with Next.js adapter
+- Server-side validation endpoints
+- Automated daily data and schema syncing
+- 668 servers, ~414ms API response time
 
-- Infrastructure ready for Vercel
-- API routes serverless-compatible
-- Data updates automated via GitHub Actions
+### 🔮 Potential Enhancements
 
-### 📦 Future Work (Phases 5-6)
+- Component library (`@mcp-registry/ui`) for reusable UI components
+- Express adapter for `mcp-registry-server`
+- Database data source (if scale requires beyond current 668 servers)
+- Rate limiting, analytics, and monitoring
 
-- Extract component library (`@mcp-registry/ui`)
-- Add Express adapter
-- Database data source (if scale requires)
-- Rate limiting and analytics
-
-See [docs/registry-service-design.md](docs/registry-service-design.md) for detailed status.
+See [docs/registry-service-design.md](docs/registry-service-design.md) for architecture details and enhancement ideas.
 
 ## 🤝 Contributing
 

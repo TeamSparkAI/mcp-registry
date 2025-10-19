@@ -26,11 +26,13 @@ This TypeScript implementation follows the same protocol and API contract as def
 
 ## The Deployed Application
 
+**Live at**: [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)
+
 This project deploys a complete registry mirror as a Next.js application on Vercel, consisting of:
 
 ### Registry API
 - Implements the official MCP Registry protocol (OpenAPI spec)
-- Endpoint: `/registry/*` (or similar)
+- Endpoints: `/api/v0/*` (Next.js API routes)
 - Supports pagination, search, and filtering
 - Backed by file-based data source with periodic updates from official registry
 
@@ -103,7 +105,7 @@ Core API server with framework adapters and pluggable data sources.
 ### 2. `mcp-registry-validator`
 Schema validation and linting for server.json files (already published).
 
-### 3. `@mcp-registry/ui` (Planned - Phase 5)
+### 3. `@mcp-registry/ui` (Future Enhancement)
 React components for server browsing, configuration, and validation display.
 
 ## Open Questions
@@ -112,114 +114,83 @@ React components for server browsing, configuration, and validation display.
 
 **Question**: How should components be styled to allow user customization?
 
-**Consideration**: Component styling approach needs to balance ease of use out-of-the-box with flexibility for customization. Details to be determined during component library extraction phase.
+**Consideration**: Component styling approach needs to balance ease of use out-of-the-box with flexibility for customization. Details to be determined if/when component library is extracted.
 
-## Implementation Status
+## Implementation Notes
 
-### ✅ Phase 1: Repository Cleanup (COMPLETED)
-**Status**: Complete
+### Key Architecture Decisions
 
-**What was done**:
-- ✅ Removed old catalog project from repository
-- ✅ Moved registry UI from `/app/registry` to `/app` (root)
-- ✅ Removed obsolete GitHub Actions (`update-catalog.yml`, `deploy.yml`)
-- ✅ Updated all internal links and imports
-- ✅ Deleted unused data files (`servers.json`, `servers-local.json`)
-- ✅ Fixed `.gitignore` issues (node_modules, dist files)
-- ✅ Created `/registry` directory for protocol references (OpenAPI spec, schemas)
-- ✅ Implemented automated schema syncing via GitHub Actions
+**API Path Convention**:
+- Using `/api/v0/*` (Next.js convention) for all API endpoints
+- Original plan called for `/registry/*`, but Next.js conventions favor `/api/*`
 
-**Deviation from plan**: We cleaned up this repo directly rather than forking. The catalog project was simply removed.
+**URL Routing**:
+- Using `serverId` AND `versionId` (UUIDs) for stable, clean URLs
+- Example: `/servers/bcee55b5-2316-4f92-8b66-db907496714b/00636d73-03c1-4107-a591-84b271cd1646`
+- Avoids special character encoding issues with server names
 
-### ✅ Phase 2: Core API Server Package (COMPLETED)
-**Status**: Complete
+**Data Storage**:
+- Single `server-registry.json` file (930KB, 668 servers)
+- In-memory caching via `FileDataSource`
+- Simpler than split-file approach, works well at current scale
+- Can refactor to database or split files if needed (projected safe up to ~100k servers)
 
-**What was done**:
-- ✅ Created `mcp-registry-server` package structure
-- ✅ Implemented `RegistryService` with pluggable data source interface
-- ✅ Implemented `FileDataSource` with in-memory caching
-- ✅ Created Next.js adapter (`createRegistryHandler`)
-- ✅ Full TypeScript types and interfaces
-- ✅ Implemented all OpenAPI read endpoints:
-  - `GET /api/v0/servers` (list, search, filter, paginate)
-  - `GET /api/v0/servers/{serverId}/versions` (all versions)
-  - `GET /api/v0/servers/{serverId}/versions/{versionId}` (specific)
+**Framework Adapters**:
+- Next.js adapter implemented and deployed
+- Express adapter not yet implemented (can be added as needed)
 
-**Deviation from plan**: Express adapter not yet implemented (Next.js only for now). Can be added in Phase 6 if needed.
+**Validation**:
+- Server-side validation via `/api/validate` endpoint
+- Multi-version schema support with automated syncing from `modelcontextprotocol/static`
+- Schemas bundled at build time for performance
 
-### ✅ Phase 3: Frontend API Integration (COMPLETED)
-**Status**: Complete
+## Future Enhancements
 
-**What was done**:
-- ✅ Added catch-all API route at `/app/api/v0/[...path]/route.ts`
-- ✅ Integrated `createRegistryHandler` with `FileDataSource`
-- ✅ Updated main page to fetch from `/api/v0/servers`
-- ✅ Created dynamic routing: `/servers/[serverId]/[versionId]`
-- ✅ Updated all components to use API endpoints
-- ✅ Removed all direct file access from frontend
-- ✅ Implemented server-side validation via `/api/validate` endpoint
-- ✅ Updated tester UI to use validation API
+The following features could be added to extend the project:
 
-**Deviations from plan**:
-- **API path**: Using `/api/v0/...` (Next.js convention) instead of `/registry/...`
-- **Routing**: Using `serverId` AND `versionId` (UUIDs) instead of just versionId
-  - Example: `/servers/bcee55b5-2316-4f92-8b66-db907496714b/00636d73-03c1-4107-a591-84b271cd1646`
-  - Cleaner URLs, no special character encoding issues
-- **Data structure**: Using single `server-registry.json` file instead of index + individual files
-  - Simpler implementation with in-memory caching
-  - Works well at current scale (668 servers, 930KB file)
-  - Can refactor to split files later if needed
+**Component Library**:
+- Extract UI components into `@mcp-registry/ui` package
+- Enable other MCP applications to reuse components:
+  - `ServerList` - browsing and search UI
+  - `ServerDetailView` - server details with metadata
+  - `ValidationIssues` - validation error display
+  - `ConfigGenerator` - configuration form and preview
 
-### 🚀 Phase 4: Deploy to Vercel (READY)
-**Status**: Ready for deployment
+**Additional Framework Support**:
+- Add Express adapter for `mcp-registry-server` package
+- Enable use in non-Next.js environments (e.g., MCP Gateway integration)
 
-**What needs to be done**:
-- ☐ Deploy to Vercel (infrastructure ready)
-- ☐ Configure Vercel project settings
-- ☐ Set up GitHub integration for auto-deployment
-- ☐ Test production deployment thoroughly:
-  - ☐ Verify API endpoints work in serverless environment
-  - ☐ Test search and filtering
-  - ☐ Test server detail pages
-  - ☐ Validate server.json files
-  - ☐ Generate configurations
-- ☐ Monitor performance and errors
+**Scalability & Performance**:
+- Add database data source (PostgreSQL, MongoDB, etc.) if registry grows beyond 100k servers
+- Implement Redis caching strategy for high-traffic scenarios
+- Add rate limiting to protect API endpoints
 
-**Prerequisites**: All complete
-- ✅ Removed `output: 'export'` from Next.js config
-- ✅ API routes are serverless-compatible
-- ✅ Frontend is 100% API-based
-- ✅ Data updates automatically via GitHub Actions
+**Analytics & Monitoring**:
+- Add usage metrics and analytics
+- Monitor API performance and errors
+- Track popular servers and search patterns
 
-### 📦 Phase 5: Component Library (TODO)
-**Status**: Not started (optional enhancement)
-
-**What needs to be done**:
-- ☐ Create `@mcp-registry/ui` package structure
-- ☐ Extract reusable components:
-  - ☐ `ServerList` - browsing and search UI
-  - ☐ `ServerDetailView` - server details with metadata
-  - ☐ `ValidationIssues` - validation error display
-  - ☐ `ConfigGenerator` - configuration form and preview
-- ☐ Determine component styling approach
-- ☐ Document component APIs
-- ☐ Publish to npm
-
-**Purpose**: Enable other MCP applications to reuse the UI components.
-
-### 🔮 Phase 6: Future Enhancements (TODO)
-**Status**: Future work
-
-**Possible enhancements**:
-- ☐ Add Express adapter for `mcp-registry-server` package
-- ☐ Add database data source (if scale requires)
-- ☐ Implement caching strategy (Redis, etc.)
-- ☐ Add rate limiting
-- ☐ Add analytics/metrics
-- ☐ Implement ToolVault integration with custom data source
-- ☐ Consider publishing support (if moving from read-only mirror)
+**Publishing Support**:
+- Consider adding write endpoints if moving from read-only mirror
+- Implement `POST /v0/publish` from OpenAPI spec
+- Add authentication and validation for submissions
 
 ## Current Implementation Details
+
+### Deployment (Production)
+
+**Live URL**: [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)
+
+**Platform**: Vercel (Serverless)
+- Auto-deployment from GitHub on push to `main`
+- Global edge network deployment
+- Serverless function limits: 1GB memory, 10s timeout (Hobby tier)
+
+**Performance (Production)**:
+- API response time: ~414ms for full registry (668 servers)
+- Payload size: ~277KB JSON
+- Cold start: ~100-200ms
+- Warm requests: ~50-100ms
 
 ### API Endpoints (as-built)
 
@@ -270,14 +241,14 @@ POST /api/validate
 - Safe up to ~100k servers in memory
 - Beyond that, consider database migration or split-file approach
 
-### Package Structure (as-built)
+### Package Structure
 
 **Published Packages**:
 1. `mcp-registry-validator` - Schema validation, linting (already published)
 2. `mcp-registry-server` - Core API, data sources, Next.js adapter (ready for publishing)
 
-**Planned Packages**:
-3. `@mcp-registry/ui` - React components (Phase 5)
+**Future Enhancements**:
+3. `@mcp-registry/ui` - React components (not yet implemented)
 
 ### Automated Updates
 
