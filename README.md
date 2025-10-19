@@ -57,16 +57,12 @@ export { handler as GET, handler as POST };
 
 **Features:**
 - Framework-agnostic core with Next.js adapter
-- Pluggable data source interface
+- Pluggable data source interface (file, database, custom)
 - In-memory caching for performance
 - Full OpenAPI spec implementation
+- Serverless-ready (Vercel, AWS Lambda, etc.)
 
-**API Endpoints:**
-```
-GET  /api/v0/servers                           # List all servers
-GET  /api/v0/servers/{serverId}/versions       # Get all versions
-GET  /api/v0/servers/{serverId}/versions/{versionId}  # Get specific version
-```
+**[→ Full Package Documentation](packages/mcp-registry-server/README.md)**
 
 ## 🏗️ Architecture
 
