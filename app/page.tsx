@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
 import ServerList from '@/app/components/ServerList';
-import { getResourcePath } from '@/app/utils/paths';
 
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerJSON[]>([]);
@@ -109,7 +108,6 @@ export default function RegistryPage() {
       onFilterToggle={handleFilterToggle}
       onClearFilters={() => setSelectedFilters([])}
       onServerClick={() => {}} // No longer needed with Link navigation
-      getResourcePath={getResourcePath}
     />
   );
 }

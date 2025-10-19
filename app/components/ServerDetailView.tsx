@@ -52,7 +52,6 @@ interface ServerDetailViewProps {
   onShowRawModal: (show: boolean) => void;
   onConfigurePackage: (pkg: PackageConfig, index: number) => void;
   onConfigureRemote: (remote: RemoteConfig, index: number) => void;
-  getResourcePath: (path: string) => string;
   isTestMode?: boolean;
   testServerJson?: string;
   onUpdateTestServerJson?: (json: string) => void;
@@ -76,7 +75,6 @@ export default function ServerDetailView({
   onShowRawModal,
   onConfigurePackage,
   onConfigureRemote,
-  getResourcePath,
   isTestMode = false,
   testServerJson = '',
   onUpdateTestServerJson,
@@ -107,7 +105,7 @@ export default function ServerDetailView({
             <div className="flex items-start justify-between">
               <div className="flex items-start space-x-4 min-w-0 flex-1 mr-6">
                 <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src={getResourcePath('/mcp_black.png')} alt="MCP Server" className="w-10 h-10" />
+                  <img src="/mcp_black.png" alt="MCP Server" className="w-10 h-10" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h1 className="text-2xl font-bold text-gray-900">{server.name}</h1>

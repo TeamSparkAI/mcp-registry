@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ServerJSON } from '@/types/mcp-registry';
 import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
-import { getResourcePath } from '@/app/utils/paths';
 import ServerDetailView from '@/app/components/ServerDetailView';
 import ValidationIssues from '@/app/components/ValidationIssues';
 import type { ValidationIssue, ValidationResult } from 'mcp-registry-validator';
@@ -279,7 +278,7 @@ export default function TesterPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex items-center space-x-3">
               <img 
-                src={getResourcePath('/mcp_black.png')} 
+                src="/mcp_black.png" 
                 alt="MCP Registry" 
                 className="w-8 h-8 object-contain"
               />
@@ -364,7 +363,7 @@ export default function TesterPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <img 
-                  src={getResourcePath('/mcp_black.png')} 
+                  src="/mcp_black.png" 
                   alt="MCP Registry" 
                   className="w-8 h-8 object-contain"
                 />
@@ -399,7 +398,6 @@ export default function TesterPage() {
         onShowRawModal={setShowRawModal}
         onConfigurePackage={handleConfigurePackage}
         onConfigureRemote={handleConfigureRemote}
-        getResourcePath={getResourcePath}
         isTestMode={true}
         testServerJson={testServerJson}
         onUpdateTestServerJson={handleUpdateTestServerJson}
