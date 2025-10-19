@@ -57,11 +57,20 @@ export interface RegistryDataSource {
   getServerByIds(serverId: string, versionId: string): Promise<Server | null>;
 }
 
-// Internal routing types
-export interface RouteMatch {
-  path: string;
-  method: string;
-  params: Record<string, string>;
-  query: Record<string, string>;
+// Service result types (protocol-agnostic responses)
+export type ResponseData = ServerList | Server;
+
+export interface SuccessResponse {
+  ok: true;
+  status: 200;
+  data: ResponseData;
 }
+
+export interface ErrorResponse {
+  ok: false;
+  status: 404 | 500;
+  error: string;
+}
+
+export type ServiceResult = SuccessResponse | ErrorResponse;
 
