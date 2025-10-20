@@ -32,19 +32,19 @@ export class RegistryService {
           return await this.handleGetServers(query);
         }
 
-        // GET /servers/{serverId}/versions
+        // GET /servers/{serverName}/versions
         const versionsMatch = routePath.match(/^\/servers\/([^/]+)\/versions\/?$/);
         if (versionsMatch) {
-          const serverId = decodeURIComponent(versionsMatch[1]);
-          return await this.handleGetServerVersions(serverId);
+          const serverName = decodeURIComponent(versionsMatch[1]);
+          return await this.handleGetServerVersions(serverName);
         }
 
-        // GET /servers/{serverId}/versions/{versionId}
+        // GET /servers/{serverName}/versions/{version}
         const versionMatch = routePath.match(/^\/servers\/([^/]+)\/versions\/([^/]+)\/?$/);
         if (versionMatch) {
-          const serverId = decodeURIComponent(versionMatch[1]);
-          const versionId = decodeURIComponent(versionMatch[2]);
-          return await this.handleGetServerVersion(serverId, versionId);
+          const serverName = decodeURIComponent(versionMatch[1]);
+          const version = decodeURIComponent(versionMatch[2]);
+          return await this.handleGetServerVersion(serverName, version);
         }
       }
 
@@ -73,8 +73,8 @@ export class RegistryService {
     return { ok: true, status: 200, data: result };
   }
 
-  private async handleGetServerVersions(serverId: string): Promise<ServiceResult> {
-    const result = await this.dataSource.getServerVersionsByServerId(serverId);
+  private async handleGetServerVersions(serverName: string): Promise<ServiceResult> {
+    const result = await this.dataSource.getServerVersions(serverName);
     
     if (result.servers.length === 0) {
       return { ok: false, status: 404, error: 'Server not found' };
@@ -83,8 +83,8 @@ export class RegistryService {
     return { ok: true, status: 200, data: result };
   }
 
-  private async handleGetServerVersion(serverId: string, versionId: string): Promise<ServiceResult> {
-    const server = await this.dataSource.getServerByIds(serverId, versionId);
+  private async handleGetServerVersion(serverName: string, version: string): Promise<ServiceResult> {
+    const server = await this.dataSource.getServerVersion(serverName, version);
     
     if (!server) {
       return { ok: false, status: 404, error: 'Server version not found' };

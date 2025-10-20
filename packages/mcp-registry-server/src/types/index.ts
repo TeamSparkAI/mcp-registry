@@ -1,15 +1,20 @@
-// Server data structures (matching server.schema.json)
-export interface Server {
-  $schema: string;
+// ServerDetail: Server data per server.schema.json (NO registry metadata)
+export interface ServerDetail {
+  $schema?: string;
   name: string;
   version: string;
   description?: string;
   icon?: string;
   homepage?: string;
+  websiteUrl?: string;
   repository?: {
     type: string;
     url: string;
+    source?: string;
+    id?: string;
+    subfolder?: string;
   };
+  status?: string;
   license?: string;
   vendor?: {
     name: string;
@@ -21,9 +26,28 @@ export interface Server {
   [key: string]: any; // Allow additional properties
 }
 
+// Registry metadata (separate from server data)
+export interface RegistryMeta {
+  'io.modelcontextprotocol.registry/official'?: {
+    serverId?: string;
+    versionId?: string;
+    status?: string;
+    publishedAt?: string;
+    updatedAt?: string;
+    isLatest?: boolean;
+  };
+  [key: string]: any;
+}
+
+// ServerResponse: Wrapped format per OpenAPI spec
+export interface ServerResponse {
+  server: ServerDetail;
+  _meta: RegistryMeta;
+}
+
 // API Response structures (matching OpenAPI spec)
 export interface ServerList {
-  servers: Server[];
+  servers: ServerResponse[];
   metadata: {
     nextCursor?: string;
     totalResults?: number;
@@ -47,18 +71,18 @@ export interface RegistryDataSource {
   getServers(query: ServersQuery): Promise<ServerList>;
   
   /**
-   * Get all versions of a specific server by serverId
+   * Get all versions of a specific server by name
    */
-  getServerVersionsByServerId(serverId: string): Promise<ServerList>;
+  getServerVersions(serverName: string): Promise<ServerList>;
   
   /**
-   * Get a specific version of a server by serverId and versionId
+   * Get a specific version of a server by name and version
    */
-  getServerByIds(serverId: string, versionId: string): Promise<Server | null>;
+  getServerVersion(serverName: string, version: string): Promise<ServerResponse | null>;
 }
 
 // Service result types (protocol-agnostic responses)
-export type ResponseData = ServerList | Server;
+export type ResponseData = ServerList | ServerResponse;
 
 export interface SuccessResponse {
   ok: true;

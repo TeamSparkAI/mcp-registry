@@ -2,17 +2,17 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ServerJSON } from '@/types/mcp-registry';
+import { ServerResponse } from '@/types/mcp-registry';
 
 interface ServerListProps {
-  servers: ServerJSON[];
-  filteredServers: ServerJSON[];
+  servers: ServerResponse[];
+  filteredServers: ServerResponse[];
   searchTerm: string;
   selectedFilters: string[];
   onSearchChange: (term: string) => void;
   onFilterToggle: (filter: string) => void;
   onClearFilters: () => void;
-  onServerClick: (server: ServerJSON) => void;
+  onServerClick: (serverResponse: ServerResponse) => void;
 }
 
 export default function ServerList({
@@ -25,19 +25,19 @@ export default function ServerList({
   onClearFilters,
   onServerClick
 }: ServerListProps) {
-  const getRemotesSummary = (server: ServerJSON): string | null => {
-    if (!server.remotes || server.remotes.length === 0) {
+  const getRemotesSummary = (serverResponse: ServerResponse): string | null => {
+    if (!serverResponse.server.remotes || serverResponse.server.remotes.length === 0) {
       return null;
     }
-    const remoteTypes = server.remotes.map(remote => remote.type).join(', ');
+    const remoteTypes = serverResponse.server.remotes.map(remote => remote.type).join(', ');
     return remoteTypes;
   };
 
-  const getPackagesSummary = (server: ServerJSON): string | null => {
-    if (!server.packages || server.packages.length === 0) {
+  const getPackagesSummary = (serverResponse: ServerResponse): string | null => {
+    if (!serverResponse.server.packages || serverResponse.server.packages.length === 0) {
       return null;
     }
-    const packageInfos = server.packages.map(pkg => {
+    const packageInfos = serverResponse.server.packages.map(pkg => {
       return `${pkg.registryType}`;
     }).join(', ');
     return packageInfos;
@@ -163,17 +163,16 @@ export default function ServerList({
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredServers.map((server) => {
-                    const remotesSummary = getRemotesSummary(server);
-                    const packagesSummary = getPackagesSummary(server);
-                    const meta = server._meta?.['io.modelcontextprotocol.registry/official'];
-                    const serverId = meta?.serverId || server.name;
-                    const versionId = meta?.versionId || server.version;
-                    const serverPath = `/servers/${encodeURIComponent(serverId)}/${encodeURIComponent(versionId)}`;
+                  {filteredServers.map((serverResponse) => {
+                    const remotesSummary = getRemotesSummary(serverResponse);
+                    const packagesSummary = getPackagesSummary(serverResponse);
+                    const serverName = serverResponse.server.name;
+                    const version = serverResponse.server.version;
+                    const serverPath = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
 
                     return (
                       <Link
-                        key={`${serverId}-${versionId}`}
+                        key={`${serverName}-${version}`}
                         href={serverPath}
                         className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer block"
                       >
@@ -184,17 +183,17 @@ export default function ServerList({
                         </div>
                         
                         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-                          {server.name}
+                          {serverResponse.server.name}
                         </h3>
                         
                         <p className="text-gray-600 text-sm mb-3 line-clamp-3">
-                          {server.description}
+                          {serverResponse.server.description}
                         </p>
                         
                         <div className="space-y-2 text-xs text-gray-500">
                           <div className="flex items-center justify-between">
                             <span>Version</span>
-                            <span className="font-medium">{server.version}</span>
+                            <span className="font-medium">{serverResponse.server.version}</span>
                           </div>
                           {remotesSummary && (
                             <div className="flex items-center justify-between">
@@ -208,15 +207,15 @@ export default function ServerList({
                               <span className="font-medium">{packagesSummary}</span>
                             </div>
                           )}
-                          {server.status && (
+                          {serverResponse.server.status && (
                             <div className="flex items-center justify-between">
                               <span>Status</span>
                               <span className={`font-medium ${
-                                server.status === 'active' ? 'text-green-600' : 
-                                server.status === 'deprecated' ? 'text-yellow-600' : 
+                                serverResponse.server.status === 'active' ? 'text-green-600' : 
+                                serverResponse.server.status === 'deprecated' ? 'text-yellow-600' : 
                                 'text-gray-600'
                               }`}>
-                                {server.status}
+                                {serverResponse.server.status}
                               </span>
                             </div>
                           )}
