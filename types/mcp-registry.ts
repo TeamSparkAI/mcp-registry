@@ -80,36 +80,52 @@ export interface Repository {
   subfolder?: string;
 }
 
-export interface ServerJSON {
+// ServerDetail: Server data per server.schema.json (NO registry metadata)
+export interface ServerDetail {
+  $schema?: string;
   name: string;
   description: string;
+  version: string;
   status?: 'active' | 'deprecated';
   repository?: Repository;
-  version: string;
   websiteUrl?: string;
-  $schema?: string;
   packages?: Package[];
   remotes?: Transport[];
-  _meta?: ServerMeta;
 }
 
-export interface Metadata {
-    count: number;
-    next_cursor?: string;
-}
-
-// Alias for ServerDetail as used in the API spec
-export type ServerDetail = ServerJSON;
-
-export interface ServerListResponse {
-  servers: ServerJSON[];
-  metadata?: Metadata;
-}
-
-export interface ServerMeta {
+// Registry metadata (separate from server data per OpenAPI spec)
+export interface RegistryMeta {
   'io.modelcontextprotocol.registry/official'?: OfficialRegistryMetadata;
   'io.modelcontextprotocol.registry/publisher-provided'?: Record<string, any>;
   [key: string]: any; // Allow additional extension namespaces
+}
+
+// ServerResponse: Wrapped format per OpenAPI spec (server + _meta separated)
+export interface ServerResponse {
+  server: ServerDetail;
+  _meta: RegistryMeta;
+}
+
+// API response metadata
+export interface ResponseMetadata {
+  nextCursor?: string;
+  count?: number;
+  totalResults?: number;
+}
+
+// List response per OpenAPI spec
+export interface ServerListResponse {
+  servers: ServerResponse[];
+  metadata?: ResponseMetadata;
+}
+
+// Legacy alias for backward compatibility during migration
+export type ServerJSON = ServerDetail;
+export type ServerMeta = RegistryMeta;
+export interface Metadata {
+  count: number;
+  next_cursor?: string;
+  nextCursor?: string;
 }
 
 export interface ErrorDetail {

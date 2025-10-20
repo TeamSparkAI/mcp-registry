@@ -21,21 +21,27 @@ export default function ServerDetailPage() {
 
   useEffect(() => {
     loadServer();
-  }, [params.serverId, params.versionId]);
+  }, [params.serverName, params.version]);
 
   const loadServer = async () => {
     try {
       setLoading(true);
-      const serverId = params.serverId as string;
-      const versionId = params.versionId as string;
-      const response = await fetch(`/api/v0/servers/${encodeURIComponent(serverId)}/versions/${encodeURIComponent(versionId)}`);
+      const serverName = params.serverName as string;
+      const version = params.version as string;
+      const response = await fetch(`/api/v0/servers/${serverName}/versions/${version}`);
       
       if (!response.ok) {
         throw new Error('Failed to load server');
       }
       
-      const data = await response.json();
-      setServer(data);
+      const serverResponse = await response.json();
+      // Unwrap ServerResponse -> ServerJSON for the detail view component
+      // Merge server data with _meta for backward compatibility
+      const unwrappedServer = {
+        ...serverResponse.server,
+        _meta: serverResponse._meta
+      };
+      setServer(unwrappedServer);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load server');
     } finally {

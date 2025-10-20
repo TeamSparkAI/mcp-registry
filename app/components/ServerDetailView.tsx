@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { ServerJSON } from '@/types/mcp-registry';
 import ConfigurationForm from './ConfigurationForm';
 import RequiredFieldWarning from './RequiredFieldWarning';
@@ -108,7 +109,11 @@ export default function ServerDetailView({
                   <img src="/mcp_black.png" alt="MCP Server" className="w-10 h-10" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h1 className="text-2xl font-bold text-gray-900">{server.name}</h1>
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    <Link href={`/servers/${encodeURIComponent(server.name)}`} className="hover:text-blue-600 transition-colors">
+                      {server.name}
+                    </Link>
+                  </h1>
                   <p className="text-gray-600 mt-1">{server.description}</p>
                   {server.websiteUrl && (
                     <div className="mt-2">

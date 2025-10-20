@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { RegistryDataSource, ServersQuery, ServerList, Server } from '../types';
+import { RegistryDataSource, ServersQuery, ServerList, ServerResponse } from '../types';
 
 export interface FileDataSourceConfig {
   registryPath: string; // Path to server-registry.json
 }
 
 interface Registry {
-  servers: Server[];
+  servers: ServerResponse[];
 }
 
 export class FileDataSource implements RegistryDataSource {
@@ -36,8 +36,8 @@ export class FileDataSource implements RegistryDataSource {
     if (query.search) {
       const searchLower = query.search.toLowerCase();
       filtered = filtered.filter(s => 
-        s.name.toLowerCase().includes(searchLower) ||
-        s.description?.toLowerCase().includes(searchLower)
+        s.server.name.toLowerCase().includes(searchLower) ||
+        s.server.description?.toLowerCase().includes(searchLower)
       );
     }
 
@@ -45,7 +45,7 @@ export class FileDataSource implements RegistryDataSource {
     if (query.updated_since) {
       const sinceDate = new Date(query.updated_since);
       filtered = filtered.filter(s => {
-        const serverDate = s._meta?.['io.modelcontextprotocol.registry/official']?.updated;
+        const serverDate = s._meta?.['io.modelcontextprotocol.registry/official']?.updatedAt;
         if (!serverDate) return false;
         return new Date(serverDate) > sinceDate;
       });
@@ -55,17 +55,17 @@ export class FileDataSource implements RegistryDataSource {
     if (query.version) {
       if (query.version === 'latest') {
         // Group by server name and keep only latest version
-        const latestMap = new Map<string, Server>();
-        for (const server of filtered) {
-          const existing = latestMap.get(server.name);
-          if (!existing || this.compareVersions(server.version, existing.version) > 0) {
-            latestMap.set(server.name, server);
+        const latestMap = new Map<string, ServerResponse>();
+        for (const serverResponse of filtered) {
+          const existing = latestMap.get(serverResponse.server.name);
+          if (!existing || this.compareVersions(serverResponse.server.version, existing.server.version) > 0) {
+            latestMap.set(serverResponse.server.name, serverResponse);
           }
         }
         filtered = Array.from(latestMap.values());
       } else {
         // Filter by exact version
-        filtered = filtered.filter(s => s.version === query.version);
+        filtered = filtered.filter(s => s.server.version === query.version);
       }
     }
 
@@ -85,17 +85,14 @@ export class FileDataSource implements RegistryDataSource {
     };
   }
 
-  async getServerVersionsByServerId(serverId: string): Promise<ServerList> {
+  async getServerVersions(serverName: string): Promise<ServerList> {
     const registry = this.loadRegistry();
     
-    // Find all versions of this server by serverId
-    const versions = registry.servers.filter(s => {
-      const meta = s._meta?.['io.modelcontextprotocol.registry/official'];
-      return meta?.serverId === serverId;
-    });
+    // Find all versions of this server by name
+    const versions = registry.servers.filter(s => s.server.name === serverName);
     
     // Sort by version (newest first)
-    versions.sort((a, b) => this.compareVersions(b.version, a.version));
+    versions.sort((a, b) => this.compareVersions(b.server.version, a.server.version));
 
     return {
       servers: versions,
@@ -105,14 +102,13 @@ export class FileDataSource implements RegistryDataSource {
     };
   }
 
-  async getServerByIds(serverId: string, versionId: string): Promise<Server | null> {
+  async getServerVersion(serverName: string, version: string): Promise<ServerResponse | null> {
     const registry = this.loadRegistry();
     
-    // Find exact match by serverId and versionId
-    const server = registry.servers.find(s => {
-      const meta = s._meta?.['io.modelcontextprotocol.registry/official'];
-      return meta?.serverId === serverId && meta?.versionId === versionId;
-    });
+    // Find exact match by name and version
+    const server = registry.servers.find(s => 
+      s.server.name === serverName && s.server.version === version
+    );
 
     return server || null;
   }

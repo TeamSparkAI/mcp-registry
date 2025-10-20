@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ServerJSON } from '@/types/mcp-registry';
+import { ServerResponse } from '@/types/mcp-registry';
 import ServerList from '@/app/components/ServerList';
 
 export default function RegistryPage() {
-  const [servers, setServers] = useState<ServerJSON[]>([]);
+  const [servers, setServers] = useState<ServerResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -39,10 +39,10 @@ export default function RegistryPage() {
     }
   };
 
-  const filteredServers = servers.filter(server => {
+  const filteredServers = servers.filter(serverResponse => {
     const search = searchTerm.toLowerCase();
-    const name = (server.name || '').toLowerCase();
-    const description = (server.description || '').toLowerCase();
+    const name = (serverResponse.server.name || '').toLowerCase();
+    const description = (serverResponse.server.description || '').toLowerCase();
 
     const nameMatch = name.includes(search);
     const descMatch = description.includes(search);
@@ -54,18 +54,18 @@ export default function RegistryPage() {
     if (selectedFilters.length > 0) {
       matchesFilters = selectedFilters.every(filter => {
         if (filter === 'Latest') {
-          return server._meta?.['io.modelcontextprotocol.registry/official']?.isLatest === true;
+          return serverResponse._meta?.['io.modelcontextprotocol.registry/official']?.isLatest === true;
         } else if (filter === 'Hosted') {
-          return server.remotes && server.remotes.length > 0;
+          return serverResponse.server.remotes && serverResponse.server.remotes.length > 0;
         } else if (filter === 'Installable') {
-          return server.packages && server.packages.length > 0;
+          return serverResponse.server.packages && serverResponse.server.packages.length > 0;
         }
         return false;
       });
     }
     
     return matchesSearch && matchesFilters;
-  }).sort((a, b) => a.name.localeCompare(b.name));
+  }).sort((a, b) => (a.server.name || '').localeCompare(b.server.name || ''));
 
   const handleFilterToggle = (filter: string) => {
     setSelectedFilters(prev => 
