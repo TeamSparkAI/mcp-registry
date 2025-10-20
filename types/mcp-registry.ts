@@ -122,6 +122,11 @@ export interface ServerListResponse {
 // Legacy alias for backward compatibility during migration
 export type ServerJSON = ServerDetail;
 export type ServerMeta = RegistryMeta;
+
+// ServerDetail with _meta merged (used by detail views)
+export type ServerWithMeta = ServerDetail & {
+  _meta?: RegistryMeta;
+};
 export interface Metadata {
   count: number;
   next_cursor?: string;

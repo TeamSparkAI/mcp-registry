@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ServerJSON } from '@/types/mcp-registry';
+import { ServerWithMeta } from '@/types/mcp-registry';
 import ConfigurationForm from './ConfigurationForm';
 import RequiredFieldWarning from './RequiredFieldWarning';
 import ConfigurationPreview from './ConfigurationPreview';
@@ -38,7 +38,7 @@ interface RemoteConfig {
 }
 
 interface ServerDetailViewProps {
-  server: ServerJSON;
+  server: ServerWithMeta;
   configuringPackage?: { pkg: PackageConfig; index: number } | null;
   configuringRemote?: { remote: RemoteConfig; index: number } | null;
   packageConfig: Record<string, any>;

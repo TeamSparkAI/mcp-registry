@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { ServerJSON } from '@/types/mcp-registry';
+import { ServerWithMeta } from '@/types/mcp-registry';
 import ServerDetailView from '@/app/components/ServerDetailView';
 import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
 
 export default function ServerDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const [server, setServer] = useState<ServerJSON | null>(null);
+  const [server, setServer] = useState<ServerWithMeta | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [configuringPackage, setConfiguringPackage] = useState<{pkg: any, index: number} | null>(null);
@@ -35,9 +35,9 @@ export default function ServerDetailPage() {
       }
       
       const serverResponse = await response.json();
-      // Unwrap ServerResponse -> ServerJSON for the detail view component
-      // Merge server data with _meta for backward compatibility
-      const unwrappedServer = {
+      // Unwrap ServerResponse -> ServerWithMeta for the detail view component
+      // Merge server data with _meta
+      const unwrappedServer: ServerWithMeta = {
         ...serverResponse.server,
         _meta: serverResponse._meta
       };
