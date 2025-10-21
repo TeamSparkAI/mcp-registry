@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the deployed application at [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/).
+This document describes the deployed application at [https://registry.teamspark.ai/](https://registry.teamspark.ai/).
 
 **What it is:**
 A Next.js application that mirrors the official MCP Registry (updated daily) and provides:
@@ -28,7 +28,7 @@ This TypeScript implementation follows the same protocol and API contract as def
 
 ## The Deployed Application
 
-**Live at**: [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)
+**Live at**: [https://registry.teamspark.ai/](https://registry.teamspark.ai/)
 
 This project deploys a complete registry mirror as a Next.js application on Vercel, consisting of:
 
@@ -58,7 +58,7 @@ This project deploys a complete registry mirror as a Next.js application on Verc
 
 ## Deployment Configuration
 
-**Live URL**: [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)
+**Live URL**: [https://registry.teamspark.ai/](https://registry.teamspark.ai/)
 
 **Platform**: Vercel
 - Serverless deployment
