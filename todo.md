@@ -58,10 +58,6 @@ Remote URI template substitution
   - Add no-remote-template-variabes-missing or exapand no-template-variables-missing to cover
   - Same for no-unused-variables
 
-### https://github.com/modelcontextprotocol/registry/pull/601
-
-Implement placeholder support in UX
-
 ## Config Validation in our UX
 
 1. Validate JSON

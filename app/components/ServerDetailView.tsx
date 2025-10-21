@@ -2,46 +2,17 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ServerWithMeta } from '@/types/mcp-registry';
+import { ServerWithMeta, Package, TransportRemote, FieldConfig } from '@/types/mcp-registry';
 import { getBestIcon } from '@/app/registry-utils/iconUtils';
+import { getFieldDisplayValue, getFieldDisplayLabel } from '@/app/registry-utils/fieldDisplay';
 import ConfigurationForm from './ConfigurationForm';
 import RequiredFieldWarning from './RequiredFieldWarning';
 import ConfigurationPreview from './ConfigurationPreview';
 
-interface FieldConfig {
-  name?: string;
-  value?: string;
-  default?: string;
-  isRequired?: boolean;
-  isSecret?: boolean;
-  description?: string;
-}
-
-interface PackageConfig {
-  identifier: string;
-  version: string;
-  registryType: string;
-  runtimeHint?: string;
-  runtimeArguments?: FieldConfig[];
-  packageArguments?: FieldConfig[];
-  environmentVariables?: FieldConfig[];
-  transport?: {
-    type: string;
-    url?: string;
-    headers?: FieldConfig[];
-  };
-}
-
-interface RemoteConfig {
-  type: string;
-  url?: string;
-  headers?: FieldConfig[];
-}
-
 interface ServerDetailViewProps {
   server: ServerWithMeta;
-  configuringPackage?: { pkg: PackageConfig; index: number } | null;
-  configuringRemote?: { remote: RemoteConfig; index: number } | null;
+  configuringPackage?: { pkg: Package; index: number } | null;
+  configuringRemote?: { remote: TransportRemote; index: number } | null;
   packageConfig: Record<string, any>;
   remoteConfig: Record<string, any>;
   visibleFields: Set<string>;
@@ -52,13 +23,8 @@ interface ServerDetailViewProps {
   onToggleFieldVisibility: (fieldId: string) => void;
   onCloseConfiguration: () => void;
   onShowRawModal: (show: boolean) => void;
-  onConfigurePackage: (pkg: PackageConfig, index: number) => void;
-  onConfigureRemote: (remote: RemoteConfig, index: number) => void;
-  isTestMode?: boolean;
-  testServerJson?: string;
-  onUpdateTestServerJson?: (json: string) => void;
-  onApplyTestServerJson?: (json: string) => void;
-  onEditTestServerJson?: () => void;
+  onConfigurePackage: (pkg: Package, index: number) => void;
+  onConfigureRemote: (remote: TransportRemote, index: number) => void;
 }
 
 export default function ServerDetailView({
@@ -76,24 +42,20 @@ export default function ServerDetailView({
   onCloseConfiguration,
   onShowRawModal,
   onConfigurePackage,
-  onConfigureRemote,
-  isTestMode = false,
-  testServerJson = '',
-  onUpdateTestServerJson,
-  onApplyTestServerJson,
-  onEditTestServerJson
+  onConfigureRemote
 }: ServerDetailViewProps) {
   const [copied, setCopied] = useState(false);
   
-  const hasPackageConfiguration = (pkg: PackageConfig) => {
+  const hasPackageConfiguration = (pkg: Package) => {
+    const transport = pkg.transport as TransportRemote;
     return pkg.runtimeHint || 
            (pkg.runtimeArguments && pkg.runtimeArguments.length > 0) ||
            (pkg.packageArguments && pkg.packageArguments.length > 0) ||
            (pkg.environmentVariables && pkg.environmentVariables.length > 0) ||
-           (pkg.transport?.headers && pkg.transport.headers.length > 0);
+           (transport?.headers && transport.headers.length > 0);
   };
 
-  const hasRemoteConfiguration = (remote: RemoteConfig) => {
+  const hasRemoteConfiguration = (remote: TransportRemote) => {
     return remote.headers && remote.headers.length > 0;
   };
 
@@ -238,10 +200,10 @@ export default function ServerDetailView({
                               )}
                             </div>
                           </div>
-                          {hasRemoteConfiguration(remote as RemoteConfig) && (
+                          {hasRemoteConfiguration(remote as TransportRemote) && (
                             <div className="ml-4">
                               <button
-                                onClick={() => onConfigureRemote(remote as RemoteConfig, index)}
+                                onClick={() => onConfigureRemote(remote as TransportRemote, index)}
                                 className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
                               >
                                 Configure
@@ -253,13 +215,17 @@ export default function ServerDetailView({
                           <div className="mt-4">
                             <label className="text-sm font-medium text-gray-500">Headers</label>
                             <div className="mt-1 space-y-2">
-                              {remote.headers.map((header, headerIndex) => (
-                                <div key={headerIndex} className="flex items-center space-x-4 text-sm">
-                                  <span className="font-mono bg-gray-100 px-2 py-1 rounded">{header.name}</span>
-                                  <span className="text-gray-600">:</span>
-                                  <span className="font-mono bg-gray-100 px-2 py-1 rounded">{header.value || '(empty)'}</span>
-                                </div>
-                              ))}
+                              {remote.headers.map((header, headerIndex) => {
+                                const configHeader = header as FieldConfig;
+                                const value = getFieldDisplayValue(configHeader);
+                                return (
+                                  <div key={headerIndex} className="flex items-start space-x-4 text-sm">
+                                    <span className="font-mono bg-gray-100 px-2 py-1 rounded flex-shrink-0">{header.name}</span>
+                                    <span className="text-gray-600 flex-shrink-0">:</span>
+                                    <span className="font-mono bg-gray-50 px-2 py-1 rounded text-gray-700 break-all">{value}</span>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}
@@ -329,22 +295,26 @@ export default function ServerDetailView({
                                 <div className="col-span-full">
                                   <label className="text-sm font-medium text-gray-500">Transport Headers</label>
                                   <div className="mt-1 space-y-2">
-                                    {(pkg.transport as any).headers.map((header: any, headerIndex: number) => (
-                                      <div key={headerIndex} className="flex items-center space-x-4 text-sm">
-                                        <span className="font-mono bg-gray-100 px-2 py-1 rounded">{header.name}</span>
-                                        <span className="text-gray-600">:</span>
-                                        <span className="font-mono bg-gray-100 px-2 py-1 rounded">{header.value || '(empty)'}</span>
-                                      </div>
-                                    ))}
+                                    {(pkg.transport as any).headers.map((header: any, headerIndex: number) => {
+                                      const configHeader = header as FieldConfig;
+                                      const value = getFieldDisplayValue(configHeader);
+                                      return (
+                                        <div key={headerIndex} className="flex items-start space-x-4 text-sm">
+                                          <span className="font-mono bg-gray-100 px-2 py-1 rounded flex-shrink-0">{header.name}</span>
+                                          <span className="text-gray-600 flex-shrink-0">:</span>
+                                          <span className="font-mono bg-gray-50 px-2 py-1 rounded text-gray-700 break-all">{value}</span>
+                                        </div>
+                                      );
+                                    })}
                                   </div>
                                 </div>
                               )}
                             </div>
                           </div>
-                          {hasPackageConfiguration(pkg as PackageConfig) && (
+                          {hasPackageConfiguration(pkg as Package) && (
                             <div className="ml-4">
                               <button
-                                onClick={() => onConfigurePackage(pkg as PackageConfig, index)}
+                                onClick={() => onConfigurePackage(pkg as Package, index)}
                                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                               >
                                 Configure
@@ -364,17 +334,18 @@ export default function ServerDetailView({
                           <div className="border-t border-gray-100 pt-4 mt-4">
                             <label className="text-sm font-medium text-gray-500">Runtime Arguments</label>
                             <div className="mt-1 space-y-2">
-                              {pkg.runtimeArguments.map((arg, argIndex) => (
-                                <div key={argIndex} className="flex items-center space-x-4 text-sm">
-                                  {arg.type === 'named' && arg.name && (
-                                    <span className="font-mono bg-gray-100 px-2 py-1 rounded">{arg.name}</span>
-                                  )}
-                                  {arg.type === 'named' && arg.name && (
-                                    <span className="text-gray-600">:</span>
-                                  )}
-                                  <span className="font-mono bg-gray-100 px-2 py-1 rounded">{arg.value || arg.default || '(empty)'}</span>
-                                </div>
-                              ))}
+                              {pkg.runtimeArguments.map((arg, argIndex) => {
+                                const configArg = arg as FieldConfig;
+                                const label = getFieldDisplayLabel(configArg);
+                                const value = getFieldDisplayValue(configArg);
+                                return (
+                                  <div key={argIndex} className="flex items-start space-x-4 text-sm">
+                                    <span className="font-mono bg-gray-100 px-2 py-1 rounded flex-shrink-0">{label}</span>
+                                    <span className="text-gray-600 flex-shrink-0">:</span>
+                                    <span className="font-mono bg-gray-50 px-2 py-1 rounded text-gray-700 break-all">{value}</span>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}
@@ -383,17 +354,18 @@ export default function ServerDetailView({
                           <div className="border-t border-gray-100 pt-4 mt-4">
                             <label className="text-sm font-medium text-gray-500">Package Arguments</label>
                             <div className="mt-1 space-y-2">
-                              {pkg.packageArguments.map((arg, argIndex) => (
-                                <div key={argIndex} className="flex items-center space-x-4 text-sm">
-                                  {arg.type === 'named' && arg.name && (
-                                    <span className="font-mono bg-gray-100 px-2 py-1 rounded">{arg.name}</span>
-                                  )}
-                                  {arg.type === 'named' && arg.name && (
-                                    <span className="text-gray-600">:</span>
-                                  )}
-                                  <span className="font-mono bg-gray-100 px-2 py-1 rounded">{arg.value || arg.default || '(empty)'}</span>
-                                </div>
-                              ))}
+                              {pkg.packageArguments.map((arg, argIndex) => {
+                                const configArg = arg as FieldConfig;
+                                const label = getFieldDisplayLabel(configArg);
+                                const value = getFieldDisplayValue(configArg);
+                                return (
+                                  <div key={argIndex} className="flex items-start space-x-4 text-sm">
+                                    <span className="font-mono bg-gray-100 px-2 py-1 rounded flex-shrink-0">{label}</span>
+                                    <span className="text-gray-600 flex-shrink-0">:</span>
+                                    <span className="font-mono bg-gray-50 px-2 py-1 rounded text-gray-700 break-all">{value}</span>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}
@@ -402,13 +374,17 @@ export default function ServerDetailView({
                           <div className="border-t border-gray-100 pt-4 mt-4">
                             <label className="text-sm font-medium text-gray-500">Environment Variables</label>
                             <div className="mt-1 space-y-2">
-                              {pkg.environmentVariables.map((envVar, envIndex) => (
-                                <div key={envIndex} className="flex items-center space-x-4 text-sm">
-                                  <span className="font-mono bg-gray-100 px-2 py-1 rounded">{envVar.name}</span>
-                                  <span className="text-gray-600">:</span>
-                                  <span className="font-mono bg-gray-100 px-2 py-1 rounded">{envVar.value || envVar.default || '(empty)'}</span>
-                                </div>
-                              ))}
+                              {pkg.environmentVariables.map((envVar, envIndex) => {
+                                const configVar = envVar as FieldConfig;
+                                const value = getFieldDisplayValue(configVar);
+                                return (
+                                  <div key={envIndex} className="flex items-start space-x-4 text-sm">
+                                    <span className="font-mono bg-gray-100 px-2 py-1 rounded flex-shrink-0">{envVar.name}</span>
+                                    <span className="text-gray-600 flex-shrink-0">:</span>
+                                    <span className="font-mono bg-gray-50 px-2 py-1 rounded text-gray-700 break-all">{value}</span>
+                                  </div>
+                                );
+                              })}
                             </div>
                           </div>
                         )}

@@ -1,43 +1,12 @@
 'use client';
 
 import React from 'react';
-
-interface FieldConfig {
-  name?: string;
-  value?: string;
-  default?: string;
-  isRequired?: boolean;
-  isSecret?: boolean;
-  description?: string;
-  format?: 'string' | 'number' | 'boolean' | 'filepath';
-  choices?: string[];
-  variables?: Record<string, FieldConfig>;
-}
-
-interface PackageConfig {
-  identifier: string;
-  version: string;
-  registryType: string;
-  runtimeHint?: string;
-  runtimeArguments?: FieldConfig[];
-  packageArguments?: FieldConfig[];
-  environmentVariables?: FieldConfig[];
-  transport?: {
-    type: string;
-    url?: string;
-    headers?: FieldConfig[];
-  };
-}
-
-interface RemoteConfig {
-  type: string;
-  url?: string;
-  headers?: FieldConfig[];
-}
+import { Package, TransportRemote, FieldConfig } from '@/types/mcp-registry';
+import { getFieldId } from '@/app/registry-utils/fieldUtils';
 
 interface RequiredFieldWarningProps {
-  configuringPackage?: { pkg: PackageConfig; index: number } | null;
-  configuringRemote?: { remote: RemoteConfig; index: number } | null;
+  configuringPackage?: { pkg: Package; index: number } | null;
+  configuringRemote?: { remote: TransportRemote; index: number } | null;
   packageConfig: Record<string, any>;
   remoteConfig: Record<string, any>;
 }
@@ -80,65 +49,69 @@ export default function RequiredFieldWarning({
     
     // Check runtime arguments
     if (pkg.runtimeArguments) {
-      hasRequiredFields = pkg.runtimeArguments.some((arg: FieldConfig) => {
-        const fieldId = `runtimeArg_${arg.name || arg.value}`;
+      hasRequiredFields = pkg.runtimeArguments.some((arg, argIndex) => {
+        const configArg = arg as FieldConfig;
+        const fieldId = getFieldId(configArg, 'runtimeArg', argIndex);
         
         // Check if the main field is required and missing
-        if (arg.isRequired && !arg.value) {
+        if (configArg.isRequired && !configArg.value) {
           const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
-          const currentValue = userHasSetValue ? packageConfig[fieldId] : (arg.default || '');
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (configArg.default || '');
           if (!currentValue || currentValue.trim() === '') {
             return true;
           }
         }
         
         // Check if any variables are required and missing
-        return checkRequiredVariables(arg, packageConfig, fieldId);
+        return checkRequiredVariables(configArg, packageConfig, fieldId);
       });
     }
     
     // Check package arguments
     if (!hasRequiredFields && pkg.packageArguments) {
-      hasRequiredFields = pkg.packageArguments.some((arg: FieldConfig) => {
-        const fieldId = `packageArg_${arg.name || arg.value}`;
+      hasRequiredFields = pkg.packageArguments.some((arg, argIndex) => {
+        const configArg = arg as FieldConfig;
+        const fieldId = getFieldId(configArg, 'packageArg', argIndex);
         
         // Check if the main field is required and missing
-        if (arg.isRequired && !arg.value) {
+        if (configArg.isRequired && !configArg.value) {
           const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
-          const currentValue = userHasSetValue ? packageConfig[fieldId] : (arg.default || '');
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (configArg.default || '');
           if (!currentValue || currentValue.trim() === '') {
             return true;
           }
         }
         
         // Check if any variables are required and missing
-        return checkRequiredVariables(arg, packageConfig, fieldId);
+        return checkRequiredVariables(configArg, packageConfig, fieldId);
       });
     }
     
     // Check environment variables
     if (!hasRequiredFields && pkg.environmentVariables) {
-      hasRequiredFields = pkg.environmentVariables.some((env: FieldConfig) => {
-        const fieldId = `env_${env.name}`;
+      hasRequiredFields = pkg.environmentVariables.some((env, envIndex) => {
+        const configEnv = env as FieldConfig;
+        const fieldId = getFieldId(configEnv, 'env', envIndex);
         
         // Check if the main field is required and missing
-        if (env.isRequired && !env.value) {
+        if (configEnv.isRequired && !configEnv.value) {
           const userHasSetValue = packageConfig.hasOwnProperty(fieldId);
-          const currentValue = userHasSetValue ? packageConfig[fieldId] : (env.default || '');
+          const currentValue = userHasSetValue ? packageConfig[fieldId] : (configEnv.default || '');
           if (!currentValue || currentValue.trim() === '') {
             return true;
           }
         }
         
         // Check if any variables are required and missing
-        return checkRequiredVariables(env, packageConfig, fieldId);
+        return checkRequiredVariables(configEnv, packageConfig, fieldId);
       });
     }
     
     // Check transport headers
-    if (!hasRequiredFields && pkg.transport?.headers) {
-      hasRequiredFields = pkg.transport.headers.some((header: FieldConfig) => {
-        const fieldId = `transport_header_${header.name}`;
+    const transport = pkg.transport as TransportRemote;
+    if (!hasRequiredFields && transport?.headers) {
+      hasRequiredFields = transport.headers.some((header: FieldConfig, headerIndex: number) => {
+        const fieldId = getFieldId(header, 'transport_header', headerIndex);
         
         // Check if the main field is required and missing
         if (header.isRequired && !header.value) {
@@ -160,8 +133,8 @@ export default function RequiredFieldWarning({
     
     // Check headers
     if (!hasRequiredFields && remote.headers) {
-      hasRequiredFields = remote.headers.some((header: FieldConfig) => {
-        const fieldId = `header_${header.name}`;
+      hasRequiredFields = remote.headers.some((header: FieldConfig, headerIndex: number) => {
+        const fieldId = getFieldId(header, 'header', headerIndex);
         
         // Check if the main field is required and missing
         if (header.isRequired && !header.value) {

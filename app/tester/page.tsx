@@ -398,11 +398,6 @@ export default function TesterPage() {
         onShowRawModal={setShowRawModal}
         onConfigurePackage={handleConfigurePackage}
         onConfigureRemote={handleConfigureRemote}
-        isTestMode={true}
-        testServerJson={testServerJson}
-        onUpdateTestServerJson={handleUpdateTestServerJson}
-        onApplyTestServerJson={handleApplyTestServerJson}
-        onEditTestServerJson={handleEditTestServerJson}
         />
       </div>
     );

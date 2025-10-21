@@ -9,6 +9,7 @@ export interface Input {
   value?: string;
   isSecret?: boolean;
   default?: string;
+  placeholder?: string;
   choices?: string[];
 }
 
@@ -156,3 +157,27 @@ export interface ErrorModel {
   title?: string;
   type?: string;
 }
+
+// ============================================================================
+// UX Helper Types
+// ============================================================================
+// These types simplify working with schema types in the configuration UX.
+// They flatten discriminated unions to avoid type guards throughout components.
+
+// Flattened type combining all properties from Argument and KeyValueInput unions.
+// Treats all properties as optional to avoid needing type guards in render functions.
+export type FieldConfig = {
+  name?: string;          // From NamedArgument and KeyValueInput
+  value?: string;
+  default?: string;
+  placeholder?: string;
+  isRequired?: boolean;
+  isSecret?: boolean;
+  description?: string;
+  format?: 'string' | 'number' | 'boolean' | 'filepath';
+  choices?: string[];
+  variables?: Record<string, Input>;
+  valueHint?: string;     // From Argument types
+  isRepeated?: boolean;   // From Argument types
+  type?: string;          // From Argument types
+};
