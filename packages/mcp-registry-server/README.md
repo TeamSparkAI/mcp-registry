@@ -13,25 +13,44 @@ A framework-agnostic TypeScript implementation of the [MCP Registry Protocol](ht
 
 ## Architecture
 
-### Framework-Agnostic Core
+This package implements the **MCP Registry Protocol** as a reusable library, with the core protocol logic completely independent of both the web framework and the data storage mechanism.
 
-The package is built around a framework-agnostic `RegistryService` class that implements the MCP Registry protocol. Framework-specific adapters (Next.js, Express) provide thin wrappers around this core service.
+### Three-Layer Design
+
+The architecture separates concerns into three distinct layers:
 
 ```
 ┌─────────────────────────────────────┐
-│     Framework Adapter (Next.js)     │  ← Handles HTTP request/response
+│   Framework Adapter (Next.js/...)   │  ← HTTP request/response handling
 ├─────────────────────────────────────┤
-│      RegistryService (Core)         │  ← Protocol implementation
+│   RegistryService (Protocol Core)   │  ← Protocol implementation
 ├─────────────────────────────────────┤
-│   Data Source (File/DB/Custom)      │  ← Storage layer
+│   DataSource (File/DB/HTTP/...)     │  ← Data storage & retrieval
 └─────────────────────────────────────┘
 ```
 
+**Layer 1: RegistryService (Core Protocol)**
+- Implements the MCP Registry OpenAPI specification
+- Framework-agnostic: takes method/path/query, returns data/status
+- No dependencies on HTTP libraries, web frameworks, or storage
+- Pure TypeScript business logic, fully testable in isolation
+
+**Layer 2: Data Source Interface**
+- Abstract interface: `RegistryDataSource`
+- Implementations: `FileDataSource`, future `DatabaseDataSource`, `HttpDataSource`, etc.
+- Core service depends only on the interface, not implementations
+- Swap storage backends without touching protocol logic
+
+**Layer 3: Framework Adapters**
+- Thin wrappers: convert framework types to/from service types
+- Next.js adapter provided, Express adapter planned
+- Add support for any framework with ~10 lines of adapter code
+
 **Benefits:**
-- Single protocol implementation shared across frameworks
-- Easy to test (core is framework-independent)
-- Pluggable data sources for different deployment scenarios
-- Can add new framework adapters without changing core logic
+- **Portability**: Same core runs in Next.js, Express, Fastify, Lambda, etc.
+- **Flexibility**: Start with files, scale to database, add caching layers
+- **Testability**: Test protocol logic with mock data sources, no HTTP mocking needed
+- **Reusability**: Published npm package anyone can integrate
 
 ### Design Principles
 
