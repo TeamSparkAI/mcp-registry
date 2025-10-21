@@ -44341,6 +44341,36 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.niradler/dependency-mcp",
+        "description": "MCP server for checking package versions across multiple package managers",
+        "repository": {
+          "url": "https://github.com/niradler/dependency-mcp",
+          "source": "github"
+        },
+        "version": "0.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "dependency-mcp",
+            "version": "0.0.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-20T21:39:25.117876Z",
+          "updatedAt": "2025-10-20T21:39:25.117876Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.noahgift/depyler-mcp",
         "description": "MCP server for Depyler: Python-to-Rust transpiler with analysis and verification tools",
@@ -46708,6 +46738,122 @@
           "status": "active",
           "publishedAt": "2025-10-20T14:20:04.243053Z",
           "updatedAt": "2025-10-20T14:20:04.243053Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rnaga/wp-mcp",
+        "description": "MCP server for WordPress. Manage posts, users, comments, terms, metadata, and settings.",
+        "title": "WordPress MCP Server",
+        "repository": {
+          "url": "https://github.com/rnaga/wp-mcp",
+          "source": "github"
+        },
+        "version": "1.0.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rnaga/wp-mcp",
+            "version": "1.0.4",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Automatically confirm npx package installation",
+                "type": "named",
+                "name": "-y"
+              }
+            ],
+            "packageArguments": [
+              {
+                "description": "Command to run (local, remote, http, utils)",
+                "value": "local",
+                "type": "positional"
+              },
+              {
+                "description": "Subcommand to start the local MCP server",
+                "value": "start",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "WordPress username to assume for capability checks",
+                "isRequired": true,
+                "name": "LOCAL_USERNAME"
+              },
+              {
+                "description": "WordPress database host",
+                "isRequired": true,
+                "name": "WP_DB_HOST"
+              },
+              {
+                "description": "WordPress database port",
+                "default": "3306",
+                "name": "WP_DB_PORT"
+              },
+              {
+                "description": "WordPress database name",
+                "isRequired": true,
+                "name": "WP_DB_NAME"
+              },
+              {
+                "description": "WordPress database user",
+                "isRequired": true,
+                "name": "WP_DB_USER"
+              },
+              {
+                "description": "WordPress database password",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "WP_DB_PASSWORD"
+              },
+              {
+                "description": "Enable WordPress multisite mode",
+                "default": "false",
+                "name": "LOCAL_MULTISITE"
+              },
+              {
+                "description": "Default blog ID for multisite",
+                "default": "1",
+                "name": "LOCAL_DEFAULT_BLOG_ID"
+              },
+              {
+                "description": "Default site ID for multisite",
+                "default": "1",
+                "name": "LOCAL_DEFAULT_SITE_ID"
+              },
+              {
+                "description": "Enable SSL for database connection",
+                "default": "false",
+                "name": "LOCAL_SSL_ENABLED"
+              },
+              {
+                "description": "Path to SSL CA certificate file",
+                "name": "LOCAL_SSL_CA_FILEPATH"
+              },
+              {
+                "description": "Path to SSL certificate file",
+                "name": "LOCAL_SSL_CERT_FILEPATH"
+              },
+              {
+                "description": "Path to SSL key file",
+                "name": "LOCAL_SSL_KEY_FILEPATH"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T00:13:20.720044Z",
+          "updatedAt": "2025-10-21T00:13:20.720044Z",
           "isLatest": true
         }
       }
@@ -48265,6 +48411,61 @@
           "status": "active",
           "publishedAt": "2025-09-12T00:28:17.174732Z",
           "updatedAt": "2025-09-12T00:28:17.174732Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.simplemindedbot/mnemex",
+        "description": "Temporal memory for AI with decay and reinforcement. Two-layer storage (JSONL + Markdown).",
+        "repository": {
+          "url": "https://github.com/simplemindedbot/mnemex",
+          "source": "github"
+        },
+        "version": "0.5.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mnemex",
+            "version": "0.5.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Storage path for short-term memory JSONL files",
+                "format": "string",
+                "default": "~/.config/mnemex/jsonl",
+                "name": "MNEMEX_STORAGE_PATH"
+              },
+              {
+                "description": "Path to Obsidian vault for long-term memory",
+                "format": "string",
+                "name": "LTM_VAULT_PATH"
+              },
+              {
+                "description": "Decay model: power_law (default), exponential, or two_component",
+                "format": "string",
+                "default": "power_law",
+                "name": "MNEMEX_DECAY_MODEL"
+              },
+              {
+                "description": "Half-life in days for power-law decay model",
+                "format": "number",
+                "default": "3.0",
+                "name": "MNEMEX_PL_HALFLIFE_DAYS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-20T22:50:49.953818Z",
+          "updatedAt": "2025-10-20T22:50:49.953818Z",
           "isLatest": true
         }
       }
@@ -54419,6 +54620,32 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.trunk/mcp-server",
+        "description": "An MCP server that provides tools for Trunk CI Autopilot to apply fixes to failing tests.",
+        "repository": {
+          "url": "https://github.com/trunk-io/mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.trunk.io/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-20T21:38:03.992537Z",
+          "updatedAt": "2025-10-20T21:38:03.992537Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.wordlift/mcp-server",
         "description": "WordLift MCP Server: AI-powered content optimization and semantic analysis",
@@ -54774,6 +55001,6 @@
     }
   ],
   "metadata": {
-    "count": 1273
+    "count": 1277
   }
 }
