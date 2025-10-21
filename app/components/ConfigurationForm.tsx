@@ -1,45 +1,12 @@
 'use client';
 
 import React from 'react';
-
-interface FieldConfig {
-  name?: string;
-  value?: string;
-  default?: string;
-  isRequired?: boolean;
-  isSecret?: boolean;
-  isRepeated?: boolean;
-  description?: string;
-  valueHint?: string;
-  format?: 'string' | 'number' | 'boolean' | 'filepath';
-  choices?: string[];
-  variables?: Record<string, FieldConfig>;
-}
-
-interface PackageConfig {
-  identifier: string;
-  version: string;
-  registryType: string;
-  runtimeHint?: string;
-  runtimeArguments?: FieldConfig[];
-  packageArguments?: FieldConfig[];
-  environmentVariables?: FieldConfig[];
-  transport?: {
-    type: string;
-    url?: string;
-    headers?: FieldConfig[];
-  };
-}
-
-interface RemoteConfig {
-  type: string;
-  url?: string;
-  headers?: FieldConfig[];
-}
+import { Package, TransportRemote, FieldConfig } from '@/types/mcp-registry';
+import { getFieldId } from '@/app/registry-utils/fieldUtils';
 
 interface ConfigurationFormProps {
-  configuringPackage?: { pkg: PackageConfig; index: number } | null;
-  configuringRemote?: { remote: RemoteConfig; index: number } | null;
+  configuringPackage?: { pkg: Package; index: number } | null;
+  configuringRemote?: { remote: TransportRemote; index: number } | null;
   packageConfig: Record<string, any>;
   remoteConfig: Record<string, any>;
   visibleFields: Set<string>;
@@ -52,7 +19,6 @@ interface ConfigurationFormProps {
 const isSecretField = (field: FieldConfig) => {
   return field.isSecret === true;
 };
-
 
 // Helper function to extract variable names from a template string
 const extractVariableNames = (template: string): string[] => {
@@ -193,7 +159,7 @@ export default function ConfigurationForm({
             className={`w-full border border-gray-300 rounded-lg px-3 py-2 ${showEyeIcon ? 'pr-10' : 'pr-3'} focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               isSecret && !isVisible ? 'masked-input' : ''
             }`}
-            placeholder={field.valueHint || placeholder || field.default || 'Enter number'}
+            placeholder={field.placeholder || field.valueHint || placeholder || 'Enter number'}
           />
         );
       }
@@ -213,7 +179,7 @@ export default function ConfigurationForm({
           className={`w-full border border-gray-300 rounded-lg px-3 py-2 ${showEyeIcon ? 'pr-10' : 'pr-3'} focus:outline-none focus:ring-2 focus:ring-blue-500 ${
             isSecret && !isVisible ? 'masked-input' : ''
           }`}
-          placeholder={field.valueHint || placeholder || field.default || 'Enter value'}
+          placeholder={field.placeholder || field.valueHint || placeholder || 'Enter value'}
         />
       );
     };
@@ -468,11 +434,12 @@ export default function ConfigurationForm({
                   </h3>
                   <div className="space-y-0">
                     {configuringPackage.pkg.runtimeArguments.map((arg, argIndex) => {
-                      const fieldId = `runtimeArg_${arg.name || arg.value}`;
+                      const configArg = arg as FieldConfig;
+                      const fieldId = getFieldId(configArg, 'runtimeArg', argIndex);
                       return (
                         <div key={argIndex}>
                           <div className="pb-3">
-                            {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
+                            {renderFieldWithVariables(configArg, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
                           {argIndex < (configuringPackage.pkg.runtimeArguments?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
@@ -491,11 +458,12 @@ export default function ConfigurationForm({
                   </h3>
                   <div className="space-y-0">
                     {configuringPackage.pkg.packageArguments.map((arg, argIndex) => {
-                      const fieldId = `packageArg_${arg.name || arg.value}`;
+                      const configArg = arg as FieldConfig;
+                      const fieldId = getFieldId(configArg, 'packageArg', argIndex);
                       return (
                         <div key={argIndex}>
                           <div className="pb-3">
-                            {renderFieldWithVariables(arg, fieldId, packageConfig, onPackageConfigChange)}
+                            {renderFieldWithVariables(configArg, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
                           {argIndex < (configuringPackage.pkg.packageArguments?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
@@ -514,11 +482,12 @@ export default function ConfigurationForm({
                   </h3>
                   <div className="space-y-0">
                     {configuringPackage.pkg.environmentVariables.map((env, envIndex) => {
-                      const fieldId = `env_${env.name}`;
+                      const configEnv = env as FieldConfig;
+                      const fieldId = getFieldId(configEnv, 'env', envIndex);
                       return (
                         <div key={envIndex}>
                           <div className="pb-3">
-                            {renderFieldWithVariables(env, fieldId, packageConfig, onPackageConfigChange)}
+                            {renderFieldWithVariables(configEnv, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
                           {envIndex < (configuringPackage.pkg.environmentVariables?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
@@ -531,20 +500,22 @@ export default function ConfigurationForm({
               )}
 
               {/* Transport Headers */}
-              {configuringPackage.pkg.transport?.headers && configuringPackage.pkg.transport.headers.length > 0 && (
+              {(() => {
+                const transport = configuringPackage.pkg.transport as TransportRemote;
+                return transport?.headers && transport.headers.length > 0 && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Transport Headers
                   </h3>
                   <div className="space-y-0">
-                    {configuringPackage.pkg.transport.headers.map((header, headerIndex) => {
-                      const fieldId = `transport_header_${header.name}`;
+                    {transport.headers.map((header: FieldConfig, headerIndex: number) => {
+                      const fieldId = getFieldId(header, 'transport_header', headerIndex);
                       return (
                         <div key={headerIndex}>
                           <div className="pb-3">
                             {renderFieldWithVariables(header, fieldId, packageConfig, onPackageConfigChange, "Enter header value")}
                           </div>
-                          {headerIndex < (configuringPackage.pkg.transport?.headers?.length || 0) - 1 && (
+                          {headerIndex < (transport.headers?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
                           )}
                         </div>
@@ -552,7 +523,7 @@ export default function ConfigurationForm({
                     })}
                   </div>
                 </div>
-              )}
+              )})()}
             </>
             </form>
           )}
@@ -564,8 +535,8 @@ export default function ConfigurationForm({
                 Headers
               </h3>
               <div className="space-y-0">
-                {configuringRemote.remote.headers.map((header, headerIndex) => {
-                  const fieldId = `header_${header.name}`;
+                {configuringRemote.remote.headers.map((header: FieldConfig, headerIndex: number) => {
+                  const fieldId = getFieldId(header, 'header', headerIndex);
                   return (
                     <div key={headerIndex}>
                       <div className="pb-3">
