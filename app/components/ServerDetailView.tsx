@@ -118,8 +118,12 @@ export default function ServerDetailView({
                 </div>
                 <div className="min-w-0 flex-1">
                   <h1 className="text-2xl font-bold text-gray-900">
-                    <Link href={`/servers/${encodeURIComponent(server.name)}`} className="hover:text-blue-600 transition-colors">
-                      {server.name}
+                    {server.name}{' '}
+                    <Link 
+                      href={`/servers/${encodeURIComponent(server.name)}`} 
+                      className="text-base font-normal text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      (see all versions)
                     </Link>
                   </h1>
                   {server.title && (
