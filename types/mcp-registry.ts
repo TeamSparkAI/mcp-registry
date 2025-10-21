@@ -80,12 +80,21 @@ export interface Repository {
   subfolder?: string;
 }
 
+export interface Icon {
+  src: string;
+  mimeType?: 'image/png' | 'image/jpeg' | 'image/jpg' | 'image/svg+xml' | 'image/webp';
+  sizes?: string[]; // e.g., ["48x48", "96x96"] or ["any"]
+  theme?: 'light' | 'dark';
+}
+
 // ServerDetail: Server data per server.schema.json (NO registry metadata)
 export interface ServerDetail {
   $schema?: string;
   name: string;
   description: string;
   version: string;
+  title?: string;
+  icons?: Icon[];
   status?: 'active' | 'deprecated';
   repository?: Repository;
   websiteUrl?: string;

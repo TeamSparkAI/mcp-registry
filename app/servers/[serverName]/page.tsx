@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ServerResponse } from '@/types/mcp-registry';
+import { getBestIcon } from '@/app/registry-utils/iconUtils';
 
 export default function ServerVersionsPage() {
   const params = useParams();
@@ -105,11 +106,21 @@ export default function ServerVersionsPage() {
             {/* Server Header */}
             <div className="bg-white rounded-lg border p-6">
               <div className="flex items-start space-x-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src="/mcp_black.png" alt="MCP Server" className="w-10 h-10" />
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <img 
+                    src={getBestIcon(versions[0]?.server.icons, 'light') || "/mcp_black.png"} 
+                    alt={versions[0]?.server.title || serverName}
+                    className="w-10 h-10 object-contain"
+                    onError={(e) => {
+                      e.currentTarget.src = "/mcp_black.png";
+                    }}
+                  />
                 </div>
                 <div className="flex-1">
                   <h1 className="text-2xl font-bold text-gray-900">{serverName}</h1>
+                  {versions[0]?.server.title && (
+                    <p className="text-lg font-semibold text-gray-800 mt-1">{versions[0].server.title}</p>
+                  )}
                   {versions[0]?.server.description && (
                     <p className="text-gray-600 mt-1">{versions[0].server.description}</p>
                   )}
