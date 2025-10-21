@@ -24,46 +24,28 @@ This monorepo contains reusable TypeScript packages:
 
 ### `mcp-registry-validator`
 
-Schema validation and linting for MCP server.json files.
+Schema validation and linting for MCP server.json files. Works in both Node.js and browser environments.
 
-```typescript
-import { validateServerJson } from 'mcp-registry-validator';
+**Key Features:**
+- Multi-version schema support with automatic version detection
+- Comprehensive linting rules for best practices
+- Detailed error messages with JSON path references
+- CLI tool and programmatic API
 
-const result = await validateServerJson(serverJsonString);
-console.log(result.valid, result.issues);
-```
-
-**Features:**
-- Multi-version schema support
-- Comprehensive linter rules
-- Browser and Node.js compatible
-- Detailed error messages
+[→ Installation, Usage & Rule Reference](packages/mcp-registry-validator/README.md)
 
 ### `mcp-registry-server`
 
-Core API server implementation with pluggable data sources.
+Core API server implementing the MCP Registry Protocol. The protocol implementation is **completely independent** of both the web framework and data storage mechanism.
 
-```typescript
-import { createRegistryHandler, FileDataSource } from 'mcp-registry-server';
+**Three-Layer Architecture:**
+- **Protocol Core**: Framework-agnostic service (no HTTP/framework dependencies)
+- **Data Sources**: Pluggable interface - file, database, HTTP, custom
+- **Framework Adapters**: Thin wrappers - Next.js, Express, etc.
 
-// Next.js API route
-const handler = createRegistryHandler({
-  dataSource: new FileDataSource({
-    registryPath: 'public/server-registry.json'
-  })
-});
+This separation enables the same protocol implementation to work across all frameworks and storage options.
 
-export { handler as GET, handler as POST };
-```
-
-**Features:**
-- Framework-agnostic core with Next.js adapter
-- Pluggable data source interface (file, database, custom)
-- In-memory caching for performance
-- Full OpenAPI spec implementation
-- Serverless-ready (Vercel, AWS Lambda, etc.)
-
-**[→ Full Package Documentation](packages/mcp-registry-server/README.md)**
+[→ Installation, Usage & API Reference](packages/mcp-registry-server/README.md)
 
 ## 🏗️ Architecture
 
@@ -152,7 +134,7 @@ pnpm run registry:validate
 
 ## 📚 Documentation
 
-- [**Design Document**](docs/registry-service-design.md) - Architecture decisions and future enhancement ideas
+- [**Deployment Guide**](docs/deployment.md) - Deployment configuration and automated updates
 - [**Registry Reference**](registry/README.md) - OpenAPI spec and schema management
 - [**Official Protocol**](https://github.com/modelcontextprotocol/registry) - MCP Registry protocol specification
 
@@ -169,14 +151,7 @@ pnpm run registry:validate
 - Automated daily data and schema syncing
 - Production deployment with in-memory caching
 
-### 🔮 Potential Enhancements
-
-- Component library (`@mcp-registry/ui`) for reusable UI components
-- Express adapter for `mcp-registry-server`
-- Database data source (if scale requires)
-- Rate limiting, analytics, and monitoring
-
-See [docs/registry-service-design.md](docs/registry-service-design.md) for architecture details and enhancement ideas.
+See [docs/deployment.md](docs/deployment.md) for deployment details and [todo.md](todo.md) for future enhancement ideas.
 
 ## 🤝 Contributing
 

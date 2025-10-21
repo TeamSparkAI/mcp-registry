@@ -1,6 +1,36 @@
 # TODO
 
-Linter rule - name implies secret, but isSercet not set ("token", "secret", "password", "pwd", "api*key", "private*key")
+## Application Enhancements
+
+### Component Library
+- Extract UI components into `@mcp-registry/ui` package
+- Enable other MCP applications to reuse components:
+  - `ServerList` - browsing and search UI
+  - `ServerDetailView` - server details with metadata
+  - `ValidationIssues` - validation error display
+  - `ConfigGenerator` - configuration form and preview
+
+### Additional Framework Support
+- Add Express adapter for `mcp-registry-server` package
+- Enable use in non-Next.js environments (e.g., MCP Gateway integration)
+
+### Scalability & Performance
+- Add database data source (PostgreSQL, MongoDB, etc.) if registry grows beyond 100k servers
+- Implement Redis caching strategy for high-traffic scenarios
+- Add rate limiting to protect API endpoints
+
+### Analytics & Monitoring
+- Add usage metrics and analytics
+- Monitor API performance and errors
+- Track popular servers and search patterns
+
+### Publishing Support
+- Consider adding write endpoints if moving from read-only mirror
+- Implement `POST /v0/publish` from OpenAPI spec
+- Add authentication and validation for submissions
+
+## Validator & Linter
+
 
 In prod, suppress runtimeHint and all fixed args/env vars/headers (only show UX for elements being configured)
 
@@ -15,25 +45,6 @@ Limitations (isSecret):
 - Input format boolean or input with choices shows dropdown, whose selection is not masked if "isSecret" is specified
 
 Linter - valueHint on named args (not allowed / needed)
-
-## Validator
-
-Separate package (CLI and API) published to npm 
-
-Implement linter levels, rule suppression in CLI
-
-Implement linter rule suppression in server.json object
-
-Linter - implement suppression by rule:
-{
-  "name": "my-server",
-  "_meta": {
-    "io.modelcontextprotocol.registry/official": { ... },
-    "io.modelcontextprotocol.registry/linter": {
-      "suppress": ["require-config-for-package", "prefer-config-for-remote"]
-    }
-  }
-}
 
 ## Pending registry PRs
 
@@ -64,30 +75,9 @@ Schema and linter return JSON path indicating error
 
 # Official MCP registry
 
-## server.json schema recommendations
 
-https://github.com/modelcontextprotocol/registry/discussions/572
 
-NamedArgument description change to `--flag {value}`
 
-Input properties description remove "default" from first sentence
-
-PositionalArgument valueHint - add to all Input objects, remove anyOf value/valueHint requirement on PositionalArgument
-
-## Docs improvements
-
-Update Generic Registry openapi spec
-- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/openapi.yaml
-- With Transport changes (as in: https://github.com/modelcontextprotocol/registry/pull/345)
-- Assuming this file was manually created given that it has drifted and is checked-in (as opposed the official version which is generated from Go code)
-
-Update Official Registry openapi spec:
-- This the source of truth: https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/server.schema.json
-- But https://registry.modelcontextprotocol.io/openapi.yaml (and https://registry.modelcontextprotocol.io/docs) are not driven by the schema, they are driven by the Go struct field tags which don't include the docs (I don't see any clean way to fix that without manually maintaining them in both places - yuck)
-
-These docs are great and should probably be linked in the Publish My Server doc
-- https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/generic-server-json.md
-- Underlying docs: server.json spec (links to server.schema.json)
 
 ## Issues with current servers
 
