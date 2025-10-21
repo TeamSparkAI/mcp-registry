@@ -119,8 +119,8 @@ const dataSource = new FileDataSource({
 - Suitable for up to ~100k servers
 
 **Performance:**
-- Cold start: ~100-200ms (load + parse JSON)
-- Warm requests: ~50-100ms (in-memory operations)
+- Fast cold starts (load + parse JSON)
+- In-memory operations for warm requests
 
 **Data Format:**
 
@@ -382,32 +382,25 @@ export { handler as GET, handler as POST };
 ### FileDataSource
 
 **Memory Usage:**
-- Current (668 servers): ~930KB file
-- Projected at 10k servers: ~9.6MB total, ~1.6MB index
-- Projected at 100k servers: ~96MB total, ~16MB index
+- Entire registry cached in memory on cold start
+- Projected scaling based on registry growth
 - Safe up to ~100k servers in memory
 
 **Response Times:**
-- Cold start: 100-200ms (load + parse JSON)
-- Warm requests: 50-100ms (in-memory operations)
-- Search/filter: 1-20ms (in-memory)
+- Fast cold starts (load + parse JSON)
+- In-memory operations for warm requests
+- Optimized search and filtering
 
 **Scalability:**
 - ✅ Excellent: < 10k servers (fast, simple)
 - ✅ Good: 10k - 100k servers (acceptable performance)
 - ⚠️  Consider database: > 100k servers (beyond memory limits)
 
-**Current Production Stats:**
-- Total servers: 668
-- Average server size: 959 bytes
-- Index entry size: 159 bytes
-- Total index size (if split): 106KB
-
 ### Database Data Source
 
 **Response Times:**
-- Query time: 20-100ms (indexed)
-- Total response: 50-150ms
+- Fast indexed queries
+- Optimized for large-scale deployments
 
 **Scalability:**
 - ✅ Excellent: Any scale with proper indexing

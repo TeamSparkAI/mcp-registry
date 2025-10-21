@@ -130,7 +130,7 @@ React components for server browsing, configuration, and validation display.
 - Avoids special character encoding issues with server names
 
 **Data Storage**:
-- Single `server-registry.json` file (930KB, 668 servers)
+- Single `server-registry.json` file (synced daily from official registry)
 - In-memory caching via `FileDataSource`
 - Simpler than split-file approach, works well at current scale
 - Can refactor to database or split files if needed (projected safe up to ~100k servers)
@@ -187,10 +187,9 @@ The following features could be added to extend the project:
 - Serverless function limits: 1GB memory, 10s timeout (Hobby tier)
 
 **Performance (Production)**:
-- API response time: ~414ms for full registry (668 servers)
-- Payload size: ~277KB JSON
-- Cold start: ~100-200ms
-- Warm requests: ~50-100ms
+- Fast API response times with in-memory caching
+- Efficient JSON payloads
+- Optimized for serverless environments
 
 ### API Endpoints (as-built)
 
@@ -225,19 +224,19 @@ POST /api/validate
 ### Data Storage (as-built)
 
 **Current Implementation**:
-- Single file: `public/server-registry.json` (930KB, 668 servers)
+- Single file: `public/server-registry.json` (synced daily)
 - `FileDataSource` loads entire file into memory on cold start
 - In-memory caching persists across warm function invocations
 - Filtering, search, and pagination all done in-memory
 
 **Performance**:
-- Cold start: ~100-200ms (load + parse JSON)
-- Warm requests: ~50-100ms (in-memory operations)
+- Fast cold starts (load + parse JSON)
+- In-memory operations for warm requests
 - Well within serverless limits at current scale
 
 **Scalability**:
-- Current: 668 servers, 930KB
-- Projected at 10k servers: ~9.6MB
+- Current: Scales well with in-memory caching
+- Projected growth: Handles 10k+ servers efficiently
 - Safe up to ~100k servers in memory
 - Beyond that, consider database migration or split-file approach
 

@@ -12,7 +12,7 @@ A TypeScript implementation of the [Model Context Protocol Registry](https://git
 
 ### Features
 
-- **Registry Explorer** - Browse and search all 668 MCP servers
+- **Registry Explorer** - Browse and search MCP servers from the official registry
 - **Server Details** - View full metadata, packages, and configuration options  
 - **Configuration Generator** - Generate MCP client configs with custom settings
 - **Server.json Tester** - Validate and lint server.json files
@@ -167,13 +167,13 @@ pnpm run registry:validate
 - `mcp-registry-server` - Core API server with Next.js adapter
 - Server-side validation endpoints
 - Automated daily data and schema syncing
-- 668 servers, ~414ms API response time
+- Production deployment with in-memory caching
 
 ### 🔮 Potential Enhancements
 
 - Component library (`@mcp-registry/ui`) for reusable UI components
 - Express adapter for `mcp-registry-server`
-- Database data source (if scale requires beyond current 668 servers)
+- Database data source (if scale requires)
 - Rate limiting, analytics, and monitoring
 
 See [docs/registry-service-design.md](docs/registry-service-design.md) for architecture details and enhancement ideas.
