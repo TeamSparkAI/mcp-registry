@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ServerResponse } from '@/types/mcp-registry';
+import { getBestIcon } from '@/app/registry-utils/iconUtils';
 
 interface ServerListProps {
   servers: ServerResponse[];
@@ -168,6 +169,8 @@ export default function ServerList({
                     const packagesSummary = getPackagesSummary(serverResponse);
                     const serverName = serverResponse.server.name;
                     const version = serverResponse.server.version;
+                    const title = serverResponse.server.title;
+                    const iconSrc = getBestIcon(serverResponse.server.icons, 'light');
                     const serverPath = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
 
                     return (
@@ -177,14 +180,28 @@ export default function ServerList({
                         className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer block"
                       >
                         <div className="flex items-start justify-between mb-3">
-                          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <img src="/mcp_black.png" alt="MCP Server" className="w-8 h-8" />
+                          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                            <img 
+                              src={iconSrc || "/mcp_black.png"} 
+                              alt={title || serverName}
+                              className="w-8 h-8 object-contain"
+                              onError={(e) => {
+                                // Fallback to default icon on load error
+                                e.currentTarget.src = "/mcp_black.png";
+                              }}
+                            />
                           </div>
                         </div>
                         
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2">
                           {serverResponse.server.name}
                         </h3>
+                        
+                        {title && (
+                          <p className="text-base font-medium text-gray-700 mb-2 line-clamp-1">
+                            {title}
+                          </p>
+                        )}
                         
                         <p className="text-gray-600 text-sm mb-3 line-clamp-3">
                           {serverResponse.server.description}

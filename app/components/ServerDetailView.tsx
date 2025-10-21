@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ServerWithMeta } from '@/types/mcp-registry';
+import { getBestIcon } from '@/app/registry-utils/iconUtils';
 import ConfigurationForm from './ConfigurationForm';
 import RequiredFieldWarning from './RequiredFieldWarning';
 import ConfigurationPreview from './ConfigurationPreview';
@@ -105,8 +106,15 @@ export default function ServerDetailView({
           <div className="bg-white rounded-lg border p-6">
             <div className="flex items-start justify-between">
               <div className="flex items-start space-x-4 min-w-0 flex-1 mr-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src="/mcp_black.png" alt="MCP Server" className="w-10 h-10" />
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <img 
+                    src={getBestIcon(server.icons, 'light') || "/mcp_black.png"} 
+                    alt={server.title || server.name}
+                    className="w-10 h-10 object-contain"
+                    onError={(e) => {
+                      e.currentTarget.src = "/mcp_black.png";
+                    }}
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h1 className="text-2xl font-bold text-gray-900">
@@ -114,6 +122,9 @@ export default function ServerDetailView({
                       {server.name}
                     </Link>
                   </h1>
+                  {server.title && (
+                    <p className="text-lg font-semibold text-gray-800 mt-1">{server.title}</p>
+                  )}
                   <p className="text-gray-600 mt-1">{server.description}</p>
                   {server.websiteUrl && (
                     <div className="mt-2">
