@@ -8,7 +8,7 @@ A TypeScript implementation of the [Model Context Protocol Registry](https://git
 
 ## 🚀 Live Application
 
-**[https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)**
+**[https://registry.teamspark.ai/](https://registry.teamspark.ai/)**
 
 ### Features
 
@@ -140,7 +140,7 @@ pnpm run registry:validate
 
 ## 🎯 Current Status
 
-**Production Deployment**: [https://teamspark-mcp-registry.vercel.app/](https://teamspark-mcp-registry.vercel.app/)
+**Production Deployment**: [https://registry.teamspark.ai/](https://registry.teamspark.ai/)
 
 ### ✅ What's Built
 
