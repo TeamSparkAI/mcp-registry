@@ -11913,6 +11913,33 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.atlassian/atlassian-mcp-server",
+        "description": "Enables secure, permission-aware access to Atlassian Cloud products.",
+        "title": "Atlassian Rovo MCP Server",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.atlassian.com/v1/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-22T01:37:12.669264Z",
+          "updatedAt": "2025-10-22T01:37:12.669264Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.biodnd/agent-fin",
         "description": "Agent Fin: finance MCP server with market data tools",
@@ -12644,6 +12671,44 @@
           "status": "active",
           "publishedAt": "2025-09-16T22:06:29.987729Z",
           "updatedAt": "2025-09-16T22:06:29.987729Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.codescene/codescene-mcp-server",
+        "description": "An MCP server that provides CodeScene Code Health analysis tools.",
+        "repository": {
+          "url": "https://github.com/codescene-oss/codescene-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/codescene/codescene-mcp:latest",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "CodeScene Access Token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CS_ACCESS_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T12:30:16.003976Z",
+          "updatedAt": "2025-10-21T12:30:16.003976Z",
           "isLatest": true
         }
       }
@@ -13976,6 +14041,78 @@
           "status": "active",
           "publishedAt": "2025-09-22T18:43:05.221834Z",
           "updatedAt": "2025-09-22T18:43:05.221834Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.gitkraken/gk-cli",
+        "description": "The GitKraken MCP Server for managing repos, PRs, issues across GitHub, GitLab, Bitbucket and more.",
+        "repository": {
+          "url": "https://github.com/gitkraken/gk-cli",
+          "source": "github"
+        },
+        "version": "3.1.43",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@gitkraken/gk",
+            "version": "3.1.43",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "mcp",
+                "type": "positional"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T15:39:27.879229Z",
+          "updatedAt": "2025-10-21T15:39:27.879229Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.gitkraken/gk-cli",
+        "description": "The GitKraken MCP Server for managing repos, PRs, issues across GitHub, GitLab, Bitbucket and more.",
+        "repository": {
+          "url": "https://github.com/gitkraken/gk-cli",
+          "source": "github"
+        },
+        "version": "3.1.45",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@gitkraken/gk",
+            "version": "3.1.45",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "mcp",
+                "type": "positional"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T18:27:55.098714Z",
+          "updatedAt": "2025-10-21T18:27:55.098714Z",
           "isLatest": true
         }
       }
@@ -15703,6 +15840,47 @@
           "status": "active",
           "publishedAt": "2025-10-17T21:37:35.455239Z",
           "updatedAt": "2025-10-17T21:37:35.455239Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.predictleads/mcp",
+        "description": "Company Insights: job postings, tech stack, news events, key customers, similar companies...",
+        "title": "PredictLeads",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.predictleads.com/",
+            "headers": [
+              {
+                "description": "API key for authentication",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-Api-Key"
+              },
+              {
+                "description": "API token for authentication",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-Api-Token"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T12:42:58.519645Z",
+          "updatedAt": "2025-10-21T12:42:58.519645Z",
           "isLatest": true
         }
       }
@@ -29208,6 +29386,57 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.configcat/mcp-server",
+        "description": "Enables AI agents to interact with ConfigCat, a feature flag service for teams.",
+        "repository": {
+          "url": "https://github.com/configcat/mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@configcat/mcp-server",
+            "version": "0.1.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "ConfigCat Management API basic authentication username.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CONFIGCAT_API_USER"
+              },
+              {
+                "description": "ConfigCat Management API basic authentication password.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CONFIGCAT_API_PASS"
+              },
+              {
+                "description": "Base URL for the ConfigCat API. Defaults to `https://api.configcat.com`.",
+                "format": "string",
+                "name": "CONFIGCAT_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T13:01:53.585129Z",
+          "updatedAt": "2025-10-21T13:01:53.585129Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.containers/kubernetes-mcp-server",
         "description": "A Model Context Protocol (MCP) server for Kubernetes and OpenShift",
@@ -34752,6 +34981,212 @@
           "status": "active",
           "publishedAt": "2025-10-16T13:58:15.360213Z",
           "updatedAt": "2025-10-16T13:58:15.360213Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.cyanheads/mcp-ts-template",
+        "description": "A production-grade TypeScript template for scalable MCP servers with built-in observability.",
+        "repository": {
+          "url": "https://github.com/cyanheads/mcp-ts-template",
+          "source": "github"
+        },
+        "version": "2.5.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-ts-template",
+            "version": "2.5.3",
+            "runtimeHint": "bun",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "value": "start:stdio",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Sets the minimum log level for output (e.g., 'debug', 'info', 'warn').",
+                "format": "string",
+                "default": "info",
+                "name": "MCP_LOG_LEVEL"
+              }
+            ]
+          },
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-ts-template",
+            "version": "2.5.3",
+            "runtimeHint": "bun",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:3010/mcp"
+            },
+            "packageArguments": [
+              {
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "value": "start:http",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "The hostname for the HTTP server.",
+                "format": "string",
+                "default": "127.0.0.1",
+                "name": "MCP_HTTP_HOST"
+              },
+              {
+                "description": "The port to run the HTTP server on.",
+                "format": "string",
+                "default": "3010",
+                "name": "MCP_HTTP_PORT"
+              },
+              {
+                "description": "The endpoint path for the MCP server.",
+                "format": "string",
+                "default": "/mcp",
+                "name": "MCP_HTTP_ENDPOINT_PATH"
+              },
+              {
+                "description": "Authentication mode to use: 'none', 'jwt', or 'oauth'.",
+                "format": "string",
+                "default": "none",
+                "name": "MCP_AUTH_MODE"
+              },
+              {
+                "description": "Sets the minimum log level for output (e.g., 'debug', 'info', 'warn').",
+                "format": "string",
+                "default": "info",
+                "name": "MCP_LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T03:20:23.40321Z",
+          "updatedAt": "2025-10-21T03:20:23.40321Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.cyanheads/mcp-ts-template",
+        "description": "A production-grade TypeScript template for scalable MCP servers with built-in observability.",
+        "repository": {
+          "url": "https://github.com/cyanheads/mcp-ts-template",
+          "source": "github"
+        },
+        "version": "2.5.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-ts-template",
+            "version": "2.5.4",
+            "runtimeHint": "bun",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "value": "start:stdio",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Sets the minimum log level for output (e.g., 'debug', 'info', 'warn').",
+                "format": "string",
+                "default": "info",
+                "name": "MCP_LOG_LEVEL"
+              }
+            ]
+          },
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-ts-template",
+            "version": "2.5.4",
+            "runtimeHint": "bun",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:3010/mcp"
+            },
+            "packageArguments": [
+              {
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "value": "start:http",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "The hostname for the HTTP server.",
+                "format": "string",
+                "default": "127.0.0.1",
+                "name": "MCP_HTTP_HOST"
+              },
+              {
+                "description": "The port to run the HTTP server on.",
+                "format": "string",
+                "default": "3010",
+                "name": "MCP_HTTP_PORT"
+              },
+              {
+                "description": "The endpoint path for the MCP server.",
+                "format": "string",
+                "default": "/mcp",
+                "name": "MCP_HTTP_ENDPOINT_PATH"
+              },
+              {
+                "description": "Authentication mode to use: 'none', 'jwt', or 'oauth'.",
+                "format": "string",
+                "default": "none",
+                "name": "MCP_AUTH_MODE"
+              },
+              {
+                "description": "Sets the minimum log level for output (e.g., 'debug', 'info', 'warn').",
+                "format": "string",
+                "default": "info",
+                "name": "MCP_LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T05:01:08.413651Z",
+          "updatedAt": "2025-10-21T05:01:08.413651Z",
           "isLatest": true
         }
       }
@@ -36807,6 +37242,121 @@
           "status": "active",
           "publishedAt": "2025-10-19T10:17:44.60724Z",
           "updatedAt": "2025-10-19T10:17:44.60724Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.eat-pray-ai/yutu",
+        "description": "A fully functional MCP server and CLI for YouTube",
+        "title": "yutu",
+        "repository": {
+          "url": "https://github.com/eat-pray-ai/yutu",
+          "source": "github",
+          "id": "643163403"
+        },
+        "version": "v0.10.4-dev1",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/eat-pray-ai/yutu/main/assets/yutu-ico.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/eat-pray-ai/yutu:v0.10.4-dev1",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:8216/mcp"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Username or UID in docker (format: <name|uid>[:<group|gid>])",
+                "value": "{user}:{group}",
+                "variables": {
+                  "group": {
+                    "description": "The current user's primary group, output of `id -g`"
+                  },
+                  "user": {
+                    "description": "The current user, output of `id -u`"
+                  }
+                },
+                "type": "named",
+                "name": "--user"
+              },
+              {
+                "description": "Host directory containing YUTU credentials and token",
+                "value": "type=bind,source={hostPath},target=/app",
+                "variables": {
+                  "hostPath": {
+                    "description": "The directory containing `youtube.token.json` and `youtube.token.json`"
+                  }
+                },
+                "type": "named",
+                "name": "--mount"
+              },
+              {
+                "description": "Publish MCP server port",
+                "isRequired": true,
+                "value": "8216:8216",
+                "type": "named",
+                "name": "-p"
+              }
+            ],
+            "packageArguments": [
+              {
+                "value": "mcp",
+                "type": "positional"
+              },
+              {
+                "value": "http",
+                "type": "named",
+                "name": "--mode"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "GCP project credential for yutu, base64 encoded JSON or path to JSON file",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "YUTU_CREDENTIAL"
+              },
+              {
+                "description": "YouTube authentication token, base64 encoded JSON or path to JSON file",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "YUTU_CACHE_TOKEN"
+              },
+              {
+                "description": "Log level",
+                "format": "string",
+                "default": "INFO",
+                "choices": [
+                  "DEBUG",
+                  "INFO",
+                  "WARNING",
+                  "ERROR"
+                ],
+                "name": "YUTU_LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T15:24:52.146201Z",
+          "updatedAt": "2025-10-21T15:24:52.146201Z",
           "isLatest": true
         }
       }
@@ -41178,6 +41728,36 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jonathanhefner/hello-mcp-registry",
+        "description": "A simple MCP server.",
+        "repository": {
+          "url": "https://github.com/jonathanhefner/hello-mcp-registry",
+          "source": "github"
+        },
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@jonathanhefner/hello-mcp-registry",
+            "version": "0.1.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T16:42:43.411081Z",
+          "updatedAt": "2025-10-21T16:42:43.411081Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
         "name": "io.github.joshmsimpson/exiftool",
         "description": "Read, write, and remove metadata from 150+ file formats using ExifTool",
@@ -44971,6 +45551,37 @@
           "status": "active",
           "publishedAt": "2025-10-20T16:49:08.427837Z",
           "updatedAt": "2025-10-20T16:49:08.427837Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.p1va/symbols",
+        "description": "Read, inspect and navigate codebase symbols by connecting to a Language Server",
+        "title": "Symbols MCP",
+        "repository": {
+          "url": "https://github.com/p1va/symbols",
+          "source": "github"
+        },
+        "version": "0.0.18",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@p1va/symbols",
+            "version": "0.0.18",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T11:53:38.250781Z",
+          "updatedAt": "2025-10-21T11:53:38.250781Z",
           "isLatest": false
         }
       }
@@ -52630,6 +53241,68 @@
           "status": "active",
           "publishedAt": "2025-10-20T15:12:53.217728Z",
           "updatedAt": "2025-10-20T15:12:53.217728Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xplusplusai/fo-semantic-mcp",
+        "description": "Semantic search over 50,000+ Dynamics 365 F&O artifacts: tables, forms, classes, and more.",
+        "title": "FO Semantic MCP",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "2.0.7",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "fo-semantic-mcp",
+            "version": "2.0.7",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T05:36:06.84871Z",
+          "updatedAt": "2025-10-21T05:36:06.84871Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xplusplusai/fo-semantic-mcp",
+        "description": "Semantic search over 50,000+ Dynamics 365 F&O artifacts: tables, forms, classes, and more.",
+        "title": "FO Semantic MCP",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "2.0.8",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "fo-semantic-mcp",
+            "version": "2.0.8",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-21T06:10:48.210915Z",
+          "updatedAt": "2025-10-21T06:10:48.210915Z",
           "isLatest": true
         }
       }
@@ -55001,6 +55674,6 @@
     }
   ],
   "metadata": {
-    "count": 1277
+    "count": 1290
   }
 }
