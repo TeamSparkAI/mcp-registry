@@ -15624,6 +15624,50 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.monday/monday.com",
+        "description": "MCP server for monday.com integration.",
+        "repository": {
+          "url": "https://github.com/mondaycom/mcp",
+          "source": "github"
+        },
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.monday.com/mcp",
+            "headers": [
+              {
+                "description": "monday.com API token (format: 'Bearer your_token_here' or just 'your_token_here')",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.monday.com/sse",
+            "headers": [
+              {
+                "description": "monday.com API token (format: 'Bearer your_token_here' or just 'your_token_here')",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T14:57:35.277178Z",
+          "updatedAt": "2025-10-23T14:57:35.277178Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.mux/mcp",
         "description": "The official MCP Server for the Mux API",
@@ -16454,6 +16498,86 @@
           "status": "active",
           "publishedAt": "2025-10-14T09:22:57.579085Z",
           "updatedAt": "2025-10-14T09:22:57.579085Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json#/definitions/ServerDetail",
+        "name": "com.smartbear/smartbear-mcp",
+        "description": "MCP server for AI access to SmartBear tools, including BugSnag, Reflect, API Hub, PactFlow.",
+        "title": "SmartBear MCP",
+        "repository": {
+          "url": "https://github.com/SmartBear/smartbear-mcp",
+          "source": "github"
+        },
+        "version": "0.9.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@smartbear/mcp",
+            "version": "0.9.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "BugSnag auth token. Leave empty to disable BugSnag tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "isSecret": true,
+                "name": "BUGSNAG_AUTH_TOKEN"
+              },
+              {
+                "description": "BugSnag project API key (optional; narrows interactions to a single project). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "name": "BUGSNAG_PROJECT_API_KEY"
+              },
+              {
+                "description": "Reflect API token. Leave empty to disable Reflect tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/test-hub-integration",
+                "isSecret": true,
+                "name": "REFLECT_API_TOKEN"
+              },
+              {
+                "description": "API Hub API key. Leave empty to disable API Hub tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/api-hub-integration",
+                "isSecret": true,
+                "name": "API_HUB_API_KEY"
+              },
+              {
+                "description": "PactFlow/Pact Broker base URL. Leave empty to disable Pact tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_BASE_URL"
+              },
+              {
+                "description": "PactFlow authentication token. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_TOKEN"
+              },
+              {
+                "description": "Pact Broker username (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_USERNAME"
+              },
+              {
+                "description": "Pact Broker password (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_PASSWORD"
+              },
+              {
+                "description": "The Zephyr Cloud API token for authentication. Learn more: https://support.smartbear.com/zephyr/docs/en/rest-api/api-access-tokens-management.html",
+                "isSecret": true,
+                "name": "ZEPHYR_API_TOKEN"
+              },
+              {
+                "description": " The Zephyr Cloud API base url. Should be changed depending on the region of your Jira instance. Learn more: https://support.smartbear.com/zephyr-scale-cloud/api-docs/#section/Authentication/Accessing-the-API",
+                "name": "ZEPHYR_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T09:02:53.292595Z",
+          "updatedAt": "2025-10-23T09:02:53.292595Z",
           "isLatest": true
         }
       }
@@ -16549,6 +16673,41 @@
           "status": "active",
           "publishedAt": "2025-09-19T18:53:25.028837Z",
           "updatedAt": "2025-09-19T18:53:25.028837Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.streamlinehq/mcp",
+        "description": "The Streamline MCP Server allow users to search, and download assets in PNG or SVG formats.",
+        "title": "Streamline MCP Server",
+        "repository": {
+          "url": "https://github.com/webalys-hq/streamline-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://public-api.streamlinehq.com/mcp",
+            "headers": [
+              {
+                "description": "API key for authentication",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T19:42:49.484962Z",
+          "updatedAt": "2025-10-23T19:42:49.484962Z",
           "isLatest": true
         }
       }
@@ -18577,6 +18736,54 @@
           "status": "active",
           "publishedAt": "2025-10-22T15:24:45.50308Z",
           "updatedAt": "2025-10-22T15:24:45.50308Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "directory.brick/mcp",
+        "description": "Provides data for LEGO sets, minifigures, parts and elements. Not affiliated with LEGO® Group.",
+        "title": "Brick Directory",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "2025.10.23.1321",
+        "websiteUrl": "https://brick.directory",
+        "icons": [
+          {
+            "src": "https://brick.directory/assets/logo.svg",
+            "mimeType": "image/svg+xml"
+          },
+          {
+            "src": "https://brick.directory/assets/logo-1024-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "1024x1024"
+            ]
+          },
+          {
+            "src": "https://brick.directory/assets/logo-512-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.brick.directory/connect"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T13:21:29.97224Z",
+          "updatedAt": "2025-10-23T13:21:29.97224Z",
           "isLatest": true
         }
       }
@@ -23597,6 +23804,46 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Pranavj17/mcp-server-graylog",
+        "description": "Search Graylog logs by timestamps, filter by streams, and debug production issues.",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.1"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T17:46:28.468102Z",
+          "updatedAt": "2025-10-23T17:46:28.468102Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Pranavj17/mcp-server-graylog",
+        "description": "Search Graylog logs by timestamps, filter by streams, and debug production issues.",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.2"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T18:25:27.499311Z",
+          "updatedAt": "2025-10-23T18:25:27.499311Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.PrefectHQ/prefect-mcp-server",
         "description": "MCP server for Prefect. Monitor and debug workflows, deployments, and automations.",
         "title": "Prefect MCP Server",
@@ -23621,6 +23868,37 @@
           "status": "active",
           "publishedAt": "2025-10-17T16:14:41.034179Z",
           "updatedAt": "2025-10-17T16:14:41.034179Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ProfessionalWiki/mediawiki-mcp-server",
+        "description": "MCP server enabling AI clients to interact with any MediaWiki wiki through standard tools",
+        "title": "MediaWiki MCP Server",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.2.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@professional-wiki/mediawiki-mcp-server",
+            "version": "0.2.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T20:58:43.788191Z",
+          "updatedAt": "2025-10-23T20:58:43.788191Z",
           "isLatest": true
         }
       }
@@ -24949,6 +25227,44 @@
           "status": "active",
           "publishedAt": "2025-10-22T10:29:05.431141Z",
           "updatedAt": "2025-10-22T10:29:05.431141Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-aktools",
+        "description": "MCP Server for stock and crypto",
+        "title": "AkTools MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-aktools",
+          "source": "github"
+        },
+        "version": "0.1.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-aktools",
+            "version": "0.1.4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-aktools:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T10:59:20.972551Z",
+          "updatedAt": "2025-10-23T10:59:20.972551Z",
           "isLatest": true
         }
       }
@@ -28466,6 +28782,46 @@
           "status": "active",
           "publishedAt": "2025-10-17T14:21:42.93601Z",
           "updatedAt": "2025-10-17T14:21:42.93601Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.brave/brave-search-mcp-server",
+        "description": "Brave Search MCP Server: web results, images, videos, rich results, AI summaries, and more.",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.58",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@brave/brave-search-mcp-server",
+            "version": "2.0.58",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for the service",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "BRAVE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T16:30:49.649573Z",
+          "updatedAt": "2025-10-23T16:30:49.649573Z",
           "isLatest": true
         }
       }
@@ -42434,6 +42790,37 @@
           "status": "active",
           "publishedAt": "2025-09-19T00:50:28.842923Z",
           "updatedAt": "2025-09-19T00:50:28.842923Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jkawamoto/mcp-florence2",
+        "description": "An MCP server for processing images using Florence-2",
+        "repository": {
+          "url": "https://github.com/jkawamoto/mcp-florence2",
+          "source": "github"
+        },
+        "version": "0.3.4",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/jkawamoto/mcp-florence2/releases/download/v0.3.4/mcp-florence2.mcpb",
+            "version": "0.3.4",
+            "fileSha256": "23e1c7788144dc55e5e4795d71362c35627792b34f917faf3e7b81e08512f4e5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-23T03:06:46.950005Z",
+          "updatedAt": "2025-10-23T03:06:46.950005Z",
           "isLatest": true
         }
       }
@@ -57049,6 +57436,6 @@
     }
   ],
   "metadata": {
-    "count": 1314
+    "count": 1324
   }
 }
