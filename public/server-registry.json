@@ -18478,6 +18478,164 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.usesideways/sideways",
+        "description": "Unexpected questions and lateral thinking prompts to break through mental blocks. 86 strategies.",
+        "title": "Sideways",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://usesideways.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://usesideways.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T02:35:47.403797Z",
+          "updatedAt": "2025-10-26T02:35:47.403797Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.usesideways/sideways",
+        "description": "Unexpected questions and lateral thinking prompts to break through mental blocks. 86 strategies.",
+        "title": "Sideways",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://usesideways.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://usesideways.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T02:43:18.623373Z",
+          "updatedAt": "2025-10-26T02:43:18.623373Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.usesideways/sideways",
+        "description": "Use Sideways for unexpected questions and lateral thinking prompts to break through mental blocks.",
+        "title": "Sideways",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.3",
+        "websiteUrl": "https://usesideways.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://usesideways.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://usesideways.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T02:54:18.226547Z",
+          "updatedAt": "2025-10-26T02:54:18.226547Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.usesideways/sideways",
+        "description": "Use Sideways for unexpected questions and lateral thinking prompts to break through mental blocks.",
+        "title": "Sideways",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.4",
+        "websiteUrl": "https://usesideways.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://usesideways.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://usesideways.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T00:43:55.782489Z",
+          "updatedAt": "2025-10-27T00:43:55.782489Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.usesideways/sideways",
+        "description": "Use Sideways for unexpected questions and lateral thinking prompts to break through mental blocks.",
+        "title": "Sideways",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.5",
+        "websiteUrl": "https://usesideways.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://usesideways.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://usesideways.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T00:43:56.0838Z",
+          "updatedAt": "2025-10-27T00:43:56.0838Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.vaadin/docs-mcp",
         "description": "Provides Vaadin Documentation and help with development tasks",
@@ -26041,6 +26199,44 @@
           "status": "active",
           "publishedAt": "2025-10-25T06:49:53.931626Z",
           "updatedAt": "2025-10-25T06:49:53.931626Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-notify",
+        "description": "MCP Server for notify",
+        "title": "Notify MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-notify",
+          "source": "github"
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-notify",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-notify:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T06:14:08.128472Z",
+          "updatedAt": "2025-10-26T06:14:08.128472Z",
           "isLatest": true
         }
       }
@@ -26289,6 +26485,38 @@
           "status": "active",
           "publishedAt": "2025-09-16T07:56:23.181996Z",
           "updatedAt": "2025-09-16T07:56:23.181996Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ai-mcpower/mcpower-proxy",
+        "description": "Security proxy that wraps MCP servers with real-time monitoring and policy enforcement",
+        "title": "MCPower Security Proxy",
+        "repository": {
+          "url": "https://github.com/MCPower-Security/mcpower-proxy",
+          "source": "github"
+        },
+        "version": "0.0.60",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcpower-proxy",
+            "version": "0.0.60",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T10:48:12.216781Z",
+          "updatedAt": "2025-10-26T10:48:12.216781Z",
           "isLatest": true
         }
       }
@@ -37451,6 +37679,109 @@
           "status": "active",
           "publishedAt": "2025-10-21T05:01:08.413651Z",
           "updatedAt": "2025-10-21T05:01:08.413651Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.cyanheads/mcp-ts-template",
+        "description": "A production-grade TypeScript template for scalable MCP servers with built-in observability.",
+        "repository": {
+          "url": "https://github.com/cyanheads/mcp-ts-template",
+          "source": "github"
+        },
+        "version": "2.5.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-ts-template",
+            "version": "2.5.6",
+            "runtimeHint": "bun",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "value": "start:stdio",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Sets the minimum log level for output (e.g., 'debug', 'info', 'warn').",
+                "format": "string",
+                "default": "info",
+                "name": "MCP_LOG_LEVEL"
+              }
+            ]
+          },
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-ts-template",
+            "version": "2.5.6",
+            "runtimeHint": "bun",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:3010/mcp"
+            },
+            "packageArguments": [
+              {
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "value": "start:http",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "The hostname for the HTTP server.",
+                "format": "string",
+                "default": "127.0.0.1",
+                "name": "MCP_HTTP_HOST"
+              },
+              {
+                "description": "The port to run the HTTP server on.",
+                "format": "string",
+                "default": "3010",
+                "name": "MCP_HTTP_PORT"
+              },
+              {
+                "description": "The endpoint path for the MCP server.",
+                "format": "string",
+                "default": "/mcp",
+                "name": "MCP_HTTP_ENDPOINT_PATH"
+              },
+              {
+                "description": "Authentication mode to use: 'none', 'jwt', or 'oauth'.",
+                "format": "string",
+                "default": "none",
+                "name": "MCP_AUTH_MODE"
+              },
+              {
+                "description": "Sets the minimum log level for output (e.g., 'debug', 'info', 'warn').",
+                "format": "string",
+                "default": "info",
+                "name": "MCP_LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T06:49:36.241376Z",
+          "updatedAt": "2025-10-26T06:49:36.241376Z",
           "isLatest": true
         }
       }
@@ -43955,6 +44286,60 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jfrog/jfrog-mcp-server",
+        "description": "MCP Server for JFrog, providing tools for development and artifact management.",
+        "title": "JFrog Remote MCP Server",
+        "repository": {
+          "url": "https://github.com/jfrog/jfrog-mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://myPlatform.jfrog.github.io/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T10:06:33.573722Z",
+          "updatedAt": "2025-10-26T10:06:33.573722Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jfrog/jfrog-mcp-server",
+        "description": "MCP Server for JFrog, providing tools for development and artifact management.",
+        "title": "JFrog Remote MCP Server",
+        "repository": {
+          "url": "https://github.com/jfrog/jfrog-mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://myPlatform.jfrog.github.io/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T11:26:09.107883Z",
+          "updatedAt": "2025-10-26T11:26:09.107883Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.jgador/websharp",
         "description": "Search the web and extract article text for LLMs.",
@@ -48872,6 +49257,38 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.njlnaet/coderswap-mcp-server",
+        "description": "Build searchable AI research knowledge bases with hybrid vector search directly in Claude Desktop.",
+        "title": "CoderSwap MCP Server",
+        "repository": {
+          "url": "https://github.com/njlnaet/mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@coderswap/mcp-server",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T02:31:39.41927Z",
+          "updatedAt": "2025-10-27T02:31:39.41927Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.noahgift/depyler-mcp",
         "description": "MCP server for Depyler: Python-to-Rust transpiler with analysis and verification tools",
@@ -51174,6 +51591,37 @@
           "status": "active",
           "publishedAt": "2025-09-10T16:53:23.880648Z",
           "updatedAt": "2025-09-10T16:53:23.880648Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rghsoftware/linux-filesystem",
+        "description": "Enhanced Linux filesystem access with symlinks, permissions, and chmod support",
+        "title": "Linux Filesystem",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.2.1",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/rghsoftware/linux-filesystem-extension/releases/download/v1.2.1/linux-filesystem.mcpb",
+            "fileSha256": "3174a623da8d3da7013467bb877dde5591a8f6e04dad0430b2784303ecbfedfe",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-26T04:07:30.533036Z",
+          "updatedAt": "2025-10-26T04:07:30.533036Z",
           "isLatest": true
         }
       }
@@ -60109,6 +60557,6 @@
     }
   ],
   "metadata": {
-    "count": 1366
+    "count": 1378
   }
 }
