@@ -2445,6 +2445,41 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.smithery/LinkupPlatform-linkup-mcp-server",
+        "description": "Search the web in real time to get trustworthy, source-backed answers. Find the latest news and co…",
+        "repository": {
+          "url": "https://github.com/LinkupPlatform/linkup-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server.smithery.ai/@LinkupPlatform/linkup-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Bearer token for Smithery authentication",
+                "isRequired": true,
+                "value": "Bearer {smithery_api_key}",
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T11:25:12.402429Z",
+          "updatedAt": "2025-10-27T11:25:12.402429Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "ai.smithery/MetehanGZL-pokemcp",
         "description": "Provide detailed Pokémon data and information through a standardized MCP interface. Enable LLMs an…",
@@ -11674,6 +11709,43 @@
           "status": "active",
           "publishedAt": "2025-10-24T19:29:43.069098Z",
           "updatedAt": "2025-10-24T19:29:43.069098Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "co.thisdot.docusign-navigator/mcp",
+        "description": "Secure Docusign Navigator integration for AI assistants to access and analyze agreement data.",
+        "title": "Docusign Navigator",
+        "repository": {
+          "url": "https://github.com/thisdot/docusign-navigator-mcp",
+          "source": "github"
+        },
+        "version": "1.3.0",
+        "websiteUrl": "https://docusign-navigator.thisdot.co",
+        "icons": [
+          {
+            "src": "https://docusign-navigator.thisdot.co/thisdot-labs-logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "500x122"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://docusign-navigator.thisdot.co/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T15:57:26.278297Z",
+          "updatedAt": "2025-10-27T15:57:26.278297Z",
           "isLatest": true
         }
       }
@@ -11706,6 +11778,32 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.adspirer/ads",
+        "description": "Remote MCP for cross-platform ad creation (Google Ads, TikTok). OAuth 2.1 with progress streaming.",
+        "repository": {
+          "url": "https://github.com/amekala/ads-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.adspirer.com/"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-28T02:00:45.758066Z",
+          "updatedAt": "2025-10-28T02:00:45.758066Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.agilitycms/mcp-server",
         "description": "An MCP server that provides access to Agility CMS.  See https://mcp.agilitycms.com for more details.",
@@ -11726,6 +11824,130 @@
           "status": "active",
           "publishedAt": "2025-09-15T21:00:43.34878Z",
           "updatedAt": "2025-09-15T21:00:43.34878Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.allstacks/allstacks-mcp",
+        "description": "Provides 208+ tools for AI-native engineering intelligence via Allstacks API.",
+        "title": "Allstacks Analytics MCP Server",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "allstacks-mcp",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T16:43:42.575778Z",
+          "updatedAt": "2025-10-27T16:43:42.575778Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.allstacks/allstacks-mcp",
+        "description": "Provides 208+ tools for AI-native engineering intelligence via Allstacks API.",
+        "title": "Allstacks Analytics MCP Server",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "allstacks-mcp",
+            "version": "0.1.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T16:50:37.013013Z",
+          "updatedAt": "2025-10-27T16:50:37.013013Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.allstacks/allstacks-mcp",
+        "description": "Provides 208+ tools for AI-native engineering intelligence via Allstacks API.",
+        "title": "Allstacks Analytics MCP Server",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "allstacks-mcp",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T19:33:41.052283Z",
+          "updatedAt": "2025-10-27T19:33:41.052283Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.allstacks/allstacks-mcp",
+        "description": "Provides 208+ tools for AI-native engineering intelligence via Allstacks API.",
+        "title": "Allstacks Analytics MCP Server",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.1.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "allstacks-mcp",
+            "version": "0.1.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T19:42:56.515336Z",
+          "updatedAt": "2025-10-27T19:42:56.515336Z",
           "isLatest": true
         }
       }
@@ -15335,6 +15557,58 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.joelverhagen.mcp/Knapcode.SampleMcpServer",
+        "description": "A sample MCP server using the MCP C# SDK. Generates random numbers and random weather.",
+        "repository": {
+          "url": "https://github.com/joelverhagen/Knapcode.SampleMcpServer",
+          "source": "github"
+        },
+        "version": "0.10.0-beta.10",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "registryBaseUrl": "https://api.nuget.org",
+            "identifier": "Knapcode.SampleMcpServer",
+            "version": "0.10.0-beta.10",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "mcp",
+                "type": "positional"
+              },
+              {
+                "value": "start",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "value": "{weather_choices}",
+                "variables": {
+                  "weather_choices": {
+                    "description": "Comma separated list of weather descriptions to randomly select."
+                  }
+                },
+                "name": "WEATHER_CHOICES"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T21:07:31.921876Z",
+          "updatedAt": "2025-10-27T21:07:31.921876Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.joelverhagen.mcp/Knapcode.SampleMcpServer",
         "description": "A sample MCP server using the MCP C# SDK. Generates random numbers and random weather.",
@@ -15384,7 +15658,7 @@
           "status": "active",
           "publishedAt": "2025-09-12T15:58:51.492613Z",
           "updatedAt": "2025-09-12T15:58:51.492613Z",
-          "isLatest": true
+          "isLatest": false
         }
       }
     },
@@ -15569,6 +15843,32 @@
           "status": "active",
           "publishedAt": "2025-09-19T16:35:03.495243Z",
           "updatedAt": "2025-09-19T16:35:03.495243Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.medusajs/medusa-mcp",
+        "description": "Retrieve information from the Medusa documentation to assist you with your Medusa development.",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://docs.medusajs.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T14:16:17.087598Z",
+          "updatedAt": "2025-10-27T14:16:17.087598Z",
           "isLatest": true
         }
       }
@@ -18630,6 +18930,38 @@
           "status": "active",
           "publishedAt": "2025-10-27T00:43:56.0838Z",
           "updatedAt": "2025-10-27T00:43:56.0838Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.usesideways/sideways",
+        "description": "Use Sideways for unexpected questions and lateral thinking prompts to break through mental blocks.",
+        "title": "Sideways",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.6",
+        "websiteUrl": "https://usesideways.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://usesideways.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://usesideways.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T03:29:30.799578Z",
+          "updatedAt": "2025-10-27T03:29:30.799578Z",
           "isLatest": true
         }
       }
@@ -18760,6 +19092,32 @@
           "status": "active",
           "publishedAt": "2025-10-18T15:24:08.291615Z",
           "updatedAt": "2025-10-18T15:24:08.291615Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.webflow/mcp",
+        "description": "AI-powered design and management for Webflow Sites",
+        "repository": {
+          "url": "https://github.com/webflow/mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.webflow.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T21:00:28.378216Z",
+          "updatedAt": "2025-10-27T21:00:28.378216Z",
           "isLatest": true
         }
       }
@@ -19179,6 +19537,36 @@
           "status": "active",
           "publishedAt": "2025-10-02T18:08:05.667746Z",
           "updatedAt": "2025-10-02T18:08:05.667746Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.openfeature/mcp",
+        "description": "MCP server providing OpenFeature SDK installation guides and OFREP flag evaluation",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.0.16",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@openfeature/mcp",
+            "version": "0.0.16",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T19:50:28.668605Z",
+          "updatedAt": "2025-10-27T19:50:28.668605Z",
           "isLatest": true
         }
       }
@@ -22693,6 +23081,37 @@
           "status": "active",
           "publishedAt": "2025-10-17T23:12:58.370286Z",
           "updatedAt": "2025-10-17T23:12:58.370286Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.DollhouseMCP/mcp-server",
+        "description": "OSS to create Personas, Skills, Templates, Agents, and Memories to customize your AI experience.",
+        "title": "DollhouseMCP",
+        "repository": {
+          "url": "https://github.com/DollhouseMCP/mcp-server",
+          "source": "github"
+        },
+        "version": "1.9.23",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dollhousemcp/mcp-server",
+            "version": "1.9.23",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T12:41:32.986434Z",
+          "updatedAt": "2025-10-27T12:41:32.986434Z",
           "isLatest": true
         }
       }
@@ -24757,6 +25176,60 @@
           "status": "active",
           "publishedAt": "2025-10-23T20:58:43.788191Z",
           "updatedAt": "2025-10-23T20:58:43.788191Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ProfessionalWiki/mediawiki-mcp-server",
+        "description": "MCP server enabling AI clients to interact with any MediaWiki wiki through standard tools",
+        "title": "MediaWiki MCP Server",
+        "repository": {
+          "url": "https://github.com/ProfessionalWiki/MediaWiki-MCP-Server",
+          "source": "github"
+        },
+        "version": "0.3.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@professional-wiki/mediawiki-mcp-server",
+            "version": "0.3.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to your configuration file",
+                "format": "filepath",
+                "default": "config.json",
+                "name": "CONFIG"
+              },
+              {
+                "description": "Type of MCP server transport",
+                "default": "stdio",
+                "choices": [
+                  "stdio",
+                  "http"
+                ],
+                "name": "MCP_TRANSPORT"
+              },
+              {
+                "description": "Port used for StreamableHTTP transport",
+                "format": "number",
+                "default": "3000",
+                "name": "PORT"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T23:27:02.224441Z",
+          "updatedAt": "2025-10-27T23:27:02.224441Z",
           "isLatest": true
         }
       }
@@ -41799,6 +42272,38 @@
           "status": "active",
           "publishedAt": "2025-10-24T14:03:45.710535Z",
           "updatedAt": "2025-10-24T14:03:45.710535Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.gattjoe/ACMS",
+        "description": "Apple Container MCP Server (ACMS) provides access to Apple's container CLI tool on macOS",
+        "repository": {
+          "url": "https://github.com/gattjoe/ACMS",
+          "source": "github"
+        },
+        "version": "0.0.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "ACMS",
+            "version": "0.0.4",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:8765/mcp"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-28T00:39:35.755478Z",
+          "updatedAt": "2025-10-28T00:39:35.755478Z",
           "isLatest": true
         }
       }
@@ -42259,7 +42764,7 @@
           "status": "active",
           "publishedAt": "2025-10-22T13:21:55.500708Z",
           "updatedAt": "2025-10-22T13:21:55.500708Z",
-          "isLatest": true
+          "isLatest": false
         }
       }
     },
@@ -42332,6 +42837,152 @@
           "publishedAt": "2025-10-22T13:15:36.753831Z",
           "updatedAt": "2025-10-22T13:15:36.753831Z",
           "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.github/github-mcp-server",
+        "description": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.",
+        "repository": {
+          "url": "https://github.com/github/github-mcp-server",
+          "source": "github"
+        },
+        "version": "0.20.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/github/github-mcp-server:0.20.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "isRequired": true,
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "isRequired": true,
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "isRequired": true,
+                "value": "GITHUB_PERSONAL_ACCESS_TOKEN={token}",
+                "variables": {
+                  "token": {
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "The container image to run",
+                "isRequired": true,
+                "value": "ghcr.io/github/github-mcp-server",
+                "type": "positional",
+                "valueHint": "image_name"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T09:07:29.295012Z",
+          "updatedAt": "2025-10-27T09:07:29.295012Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.github/github-mcp-server",
+        "description": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.",
+        "repository": {
+          "url": "https://github.com/github/github-mcp-server",
+          "source": "github"
+        },
+        "version": "0.20.1",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/github/github-mcp-server:0.20.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "isRequired": true,
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "isRequired": true,
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "isRequired": true,
+                "value": "GITHUB_PERSONAL_ACCESS_TOKEN={token}",
+                "variables": {
+                  "token": {
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "The container image to run",
+                "isRequired": true,
+                "value": "ghcr.io/github/github-mcp-server",
+                "type": "positional",
+                "valueHint": "image_name"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T15:36:10.895783Z",
+          "updatedAt": "2025-10-27T15:36:10.895783Z",
+          "isLatest": true
         }
       }
     },
@@ -45029,6 +45680,37 @@
           "status": "active",
           "publishedAt": "2025-10-21T16:42:43.411081Z",
           "updatedAt": "2025-10-21T16:42:43.411081Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.josefdc/uniprot-mcp",
+        "description": "Read-only UniProtKB via MCP (entries, sequences, features, GO, taxonomy, ID mapping).",
+        "title": "UniProt MCP",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "uniprot-mcp",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T23:22:21.911346Z",
+          "updatedAt": "2025-10-27T23:22:21.911346Z",
           "isLatest": true
         }
       }
@@ -51896,6 +52578,37 @@
           "status": "active",
           "publishedAt": "2025-10-09T05:11:18.719361Z",
           "updatedAt": "2025-10-09T05:11:18.719361Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.robotmcp/ros-mcp-server",
+        "description": "Connect AI models like Claude & ChatGPT with ROS robots using MCP",
+        "repository": {
+          "url": "https://github.com/robotmcp/ros-mcp-server",
+          "source": "github"
+        },
+        "version": "2.1.8",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "ros-mcp",
+            "version": "2.1.8",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T05:29:41.770164Z",
+          "updatedAt": "2025-10-27T05:29:41.770164Z",
           "isLatest": true
         }
       }
@@ -60280,6 +60993,52 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "moda.ai/remote-camera",
+        "description": "Capture photos remotely from mobile devices via S3-backed upload URLs",
+        "title": "Remote Camera",
+        "repository": {
+          "url": "",
+          "source": ""
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://www.ai.moda/mcp-servers/remote-camera/",
+        "icons": [
+          {
+            "src": "https://remote-camera-mcp.email.ai.moda/bimi/logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://www.ai.moda/mcp-servers/remote-camera/mcp",
+            "headers": [
+              {
+                "description": "S3 credentials token in format: Bearer <base64-encoded-json>. The JSON should contain: {s3Url, accessKeyId, secretAccessKey, region}. Visit https://www.ai.moda/mcp-servers/remote-camera/ to set up your S3 auth token.",
+                "isRequired": true,
+                "isSecret": true,
+                "placeholder": "Bearer eyJzM1VybCI6Imh0dHBzOi8vczMu...",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-10-27T19:16:27.548449Z",
+          "updatedAt": "2025-10-27T19:16:27.548449Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "net.gepuro.mcp-company-lens-v1/company-lens-mcp-registry",
         "description": "Search Japanese company database",
@@ -60557,6 +61316,6 @@
     }
   ],
   "metadata": {
-    "count": 1378
+    "count": 1398
   }
 }
