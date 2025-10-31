@@ -1,4 +1,4 @@
-import { FieldConfig } from '@/types/mcp-registry';
+import { FieldConfig } from '../types';
 
 /**
  * Quote a value if it's a string or filepath type
@@ -75,4 +75,6 @@ export function getFieldDisplayLabel(field: FieldConfig): string {
   }
   return 'value';
 }
+
+
 

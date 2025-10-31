@@ -1,9 +1,7 @@
-'use client';
-
 import React from 'react';
-import Link from 'next/link';
-import { ServerResponse } from '@/types/mcp-registry';
-import { getBestIcon } from '@/app/registry-utils/iconUtils';
+import { ServerResponse } from '../types';
+import { NavigationAdapter, LinkProps } from '../adapters';
+import { getBestIcon } from '../utils/iconUtils';
 
 interface ServerListProps {
   servers: ServerResponse[];
@@ -14,9 +12,10 @@ interface ServerListProps {
   onFilterToggle: (filter: string) => void;
   onClearFilters: () => void;
   onServerClick: (serverResponse: ServerResponse) => void;
+  navigationAdapter?: NavigationAdapter;
 }
 
-export default function ServerList({
+export function ServerList({
   servers,
   filteredServers,
   searchTerm,
@@ -24,8 +23,14 @@ export default function ServerList({
   onSearchChange,
   onFilterToggle,
   onClearFilters,
-  onServerClick
+  onServerClick,
+  navigationAdapter
 }: ServerListProps) {
+  const LinkComponent = navigationAdapter?.Link || (({ href, children, className, onClick }: LinkProps) => (
+    <a href={href} className={className} onClick={onClick}>
+      {children}
+    </a>
+  ));
   const getRemotesSummary = (serverResponse: ServerResponse): string | null => {
     if (!serverResponse.server.remotes || serverResponse.server.remotes.length === 0) {
       return null;
@@ -64,7 +69,7 @@ export default function ServerList({
               </div>
             </div>
             <div className="text-right space-y-2">
-              <Link
+              <LinkComponent
                 href="/about"
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 transition-colors"
               >
@@ -72,7 +77,7 @@ export default function ServerList({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 About This Service
-              </Link>
+              </LinkComponent>
               <p className="text-sm text-gray-500 mt-2">
                 Official Registry: <a href="https://registry.modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">registry.modelcontextprotocol.io</a>
               </p>
@@ -172,11 +177,19 @@ export default function ServerList({
                     const title = serverResponse.server.title;
                     const iconSrc = getBestIcon(serverResponse.server.icons, 'light');
                     const serverPath = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
+                    const handleClick = () => {
+                      if (navigationAdapter) {
+                        navigationAdapter.goToServer(serverName, version);
+                      } else {
+                        window.location.href = serverPath;
+                      }
+                    };
 
                     return (
-                      <Link
+                      <LinkComponent
                         key={`${serverName}-${version}`}
                         href={serverPath}
+                        onClick={handleClick}
                         className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer block"
                       >
                         <div className="flex items-start justify-between mb-3">
@@ -238,7 +251,7 @@ export default function ServerList({
                           )}
                         </div>
                         
-                      </Link>
+                      </LinkComponent>
                     );
                   })}
                 </div>

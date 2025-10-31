@@ -5,18 +5,18 @@
 		"packages/*"
 	],
 	"scripts": {
-		"dev": "pnpm -F mcp-registry-validator build && pnpm -F mcp-registry-server build && next dev --turbo",
-		"build": "pnpm -F mcp-registry-validator build && pnpm -F mcp-registry-server build && next build",
-		"catalog:build": "tsx scripts/catalog/index.ts",
-		"catalog:build:debug": "tsx scripts/catalog/index.ts --debug",
+		"dev": "pnpm -F mcp-registry-client build && pnpm -F mcp-registry-validator build && pnpm -F mcp-registry-server build && pnpm -F mcp-registry-ux build && next dev --turbo",
+		"build": "pnpm -F mcp-registry-client build && pnpm -F mcp-registry-validator build && pnpm -F mcp-registry-server build && pnpm -F mcp-registry-ux build && next build",
 		"registry:download": "tsx scripts/registry/download-registry.ts",
 		"registry:validate": "tsx scripts/registry/validate-registry.ts",
 		"registry:docs": "pnpm -F mcp-registry-validator docs",
 		"linter:docs": "pnpm -F mcp-registry-validator docs"
 	},
 	"dependencies": {
-		"mcp-registry-validator": "workspace:*",
-		"mcp-registry-server": "workspace:*",
+		"@teamsparkai/mcp-registry-client": "workspace:*",
+		"@teamsparkai/mcp-registry-validator": "workspace:*",
+		"@teamsparkai/mcp-registry-server": "workspace:*",
+		"@teamsparkai/mcp-registry-ux": "workspace:*",
 		"ajv": "^8.17.1",
 		"ajv-formats": "^3.0.1",
 		"next": "^15.1.7",

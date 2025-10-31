@@ -1,15 +1,17 @@
 {
-  "name": "@teamsparkai/mcp-registry-server",
+  "name": "@teamsparkai/mcp-registry-ux",
   "version": "0.1.0",
-  "description": "MCP Registry API server implementation with pluggable data sources",
+  "description": "Reusable React components for browsing and configuring MCP servers from the registry",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
+    "styles.css",
     "README.md"
   ],
+  "style": "styles.css",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tailwindcss -i ./src/input.css -o ./styles.css --minify",
     "dev": "tsc --watch",
     "test": "echo \"No tests yet\"",
     "prepublishOnly": "pnpm build",
@@ -18,34 +20,36 @@
   "keywords": [
     "mcp",
     "registry",
-    "api",
-    "server"
+    "react",
+    "components",
+    "ux"
   ],
   "author": "TeamSpark AI",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/TeamSparkAI/mcp-registry.git",
-    "directory": "packages/mcp-registry-server"
+    "directory": "packages/mcp-registry-ux"
   },
-  "homepage": "https://github.com/TeamSparkAI/mcp-registry/tree/main/packages/mcp-registry-server",
+  "homepage": "https://github.com/TeamSparkAI/mcp-registry/tree/main/packages/mcp-registry-ux",
   "bugs": {
     "url": "https://github.com/TeamSparkAI/mcp-registry/issues"
   },
   "dependencies": {
     "@teamsparkai/mcp-registry-client": "workspace:*"
   },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "tailwindcss": "^3.0.0"
+  },
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "tailwindcss": "^3.0.0",
     "typescript": "^5.0.0"
-  },
-  "peerDependencies": {
-    "next": ">=13.0.0"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
   }
 }
+
 

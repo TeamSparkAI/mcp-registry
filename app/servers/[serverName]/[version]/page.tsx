@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { ServerWithMeta } from '@/types/mcp-registry';
-import ServerDetailView from '@/app/components/ServerDetailView';
-import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
+import { ServerWithMeta, Package, TransportRemote, generateConfiguredServer, ServerDetailView as ServerDetailViewComponent, NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
 
 export default function ServerDetailPage() {
   const params = useParams();
@@ -139,7 +137,7 @@ export default function ServerDetailPage() {
         </div>
       </header>
 
-      <ServerDetailView
+      <ServerDetailViewComponent
         server={server}
         configuringPackage={configuringPackage}
         configuringRemote={configuringRemote}
@@ -155,6 +153,14 @@ export default function ServerDetailPage() {
         onShowRawModal={setShowRawModal}
         onConfigurePackage={handleConfigurePackage}
         onConfigureRemote={handleConfigureRemote}
+        navigationAdapter={{
+          goToServer: (serverName: string, version: string) => {
+            router.push(`/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`);
+          },
+          goToServerVersions: (serverName: string) => {
+            router.push(`/servers/${encodeURIComponent(serverName)}`);
+          }
+        }}
       />
     </div>
   );

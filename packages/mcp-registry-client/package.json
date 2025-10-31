@@ -1,7 +1,7 @@
 {
-  "name": "@teamsparkai/mcp-registry-server",
+  "name": "@teamsparkai/mcp-registry-client",
   "version": "0.1.0",
-  "description": "MCP Registry API server implementation with pluggable data sources",
+  "description": "TypeScript client SDK and types for the MCP Registry API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,34 +18,25 @@
   "keywords": [
     "mcp",
     "registry",
-    "api",
-    "server"
+    "client",
+    "sdk",
+    "types",
+    "typescript"
   ],
   "author": "TeamSpark AI",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/TeamSparkAI/mcp-registry.git",
-    "directory": "packages/mcp-registry-server"
+    "directory": "packages/mcp-registry-client"
   },
-  "homepage": "https://github.com/TeamSparkAI/mcp-registry/tree/main/packages/mcp-registry-server",
+  "homepage": "https://github.com/TeamSparkAI/mcp-registry/tree/main/packages/mcp-registry-client",
   "bugs": {
     "url": "https://github.com/TeamSparkAI/mcp-registry/issues"
-  },
-  "dependencies": {
-    "@teamsparkai/mcp-registry-client": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
     "typescript": "^5.0.0"
-  },
-  "peerDependencies": {
-    "next": ">=13.0.0"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
   }
 }
 

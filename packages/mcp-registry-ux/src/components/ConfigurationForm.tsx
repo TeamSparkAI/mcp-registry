@@ -1,8 +1,6 @@
-'use client';
-
 import React from 'react';
-import { Package, TransportRemote, FieldConfig } from '@/types/mcp-registry';
-import { getFieldId } from '@/app/registry-utils/fieldUtils';
+import { Package, TransportRemote, FieldConfig } from '../types';
+import { getFieldId } from '../utils';
 
 interface ConfigurationFormProps {
   configuringPackage?: { pkg: Package; index: number } | null;
@@ -20,23 +18,12 @@ const isSecretField = (field: FieldConfig) => {
   return field.isSecret === true;
 };
 
-// Helper function to extract variable names from a template string
 const extractVariableNames = (template: string): string[] => {
   const matches = template.match(/\{([^}]+)\}/g);
   return matches ? matches.map(match => match.slice(1, -1)) : [];
 };
 
-// Helper function to substitute variables in a template string
-const substituteVariables = (
-  template: string, 
-  variables: Record<string, any>
-): string => {
-  return template.replace(/\{([^}]+)\}/g, (match, varName) => {
-    return variables[varName] || match;
-  });
-};
-
-export default function ConfigurationForm({
+export function ConfigurationForm({
   configuringPackage,
   configuringRemote,
   packageConfig,
@@ -65,11 +52,9 @@ export default function ConfigurationForm({
     const isReadOnly = hasValue;
     const isRequired = field.isRequired && !hasValue;
     const format = field.format || 'string';
-    // Only use default if user hasn't explicitly set a value (including empty)
     const userHasSetValue = config.hasOwnProperty(fieldId);
     const currentValue = userHasSetValue ? config[fieldId] : (field.value || field.default || '');
 
-    // Determine input type and render appropriate control
     const renderInput = () => {
       if (isReadOnly) {
         return (
@@ -82,17 +67,13 @@ export default function ConfigurationForm({
         );
       }
 
-      // Boolean field - dropdown with true/false
       if (format === 'boolean') {
         const booleanOptions = [
           { value: '', label: isRequired ? 'Select value' : 'No value' },
           { value: 'true', label: 'true' },
           { value: 'false', label: 'false' }
         ];
-
-        // Determine default selection
         const defaultValue = field.default || (isRequired ? '' : '');
-
         return (
           <select
             value={config[fieldId] !== undefined ? config[fieldId] : defaultValue}
@@ -113,16 +94,12 @@ export default function ConfigurationForm({
         );
       }
 
-      // String field with choices - dropdown
       if (format === 'string' && field.choices && field.choices.length > 0) {
         const choiceOptions = [
           { value: '', label: isRequired ? 'Select value' : 'No value' },
           ...field.choices.map((choice) => ({ value: choice, label: choice }))
         ];
-
-        // Determine default selection
         const defaultValue = field.default || (isRequired ? '' : '');
-
         return (
           <select
             value={config[fieldId] !== undefined ? config[fieldId] : defaultValue}
@@ -143,7 +120,6 @@ export default function ConfigurationForm({
         );
       }
 
-      // Number field
       if (format === 'number') {
         const showEyeIcon = isSecret && !isReadOnly;
         return (
@@ -164,7 +140,6 @@ export default function ConfigurationForm({
         );
       }
 
-      // Default: string/text field
       const showEyeIcon = isSecret && !isReadOnly && !(format === 'string' && field.choices && field.choices.length > 0);
       return (
         <input
@@ -222,7 +197,6 @@ export default function ConfigurationForm({
     );
   };
 
-  // Function to render fields with variable substitution
   const renderFieldWithVariables = (
     field: FieldConfig,
     fieldId: string,
@@ -230,7 +204,6 @@ export default function ConfigurationForm({
     onConfigChange: (config: Record<string, any>) => void,
     placeholder?: string
   ) => {
-    // Check if this field is repeated
     if (field.isRepeated) {
       return renderRepeatedField(field, fieldId, config, onConfigChange, placeholder);
     }
@@ -238,15 +211,12 @@ export default function ConfigurationForm({
     const hasVariables = field.variables && Object.keys(field.variables).length > 0;
     
     if (!hasVariables) {
-      // No variables, render as normal field
       return renderFieldInput(field, fieldId, config, onConfigChange, placeholder);
     }
 
-    // Has variables - render parent field + variable inputs
     const template = field.value || field.default || '';
     const variableNames = extractVariableNames(template);
     
-    // Get current variable values
     const variableValues: Record<string, string> = {};
     variableNames.forEach(varName => {
       const varFieldId = `${fieldId}_var_${varName}`;
@@ -255,7 +225,6 @@ export default function ConfigurationForm({
 
     return (
       <div className="space-y-3">
-        {/* Parent field showing template */}
         <div className="space-y-1">
           {field.description && (
             <p className="text-xs text-gray-600">{field.description}</p>
@@ -279,7 +248,6 @@ export default function ConfigurationForm({
           </div>
         </div>
 
-        {/* Variable inputs */}
         <div className="ml-4 space-y-2 border-l-2 border-gray-200 pl-4">
           <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
             Variables
@@ -298,7 +266,6 @@ export default function ConfigurationForm({
     );
   };
 
-  // Helper function to render repeated fields
   const renderRepeatedField = (
     field: FieldConfig,
     baseFieldId: string,
@@ -306,8 +273,7 @@ export default function ConfigurationForm({
     onConfigChange: (config: Record<string, any>) => void,
     placeholder?: string
   ) => {
-    // Get current instances for this field
-    const instances = config[`${baseFieldId}_instances`] || [0]; // Always have at least one instance
+    const instances = config[`${baseFieldId}_instances`] || [0];
     
     return (
       <div className="space-y-2">
@@ -328,7 +294,7 @@ export default function ConfigurationForm({
                     onConfigChange({
                       ...config,
                       [`${baseFieldId}_instances`]: newInstances,
-                      [fieldId]: undefined // Remove the field data
+                      [fieldId]: undefined
                     });
                   }}
                   className="text-red-600 hover:text-red-800 flex items-center space-x-1 px-2 py-2 text-sm font-medium self-center"
@@ -365,7 +331,6 @@ export default function ConfigurationForm({
 
   return (
     <div className="space-y-6">
-      {/* Configuration Header */}
       <div className="bg-white rounded-lg border p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold text-gray-900">
@@ -379,7 +344,6 @@ export default function ConfigurationForm({
           </button>
         </div>
         
-        {/* Summary */}
         {configuringPackage && (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <h3 className="font-medium text-blue-900 mb-2">Package Summary</h3>
@@ -408,11 +372,9 @@ export default function ConfigurationForm({
           </div>
         )}
 
-        {/* Configuration Form */}
         <div className="space-y-4">
           {configuringPackage && (
             <form className="space-y-4">
-            <>
               {configuringPackage.pkg.runtimeHint && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
@@ -499,7 +461,6 @@ export default function ConfigurationForm({
                 </div>
               )}
 
-              {/* Transport Headers */}
               {(() => {
                 const transport = configuringPackage.pkg.transport as TransportRemote;
                 return transport?.headers && transport.headers.length > 0 && (
@@ -524,7 +485,6 @@ export default function ConfigurationForm({
                   </div>
                 </div>
               )})()}
-            </>
             </form>
           )}
 

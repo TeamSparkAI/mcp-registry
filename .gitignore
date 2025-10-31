@@ -37,3 +37,12 @@ next-env.d.ts
 
 # Generated schema bundle (created during prebuild)
 /packages/mcp-registry-validator/src/schema/all-schemas.json
+
+# Package build outputs
+/packages/*/dist/
+
+# TypeScript build artifacts (generated when importing external types)
+/types/*.d.ts
+/types/*.d.ts.map
+/types/*.js
+/types/*.js.map

@@ -1,32 +1,28 @@
 #!/usr/bin/env tsx
 
-import { ServerResponse, ServerListResponse } from '../../types/mcp-registry';
+import { ServerResponse, ServerListResponse, RegistryClient } from '@teamsparkai/mcp-registry-client';
 import fs from 'fs';
 import path from 'path';
 
 // Official MCP Registry API endpoint
-const MCP_REGISTRY_API_URL = 'https://registry.modelcontextprotocol.io/v0/servers';
+const MCP_REGISTRY_API_URL = 'https://registry.modelcontextprotocol.io/v0';
 const REGISTRY_FILE_PATH = path.join(process.cwd(), 'public', 'server-registry.json');
 
 async function fetchAllServers(): Promise<ServerResponse[]> {
+  const client = new RegistryClient({
+    baseUrl: MCP_REGISTRY_API_URL,
+    timeout: 60000 // 60 seconds for large downloads
+  });
+  
   const allServers: ServerResponse[] = [];
   let cursor: string | undefined = undefined;
   const limit = 100; // Maximum per page
 
   while (true) {
-    const params = new URLSearchParams();
-    if (cursor) params.set('cursor', cursor);
-    params.set('limit', limit.toString());
-    
-    const url = `${MCP_REGISTRY_API_URL}?${params.toString()}`;
-    console.log(`Fetching: ${url}`);
-    
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch registry: ${response.status} ${response.statusText}`);
-    }
-
-    const data: ServerListResponse = await response.json();
+    const data = await client.getServers({
+      cursor,
+      limit
+    });
     
     if (data.servers) {
       // Keep wrapped format as-is per OpenAPI spec

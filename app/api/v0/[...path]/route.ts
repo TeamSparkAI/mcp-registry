@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { RegistryService } from 'mcp-registry-server';
-import { FileDataSource } from 'mcp-registry-server';
+import { RegistryService } from '@teamsparkai/mcp-registry-server';
+import { FileDataSource } from '@teamsparkai/mcp-registry-server';
 import path from 'path';
 
 const service = new RegistryService({

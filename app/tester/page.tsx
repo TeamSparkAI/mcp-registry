@@ -1,19 +1,16 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { ServerJSON } from '@/types/mcp-registry';
-import { generateConfiguredServer } from '@/app/registry-utils/configGenerator';
-import ServerDetailView from '@/app/components/ServerDetailView';
-import ValidationIssues from '@/app/components/ValidationIssues';
-import type { ValidationIssue, ValidationResult } from 'mcp-registry-validator';
+import { ServerDetail, generateConfiguredServer, ValidationIssues, ServerDetailView as ServerDetailViewComponent, NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
+import type { ValidationIssue, ValidationResult } from '@teamsparkai/mcp-registry-validator';
 
 export default function TesterPage() {
   const [testServerJson, setTestServerJson] = useState('');
-  const [testServer, setTestServer] = useState<ServerJSON | null>(null);
+  const [testServer, setTestServer] = useState<ServerDetail | null>(null);
   const [isEditingTestServer, setIsEditingTestServer] = useState(true);
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
   const [isValidating, setIsValidating] = useState(false);
-  const [selectedServer, setSelectedServer] = useState<ServerJSON | null>(null);
+  const [selectedServer, setSelectedServer] = useState<ServerDetail | null>(null);
   const [configuringPackage, setConfiguringPackage] = useState<{ pkg: any; index: number } | null>(null);
   const [configuringRemote, setConfiguringRemote] = useState<{ remote: any; index: number } | null>(null);
   const [packageConfig, setPackageConfig] = useState<Record<string, any>>({});
@@ -382,12 +379,16 @@ export default function TesterPage() {
           </div>
         </header>
         
-        <ServerDetailView
+        <ServerDetailViewComponent
         server={testServer}
         configuringPackage={configuringPackage}
         configuringRemote={configuringRemote}
         packageConfig={packageConfig}
         remoteConfig={remoteConfig}
+        navigationAdapter={{
+          goToServer: () => {},
+          goToServerVersions: () => {}
+        }}
         visibleFields={visibleFields}
         showRawModal={showRawModal}
         configuredServer={generateConfiguredServer(testServer, configuringPackage, configuringRemote, packageConfig, remoteConfig)}
