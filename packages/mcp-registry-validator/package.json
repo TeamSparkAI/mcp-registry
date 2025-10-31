@@ -1,5 +1,5 @@
 {
-  "name": "mcp-registry-validator",
+  "name": "@teamsparkai/mcp-registry-validator",
   "version": "1.0.5",
   "description": "MCP Server Registry Validator - Schema validation and linting for MCP server registry entries",
   "main": "dist/index.js",
@@ -31,16 +31,16 @@
     "linting",
     "registry"
   ],
-  "author": "ToolCatalog",
+  "author": "TeamSpark AI",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/teamsparkai/ToolCatalog.git",
+    "url": "https://github.com/TeamSparkAI/mcp-registry.git",
     "directory": "packages/mcp-registry-validator"
   },
-  "homepage": "https://github.com/teamsparkai/ToolCatalog/tree/main/packages/mcp-registry-validator",
+  "homepage": "https://github.com/TeamSparkAI/mcp-registry/tree/main/packages/mcp-registry-validator",
   "bugs": {
-    "url": "https://github.com/teamsparkai/ToolCatalog/issues"
+    "url": "https://github.com/TeamSparkAI/mcp-registry/issues"
   },
   "dependencies": {
     "ajv": "^8.12.0",

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ServerResponse } from '@/types/mcp-registry';
-import ServerList from '@/app/components/ServerList';
+import Link from 'next/link';
+import { ServerResponse, ServerList as ServerListComponent, NavigationAdapter, LinkProps } from '@teamsparkai/mcp-registry-ux';
 
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerResponse[]>([]);
@@ -98,8 +98,24 @@ export default function RegistryPage() {
     );
   }
 
+  const navigationAdapter: NavigationAdapter = {
+    goToServer: (serverName: string, version: string) => {
+      window.location.href = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
+    },
+    goToServerVersions: (serverName: string) => {
+      window.location.href = `/servers/${encodeURIComponent(serverName)}`;
+    },
+    Link: ({ href, children, className, onClick }: LinkProps) => {
+      return (
+        <Link href={href} className={className} onClick={onClick}>
+          {children}
+        </Link>
+      );
+    }
+  };
+
   return (
-    <ServerList
+    <ServerListComponent
       servers={servers}
       filteredServers={filteredServers}
       searchTerm={searchTerm}
@@ -108,6 +124,7 @@ export default function RegistryPage() {
       onFilterToggle={handleFilterToggle}
       onClearFilters={() => setSelectedFilters([])}
       onServerClick={() => {}} // No longer needed with Link navigation
+      navigationAdapter={navigationAdapter}
     />
   );
 }

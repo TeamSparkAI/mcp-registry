@@ -1,12 +1,10 @@
-'use client';
-
 import React, { useState } from 'react';
 
 interface ConfigurationPreviewProps {
   configuredServer: any;
 }
 
-export default function ConfigurationPreview({ configuredServer }: ConfigurationPreviewProps) {
+export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewProps) {
   const [copiedMcpConfig, setCopiedMcpConfig] = useState(false);
   const [copiedRuntimeConfig, setCopiedRuntimeConfig] = useState(false);
 
@@ -102,3 +100,6 @@ export default function ConfigurationPreview({ configuredServer }: Configuration
     </div>
   );
 }
+
+
+

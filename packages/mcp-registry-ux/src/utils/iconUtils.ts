@@ -1,4 +1,4 @@
-import { Icon } from '@/types/mcp-registry';
+import { Icon } from '../types';
 
 /**
  * Select the best icon from an array based on theme preference
@@ -20,4 +20,6 @@ export function getBestIcon(icons: Icon[] | undefined, preferredTheme: 'light' |
   // Fallback to the first icon
   return icons[0].src;
 }
+
+
 

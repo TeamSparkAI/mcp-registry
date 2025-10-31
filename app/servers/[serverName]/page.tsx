@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ServerResponse } from '@/types/mcp-registry';
-import { getBestIcon } from '@/app/registry-utils/iconUtils';
+import { ServerResponse, getBestIcon } from '@teamsparkai/mcp-registry-ux';
 
 export default function ServerVersionsPage() {
   const params = useParams();

@@ -1,16 +1,15 @@
-'use client';
-
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ServerWithMeta, Package, TransportRemote, FieldConfig } from '@/types/mcp-registry';
-import { getBestIcon } from '@/app/registry-utils/iconUtils';
-import { getFieldDisplayValue, getFieldDisplayLabel } from '@/app/registry-utils/fieldDisplay';
-import ConfigurationForm from './ConfigurationForm';
-import RequiredFieldWarning from './RequiredFieldWarning';
-import ConfigurationPreview from './ConfigurationPreview';
+import { ServerWithMeta, Package, TransportRemote, FieldConfig } from '../types';
+import { NavigationAdapter } from '../adapters';
+import { getBestIcon } from '../utils/iconUtils';
+import { getFieldDisplayValue, getFieldDisplayLabel } from '../utils/fieldDisplay';
+import { ConfigurationForm } from './ConfigurationForm';
+import { RequiredFieldWarning } from './RequiredFieldWarning';
+import { ConfigurationPreview } from './ConfigurationPreview';
 
 interface ServerDetailViewProps {
   server: ServerWithMeta;
+  navigationAdapter?: NavigationAdapter;
   configuringPackage?: { pkg: Package; index: number } | null;
   configuringRemote?: { remote: TransportRemote; index: number } | null;
   packageConfig: Record<string, any>;
@@ -27,8 +26,9 @@ interface ServerDetailViewProps {
   onConfigureRemote: (remote: TransportRemote, index: number) => void;
 }
 
-export default function ServerDetailView({
+export function ServerDetailView({
   server,
+  navigationAdapter,
   configuringPackage,
   configuringRemote,
   packageConfig,
@@ -81,12 +81,21 @@ export default function ServerDetailView({
                 <div className="min-w-0 flex-1">
                   <h1 className="text-2xl font-bold text-gray-900">
                     {server.name}{' '}
-                    <Link 
-                      href={`/servers/${encodeURIComponent(server.name)}`} 
-                      className="text-base font-normal text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      (see all versions)
-                    </Link>
+                    {navigationAdapter ? (
+                      <button
+                        onClick={() => navigationAdapter.goToServerVersions(server.name)}
+                        className="text-base font-normal text-blue-600 hover:text-blue-800 transition-colors"
+                      >
+                        (see all versions)
+                      </button>
+                    ) : (
+                      <a 
+                        href={`/servers/${encodeURIComponent(server.name)}`} 
+                        className="text-base font-normal text-blue-600 hover:text-blue-800 transition-colors"
+                      >
+                        (see all versions)
+                      </a>
+                    )}
                   </h1>
                   {server.title && (
                     <p className="text-lg font-semibold text-gray-800 mt-1">{server.title}</p>

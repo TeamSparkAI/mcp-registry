@@ -1,8 +1,6 @@
-'use client';
-
 import React from 'react';
-import { Package, TransportRemote, FieldConfig } from '@/types/mcp-registry';
-import { getFieldId } from '@/app/registry-utils/fieldUtils';
+import { Package, TransportRemote, FieldConfig } from '../types';
+import { getFieldId } from '../utils';
 
 interface RequiredFieldWarningProps {
   configuringPackage?: { pkg: Package; index: number } | null;
@@ -36,7 +34,7 @@ const checkRequiredVariables = (
   });
 };
 
-export default function RequiredFieldWarning({
+export function RequiredFieldWarning({
   configuringPackage,
   configuringRemote,
   packageConfig,
@@ -168,3 +166,6 @@ export default function RequiredFieldWarning({
 
   return null;
 }
+
+
+

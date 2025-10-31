@@ -1,4 +1,4 @@
-import { FieldConfig } from '@/types/mcp-registry';
+import { FieldConfig } from '../types';
 
 /**
  * Generate a unique field ID for configuration storage.
@@ -23,4 +23,6 @@ export function getFieldId(field: FieldConfig, prefix: string, fallbackIndex?: n
   // Fallback: use index
   return `${prefix}_${fallbackIndex || 0}`;
 }
+
+
 

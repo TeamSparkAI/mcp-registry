@@ -129,55 +129,8 @@ export interface ServerListResponse {
   metadata?: ResponseMetadata;
 }
 
-// Legacy alias for backward compatibility during migration
-export type ServerJSON = ServerDetail;
-export type ServerMeta = RegistryMeta;
-
 // ServerDetail with _meta merged (used by detail views)
 export type ServerWithMeta = ServerDetail & {
   _meta?: RegistryMeta;
 };
-export interface Metadata {
-  count: number;
-  next_cursor?: string;
-  nextCursor?: string;
-}
 
-export interface ErrorDetail {
-  location?: string;
-  message?: string;
-  value?: any;
-}
-
-export interface ErrorModel {
-  detail?: string;
-  errors?: ErrorDetail[] | null;
-  instance?: string;
-  status?: number;
-  title?: string;
-  type?: string;
-}
-
-// ============================================================================
-// UX Helper Types
-// ============================================================================
-// These types simplify working with schema types in the configuration UX.
-// They flatten discriminated unions to avoid type guards throughout components.
-
-// Flattened type combining all properties from Argument and KeyValueInput unions.
-// Treats all properties as optional to avoid needing type guards in render functions.
-export type FieldConfig = {
-  name?: string;          // From NamedArgument and KeyValueInput
-  value?: string;
-  default?: string;
-  placeholder?: string;
-  isRequired?: boolean;
-  isSecret?: boolean;
-  description?: string;
-  format?: 'string' | 'number' | 'boolean' | 'filepath';
-  choices?: string[];
-  variables?: Record<string, Input>;
-  valueHint?: string;     // From Argument types
-  isRepeated?: boolean;   // From Argument types
-  type?: string;          // From Argument types
-};

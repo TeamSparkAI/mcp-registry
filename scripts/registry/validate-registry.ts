@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { validateServerJson, linterRules, type ValidationIssue } from 'mcp-registry-validator';
+import { validateServerJson, linterRules, type ValidationIssue } from '@teamsparkai/mcp-registry-validator';
 
 interface ValidationResult {
   serverId: string;
@@ -103,7 +103,10 @@ async function validateRegistry() {
   console.log(`Validating ${registry.servers.length} servers...\n`);
 
   // Validate each server
-  for (const server of registry.servers) {
+  for (const serverResponse of registry.servers) {
+    // Extract the actual ServerDetail from the wrapped ServerResponse format
+    const server = serverResponse.server;
+    
     // Track schema versions
     const schemaUrl = server.$schema;
     if (schemaUrl) {
@@ -115,6 +118,7 @@ async function validateRegistry() {
     }
     
     // Use the validator package instead of duplicating Ajv setup
+    // Validate the ServerDetail (not the wrapped ServerResponse)
     const result = await validateServerJson(JSON.stringify(server));
     
     const schemaIssues = result.issues.filter(i => i.source === 'schema');
@@ -142,7 +146,7 @@ async function validateRegistry() {
     });
 
     results.push({
-      serverId: server._meta?.['io.modelcontextprotocol.registry/official']?.serverId || 'unknown',
+      serverId: serverResponse._meta?.['io.modelcontextprotocol.registry/official']?.serverId || 'unknown',
       name: server.name || 'unnamed',
       valid,
       schemaIssues,

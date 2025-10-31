@@ -1,12 +1,12 @@
 import React from 'react';
-import type { ValidationIssue } from 'mcp-registry-validator';
+import type { ValidationIssue } from '@teamsparkai/mcp-registry-validator';
 
 interface ValidationIssuesProps {
   issues: ValidationIssue[];
   className?: string;
 }
 
-export default function ValidationIssues({ issues, className = '' }: ValidationIssuesProps) {
+export function ValidationIssues({ issues, className = '' }: ValidationIssuesProps) {
   if (issues.length === 0) {
     return (
       <div className={`p-4 bg-green-50 border border-green-200 rounded-lg ${className}`}>
@@ -184,3 +184,5 @@ function ValidationIssueItem({ issue }: { issue: ValidationIssue }) {
     </div>
   );
 }
+
+

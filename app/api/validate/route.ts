@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateServerJson as validateCore, lintServerData, type ValidationResult } from 'mcp-registry-validator';
+import { validateServerJson as validateCore, lintServerData, type ValidationResult } from '@teamsparkai/mcp-registry-validator';
 
 export async function POST(request: NextRequest) {
   try {
