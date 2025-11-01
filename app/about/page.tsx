@@ -187,7 +187,7 @@ export default function AboutPage() {
                   <p className="text-gray-600 ml-12">Get all versions of a specific server</p>
                   <div className="ml-12 mt-2">
                     <a 
-                      href="/api/v0/servers/io.github.modelcontextprotocol%2Fservers%2Fsrc%2Ffilesystem/versions"
+                      href="/api/v0/servers/io.github.modelcontextprotocol--servers--src--filesystem/versions"
                       target="_blank"
                       className="text-blue-600 hover:text-blue-800 text-sm"
                     >
@@ -204,7 +204,7 @@ export default function AboutPage() {
                   <p className="text-gray-600 ml-12">Get a specific version of a server</p>
                   <div className="ml-12 mt-2">
                     <a 
-                      href="/api/v0/servers/io.github.modelcontextprotocol%2Fservers%2Fsrc%2Ffilesystem/versions/0.6.2"
+                      href="/api/v0/servers/io.github.modelcontextprotocol--servers--src--filesystem/versions/0.6.2"
                       target="_blank"
                       className="text-blue-600 hover:text-blue-800 text-sm"
                     >

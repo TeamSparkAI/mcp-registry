@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ServerResponse, getBestIcon } from '@teamsparkai/mcp-registry-ux';
+import { encodeServerNameForRoute, decodeServerNameFromRoute } from '@/registry-utils/routeUtils';
 
 export default function ServerVersionsPage() {
   const params = useParams();
@@ -19,8 +20,9 @@ export default function ServerVersionsPage() {
   const loadVersions = async () => {
     try {
       setLoading(true);
-      const serverName = params.serverName as string;
-      const response = await fetch(`/api/v0/servers/${serverName}/versions`);
+      // Decode route param back to real server name (-- to /) before API call
+      const serverName = decodeServerNameFromRoute(params.serverName as string);
+      const response = await fetch(`/api/v0/servers/${encodeURIComponent(serverName)}/versions`);
       
       if (!response.ok) {
         throw new Error('Failed to load server versions');
@@ -68,7 +70,7 @@ export default function ServerVersionsPage() {
     );
   }
 
-  const serverName = versions[0]?.server.name || params.serverName as string;
+  const serverName = versions[0]?.server.name || decodeServerNameFromRoute(params.serverName as string);
   const latestVersion = versions.find(v => v._meta?.['io.modelcontextprotocol.registry/official']?.isLatest);
 
   return (
@@ -139,7 +141,7 @@ export default function ServerVersionsPage() {
                   const isLatest = serverResponse._meta?.['io.modelcontextprotocol.registry/official']?.isLatest;
                   const publishedAt = serverResponse._meta?.['io.modelcontextprotocol.registry/official']?.publishedAt;
                   const status = serverResponse.server.status;
-                  const versionPath = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
+                  const versionPath = `/servers/${encodeServerNameForRoute(serverName)}/${encodeURIComponent(version)}`;
 
                   return (
                     <Link

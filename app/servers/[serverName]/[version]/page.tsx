@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ServerWithMeta, Package, TransportRemote, generateConfiguredServer, ServerDetailView as ServerDetailViewComponent, NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
+import { encodeServerNameForRoute, decodeServerNameFromRoute } from '@/registry-utils/routeUtils';
 
 export default function ServerDetailPage() {
   const params = useParams();
@@ -24,9 +25,10 @@ export default function ServerDetailPage() {
   const loadServer = async () => {
     try {
       setLoading(true);
-      const serverName = params.serverName as string;
+      // Decode route param back to real server name (-- to /) before API call
+      const serverName = decodeServerNameFromRoute(params.serverName as string);
       const version = params.version as string;
-      const response = await fetch(`/api/v0/servers/${serverName}/versions/${version}`);
+      const response = await fetch(`/api/v0/servers/${encodeURIComponent(serverName)}/versions/${encodeURIComponent(version)}`);
       
       if (!response.ok) {
         throw new Error('Failed to load server');
@@ -155,10 +157,10 @@ export default function ServerDetailPage() {
         onConfigureRemote={handleConfigureRemote}
         navigationAdapter={{
           goToServer: (serverName: string, version: string) => {
-            router.push(`/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`);
+            router.push(`/servers/${encodeServerNameForRoute(serverName)}/${encodeURIComponent(version)}`);
           },
           goToServerVersions: (serverName: string) => {
-            router.push(`/servers/${encodeURIComponent(serverName)}`);
+            router.push(`/servers/${encodeServerNameForRoute(serverName)}`);
           }
         }}
       />

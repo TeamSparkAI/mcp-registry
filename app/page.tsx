@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ServerResponse, ServerList as ServerListComponent, NavigationAdapter, LinkProps } from '@teamsparkai/mcp-registry-ux';
+import { encodeServerNameForRoute } from '@/registry-utils/routeUtils';
 
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerResponse[]>([]);
@@ -100,10 +101,10 @@ export default function RegistryPage() {
 
   const navigationAdapter: NavigationAdapter = {
     goToServer: (serverName: string, version: string) => {
-      window.location.href = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
+      window.location.href = `/servers/${encodeServerNameForRoute(serverName)}/${encodeURIComponent(version)}`;
     },
     goToServerVersions: (serverName: string) => {
-      window.location.href = `/servers/${encodeURIComponent(serverName)}`;
+      window.location.href = `/servers/${encodeServerNameForRoute(serverName)}`;
     },
     Link: ({ href, children, className, onClick }: LinkProps) => {
       return (
