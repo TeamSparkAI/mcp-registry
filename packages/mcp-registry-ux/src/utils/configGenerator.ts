@@ -600,3 +600,386 @@ export function generateConfiguredServer(
   return null;
 }
 
+/**
+ * Populates package form configuration from an MCP configuration object.
+ * Handles complex stdio package logic: argument parsing (named/positional), environment variables, transport headers.
+ * First applies defaults from the package, then overrides with values from the MCP config (if provided).
+ * 
+ * @param pkg - The package being configured
+ * @param trimmedServer - A trimmed server object containing only the package being configured
+ * @param mcpConfig - Optional MCP configuration object (from mcpServerConfig and optionally runtimeConfig). If not provided, only defaults will be set.
+ * @returns A record with packageConfig populated with defaults (and MCP config values if provided)
+ */
+function populatePackageConfigFromMCP(
+  pkg: Package,
+  trimmedServer: ServerDetail,
+  mcpConfig?: any
+): Record<string, any> {
+  const packageConfig: Record<string, any> = {};
+
+  if (!pkg) {
+    return packageConfig;
+  }
+
+  // First, always set defaults from the package definition
+  if (pkg.runtimeArguments) {
+    pkg.runtimeArguments.forEach((arg: any, argIndex: number) => {
+      const fieldId = getFieldId(arg, 'runtimeArg', argIndex);
+      // Apply default value if no user config exists
+      if (!packageConfig.hasOwnProperty(fieldId)) {
+        packageConfig[fieldId] = arg.default || '';
+      }
+      
+      // Handle variables in the field
+      if (arg.variables && Object.keys(arg.variables).length > 0) {
+        const template = arg.value || arg.default || '';
+        const variableNames = extractVariableNames(template);
+        variableNames.forEach(varName => {
+          const varFieldId = `${fieldId}_var_${varName}`;
+          if (!packageConfig.hasOwnProperty(varFieldId)) {
+            const varField = arg.variables[varName];
+            packageConfig[varFieldId] = varField?.default || '';
+          }
+        });
+      }
+    });
+  }
+
+  if (pkg.packageArguments) {
+    pkg.packageArguments.forEach((arg: any, argIndex: number) => {
+      const fieldId = getFieldId(arg, 'packageArg', argIndex);
+      if (!packageConfig.hasOwnProperty(fieldId)) {
+        packageConfig[fieldId] = arg.default || '';
+      }
+      
+      if (arg.variables && Object.keys(arg.variables).length > 0) {
+        const template = arg.value || arg.default || '';
+        const variableNames = extractVariableNames(template);
+        variableNames.forEach(varName => {
+          const varFieldId = `${fieldId}_var_${varName}`;
+          if (!packageConfig.hasOwnProperty(varFieldId)) {
+            const varField = arg.variables[varName];
+            packageConfig[varFieldId] = varField?.default || '';
+          }
+        });
+      }
+    });
+  }
+
+  if (pkg.environmentVariables) {
+    pkg.environmentVariables.forEach((envVar: any, envIndex: number) => {
+      const fieldId = getFieldId(envVar, 'env', envIndex);
+      if (!packageConfig.hasOwnProperty(fieldId)) {
+        packageConfig[fieldId] = envVar.default || '';
+      }
+      
+      if (envVar.variables && Object.keys(envVar.variables).length > 0) {
+        const template = envVar.value || envVar.default || '';
+        const variableNames = extractVariableNames(template);
+        variableNames.forEach(varName => {
+          const varFieldId = `${fieldId}_var_${varName}`;
+          if (!packageConfig.hasOwnProperty(varFieldId)) {
+            const varField = envVar.variables[varName];
+            packageConfig[varFieldId] = varField?.default || '';
+          }
+        });
+      }
+    });
+  }
+
+  // Now, if MCP config is provided, parse it and override defaults
+  // mcpConfig is the transport config object directly (no serverName wrapper)
+  if (mcpConfig) {
+    // For stdio packages, mcpConfig contains: { type: 'stdio', command, args, env }
+    // For sse/streamable packages, mcpConfig contains: { type, url, headers }
+    // For stdio, we extract command/args/env; for sse/streamable, we only extract headers
+    
+    // For stdio transport, extract command, args, and env
+    if (mcpConfig.type === 'stdio') {
+      // Extract runtime hint from command
+      if (mcpConfig.command) {
+        packageConfig.runtimeHint = mcpConfig.command;
+      }
+
+      // Build expected package identifier for comparison
+      let packageIdentifier = pkg.identifier;
+      if (pkg.registryType === 'oci') {
+        if (pkg.registryBaseUrl) {
+          try {
+            const url = new URL(pkg.registryBaseUrl);
+            const host = url.host;
+            packageIdentifier = `${host}/${pkg.identifier}`;
+          } catch (e) {
+            packageIdentifier = `${pkg.registryBaseUrl}/${pkg.identifier}`;
+          }
+        }
+        if (pkg.version) {
+          packageIdentifier = `${packageIdentifier}:${pkg.version}`;
+        }
+      } else if (pkg.registryType === 'npm' || pkg.registryType === 'pypi') {
+        if (pkg.version) {
+          packageIdentifier = `${packageIdentifier}@${pkg.version}`;
+        }
+      }
+      
+      const getBasePackageName = (pkgId: string): string => {
+        return pkgId.replace(/[@:][^@:]*$/, '');
+      };
+      const basePackageName = getBasePackageName(packageIdentifier);
+
+      // Parse args array to extract runtime and package arguments
+      const args = mcpConfig.args || [];
+
+      // Process all named arguments and mark them as consumed
+      const consumedArgs = new Set<number>();
+      
+      // Map runtime arguments (named arguments)
+      if (pkg.runtimeArguments) {
+        pkg.runtimeArguments.forEach((arg: any, argIndex: number) => {
+          const fieldId = getFieldId(arg, 'runtimeArg', argIndex);
+          
+          if (arg.name) {
+            // Named argument - try matching by name first, then try with dashes
+            const namesToTry: string[] = [];
+            
+            // First, try exact name (might already have dashes)
+            namesToTry.push(arg.name);
+            
+            // If name doesn't have dashes, add variants with dashes
+            if (!arg.name.startsWith('-')) {
+              if (arg.name.length === 1) {
+                namesToTry.push(`-${arg.name}`);
+              } else {
+                namesToTry.push(`--${arg.name}`);
+              }
+            }
+            
+            for (let i = 0; i < args.length; i++) {
+              if (consumedArgs.has(i)) continue;
+              
+              if (namesToTry.includes(args[i])) {
+                // Found the argument name, next item should be the value
+                if (i + 1 < args.length) {
+                  packageConfig[fieldId] = args[i + 1];
+                  // Mark both the name and value as consumed
+                  consumedArgs.add(i);
+                  consumedArgs.add(i + 1);
+                  break;
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Map package arguments (named arguments)
+      if (pkg.packageArguments) {
+        pkg.packageArguments.forEach((arg: any, argIndex: number) => {
+          const fieldId = getFieldId(arg, 'packageArg', argIndex);
+          
+          if (arg.name) {
+            // Named argument - try matching by name first, then try with dashes
+            const namesToTry: string[] = [];
+            
+            // First, try exact name (might already have dashes)
+            namesToTry.push(arg.name);
+            
+            // If name doesn't have dashes, add variants with dashes
+            if (!arg.name.startsWith('-')) {
+              if (arg.name.length === 1) {
+                namesToTry.push(`-${arg.name}`);
+              } else {
+                namesToTry.push(`--${arg.name}`);
+              }
+            }
+            
+            for (let i = 0; i < args.length; i++) {
+              if (consumedArgs.has(i)) continue;
+              
+              if (namesToTry.includes(args[i])) {
+                if (i + 1 < args.length) {
+                  packageConfig[fieldId] = args[i + 1];
+                  // Mark both the name and value as consumed
+                  consumedArgs.add(i);
+                  consumedArgs.add(i + 1);
+                  break;
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Now handle positional arguments - only process unconsumed args
+      // The package identifier might have been injected, so we need to skip it
+      const positionalArgs: Array<{ arg: any; fieldId: string }> = [];
+      
+      // Collect positional runtime arguments first (they come before package args in the command)
+      if (pkg.runtimeArguments) {
+        pkg.runtimeArguments.forEach((arg: any, argIndex: number) => {
+          if (!arg.name && arg.type === 'positional') {
+            const fieldId = getFieldId(arg, 'runtimeArg', argIndex);
+            positionalArgs.push({ arg, fieldId });
+          }
+        });
+      }
+      
+      // Then positional package arguments
+      if (pkg.packageArguments) {
+        pkg.packageArguments.forEach((arg: any, argIndex: number) => {
+          if (!arg.name && arg.type === 'positional') {
+            const fieldId = getFieldId(arg, 'packageArg', argIndex);
+            positionalArgs.push({ arg, fieldId });
+          }
+        });
+      }
+
+      // Now map remaining (unconsumed) positional args to positional fields
+      let packageIdentifierSkipped = false;
+      let positionalArgIndex = 0;
+      
+      for (let i = 0; i < args.length; i++) {
+        // Skip consumed args (named args and their values)
+        if (consumedArgs.has(i)) continue;
+        
+        const argValue = args[i];
+        
+        // Check if this is the package identifier (only check once)
+        if (!packageIdentifierSkipped) {
+          const baseArgValue = getBasePackageName(argValue);
+          if (baseArgValue === basePackageName) {
+            // This is the injected package identifier, skip it
+            packageIdentifierSkipped = true;
+            continue;
+          }
+        }
+        
+        // This is a positional argument - map it to the next unmatched positional field
+        if (positionalArgIndex < positionalArgs.length) {
+          const { fieldId } = positionalArgs[positionalArgIndex];
+          // Only set if not already populated
+          if (!packageConfig.hasOwnProperty(fieldId) || !packageConfig[fieldId]) {
+            packageConfig[fieldId] = argValue;
+          }
+          positionalArgIndex++;
+        }
+      }
+
+      // Extract environment variables
+      if (mcpConfig.env) {
+        pkg.environmentVariables?.forEach((envVar: any, envIndex: number) => {
+          const fieldId = getFieldId(envVar, 'env', envIndex);
+          if (mcpConfig.env[envVar.name]) {
+            packageConfig[fieldId] = mcpConfig.env[envVar.name];
+          }
+        });
+      }
+    }
+    
+    // For sse/streamable transports, extract transport headers
+    if ((mcpConfig.type === 'sse' || mcpConfig.type === 'streamable-http') && mcpConfig.headers && (pkg.transport as any)?.headers) {
+      (pkg.transport as any).headers.forEach((header: any, headerIndex: number) => {
+        const fieldId = getFieldId(header, 'transport_header', headerIndex);
+        if (mcpConfig.headers[header.name]) {
+          packageConfig[fieldId] = mcpConfig.headers[header.name];
+        }
+      });
+    }
+  }
+
+  return packageConfig;
+}
+
+/**
+ * Populates remote form configuration from an MCP configuration object.
+ * Handles simple remote logic: header mapping from client config.
+ * First applies defaults from the remote, then overrides with values from the MCP config (if provided).
+ * 
+ * @param remote - The remote being configured
+ * @param trimmedServer - A trimmed server object containing only the remote being configured
+ * @param mcpConfig - Optional MCP configuration object (from mcpServerConfig). If not provided, only defaults will be set.
+ * @returns A record with remoteConfig populated with defaults (and MCP config values if provided)
+ */
+function populateRemoteConfigFromMCP(
+  remote: TransportRemote,
+  trimmedServer: ServerDetail,
+  mcpConfig?: any
+): Record<string, any> {
+  const remoteConfig: Record<string, any> = {};
+
+  if (!remote) {
+    return remoteConfig;
+  }
+
+  // First, always set defaults from the remote definition
+  if ('headers' in remote && remote.headers) {
+    remote.headers.forEach((header: any, headerIndex: number) => {
+      const fieldId = getFieldId(header, 'header', headerIndex);
+      if (!remoteConfig.hasOwnProperty(fieldId)) {
+        remoteConfig[fieldId] = header.default || '';
+      }
+      
+      if (header.variables && Object.keys(header.variables).length > 0) {
+        const template = header.value || header.default || '';
+        const variableNames = extractVariableNames(template);
+        variableNames.forEach(varName => {
+          const varFieldId = `${fieldId}_var_${varName}`;
+          if (!remoteConfig.hasOwnProperty(varFieldId)) {
+            const varField = header.variables[varName];
+            remoteConfig[varFieldId] = varField?.default || '';
+          }
+        });
+      }
+    });
+  }
+
+  // Now, if MCP config is provided, extract headers and override defaults
+  // mcpConfig is the transport config object directly: { type, url, headers }
+  if (mcpConfig && mcpConfig.headers && 'headers' in remote && remote.headers) {
+    remote.headers.forEach((header: any, headerIndex: number) => {
+      const fieldId = getFieldId(header, 'header', headerIndex);
+      if (mcpConfig.headers[header.name]) {
+        remoteConfig[fieldId] = mcpConfig.headers[header.name];
+      }
+    });
+  }
+
+  return remoteConfig;
+}
+
+/**
+ * Populates form configuration from an MCP configuration object.
+ * Wrapper function that delegates to populatePackageConfigFromMCP and populateRemoteConfigFromMCP.
+ * First applies defaults from the trimmed server, then overrides with values from the MCP config (if provided).
+ * 
+ * @internal Used internally by ConfigurationForm to populate defaults and MCP config values.
+ * 
+ * @param trimmedServer - A trimmed server object containing only the package/remote being configured
+ * @param mcpConfig - Optional MCP configuration object (from mcpServerConfig and optionally runtimeConfig). If not provided, only defaults will be set.
+ * @returns An object with packageConfig and remoteConfig populated with defaults (and MCP config values if provided)
+ */
+export function populateConfigFromMCP(
+  trimmedServer: ServerDetail | null,
+  mcpConfig?: any
+): { packageConfig: Record<string, any>; remoteConfig: Record<string, any> } {
+  const packageConfig: Record<string, any> = {};
+  const remoteConfig: Record<string, any> = {};
+
+  if (!trimmedServer) {
+    return { packageConfig, remoteConfig };
+  }
+
+  const pkg = getConfigPackage(trimmedServer);
+  const remote = getConfigRemote(trimmedServer);
+
+  if (pkg) {
+    Object.assign(packageConfig, populatePackageConfigFromMCP(pkg, trimmedServer, mcpConfig));
+  }
+
+  if (remote) {
+    Object.assign(remoteConfig, populateRemoteConfigFromMCP(remote, trimmedServer, mcpConfig));
+  }
+
+  return { packageConfig, remoteConfig };
+}
+

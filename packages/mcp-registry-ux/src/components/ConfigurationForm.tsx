@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Package, TransportRemote, FieldConfig, ServerDetail } from '../types';
 import { getFieldId } from '../utils';
-import { getConfigItemType, getConfigPackage, getConfigRemote, generateConfiguredServer, areAllRequiredFieldsFilled } from '../utils/configGenerator';
+import { getConfigItemType, getConfigPackage, getConfigRemote, generateConfiguredServer, areAllRequiredFieldsFilled, populateConfigFromMCP } from '../utils/configGenerator';
 
 interface ConfigurationFormProps {
   configuringServer: ServerDetail;
@@ -14,6 +14,7 @@ interface ConfigurationFormProps {
   onClose: () => void;
   onOk?: (trimmedServer: ServerDetail, config: any) => void;
   okButtonLabel?: string;
+  initialMCPConfig?: any; // Optional MCP configuration to populate form from
 }
 
 const isSecretField = (field: FieldConfig) => {
@@ -35,7 +36,8 @@ export function ConfigurationForm({
   onToggleFieldVisibility,
   onClose,
   onOk,
-  okButtonLabel = 'OK'
+  okButtonLabel = 'OK',
+  initialMCPConfig
 }: ConfigurationFormProps) {
   const itemType = getConfigItemType(configuringServer);
   if (!itemType) {
@@ -44,6 +46,41 @@ export function ConfigurationForm({
   
   const configuringPackage = getConfigPackage(configuringServer);
   const configuringRemote = getConfigRemote(configuringServer);
+
+  // Populate form with defaults (and MCP config if provided)
+  useEffect(() => {
+    if (configuringServer) {
+      // Always call populateConfigFromMCP to set defaults, even if no mcpConfig is provided
+      const populated = populateConfigFromMCP(configuringServer, initialMCPConfig);
+      // Merge populated configs with existing configs
+      const mergedPackageConfig = { ...packageConfig };
+      const mergedRemoteConfig = { ...remoteConfig };
+      
+      // Override with populated values (only if they're non-empty or explicitly set)
+      Object.keys(populated.packageConfig).forEach(key => {
+        const value = populated.packageConfig[key];
+        if (value !== undefined && value !== null && value !== '') {
+          mergedPackageConfig[key] = value;
+        }
+      });
+      
+      Object.keys(populated.remoteConfig).forEach(key => {
+        const value = populated.remoteConfig[key];
+        if (value !== undefined && value !== null && value !== '') {
+          mergedRemoteConfig[key] = value;
+        }
+      });
+      
+      // Only update if there are actual changes
+      if (Object.keys(mergedPackageConfig).some(k => mergedPackageConfig[k] !== packageConfig[k])) {
+        onPackageConfigChange(mergedPackageConfig);
+      }
+      if (Object.keys(mergedRemoteConfig).some(k => mergedRemoteConfig[k] !== remoteConfig[k])) {
+        onRemoteConfigChange(mergedRemoteConfig);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialMCPConfig, configuringServer]); // Only run when MCP config or server changes
 
   const renderFieldInput = (
     field: FieldConfig,
