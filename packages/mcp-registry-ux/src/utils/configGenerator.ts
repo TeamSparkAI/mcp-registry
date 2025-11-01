@@ -1,3 +1,213 @@
+import type { ServerDetail, Package, TransportRemote } from '../types';
+import { getFieldId } from './fieldUtils';
+
+/**
+ * Creates a trimmed copy of a server object containing only the specified package or remote.
+ * This trimmed server can be stored alongside the configuration for later editing.
+ * 
+ * @param server - The full server object
+ * @param packageIndex - The index of the package to keep (if configuring a package)
+ * @param remoteIndex - The index of the remote to keep (if configuring a remote)
+ * @returns A trimmed server object with only the selected package/remote, or null if invalid
+ */
+export function createTrimmedServer(
+  server: ServerDetail,
+  packageIndex?: number,
+  remoteIndex?: number
+): ServerDetail | null {
+  if (!server) return null;
+
+  try {
+    // Deep clone the server
+    const trimmed = JSON.parse(JSON.stringify(server)) as ServerDetail;
+
+    // If configuring a package, remove all other packages and all remotes
+    if (packageIndex !== undefined && trimmed.packages) {
+      if (packageIndex >= 0 && packageIndex < trimmed.packages.length) {
+        trimmed.packages = [trimmed.packages[packageIndex]];
+      } else {
+        return null;
+      }
+      trimmed.remotes = [];
+    }
+    
+    // If configuring a remote, remove all other remotes and all packages
+    if (remoteIndex !== undefined && trimmed.remotes) {
+      if (remoteIndex >= 0 && remoteIndex < trimmed.remotes.length) {
+        trimmed.remotes = [trimmed.remotes[remoteIndex]];
+      } else {
+        return null;
+      }
+      trimmed.packages = [];
+    }
+
+    return trimmed;
+  } catch (error) {
+    return null;
+  }
+}
+
+/**
+ * Determines what type of item is being configured in a trimmed server.
+ * @param trimmedServer - A trimmed server object
+ * @returns 'package' if configuring a package, 'remote' if configuring a remote, or null if invalid
+ */
+export function getConfigItemType(trimmedServer: ServerDetail | null): 'package' | 'remote' | null {
+  if (!trimmedServer) return null;
+  
+  const hasPackage = trimmedServer.packages && trimmedServer.packages.length === 1;
+  const hasRemote = trimmedServer.remotes && trimmedServer.remotes.length === 1;
+  
+  if (hasPackage && !hasRemote) return 'package';
+  if (hasRemote && !hasPackage) return 'remote';
+  
+  // Invalid state: both, neither, or multiple items
+  return null;
+}
+
+/**
+ * Extracts the package from a trimmed server that is configuring a package.
+ * @param trimmedServer - A trimmed server object that should contain exactly one package
+ * @returns The package being configured, or null if not a package configuration
+ */
+export function getConfigPackage(trimmedServer: ServerDetail | null): Package | null {
+  if (getConfigItemType(trimmedServer) !== 'package') return null;
+  return trimmedServer!.packages![0] || null;
+}
+
+/**
+ * Extracts the remote from a trimmed server that is configuring a remote.
+ * @param trimmedServer - A trimmed server object that should contain exactly one remote
+ * @returns The remote being configured, or null if not a remote configuration
+ */
+export function getConfigRemote(trimmedServer: ServerDetail | null): TransportRemote | null {
+  if (getConfigItemType(trimmedServer) !== 'remote') return null;
+  const remote = trimmedServer!.remotes![0];
+  // Type guard: remotes array contains Transport[], so we need to cast
+  return (remote && 'type' in remote && 'url' in remote) ? (remote as TransportRemote) : null;
+}
+
+/**
+ * Checks if a required field is missing from the configuration.
+ * This is the core validation logic shared by RequiredFieldWarning and areAllRequiredFieldsFilled.
+ */
+function isFieldMissing(
+  field: any,
+  config: Record<string, any>,
+  fieldId: string
+): boolean {
+  // Check if the main field is required and missing
+  if (field.isRequired && !field.value) {
+    const userHasSetValue = config.hasOwnProperty(fieldId);
+    const currentValue = userHasSetValue ? config[fieldId] : (field.default || '');
+    if (!currentValue || currentValue.trim() === '') {
+      return true;
+    }
+  }
+  
+  // Check if any variables are required and missing
+  if (field.variables && Object.keys(field.variables).length > 0) {
+    const template = field.value || field.default || '';
+    const variableNames = template.match(/\{([^}]+)\}/g)?.map((match: string) => match.slice(1, -1)) || [];
+    
+    return variableNames.some((varName: string) => {
+      const varField = field.variables[varName];
+      if (varField.isRequired) {
+        const varFieldId = `${fieldId}_var_${varName}`;
+        const userHasSetValue = config.hasOwnProperty(varFieldId);
+        const currentValue = userHasSetValue ? config[varFieldId] : (varField.default || '');
+        return !currentValue || currentValue.trim() === '';
+      }
+      return false;
+    });
+  }
+  
+  return false;
+}
+
+/**
+ * Checks if all required fields are filled for a configuration.
+ * This is the inverse of the logic in RequiredFieldWarning (which uses .some()).
+ * @param trimmedServer - The trimmed server being configured
+ * @param packageConfig - Package configuration values
+ * @param remoteConfig - Remote configuration values
+ * @returns true if all required fields are filled, false otherwise
+ */
+export function areAllRequiredFieldsFilled(
+  trimmedServer: ServerDetail | null,
+  packageConfig: Record<string, any>,
+  remoteConfig: Record<string, any>
+): boolean {
+  if (!trimmedServer) return false;
+
+  const itemType = getConfigItemType(trimmedServer);
+  if (!itemType) return false;
+
+  const pkg = getConfigPackage(trimmedServer);
+  if (pkg) {
+    // Check runtime arguments
+    if (pkg.runtimeArguments) {
+      for (let argIndex = 0; argIndex < pkg.runtimeArguments.length; argIndex++) {
+        const arg = pkg.runtimeArguments[argIndex] as any;
+        const fieldId = getFieldId(arg, 'runtimeArg', argIndex);
+        if (isFieldMissing(arg, packageConfig, fieldId)) {
+          return false;
+        }
+      }
+    }
+    
+    // Check package arguments
+    if (pkg.packageArguments) {
+      for (let argIndex = 0; argIndex < pkg.packageArguments.length; argIndex++) {
+        const arg = pkg.packageArguments[argIndex] as any;
+        const fieldId = getFieldId(arg, 'packageArg', argIndex);
+        if (isFieldMissing(arg, packageConfig, fieldId)) {
+          return false;
+        }
+      }
+    }
+    
+    // Check environment variables
+    if (pkg.environmentVariables) {
+      for (let envIndex = 0; envIndex < pkg.environmentVariables.length; envIndex++) {
+        const env = pkg.environmentVariables[envIndex] as any;
+        const fieldId = getFieldId(env, 'env', envIndex);
+        if (isFieldMissing(env, packageConfig, fieldId)) {
+          return false;
+        }
+      }
+    }
+    
+    // Check transport headers
+    const transport = pkg.transport as TransportRemote;
+    if (transport?.headers) {
+      for (let headerIndex = 0; headerIndex < transport.headers.length; headerIndex++) {
+        const header = transport.headers[headerIndex] as any;
+        const fieldId = getFieldId(header, 'transport_header', headerIndex);
+        if (isFieldMissing(header, packageConfig, fieldId)) {
+          return false;
+        }
+      }
+    }
+  }
+
+  const remote = getConfigRemote(trimmedServer);
+  if (remote) {
+    // Check headers
+    if (remote.headers) {
+      for (let headerIndex = 0; headerIndex < remote.headers.length; headerIndex++) {
+        const header = remote.headers[headerIndex] as any;
+        const fieldId = getFieldId(header, 'header', headerIndex);
+        if (isFieldMissing(header, remoteConfig, fieldId)) {
+          return false;
+        }
+      }
+    }
+  }
+
+  return true;
+}
+
 // Helper function to extract variable names from a template string
 const extractVariableNames = (template: string): string[] => {
   const matches = template.match(/\{([^}]+)\}/g);
@@ -42,26 +252,33 @@ export const substituteFieldVariables = (
 };
 
 // Generate MCP client configuration from selected server and config
+/**
+ * Generates a configured server JSON from a trimmed server object and user configuration.
+ * 
+ * @param trimmedServer - A trimmed server object containing only the package/remote being configured
+ * @param packageConfig - User configuration values for the package being configured
+ * @param remoteConfig - User configuration values for the remote being configured
+ * @returns A configured server JSON object, or null if invalid
+ */
 export function generateConfiguredServer(
-  selectedServer: any,
-  configuringPackage: { pkg: any; index: number } | null,
-  configuringRemote: { remote: any; index: number } | null,
+  trimmedServer: ServerDetail | null,
   packageConfig: Record<string, any>,
   remoteConfig: Record<string, any>
 ): any {
-  if (!selectedServer) return null;
+  if (!trimmedServer) return null;
   
   // Don't generate config if server data is invalid
   try {
-    JSON.stringify(selectedServer);
+    JSON.stringify(trimmedServer);
   } catch (error) {
     return null;
   }
 
-  const serverName = selectedServer.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+  const serverName = trimmedServer.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
   
-  if (configuringPackage && selectedServer.packages) {
-    const pkg = selectedServer.packages[configuringPackage.index];
+  // Configure package if present (trimmed server will have exactly one package if configuring one)
+  const pkg = getConfigPackage(trimmedServer);
+  if (pkg) {
     
     // Build command and args
     const defaultRuntimeHints: Record<string, string> = {
@@ -347,8 +564,9 @@ export function generateConfiguredServer(
     };
   }
   
-  if (configuringRemote && selectedServer.remotes) {
-    const remote = selectedServer.remotes[configuringRemote.index];
+  // Configure remote if present (trimmed server will have exactly one remote if configuring one)
+  const remote = getConfigRemote(trimmedServer);
+  if (remote) {
     
     // Build headers for remote connection
     const headers: Record<string, string> = {};

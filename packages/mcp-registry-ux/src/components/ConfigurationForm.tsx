@@ -1,10 +1,10 @@
 import React from 'react';
-import { Package, TransportRemote, FieldConfig } from '../types';
+import { Package, TransportRemote, FieldConfig, ServerDetail } from '../types';
 import { getFieldId } from '../utils';
+import { getConfigItemType, getConfigPackage, getConfigRemote, generateConfiguredServer, areAllRequiredFieldsFilled } from '../utils/configGenerator';
 
 interface ConfigurationFormProps {
-  configuringPackage?: { pkg: Package; index: number } | null;
-  configuringRemote?: { remote: TransportRemote; index: number } | null;
+  configuringServer: ServerDetail;
   packageConfig: Record<string, any>;
   remoteConfig: Record<string, any>;
   visibleFields: Set<string>;
@@ -12,6 +12,8 @@ interface ConfigurationFormProps {
   onRemoteConfigChange: (config: Record<string, any>) => void;
   onToggleFieldVisibility: (fieldId: string) => void;
   onClose: () => void;
+  onOk?: (trimmedServer: ServerDetail, config: any) => void;
+  okButtonLabel?: string;
 }
 
 const isSecretField = (field: FieldConfig) => {
@@ -24,19 +26,24 @@ const extractVariableNames = (template: string): string[] => {
 };
 
 export function ConfigurationForm({
-  configuringPackage,
-  configuringRemote,
+  configuringServer,
   packageConfig,
   remoteConfig,
   visibleFields,
   onPackageConfigChange,
   onRemoteConfigChange,
   onToggleFieldVisibility,
-  onClose
+  onClose,
+  onOk,
+  okButtonLabel = 'OK'
 }: ConfigurationFormProps) {
-  if (!configuringPackage && !configuringRemote) {
+  const itemType = getConfigItemType(configuringServer);
+  if (!itemType) {
     return null;
   }
+  
+  const configuringPackage = getConfigPackage(configuringServer);
+  const configuringRemote = getConfigRemote(configuringServer);
 
   const renderFieldInput = (
     field: FieldConfig,
@@ -336,27 +343,48 @@ export function ConfigurationForm({
           <h2 className="text-lg font-semibold text-gray-900">
             Configure {configuringPackage ? 'Package' : 'Remote'}
           </h2>
-          <button
-            onClick={onClose}
-            className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
-          >
-            Cancel
-          </button>
+          <div className="flex gap-3">
+            {onOk && (() => {
+              const allFieldsFilled = areAllRequiredFieldsFilled(configuringServer, packageConfig, remoteConfig);
+              return (
+                <button
+                  onClick={() => {
+                    const config = generateConfiguredServer(configuringServer, packageConfig, remoteConfig);
+                    onOk(configuringServer, config);
+                  }}
+                  disabled={!allFieldsFilled}
+                  className={`px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
+                    allFieldsFilled
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  {okButtonLabel}
+                </button>
+              );
+            })()}
+            <button
+              onClick={onClose}
+              className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
         
         {configuringPackage && (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <h3 className="font-medium text-blue-900 mb-2">Package Summary</h3>
             <div className="text-sm text-blue-800">
-              <p><strong>Identifier:</strong> {configuringPackage.pkg.identifier}</p>
-              <p><strong>Version:</strong> {configuringPackage.pkg.version}</p>
-              <p><strong>Registry Type:</strong> {configuringPackage.pkg.registryType}</p>
-              {configuringPackage.pkg.runtimeHint && <p><strong>Runtime Hint:</strong> {configuringPackage.pkg.runtimeHint}</p>}
-              {(configuringPackage.pkg.transport as any)?.type && (
-                <p><strong>Transport:</strong> {(configuringPackage.pkg.transport as any).type}</p>
+              <p><strong>Identifier:</strong> {configuringPackage.identifier}</p>
+              <p><strong>Version:</strong> {configuringPackage.version}</p>
+              <p><strong>Registry Type:</strong> {configuringPackage.registryType}</p>
+              {configuringPackage.runtimeHint && <p><strong>Runtime Hint:</strong> {configuringPackage.runtimeHint}</p>}
+              {(configuringPackage.transport as any)?.type && (
+                <p><strong>Transport:</strong> {(configuringPackage.transport as any).type}</p>
               )}
-              {(configuringPackage.pkg.transport as any)?.url && (
-                <p><strong>Transport URL:</strong> <span className="font-mono break-all">{(configuringPackage.pkg.transport as any).url}</span></p>
+              {(configuringPackage.transport as any)?.url && (
+                <p><strong>Transport URL:</strong> <span className="font-mono break-all">{(configuringPackage.transport as any).url}</span></p>
               )}
             </div>
           </div>
@@ -366,8 +394,8 @@ export function ConfigurationForm({
           <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
             <h3 className="font-medium text-green-900 mb-2">Remote Summary</h3>
             <div className="text-sm text-green-800">
-              <p><strong>Type:</strong> {configuringRemote.remote.type}</p>
-              {configuringRemote.remote.url && <p><strong>URL:</strong> {configuringRemote.remote.url}</p>}
+              <p><strong>Type:</strong> {configuringRemote.type}</p>
+              {(configuringRemote as TransportRemote).url && <p><strong>URL:</strong> {(configuringRemote as TransportRemote).url}</p>}
             </div>
           </div>
         )}
@@ -375,27 +403,27 @@ export function ConfigurationForm({
         <div className="space-y-4">
           {configuringPackage && (
             <form className="space-y-4">
-              {configuringPackage.pkg.runtimeHint && (
+              {configuringPackage.runtimeHint && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Runtime Hint
                   </h3>
                   <input
                     type="text"
-                    value={configuringPackage.pkg.runtimeHint}
+                    value={configuringPackage.runtimeHint}
                     readOnly
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-gray-50 text-gray-600 cursor-not-allowed"
                   />
                 </div>
               )}
 
-              {configuringPackage.pkg.runtimeArguments && configuringPackage.pkg.runtimeArguments.length > 0 && (
+              {configuringPackage.runtimeArguments && configuringPackage.runtimeArguments.length > 0 && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Runtime Arguments
                   </h3>
                   <div className="space-y-0">
-                    {configuringPackage.pkg.runtimeArguments.map((arg, argIndex) => {
+                    {configuringPackage.runtimeArguments.map((arg: any, argIndex: number) => {
                       const configArg = arg as FieldConfig;
                       const fieldId = getFieldId(configArg, 'runtimeArg', argIndex);
                       return (
@@ -403,7 +431,7 @@ export function ConfigurationForm({
                           <div className="pb-3">
                             {renderFieldWithVariables(configArg, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
-                          {argIndex < (configuringPackage.pkg.runtimeArguments?.length || 0) - 1 && (
+                          {argIndex < (configuringPackage.runtimeArguments?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
                           )}
                         </div>
@@ -413,13 +441,13 @@ export function ConfigurationForm({
                 </div>
               )}
 
-              {configuringPackage.pkg.packageArguments && configuringPackage.pkg.packageArguments.length > 0 && (
+              {configuringPackage.packageArguments && configuringPackage.packageArguments.length > 0 && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Package Arguments
                   </h3>
                   <div className="space-y-0">
-                    {configuringPackage.pkg.packageArguments.map((arg, argIndex) => {
+                    {configuringPackage.packageArguments.map((arg: any, argIndex: number) => {
                       const configArg = arg as FieldConfig;
                       const fieldId = getFieldId(configArg, 'packageArg', argIndex);
                       return (
@@ -427,7 +455,7 @@ export function ConfigurationForm({
                           <div className="pb-3">
                             {renderFieldWithVariables(configArg, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
-                          {argIndex < (configuringPackage.pkg.packageArguments?.length || 0) - 1 && (
+                          {argIndex < (configuringPackage.packageArguments?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
                           )}
                         </div>
@@ -437,13 +465,13 @@ export function ConfigurationForm({
                 </div>
               )}
 
-              {configuringPackage.pkg.environmentVariables && configuringPackage.pkg.environmentVariables.length > 0 && (
+              {configuringPackage.environmentVariables && configuringPackage.environmentVariables.length > 0 && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
                     Environment Variables
                   </h3>
                   <div className="space-y-0">
-                    {configuringPackage.pkg.environmentVariables.map((env, envIndex) => {
+                    {configuringPackage.environmentVariables.map((env: any, envIndex: number) => {
                       const configEnv = env as FieldConfig;
                       const fieldId = getFieldId(configEnv, 'env', envIndex);
                       return (
@@ -451,7 +479,7 @@ export function ConfigurationForm({
                           <div className="pb-3">
                             {renderFieldWithVariables(configEnv, fieldId, packageConfig, onPackageConfigChange)}
                           </div>
-                          {envIndex < (configuringPackage.pkg.environmentVariables?.length || 0) - 1 && (
+                          {envIndex < (configuringPackage.environmentVariables?.length || 0) - 1 && (
                             <hr className="border-gray-200 mb-3" />
                           )}
                         </div>
@@ -462,7 +490,7 @@ export function ConfigurationForm({
               )}
 
               {(() => {
-                const transport = configuringPackage.pkg.transport as TransportRemote;
+                const transport = configuringPackage.transport as TransportRemote;
                 return transport?.headers && transport.headers.length > 0 && (
                 <div>
                   <h3 className="text-base font-semibold text-gray-900 mb-3">
@@ -488,21 +516,21 @@ export function ConfigurationForm({
             </form>
           )}
 
-          {configuringRemote && configuringRemote.remote.headers && configuringRemote.remote.headers.length > 0 && (
+          {configuringRemote && (configuringRemote as TransportRemote).headers && (configuringRemote as TransportRemote).headers!.length > 0 && (
             <form className="space-y-4">
             <div>
               <h3 className="text-base font-semibold text-gray-900 mb-3">
                 Headers
               </h3>
               <div className="space-y-0">
-                {configuringRemote.remote.headers.map((header: FieldConfig, headerIndex: number) => {
+                {(configuringRemote as TransportRemote).headers!.map((header: FieldConfig, headerIndex: number) => {
                   const fieldId = getFieldId(header, 'header', headerIndex);
                   return (
                     <div key={headerIndex}>
                       <div className="pb-3">
                         {renderFieldWithVariables(header, fieldId, remoteConfig, onRemoteConfigChange, "Enter header value")}
                       </div>
-                      {headerIndex < (configuringRemote.remote.headers?.length || 0) - 1 && (
+                      {headerIndex < ((configuringRemote as TransportRemote).headers?.length || 0) - 1 && (
                         <hr className="border-gray-200 mb-3" />
                       )}
                     </div>

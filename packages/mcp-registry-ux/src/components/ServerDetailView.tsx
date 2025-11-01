@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ServerWithMeta, Package, TransportRemote, FieldConfig } from '../types';
+import { ServerWithMeta, Package, TransportRemote, FieldConfig, ServerDetail } from '../types';
 import { NavigationAdapter } from '../adapters';
 import { getBestIcon } from '../utils/iconUtils';
 import { getFieldDisplayValue, getFieldDisplayLabel } from '../utils/fieldDisplay';
@@ -10,8 +10,7 @@ import { ConfigurationPreview } from './ConfigurationPreview';
 interface ServerDetailViewProps {
   server: ServerWithMeta;
   navigationAdapter?: NavigationAdapter;
-  configuringPackage?: { pkg: Package; index: number } | null;
-  configuringRemote?: { remote: TransportRemote; index: number } | null;
+  configuringServer?: ServerDetail | null;  // Trimmed server with only the package/remote being configured
   packageConfig: Record<string, any>;
   remoteConfig: Record<string, any>;
   visibleFields: Set<string>;
@@ -24,13 +23,14 @@ interface ServerDetailViewProps {
   onShowRawModal: (show: boolean) => void;
   onConfigurePackage: (pkg: Package, index: number) => void;
   onConfigureRemote: (remote: TransportRemote, index: number) => void;
+  onConfigurationOk?: (trimmedServer: ServerDetail, config: any) => void;
+  okButtonLabel?: string;
 }
 
 export function ServerDetailView({
   server,
   navigationAdapter,
-  configuringPackage,
-  configuringRemote,
+  configuringServer,
   packageConfig,
   remoteConfig,
   visibleFields,
@@ -42,7 +42,9 @@ export function ServerDetailView({
   onCloseConfiguration,
   onShowRawModal,
   onConfigurePackage,
-  onConfigureRemote
+  onConfigureRemote,
+  onConfigurationOk,
+  okButtonLabel
 }: ServerDetailViewProps) {
   const [copied, setCopied] = useState(false);
   
@@ -123,11 +125,10 @@ export function ServerDetailView({
           </div>
 
           {/* Configuration View */}
-          {(configuringPackage || configuringRemote) && (
+          {configuringServer && (
             <>
               <ConfigurationForm
-                configuringPackage={configuringPackage}
-                configuringRemote={configuringRemote}
+                configuringServer={configuringServer}
                 packageConfig={packageConfig}
                 remoteConfig={remoteConfig}
                 visibleFields={visibleFields}
@@ -135,11 +136,12 @@ export function ServerDetailView({
                 onRemoteConfigChange={onRemoteConfigChange}
                 onToggleFieldVisibility={onToggleFieldVisibility}
                 onClose={onCloseConfiguration}
+                onOk={onConfigurationOk}
+                okButtonLabel={okButtonLabel}
               />
               
               <RequiredFieldWarning
-                configuringPackage={configuringPackage}
-                configuringRemote={configuringRemote}
+                configuringServer={configuringServer}
                 packageConfig={packageConfig}
                 remoteConfig={remoteConfig}
               />
@@ -149,7 +151,7 @@ export function ServerDetailView({
           )}
 
           {/* Details Grid */}
-          {!configuringPackage && !configuringRemote && (
+          {!configuringServer && (
             <div className="space-y-6">
               {/* Repository Information */}
               {server.repository && server.repository.url && server.repository.url.trim() !== '' && (
@@ -249,8 +251,24 @@ export function ServerDetailView({
                 <div className="bg-white rounded-lg border p-6">
                   <h2 className="text-lg font-semibold text-gray-900 mb-4">Packages</h2>
                   <div className="space-y-4">
-                    {server.packages.map((pkg, index) => (
-                      <div key={index} className="border border-gray-200 rounded-lg p-4">
+                    {server.packages.map((pkg, index) => {
+                      let isConfiguring = false;
+                      if (configuringServer) {
+                        const server = configuringServer as ServerDetail;
+                        if (server.packages && server.packages.length === 1) {
+                          const trimmedPkg = server.packages[0];
+                          isConfiguring = trimmedPkg.identifier === pkg.identifier && trimmedPkg.version === pkg.version;
+                        }
+                      }
+                      return (
+                      <div 
+                        key={index} 
+                        className={`border rounded-lg p-4 transition-colors ${
+                          isConfiguring 
+                            ? 'border-blue-500 bg-blue-50 shadow-md' 
+                            : 'border-gray-200'
+                        }`}
+                      >
                         <div className="flex justify-between items-start mb-4">
                           <div className="flex-1">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -398,7 +416,8 @@ export function ServerDetailView({
                           </div>
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               )}
