@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         
+      - name: Build packages
+        run: pnpm -F mcp-registry-client build
+        
       - name: Sync schemas from static repo
         run: |
           echo "🔍 Syncing schemas from modelcontextprotocol/static..."
