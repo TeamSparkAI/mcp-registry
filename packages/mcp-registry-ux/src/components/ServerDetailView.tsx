@@ -25,6 +25,7 @@ interface ServerDetailViewProps {
   onConfigureRemote: (remote: TransportRemote, index: number) => void;
   onConfigurationOk?: (trimmedServer: ServerDetail, config: any) => void;
   okButtonLabel?: string;
+  initialMCPConfig?: any; // Optional MCP configuration to populate form from
 }
 
 export function ServerDetailView({
@@ -44,7 +45,8 @@ export function ServerDetailView({
   onConfigurePackage,
   onConfigureRemote,
   onConfigurationOk,
-  okButtonLabel
+  okButtonLabel,
+  initialMCPConfig
 }: ServerDetailViewProps) {
   const [copied, setCopied] = useState(false);
   
@@ -138,6 +140,7 @@ export function ServerDetailView({
                 onClose={onCloseConfiguration}
                 onOk={onConfigurationOk}
                 okButtonLabel={okButtonLabel}
+                initialMCPConfig={initialMCPConfig}
               />
               
               <RequiredFieldWarning

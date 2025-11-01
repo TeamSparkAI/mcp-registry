@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { ServerDetail, generateConfiguredServer, ValidationIssues, ServerDetailView as ServerDetailViewComponent, NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
+import { ServerDetail, generateConfiguredServer, ValidationIssues, ServerDetailView as ServerDetailViewComponent, NavigationAdapter, createTrimmedServer } from '@teamsparkai/mcp-registry-ux';
 import type { ValidationIssue, ValidationResult } from '@teamsparkai/mcp-registry-validator';
 
 export default function TesterPage() {
@@ -11,8 +11,7 @@ export default function TesterPage() {
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
   const [isValidating, setIsValidating] = useState(false);
   const [selectedServer, setSelectedServer] = useState<ServerDetail | null>(null);
-  const [configuringPackage, setConfiguringPackage] = useState<{ pkg: any; index: number } | null>(null);
-  const [configuringRemote, setConfiguringRemote] = useState<{ remote: any; index: number } | null>(null);
+  const [configuringServer, setConfiguringServer] = useState<ServerDetail | null>(null);
   const [packageConfig, setPackageConfig] = useState<Record<string, any>>({});
   const [remoteConfig, setRemoteConfig] = useState<Record<string, any>>({});
   const [showRawModal, setShowRawModal] = useState(false);
@@ -181,17 +180,27 @@ export default function TesterPage() {
       setSelectedServer(parsedServer);
       setTestServerJson(newJson);
       
-      if (configuringPackage && oldServer && parsedServer) {
-        if (!parsedServer.packages || parsedServer.packages.length <= configuringPackage.index) {
-          setConfiguringPackage(null);
-          setPackageConfig({});
+      if (configuringServer && oldServer && parsedServer) {
+        // Check if the package/remote still exists after update
+        // Find the index of the configured package/remote in the old server
+        let packageIndex: number | undefined;
+        let remoteIndex: number | undefined;
+        
+        if (configuringServer.packages && configuringServer.packages.length > 0 && oldServer.packages) {
+          packageIndex = oldServer.packages.findIndex((p: any) => p === configuringServer.packages?.[0]);
         }
-      }
-      
-      if (configuringRemote && oldServer && parsedServer) {
-        if (!parsedServer.remotes || parsedServer.remotes.length <= configuringRemote.index) {
-          setConfiguringRemote(null);
+        if (configuringServer.remotes && configuringServer.remotes.length > 0 && oldServer.remotes) {
+          remoteIndex = oldServer.remotes.findIndex((r: any) => r === configuringServer.remotes?.[0]);
+        }
+        
+        // Try to create trimmed server with the new parsed server using the same indices
+        const trimmedServer = createTrimmedServer(parsedServer, packageIndex, remoteIndex);
+        if (!trimmedServer) {
+          setConfiguringServer(null);
+          setPackageConfig({});
           setRemoteConfig({});
+        } else {
+          setConfiguringServer(trimmedServer);
         }
       }
     } catch (error) {
@@ -202,8 +211,7 @@ export default function TesterPage() {
   const handleBackToEdit = () => {
     setIsEditingTestServer(true);
     setSelectedServer(null);
-    setConfiguringPackage(null);
-    setConfiguringRemote(null);
+    setConfiguringServer(null);
     setPackageConfig({});
     setRemoteConfig({});
     setVisibleFields(new Set());
@@ -215,8 +223,7 @@ export default function TesterPage() {
     if (testServer) {
       setTestServerJson(JSON.stringify(testServer, null, 2));
       setSelectedServer(null);
-      setConfiguringPackage(null);
-      setConfiguringRemote(null);
+      setConfiguringServer(null);
       setPackageConfig({});
       setRemoteConfig({});
       setVisibleFields(new Set());
@@ -227,20 +234,23 @@ export default function TesterPage() {
   };
 
   const handleConfigurePackage = (pkg: any, index: number) => {
-    setConfiguringPackage({ pkg, index });
-    setConfiguringRemote(null);
-    setRemoteConfig({});
+    if (testServer) {
+      const trimmedServer = createTrimmedServer(testServer, index);
+      setConfiguringServer(trimmedServer);
+      setRemoteConfig({});
+    }
   };
 
   const handleConfigureRemote = (remote: any, index: number) => {
-    setConfiguringRemote({ remote, index });
-    setConfiguringPackage(null);
-    setPackageConfig({});
+    if (testServer) {
+      const trimmedServer = createTrimmedServer(testServer, undefined, index);
+      setConfiguringServer(trimmedServer);
+      setPackageConfig({});
+    }
   };
 
   const handleCloseConfiguration = () => {
-    setConfiguringPackage(null);
-    setConfiguringRemote(null);
+    setConfiguringServer(null);
     setPackageConfig({});
     setRemoteConfig({});
     setVisibleFields(new Set());
@@ -381,8 +391,7 @@ export default function TesterPage() {
         
         <ServerDetailViewComponent
         server={testServer}
-        configuringPackage={configuringPackage}
-        configuringRemote={configuringRemote}
+        configuringServer={configuringServer}
         packageConfig={packageConfig}
         remoteConfig={remoteConfig}
         navigationAdapter={{
@@ -391,7 +400,7 @@ export default function TesterPage() {
         }}
         visibleFields={visibleFields}
         showRawModal={showRawModal}
-        configuredServer={generateConfiguredServer(testServer, configuringPackage, configuringRemote, packageConfig, remoteConfig)}
+        configuredServer={generateConfiguredServer(configuringServer, packageConfig, remoteConfig)}
         onPackageConfigChange={handlePackageConfigChange}
         onRemoteConfigChange={handleRemoteConfigChange}
         onToggleFieldVisibility={handleToggleFieldVisibility}
