@@ -38,7 +38,7 @@ jobs:
         run: pnpm install --frozen-lockfile
         
       - name: Build packages
-        run: pnpm -F mcp-registry-client build
+        run: pnpm -F @teamsparkai/mcp-registry-client build
         
       - name: Sync schemas from static repo
         run: |
