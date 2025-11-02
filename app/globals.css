@@ -1,5 +1,5 @@
-/* Import package styles - must be before @tailwind */
-@import '@teamsparkai/mcp-registry-ux/styles.css';
+/* Import package CSS (must come before other rules except @charset and @layer) */
+@import '@teamsparkai/mcp-registry-ux/input.css';
 
 @tailwind base;
 @tailwind components;
