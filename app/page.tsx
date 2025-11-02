@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ServerResponse, ServerList as ServerListComponent, NavigationAdapter, LinkProps } from '@teamsparkai/mcp-registry-ux';
 import { encodeServerNameForRoute } from '@/registry-utils/routeUtils';
+import { ThemeToggle } from './components/ThemeToggle';
 
 export default function RegistryPage() {
   const [servers, setServers] = useState<ServerResponse[]>([]);
@@ -78,10 +79,10 @@ export default function RegistryPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading server registry...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-300">Loading server registry...</p>
         </div>
       </div>
     );
@@ -89,11 +90,11 @@ export default function RegistryPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Registry</h1>
-          <p className="text-gray-600">{error}</p>
+          <div className="text-red-600 dark:text-red-400 text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Error Loading Registry</h1>
+          <p className="text-gray-600 dark:text-gray-300">{error}</p>
         </div>
       </div>
     );
@@ -126,6 +127,7 @@ export default function RegistryPage() {
       onClearFilters={() => setSelectedFilters([])}
       onServerClick={() => {}} // No longer needed with Link navigation
       navigationAdapter={navigationAdapter}
+      headerActions={<ThemeToggle />}
     />
   );
 }

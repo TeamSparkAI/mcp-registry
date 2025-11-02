@@ -3,4 +3,28 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Smooth transitions for theme changes - only on interactive elements */
+@layer base {
+  /* Only transition specific elements, not everything */
+  button,
+  a,
+  [role="button"],
+  input,
+  textarea,
+  select {
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+  }
+  
+  /* Disable transitions during theme change to prevent repaints */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
+} 

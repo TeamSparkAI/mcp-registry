@@ -22,7 +22,7 @@ export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewP
     <div className="mt-6 space-y-6">
       <div>
         <div className="flex items-center justify-between mb-2">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
             MCP Server Configuration (for use in clients)
           </label>
           <button
@@ -32,8 +32,8 @@ export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewP
             )}
             className={`flex items-center space-x-1 px-2 py-1 text-xs rounded transition-colors ${
               copiedMcpConfig 
-                ? 'bg-green-100 text-green-700' 
-                : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200' 
+                : 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800'
             }`}
           >
             {copiedMcpConfig ? (
@@ -53,7 +53,7 @@ export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewP
             )}
           </button>
         </div>
-        <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
+        <pre className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm overflow-x-auto max-h-96 text-gray-900 dark:text-gray-100">
           {JSON.stringify({ mcpServers: configuredServer.mcpServerConfig }, null, 2)}
         </pre>
       </div>
@@ -61,7 +61,7 @@ export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewP
       {configuredServer.runtimeConfig && (
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
               Transport Runner Configuration
             </label>
             <button
@@ -71,8 +71,8 @@ export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewP
               )}
               className={`flex items-center space-x-1 px-2 py-1 text-xs rounded transition-colors ${
                 copiedRuntimeConfig 
-                  ? 'bg-green-100 text-green-700' 
-                  : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200' 
+                  : 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800'
               }`}
             >
               {copiedRuntimeConfig ? (
@@ -92,7 +92,7 @@ export function ConfigurationPreview({ configuredServer }: ConfigurationPreviewP
               )}
             </button>
           </div>
-          <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm overflow-x-auto max-h-96">
+          <pre className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm overflow-x-auto max-h-96 text-gray-900 dark:text-gray-100">
             {JSON.stringify(configuredServer.runtimeConfig, null, 2)}
           </pre>
         </div>

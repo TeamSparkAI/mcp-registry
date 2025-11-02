@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ServerDetail, generateConfiguredServer, ValidationIssues, ServerDetailView as ServerDetailViewComponent, NavigationAdapter, createTrimmedServer } from '@teamsparkai/mcp-registry-ux';
 import type { ValidationIssue, ValidationResult } from '@teamsparkai/mcp-registry-validator';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function TesterPage() {
   const [testServerJson, setTestServerJson] = useState('');
@@ -279,17 +280,25 @@ export default function TesterPage() {
   // Show test mode input (when editing JSON)
   if (isEditingTestServer) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/mcp_black.png" 
-                alt="MCP Registry" 
-                className="w-8 h-8 object-contain"
-              />
-              <h1 className="text-xl font-semibold text-gray-900">MCP Registry server.json Tester</h1>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/mcp_black.png" 
+                  alt="MCP Registry" 
+                  className="w-8 h-8 object-contain dark:hidden"
+                />
+                <img 
+                  src="/mcp_white.png" 
+                  alt="MCP Registry" 
+                  className="w-8 h-8 object-contain hidden dark:block"
+                />
+                <h1 className="text-xl font-semibold text-gray-900 dark:text-white">MCP Registry server.json Tester</h1>
+              </div>
+              <ThemeToggle />
             </div>
           </div>
         </header>
@@ -297,16 +306,16 @@ export default function TesterPage() {
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="space-y-6">
-            <div className="bg-white rounded-lg border p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Test Your Server Configuration</h2>
-              <p className="text-gray-600 mb-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Test Your Server Configuration</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Paste your server.json below to test it using our configuration interface.
               </p>
               <textarea
                 ref={textareaRef}
                 value={testServerJson}
                 onChange={(e) => setTestServerJson(e.target.value)}
-                className="w-full p-4 border border-gray-300 rounded-lg font-mono text-sm resize-none"
+                className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg font-mono text-sm resize-none bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                 style={{
                   minHeight: '200px',
                   maxHeight: 'calc(100vh - 300px)',
@@ -323,7 +332,7 @@ export default function TesterPage() {
                 <button
                   onClick={handleValidateJson}
                   disabled={!testServerJson.trim() || isValidating}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
+                  className="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors text-sm font-medium disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed flex items-center"
                 >
                   {isValidating ? (
                     <>
@@ -340,7 +349,7 @@ export default function TesterPage() {
                 <button
                   onClick={handleSubmitTestServerJson}
                   disabled={!testServerJson.trim() || isValidating}
-                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="bg-green-600 dark:bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors text-sm font-medium disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed"
                 >
                   {isValidating ? 'Testing...' : 'Test Configuration'}
                 </button>
@@ -349,8 +358,8 @@ export default function TesterPage() {
 
             {/* Validation Results */}
             {validationResult && (
-              <div id="validation-results" className="bg-white rounded-lg border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Validation Results</h3>
+              <div id="validation-results" className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Validation Results</h3>
                 <ValidationIssues issues={validationResult.issues} />
               </div>
             )}
@@ -365,26 +374,34 @@ export default function TesterPage() {
     return (
       <div>
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <img 
                   src="/mcp_black.png" 
                   alt="MCP Registry" 
-                  className="w-8 h-8 object-contain"
+                  className="w-8 h-8 object-contain dark:hidden"
                 />
-                <h1 className="text-xl font-semibold text-gray-900">MCP Registry server.json Tester</h1>
+                <img 
+                  src="/mcp_white.png" 
+                  alt="MCP Registry" 
+                  className="w-8 h-8 object-contain hidden dark:block"
+                />
+                <h1 className="text-xl font-semibold text-gray-900 dark:text-white">MCP Registry server.json Tester</h1>
               </div>
-              <button
-                onClick={handleEditTestServerJson}
-                className="flex items-center text-blue-600 hover:text-blue-800"
-              >
-                <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-                Edit server.json
-              </button>
+              <div className="flex items-center space-x-4">
+                <ThemeToggle />
+                <button
+                  onClick={handleEditTestServerJson}
+                  className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                >
+                  <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  Edit server.json
+                </button>
+              </div>
             </div>
           </div>
         </header>
