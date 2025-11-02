@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { ServerWithMeta, ServerDetail, Package, TransportRemote, generateConfiguredServer, createTrimmedServer, ServerDetailView as ServerDetailViewComponent, NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
 import { encodeServerNameForRoute, decodeServerNameFromRoute } from '@/registry-utils/routeUtils';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function ServerDetailPage() {
   const params = useParams();
@@ -98,10 +99,10 @@ export default function ServerDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading server details...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-300">Loading server details...</p>
         </div>
       </div>
     );
@@ -109,14 +110,14 @@ export default function ServerDetailPage() {
 
   if (error || !server) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Server Not Found</h1>
-          <p className="text-gray-600 mb-4">{error || 'The requested server could not be found.'}</p>
+          <div className="text-red-600 dark:text-red-400 text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Server Not Found</h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">{error || 'The requested server could not be found.'}</p>
           <button
             onClick={handleBackToRegistry}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600"
           >
             Back to Registry
           </button>
@@ -128,25 +129,33 @@ export default function ServerDetailPage() {
   return (
     <div>
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <button
               onClick={handleBackToRegistry}
-              className="flex items-center text-gray-600 hover:text-gray-800"
+              className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Registry
             </button>
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/mcp_black.png" 
-                alt="MCP Registry" 
-                className="w-6 h-6 object-contain"
-              />
-              <span className="text-lg font-semibold text-gray-900">MCP Server Registry</span>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <img 
+                  src="/mcp_black.png" 
+                  alt="MCP Registry" 
+                  className="w-6 h-6 object-contain dark:hidden"
+                />
+                <img 
+                  src="/mcp_white.png" 
+                  alt="MCP Registry" 
+                  className="w-6 h-6 object-contain hidden dark:block"
+                />
+                <span className="text-lg font-semibold text-gray-900 dark:text-white">MCP Server Registry</span>
+              </div>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -183,13 +192,13 @@ export default function ServerDetailPage() {
 
       {/* Configuration Data Modal */}
       {showConfigModal && savedConfig && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900">Configuration Data</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Configuration Data</h2>
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -198,31 +207,31 @@ export default function ServerDetailPage() {
             </div>
             <div className="overflow-y-auto p-6 space-y-6 flex-1">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Trimmed Server</h3>
-                <pre className="bg-gray-50 p-4 rounded-lg overflow-x-auto text-sm">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Trimmed Server</h3>
+                <pre className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm text-gray-900 dark:text-gray-100">
                   {JSON.stringify(savedConfig.trimmedServer, null, 2)}
                 </pre>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">MCP Server Config</h3>
-                <pre className="bg-gray-50 p-4 rounded-lg overflow-x-auto text-sm">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">MCP Server Config</h3>
+                <pre className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm text-gray-900 dark:text-gray-100">
                   {JSON.stringify(savedConfig.config.mcpServerConfig, null, 2)}
                 </pre>
               </div>
               {savedConfig.config.runtimeConfig && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Runtime Config</h3>
-                  <p className="text-sm text-gray-600 mb-2">Transport runner configuration for non-stdio transports:</p>
-                  <pre className="bg-gray-50 p-4 rounded-lg overflow-x-auto text-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Runtime Config</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Transport runner configuration for non-stdio transports:</p>
+                  <pre className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm text-gray-900 dark:text-gray-100">
                     {JSON.stringify(savedConfig.config.runtimeConfig, null, 2)}
                   </pre>
                 </div>
               )}
             </div>
-            <div className="p-6 border-t border-gray-200 flex justify-end">
+            <div className="p-6 border-t border-gray-200 dark:border-gray-700 flex justify-end">
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
               >
                 Close
               </button>
