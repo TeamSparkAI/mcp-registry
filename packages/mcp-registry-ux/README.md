@@ -32,12 +32,25 @@ yarn add mcp-registry-ux
 
 ### CSS Styles
 
-Import the package's CSS file in your application's main CSS file:
+See [Tailwind Integration Guide](./tailwind_integration.md) for detailed setup instructions.
 
-```css
-/* Must be before @tailwind directives */
-@import 'mcp-registry-ux/styles.css';
-```
+**Quick Setup:**
+
+1. Add package `dist/` to your Tailwind `content` paths in `tailwind.config.js`:
+   ```js
+   content: [
+     // ... your paths
+     './node_modules/@teamsparkai/mcp-registry-ux/dist/**/*.{js,jsx,ts,tsx}',
+   ]
+   ```
+
+2. Import the package CSS in your main CSS file (before `@tailwind` directives):
+   ```css
+   @import '@teamsparkai/mcp-registry-ux/input.css';
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
 
 ## Quick Start
 
