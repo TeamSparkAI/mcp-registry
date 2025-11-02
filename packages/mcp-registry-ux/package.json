@@ -6,12 +6,12 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
-    "styles.css",
+    "input.css",
     "README.md"
   ],
-  "style": "styles.css",
+  "style": "input.css",
   "scripts": {
-    "build": "tsc && tailwindcss -i ./src/input.css -o ./styles.css --minify",
+    "build": "tsc",
     "dev": "tsc --watch",
     "test": "echo \"No tests yet\"",
     "prepublishOnly": "pnpm build",
