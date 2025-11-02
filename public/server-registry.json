@@ -21947,6 +21947,66 @@
           "status": "active",
           "publishedAt": "2025-11-01T16:50:34.146965Z",
           "updatedAt": "2025-11-01T16:50:34.146965Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.3.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.3.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-01T17:07:00.229224Z",
+          "updatedAt": "2025-11-01T17:07:00.229224Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.4.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.4.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-01T17:30:39.886078Z",
+          "updatedAt": "2025-11-01T17:30:39.886078Z",
           "isLatest": true
         }
       }
@@ -24139,6 +24199,45 @@
           "status": "active",
           "publishedAt": "2025-10-25T02:41:35.647944Z",
           "updatedAt": "2025-10-25T02:41:35.647944Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.JustinBeckwith/linkinator-mcp",
+        "description": "MCP server for link checking using linkinator",
+        "repository": {
+          "url": "https://github.com/JustinBeckwith/linkinator-mcp",
+          "source": "github"
+        },
+        "version": "0.2.2",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/JustinBeckwith/linkinator-mcp/main/site/linkinator-mcp.webp",
+            "mimeType": "image/webp",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "linkinator-mcp",
+            "version": "0.2.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-01T18:03:31.32551Z",
+          "updatedAt": "2025-11-01T18:03:31.32551Z",
           "isLatest": true
         }
       }
@@ -68525,6 +68624,60 @@
           "status": "active",
           "publishedAt": "2025-10-31T17:03:08.707318Z",
           "updatedAt": "2025-10-31T17:03:08.707318Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.zloeber/terraform-ingest",
+        "description": "Ingest and analyze Terraform modules from multiple repositories for AI RAG systems",
+        "title": "Terraform Ingest MCP",
+        "version": "0.1.17",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "terraform-ingest",
+            "version": "0.1.17",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-01T20:32:49.413134Z",
+          "updatedAt": "2025-11-01T20:32:49.413134Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.zloeber/terraform-ingest",
+        "description": "Ingest and analyze Terraform modules from multiple repositories for AI RAG systems",
+        "title": "Terraform Ingest MCP",
+        "version": "0.1.18",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "terraform-ingest",
+            "version": "0.1.18",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-01T22:42:41.027069Z",
+          "updatedAt": "2025-11-01T22:42:41.027069Z",
           "isLatest": true
         }
       }
@@ -69709,6 +69862,6 @@
     }
   ],
   "metadata": {
-    "count": 1511
+    "count": 1516
   }
 }
