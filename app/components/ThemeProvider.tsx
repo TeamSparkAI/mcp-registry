@@ -70,7 +70,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    // During SSG or if used outside provider, return safe defaults
+    // This allows components to render during static generation
+    return {
+      theme: 'light' as Theme,
+      toggleTheme: () => {
+        // No-op during SSG
+      }
+    };
   }
   return context;
 }
