@@ -16,14 +16,16 @@ import { ComponentType } from 'react';
  */
 export interface NavigationAdapter {
   /**
-   * Navigate to server detail page
+   * Get URL for server detail page
+   * @returns The URL path to navigate to
    */
-  goToServer(serverName: string, version: string): void;
+  goToServer(serverName: string, version: string): string;
   
   /**
-   * Navigate to server versions list
+   * Get URL for server versions list
+   * @returns The URL path to navigate to
    */
-  goToServerVersions(serverName: string): void;
+  goToServerVersions(serverName: string): string;
   
   /**
    * Optional Link component for framework integration

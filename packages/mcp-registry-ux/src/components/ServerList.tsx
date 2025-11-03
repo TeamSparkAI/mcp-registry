@@ -13,7 +13,6 @@ interface ServerListProps {
   onClearFilters: () => void;
   onServerClick: (serverResponse: ServerResponse) => void;
   navigationAdapter?: NavigationAdapter;
-  headerActions?: React.ReactNode; // Optional actions to render in the header
 }
 
 export function ServerList({
@@ -25,8 +24,7 @@ export function ServerList({
   onFilterToggle,
   onClearFilters,
   onServerClick,
-  navigationAdapter,
-  headerActions
+  navigationAdapter
 }: ServerListProps) {
   const LinkComponent = navigationAdapter?.Link || (({ href, children, className, onClick }: LinkProps) => (
     <a href={href} className={className} onClick={onClick}>
@@ -52,53 +50,7 @@ export function ServerList({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-            <div className="mb-4 sm:mb-0">
-              <div className="flex items-start space-x-3">
-                <img 
-                  src="/mcp_black.png" 
-                  alt="MCP Registry" 
-                  className="w-16 h-16 object-contain dark:hidden"
-                />
-                <img 
-                  src="/mcp_white.png" 
-                  alt="MCP Registry" 
-                  className="w-16 h-16 object-contain hidden dark:block"
-                />
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 dark:text-white">MCP Server Registry</h1>
-                  <p className="text-gray-600 dark:text-gray-300 mt-1">Browse and discover servers from the official MCP Registry</p>
-                </div>
-              </div>
-            </div>
-            <div className="text-right space-y-2">
-              <div className="flex items-center justify-end gap-2">
-                {headerActions}
-                <LinkComponent
-                  href="/about"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
-                >
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  About This Service
-                </LinkComponent>
-              </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                Official Registry: <a href="https://registry.modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">registry.modelcontextprotocol.io</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="space-y-6">
+    <div className="space-y-6">
           {/* Search and Filters */}
           <div className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
             <div className="flex flex-col gap-4">
@@ -186,19 +138,17 @@ export function ServerList({
                     const version = serverResponse.server.version;
                     const title = serverResponse.server.title;
                     const iconSrc = getBestIcon(serverResponse.server.icons, 'light');
-                    const serverPath = `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
+                    const serverPath = navigationAdapter 
+                      ? navigationAdapter.goToServer(serverName, version) || `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`
+                      : `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`;
                     const handleClick = () => {
-                      if (navigationAdapter) {
-                        navigationAdapter.goToServer(serverName, version);
-                      } else {
-                        window.location.href = serverPath;
-                      }
+                      onServerClick(serverResponse);
                     };
 
                     return (
                       <LinkComponent
                         key={`${serverName}-${version}`}
-                        href={serverPath}
+                        href={serverPath || `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`}
                         onClick={handleClick}
                         className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 bg-white dark:bg-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all cursor-pointer block"
                       >
@@ -269,7 +219,5 @@ export function ServerList({
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 }
