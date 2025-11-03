@@ -130,7 +130,7 @@ export function ServerList({
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="space-y-3">
                   {filteredServers.map((serverResponse) => {
                     const remotesSummary = getRemotesSummary(serverResponse);
                     const packagesSummary = getPackagesSummary(serverResponse);
@@ -150,67 +150,63 @@ export function ServerList({
                         key={`${serverName}-${version}`}
                         href={serverPath || `/servers/${encodeURIComponent(serverName)}/${encodeURIComponent(version)}`}
                         onClick={handleClick}
-                        className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 bg-white dark:bg-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all cursor-pointer block"
+                        className="flex items-start gap-4 border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all cursor-pointer"
                       >
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
-                            <img 
-                              src={iconSrc || "/mcp_black.png"} 
-                              alt={title || serverName}
-                              className="w-8 h-8 object-contain"
-                              onError={(e) => {
-                                // Fallback to default icon on load error
-                                e.currentTarget.src = "/mcp_black.png";
-                              }}
-                            />
-                          </div>
+                        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                          <img 
+                            src={iconSrc || "/mcp_black.png"} 
+                            alt={title || serverName}
+                            className="w-12 h-12 object-contain"
+                            onError={(e) => {
+                              // Fallback to default icon on load error
+                              e.currentTarget.src = "/mcp_black.png";
+                            }}
+                          />
                         </div>
                         
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
-                          {serverResponse.server.name}
-                        </h3>
-                        
-                        {title && (
-                          <p className="text-base font-medium text-gray-700 dark:text-gray-300 mb-2 line-clamp-1">
-                            {title}
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                            {serverResponse.server.name}
+                          </h3>
+                          
+                          {title && (
+                            <p className="text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
+                              {title}
+                            </p>
+                          )}
+                          
+                          <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                            {serverResponse.server.description}
                           </p>
-                        )}
-                        
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-3">
-                          {serverResponse.server.description}
-                        </p>
-                        
-                        <div className="space-y-2 text-xs text-gray-500 dark:text-gray-400">
-                          <div className="flex items-center justify-between">
-                            <span>Version</span>
-                            <span className="font-medium">{serverResponse.server.version}</span>
+                          
+                          <div className="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
+                            <div>
+                              <span className="font-medium">Version:</span> {serverResponse.server.version}
+                            </div>
+                            {remotesSummary && (
+                              <div>
+                                <span className="font-medium">Remotes:</span> {remotesSummary}
+                              </div>
+                            )}
+                            {packagesSummary && (
+                              <div>
+                                <span className="font-medium">Packages:</span> {packagesSummary}
+                              </div>
+                            )}
+                            {serverResponse.server.status && (
+                              <div>
+                                <span className="font-medium">Status:</span>{' '}
+                                <span className={`${
+                                  serverResponse.server.status === 'active' ? 'text-green-600 dark:text-green-400' : 
+                                  serverResponse.server.status === 'deprecated' ? 'text-yellow-600 dark:text-yellow-400' : 
+                                  'text-gray-600 dark:text-gray-400'
+                                }`}>
+                                  {serverResponse.server.status}
+                                </span>
+                              </div>
+                            )}
                           </div>
-                          {remotesSummary && (
-                            <div className="flex items-center justify-between">
-                              <span>Remotes</span>
-                              <span className="font-medium">{remotesSummary}</span>
-                            </div>
-                          )}
-                          {packagesSummary && (
-                            <div className="flex items-center justify-between">
-                              <span>Packages</span>
-                              <span className="font-medium">{packagesSummary}</span>
-                            </div>
-                          )}
-                          {serverResponse.server.status && (
-                            <div className="flex items-center justify-between">
-                              <span>Status</span>
-                              <span className={`font-medium ${
-                                serverResponse.server.status === 'active' ? 'text-green-600 dark:text-green-400' : 
-                                serverResponse.server.status === 'deprecated' ? 'text-yellow-600 dark:text-yellow-400' : 
-                                'text-gray-600 dark:text-gray-400'
-                              }`}>
-                                {serverResponse.server.status}
-                              </span>
-                            </div>
-                          )}
                         </div>
-                        
                       </LinkComponent>
                     );
                   })}

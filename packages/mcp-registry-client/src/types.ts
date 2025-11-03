@@ -67,8 +67,7 @@ export interface Package {
 }
 
 export interface OfficialRegistryMetadata {
-  serverId: string;
-  versionId: string;
+  status: 'active' | 'deprecated' | 'deleted';
   publishedAt: string;
   updatedAt: string;
   isLatest: boolean;

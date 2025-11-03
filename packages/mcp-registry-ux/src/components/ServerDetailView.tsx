@@ -437,20 +437,34 @@ export function ServerDetailView({
                   <div className="space-y-3">
                     {server._meta['io.modelcontextprotocol.registry/official'] && (
                       <>
-                        <div>
-                          <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Server ID</label>
-                          <p className="text-gray-900 dark:text-gray-100 font-mono text-sm">{server._meta['io.modelcontextprotocol.registry/official'].serverId}</p>
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Version ID</label>
-                          <p className="text-gray-900 dark:text-gray-100 font-mono text-sm">{server._meta['io.modelcontextprotocol.registry/official'].versionId}</p>
-                        </div>
+                        {server._meta['io.modelcontextprotocol.registry/official'].status && (
+                          <div>
+                            <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Status</label>
+                            <p className="text-gray-900 dark:text-gray-100">
+                              <span className={`${
+                                server._meta['io.modelcontextprotocol.registry/official'].status === 'active' ? 'text-green-600 dark:text-green-400' : 
+                                server._meta['io.modelcontextprotocol.registry/official'].status === 'deprecated' ? 'text-yellow-600 dark:text-yellow-400' : 
+                                'text-gray-600 dark:text-gray-400'
+                              }`}>
+                                {server._meta['io.modelcontextprotocol.registry/official'].status}
+                              </span>
+                            </p>
+                          </div>
+                        )}
                         <div>
                           <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Published</label>
                           <p className="text-gray-900 dark:text-gray-100">
                             {new Date(server._meta['io.modelcontextprotocol.registry/official'].publishedAt).toLocaleDateString()}
                           </p>
                         </div>
+                        {server._meta['io.modelcontextprotocol.registry/official'].updatedAt && (
+                          <div>
+                            <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Updated</label>
+                            <p className="text-gray-900 dark:text-gray-100">
+                              {new Date(server._meta['io.modelcontextprotocol.registry/official'].updatedAt).toLocaleDateString()}
+                            </p>
+                          </div>
+                        )}
                         <div>
                           <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Latest Version</label>
                           <p className="text-gray-900 dark:text-gray-100">
