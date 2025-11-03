@@ -412,8 +412,8 @@ export default function TesterPage() {
         packageConfig={packageConfig}
         remoteConfig={remoteConfig}
         navigationAdapter={{
-          goToServer: () => {},
-          goToServerVersions: () => {}
+          goToServer: () => '/',
+          goToServerVersions: () => '/'
         }}
         visibleFields={visibleFields}
         showRawModal={showRawModal}

@@ -179,10 +179,10 @@ export default function ServerDetailPage() {
         })}
         navigationAdapter={{
           goToServer: (serverName: string, version: string) => {
-            router.push(`/servers/${encodeServerNameForRoute(serverName)}/${encodeURIComponent(version)}`);
+            return `/servers/${encodeServerNameForRoute(serverName)}/${encodeURIComponent(version)}`;
           },
           goToServerVersions: (serverName: string) => {
-            router.push(`/servers/${encodeServerNameForRoute(serverName)}`);
+            return `/servers/${encodeServerNameForRoute(serverName)}`;
           }
         }}
       />

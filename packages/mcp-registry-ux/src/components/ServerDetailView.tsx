@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ServerWithMeta, Package, TransportRemote, FieldConfig, ServerDetail } from '../types';
-import { NavigationAdapter } from '../adapters';
+import { NavigationAdapter, LinkProps } from '../adapters';
 import { getBestIcon } from '../utils/iconUtils';
 import { getFieldDisplayValue, getFieldDisplayLabel } from '../utils/fieldDisplay';
 import { ConfigurationForm } from './ConfigurationForm';
@@ -50,6 +50,12 @@ export function ServerDetailView({
 }: ServerDetailViewProps) {
   const [copied, setCopied] = useState(false);
   
+  const LinkComponent = navigationAdapter?.Link || (({ href, children, className }: LinkProps) => (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  ));
+  
   const hasPackageConfiguration = (pkg: Package) => {
     const transport = pkg.transport as TransportRemote;
     return pkg.runtimeHint || 
@@ -85,21 +91,12 @@ export function ServerDetailView({
                 <div className="min-w-0 flex-1">
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                     {server.name}{' '}
-                    {navigationAdapter ? (
-                      <button
-                        onClick={() => navigationAdapter.goToServerVersions(server.name)}
-                        className="text-base font-normal text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
-                      >
-                        (see all versions)
-                      </button>
-                    ) : (
-                      <a 
-                        href={`/servers/${encodeURIComponent(server.name)}`} 
-                        className="text-base font-normal text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
-                      >
-                        (see all versions)
-                      </a>
-                    )}
+                    <LinkComponent
+                      href={navigationAdapter?.goToServerVersions(server.name) || `/servers/${encodeURIComponent(server.name)}`}
+                      className="text-base font-normal text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                    >
+                      (see all versions)
+                    </LinkComponent>
                   </h1>
                   {server.title && (
                     <p className="text-lg font-semibold text-gray-800 dark:text-gray-200 mt-1">{server.title}</p>
