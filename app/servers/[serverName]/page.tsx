@@ -6,8 +6,10 @@ import Link from 'next/link';
 import { ServerResponse, getBestIcon } from '@teamsparkai/mcp-registry-ux';
 import { encodeServerNameForRoute, decodeServerNameFromRoute } from '@/registry-utils/routeUtils';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useRegistryClient } from '@teamsparkai/mcp-registry-ux';
 
 export default function ServerVersionsPage() {
+  const { client } = useRegistryClient();
   const params = useParams();
   const router = useRouter();
   const [versions, setVersions] = useState<ServerResponse[]>([]);
@@ -16,21 +18,15 @@ export default function ServerVersionsPage() {
 
   useEffect(() => {
     loadVersions();
-  }, [params.serverName]);
+  }, [params.serverName, client]);
 
   const loadVersions = async () => {
     try {
       setLoading(true);
       // Decode route param back to real server name (-- to /) before API call
       const serverName = decodeServerNameFromRoute(params.serverName as string);
-      const response = await fetch(`/api/v0/servers/${encodeURIComponent(serverName)}/versions`);
-      
-      if (!response.ok) {
-        throw new Error('Failed to load server versions');
-      }
-      
-      const data = await response.json();
-      setVersions(data.servers);
+      const response = await client.getServerVersions(serverName);
+      setVersions(response.servers);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load server versions');
     } finally {

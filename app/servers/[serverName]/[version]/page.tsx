@@ -5,8 +5,10 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { ServerWithMeta, ServerDetail, Package, TransportRemote, generateConfiguredServer, createTrimmedServer, ServerDetailView as ServerDetailViewComponent, NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
 import { encodeServerNameForRoute, decodeServerNameFromRoute } from '@/registry-utils/routeUtils';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useRegistryClient } from '@teamsparkai/mcp-registry-ux';
 
 export default function ServerDetailPage() {
+  const { client } = useRegistryClient();
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -24,7 +26,7 @@ export default function ServerDetailPage() {
 
   useEffect(() => {
     loadServer();
-  }, [params.serverName, params.version]);
+  }, [params.serverName, params.version, client]);
 
   const loadServer = async () => {
     try {
@@ -32,13 +34,8 @@ export default function ServerDetailPage() {
       // Decode route param back to real server name (-- to /) before API call
       const serverName = decodeServerNameFromRoute(params.serverName as string);
       const version = params.version as string;
-      const response = await fetch(`/api/v0/servers/${encodeURIComponent(serverName)}/versions/${encodeURIComponent(version)}`);
+      const serverResponse = await client.getServerVersion(serverName, version);
       
-      if (!response.ok) {
-        throw new Error('Failed to load server');
-      }
-      
-      const serverResponse = await response.json();
       // Unwrap ServerResponse -> ServerWithMeta for the detail view component
       // Merge server data with _meta
       const unwrappedServer: ServerWithMeta = {

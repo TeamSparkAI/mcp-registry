@@ -17,7 +17,7 @@ export class RegistryClient {
 
   constructor(config: RegistryClientConfig) {
     this.baseUrl = config.baseUrl.replace(/\/$/, ''); // Remove trailing slash
-    this.fetchFn = config.fetch || (typeof window !== 'undefined' ? window.fetch : globalThis.fetch);
+    this.fetchFn = config.fetch || (typeof window !== 'undefined' ? window.fetch.bind(window) : globalThis.fetch.bind(globalThis));
     this.timeout = config.timeout || 30000;
   }
 

@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { ServerResponse, ServerList as ServerListComponent, NavigationAdapter, LinkProps } from '@teamsparkai/mcp-registry-ux';
 import { encodeServerNameForRoute } from '@/registry-utils/routeUtils';
 import { ThemeToggle } from './components/ThemeToggle';
+import { useRegistryClient } from '@teamsparkai/mcp-registry-ux';
 
 export default function RegistryPage() {
+  const { client } = useRegistryClient();
   const [servers, setServers] = useState<ServerResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,22 +17,14 @@ export default function RegistryPage() {
 
   useEffect(() => {
     loadServerRegistry();
-  }, []);
-
-
-
+  }, [client]);
 
   const loadServerRegistry = async () => {
     try {
       setLoading(true);
-      // Fetch all servers from the API (with a high limit to get all)
-      const response = await fetch('/api/v0/servers?limit=10000');
-      if (!response.ok) {
-        throw new Error('Failed to load server registry');
-      }
-      const data = await response.json();
-      if (data.servers) {
-        setServers(data.servers);
+      const response = await client.getServers({ limit: 10000 });
+      if (response.servers) {
+        setServers(response.servers);
       } else {
         throw new Error('Invalid response format');
       }
