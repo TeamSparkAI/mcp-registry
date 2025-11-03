@@ -100,6 +100,22 @@ pnpm --filter mcp-registry-server build
 pnpm run dev
 ```
 
+### Local API Testing
+
+By default, the app uses the external registry at `https://registry.teamspark.ai/api/v0`. To test against the local API server instead, create a `.env.local` file:
+
+```bash
+# .env.local
+NEXT_PUBLIC_REGISTRY_URL=/api/v0
+```
+
+This allows you to:
+- Test API changes locally before deploying
+- Validate the local API implementation
+- Develop against local data without external dependencies
+
+Without this variable, the app uses the default external registry (useful for testing the UX package integration).
+
 ### Project Structure
 
 ```
