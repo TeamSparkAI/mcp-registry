@@ -9,12 +9,12 @@ interface ValidationIssuesProps {
 export function ValidationIssues({ issues, className = '' }: ValidationIssuesProps) {
   if (issues.length === 0) {
     return (
-      <div className={`p-4 bg-green-50 border border-green-200 rounded-lg ${className}`}>
+      <div className={`p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-lg ${className}`}>
         <div className="flex items-center">
-          <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-green-500 dark:text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-          <span className="text-green-800 font-medium">No validation issues found</span>
+          <span className="text-green-800 dark:text-green-200 font-medium">No validation issues found</span>
         </div>
       </div>
     );
@@ -29,7 +29,7 @@ export function ValidationIssues({ issues, className = '' }: ValidationIssuesPro
       {/* Summary */}
       <div className="flex items-center space-x-4 text-sm">
         {errors.length > 0 && (
-          <span className="flex items-center text-red-600">
+          <span className="flex items-center text-red-600 dark:text-red-400">
             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
             </svg>
@@ -37,7 +37,7 @@ export function ValidationIssues({ issues, className = '' }: ValidationIssuesPro
           </span>
         )}
         {warnings.length > 0 && (
-          <span className="flex items-center text-yellow-600">
+          <span className="flex items-center text-yellow-600 dark:text-yellow-400">
             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
@@ -45,7 +45,7 @@ export function ValidationIssues({ issues, className = '' }: ValidationIssuesPro
           </span>
         )}
         {infos.length > 0 && (
-          <span className="flex items-center text-blue-600">
+          <span className="flex items-center text-blue-600 dark:text-blue-400">
             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
             </svg>
@@ -57,7 +57,7 @@ export function ValidationIssues({ issues, className = '' }: ValidationIssuesPro
       {/* Issues by severity */}
       {errors.length > 0 && (
         <div className="space-y-2">
-          <h4 className="font-medium text-red-800">Errors</h4>
+          <h4 className="font-medium text-red-800 dark:text-red-300">Errors</h4>
           <div className="space-y-1">
             {errors.map((issue, index) => (
               <ValidationIssueItem key={`error-${index}`} issue={issue} />
@@ -68,7 +68,7 @@ export function ValidationIssues({ issues, className = '' }: ValidationIssuesPro
 
       {warnings.length > 0 && (
         <div className="space-y-2">
-          <h4 className="font-medium text-yellow-800">Warnings</h4>
+          <h4 className="font-medium text-yellow-800 dark:text-yellow-300">Warnings</h4>
           <div className="space-y-1">
             {warnings.map((issue, index) => (
               <ValidationIssueItem key={`warning-${index}`} issue={issue} />
@@ -79,7 +79,7 @@ export function ValidationIssues({ issues, className = '' }: ValidationIssuesPro
 
       {infos.length > 0 && (
         <div className="space-y-2">
-          <h4 className="font-medium text-blue-800">Info</h4>
+          <h4 className="font-medium text-blue-800 dark:text-blue-300">Info</h4>
           <div className="space-y-1">
             {infos.map((issue, index) => (
               <ValidationIssueItem key={`info-${index}`} issue={issue} />
@@ -119,19 +119,19 @@ function ValidationIssueItem({ issue }: { issue: ValidationIssue }) {
     switch (issue.source) {
       case 'parse':
         return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">
+          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200">
             Parse
           </span>
         );
       case 'schema':
         return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800">
+          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200">
             Schema
           </span>
         );
       case 'linter':
         return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
             Linter
           </span>
         );
@@ -141,22 +141,22 @@ function ValidationIssueItem({ issue }: { issue: ValidationIssue }) {
   const getBackgroundColor = () => {
     switch (issue.severity) {
       case 'error':
-        return 'bg-red-50 border-red-200';
+        return 'bg-red-50 dark:bg-red-900/30 border-red-200 dark:border-red-800';
       case 'warning':
-        return 'bg-yellow-50 border-yellow-200';
+        return 'bg-yellow-50 dark:bg-yellow-900/30 border-yellow-200 dark:border-yellow-800';
       case 'info':
-        return 'bg-blue-50 border-blue-200';
+        return 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800';
     }
   };
 
   const getTextColor = () => {
     switch (issue.severity) {
       case 'error':
-        return 'text-red-800';
+        return 'text-red-800 dark:text-red-200';
       case 'warning':
-        return 'text-yellow-800';
+        return 'text-yellow-800 dark:text-yellow-200';
       case 'info':
-        return 'text-blue-800';
+        return 'text-blue-800 dark:text-blue-200';
     }
   };
 
@@ -167,11 +167,11 @@ function ValidationIssueItem({ issue }: { issue: ValidationIssue }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center space-x-2 mb-1">
             {getSourceBadge()}
-            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded font-mono">
+            <code className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-1 py-0.5 rounded font-mono">
               {issue.path}
             </code>
             {issue.rule && (
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-gray-500 dark:text-gray-400">
                 ({issue.rule})
               </span>
             )}
