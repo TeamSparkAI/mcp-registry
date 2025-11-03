@@ -66,24 +66,30 @@ The package components will automatically use your Tailwind theme configuration,
 
 ## Quick Start
 
+### Using the Registry Client
+
+The package includes a `RegistryClient` that abstracts API interactions and provides a `useRegistryClient()` hook for easy access. By default, it connects to the external registry at `https://registry.teamspark.ai/api/v0`. **No setup required** - just use the hook!
+
+**Zero-configuration:** The `useRegistryClient()` hook works out of the box without any provider setup. It automatically connects to the external registry. If you need to customize the endpoint or configuration, you can optionally wrap your app with `RegistryClientProvider` (see "Customizing the Client" below).
+
 ### Basic Server List
 
 ```tsx
-import { ServerList, RegistryClient } from '@teamsparkai/mcp-registry-ux';
-import { useState } from 'react';
+import { ServerList, useRegistryClient } from '@teamsparkai/mcp-registry-ux';
+import { useState, useEffect } from 'react';
 
 function MyApp() {
+  const { client } = useRegistryClient(); // Uses default external registry (no setup needed!)
   const [servers, setServers] = useState([]);
   const [filteredServers, setFilteredServers] = useState([]);
   
-  // Fetch servers using the built-in client
+  // Fetch servers using the client
   useEffect(() => {
-    const client = new RegistryClient({ baseUrl: 'https://registry.example.com/api/v0' });
-    client.getServers().then(response => {
+    client.getServers({ limit: 10000 }).then(response => {
       setServers(response.servers);
       setFilteredServers(response.servers);
     });
-  }, []);
+  }, [client]);
 
   const navigationAdapter = {
     goToServer: (serverName, version) => {
@@ -116,24 +122,24 @@ function MyApp() {
 ### Server Detail with Configuration
 
 ```tsx
-import { ServerDetailView, generateConfiguredServer, RegistryClient } from '@teamsparkai/mcp-registry-ux';
+import { ServerDetailView, generateConfiguredServer, useRegistryClient } from '@teamsparkai/mcp-registry-ux';
 import { ServerWithMeta } from '@teamsparkai/mcp-registry-ux';
 
 function ServerPage({ serverName, version }) {
+  const { client } = useRegistryClient(); // Uses default external registry (no setup needed!)
   const [server, setServer] = useState<ServerWithMeta | null>(null);
   const [configuringPackage, setConfiguringPackage] = useState(null);
   const [packageConfig, setPackageConfig] = useState({});
 
   // Fetch server details
   useEffect(() => {
-    const client = new RegistryClient({ baseUrl: 'https://registry.example.com/api/v0' });
     client.getServerVersion(serverName, version).then(response => {
       setServer({
         ...response.server,
         _meta: response._meta
       });
     });
-  }, [serverName, version]);
+  }, [serverName, version, client]);
 
   const navigationAdapter = {
     goToServer: (name, ver) => router.push(`/servers/${name}/${ver}`),
@@ -227,35 +233,102 @@ const navigationAdapter: NavigationAdapter = {
 
 ### RegistryClient
 
-Full-featured registry API client included in the package:
+Full-featured registry API client included in the package. The client manages API interactions and abstracts your app from the specific registry endpoint.
+
+#### Default Client Behavior
+
+By default, the `RegistryClient` connects to the external registry at `https://registry.teamspark.ai/api/v0`. You can create a client instance directly:
 
 ```tsx
 import { RegistryClient } from '@teamsparkai/mcp-registry-ux';
 
+// Uses default external registry
+const client = new RegistryClient({ baseUrl: 'https://registry.teamspark.ai/api/v0' });
+
+// Or use the client directly
+const response = await client.getServers();
+```
+
+#### Using the Hook (Zero Configuration)
+
+The package exports `useRegistryClient()` hook that works out of the box:
+
+```tsx
+import { useRegistryClient } from '@teamsparkai/mcp-registry-ux';
+
+function MyComponent() {
+  const { client } = useRegistryClient(); // Automatically uses external registry
+  
+  useEffect(() => {
+    client.getServers().then(response => {
+      console.log(response.servers);
+    });
+  }, [client]);
+}
+```
+
+**No provider needed!** The hook automatically connects to `https://registry.teamspark.ai/api/v0` by default.
+
+#### Customizing the Client
+
+If you need to use a different endpoint (e.g., local API, custom registry), you have two options:
+
+**Option 1: Use the client directly**
+
+```tsx
+import { RegistryClient } from '@teamsparkai/mcp-registry-ux';
+
+// Create client with custom endpoint
 const client = new RegistryClient({
-  baseUrl: 'https://registry.example.com/api/v0',
+  baseUrl: '/api/v0', // Local API endpoint
   fetch: customFetch, // Optional: custom fetch implementation
   timeout: 30000      // Optional: request timeout in ms (default: 30000)
 });
 
-// Fetch servers
+// Use it directly
 const response = await client.getServers({ 
   search: 'github', 
   limit: 20 
 });
-
-// Fetch specific server version
-const server = await client.getServerVersion('server-name', '1.0.0');
-
-// Fetch all versions of a server
-const versions = await client.getServerVersions('server-name');
 ```
+
+**Option 2: Use the optional provider (recommended for app-wide customization)**
+
+The package exports `RegistryClientProvider` for app-wide configuration:
+
+```tsx
+import { RegistryClientProvider, useRegistryClient } from '@teamsparkai/mcp-registry-ux';
+
+// Wrap your app with the provider (optional - only if you need to override defaults)
+function App() {
+  return (
+    <RegistryClientProvider config={{ baseUrl: '/api/v0' }}>
+      <MyComponents />
+    </RegistryClientProvider>
+  );
+}
+
+// Now all components can use the hook and get your custom client
+function MyComponent() {
+  const { client } = useRegistryClient(); // Uses /api/v0 from provider
+  // ...
+}
+```
+
+**Without provider:** `useRegistryClient()` uses the default external registry (`https://registry.teamspark.ai/api/v0`).  
+**With provider:** `useRegistryClient()` uses the provider's configured client.
+
+This gives you:
+- **Zero setup** by default (works immediately)
+- **Easy customization** when needed (just wrap with provider)
+- **Consistent API** across your app (all components use the same client)
 
 Features:
 - Automatic URL encoding of server names (handles names with `/` characters)
 - Request timeout handling
 - Error handling with descriptive messages
 - Type-safe API responses
+- Default connection to external registry (no setup required)
 
 ## Components
 

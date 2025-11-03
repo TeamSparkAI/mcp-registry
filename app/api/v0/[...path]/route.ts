@@ -25,11 +25,27 @@ async function handler(request: NextRequest) {
   const result = await service.handleRequest(method, urlPath, query);
 
   // Convert to NextResponse (enables compression and Next.js features)
+  const headers = new Headers();
+  headers.set('Access-Control-Allow-Origin', '*');
+  headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  headers.set('Access-Control-Allow-Headers', 'Content-Type');
+  
   if (result.ok) {
-    return NextResponse.json(result.data, { status: result.status });
+    return NextResponse.json(result.data, { status: result.status, headers });
   } else {
-    return NextResponse.json({ error: result.error }, { status: result.status });
+    return NextResponse.json({ error: result.error }, { status: result.status, headers });
   }
 }
 
 export { handler as GET, handler as POST };
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}

@@ -9,3 +9,6 @@ export * from './types';
 
 // Export components
 export * from './components';
+
+// Export contexts
+export * from './contexts/RegistryClientContext';
