@@ -15,14 +15,14 @@ This package provides a framework-agnostic set of React components and utilities
 ## Installation
 
 ```bash
-npm install mcp-registry-ux
+npm install @teamsparkai/mcp-registry-ux
 # or
-pnpm add mcp-registry-ux
+pnpm add @teamsparkai/mcp-registry-ux
 # or
-yarn add mcp-registry-ux
+yarn add @teamsparkai/mcp-registry-ux
 ```
 
-**Note:** `@teamsparkai/mcp-registry-client` is automatically installed as a dependency. All types needed to use the UX components are re-exported from `mcp-registry-ux`, so you can import everything from this package.
+**Note:** `@teamsparkai/mcp-registry-client` is automatically installed as a dependency. All types needed to use the UX components are re-exported from `@teamsparkai/mcp-registry-ux`, so you can import everything from this package.
 
 ### Peer Dependencies
 
@@ -30,34 +30,46 @@ yarn add mcp-registry-ux
 - `react-dom`: ^18.0.0 or ^19.0.0
 - `tailwindcss`: ^3.0.0
 
-### CSS Styles
+### CSS Styles & Tailwind Integration
 
-See [Tailwind Integration Guide](./tailwind_integration.md) for detailed setup instructions.
+**📖 For complete setup instructions, see the [Tailwind Integration Guide](./tailwind_integration.md).**
 
 **Quick Setup:**
 
 1. Add package `dist/` to your Tailwind `content` paths in `tailwind.config.js`:
    ```js
-   content: [
-     // ... your paths
-     './node_modules/@teamsparkai/mcp-registry-ux/dist/**/*.{js,jsx,ts,tsx}',
-   ]
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     darkMode: 'class', // Enable dark mode support
+     content: [
+       // ... your application paths (adapt to your project structure)
+       // e.g., './src/**/*.{js,ts,jsx,tsx}', './app/**/*.{js,ts,jsx,tsx}', etc.
+       
+       // Package dist files (REQUIRED)
+       './node_modules/@teamsparkai/mcp-registry-ux/dist/**/*.{js,jsx,ts,tsx}',
+     ],
+     // ... your theme configuration
+   }
    ```
 
 2. Import the package CSS in your main CSS file (before `@tailwind` directives):
    ```css
+   /* Import package CSS (must come before @tailwind directives) */
    @import '@teamsparkai/mcp-registry-ux/input.css';
+   
    @tailwind base;
    @tailwind components;
    @tailwind utilities;
    ```
+
+The package components will automatically use your Tailwind theme configuration, including dark mode support. See the [Tailwind Integration Guide](./tailwind_integration.md) for details on theme customization and advanced configuration.
 
 ## Quick Start
 
 ### Basic Server List
 
 ```tsx
-import { ServerList, RegistryClient } from 'mcp-registry-ux';
+import { ServerList, RegistryClient } from '@teamsparkai/mcp-registry-ux';
 import { useState } from 'react';
 
 function MyApp() {
@@ -104,8 +116,8 @@ function MyApp() {
 ### Server Detail with Configuration
 
 ```tsx
-import { ServerDetailView, generateConfiguredServer, RegistryClient } from 'mcp-registry-ux';
-import { ServerWithMeta } from 'mcp-registry-ux';
+import { ServerDetailView, generateConfiguredServer, RegistryClient } from '@teamsparkai/mcp-registry-ux';
+import { ServerWithMeta } from '@teamsparkai/mcp-registry-ux';
 
 function ServerPage({ serverName, version }) {
   const [server, setServer] = useState<ServerWithMeta | null>(null);
@@ -175,7 +187,7 @@ The package is built using React only - no framework-specific dependencies. Inte
 Interface for data fetching. Use the built-in `RegistryClient` or implement your own:
 
 ```tsx
-import { RegistryAdapter, ServerListResponse, ServerResponse } from 'mcp-registry-ux';
+import { RegistryAdapter, ServerListResponse, ServerResponse } from '@teamsparkai/mcp-registry-ux';
 
 interface RegistryAdapter {
   getServers(params?: {
@@ -197,7 +209,7 @@ interface RegistryAdapter {
 Interface for routing/navigation. Integrate with your framework's router:
 
 ```tsx
-import { NavigationAdapter } from 'mcp-registry-ux';
+import { NavigationAdapter } from '@teamsparkai/mcp-registry-ux';
 
 const navigationAdapter: NavigationAdapter = {
   goToServer: (serverName: string, version: string) => {
@@ -218,7 +230,7 @@ const navigationAdapter: NavigationAdapter = {
 Full-featured registry API client included in the package:
 
 ```tsx
-import { RegistryClient } from 'mcp-registry-ux';
+import { RegistryClient } from '@teamsparkai/mcp-registry-ux';
 
 const client = new RegistryClient({
   baseUrl: 'https://registry.example.com/api/v0',
@@ -305,7 +317,7 @@ Warning component for missing required fields.
 ### Configuration Generation
 
 ```tsx
-import { generateConfiguredServer } from 'mcp-registry-ux';
+import { generateConfiguredServer } from '@teamsparkai/mcp-registry-ux';
 
 const configured = generateConfiguredServer(
   server,              // ServerWithMeta
@@ -319,7 +331,7 @@ const configured = generateConfiguredServer(
 ### Icon Utilities
 
 ```tsx
-import { getBestIcon } from 'mcp-registry-ux';
+import { getBestIcon } from '@teamsparkai/mcp-registry-ux';
 
 // Get best icon based on theme preference
 const iconSrc = getBestIcon(server.icons, 'light'); // or 'dark'
@@ -328,7 +340,7 @@ const iconSrc = getBestIcon(server.icons, 'light'); // or 'dark'
 ### Field Utilities
 
 ```tsx
-import { getFieldId, getFieldDisplayValue, getFieldDisplayLabel } from 'mcp-registry-ux';
+import { getFieldId, getFieldDisplayValue, getFieldDisplayLabel } from '@teamsparkai/mcp-registry-ux';
 
 // Generate unique field ID for form inputs
 const fieldId = getFieldId(field, 'package', index);
@@ -350,9 +362,9 @@ All types needed to use the components are exported from this package:
 - `Icon`, `RegistryMeta`
 - `FieldConfig` (UX-specific, not in types package)
 
-You can import types directly from `mcp-registry-ux`:
+You can import types directly from `@teamsparkai/mcp-registry-ux`:
 ```tsx
-import { ServerResponse, ServerDetail, Package } from 'mcp-registry-ux';
+import { ServerResponse, ServerDetail, Package } from '@teamsparkai/mcp-registry-ux';
 ```
 
 If you need types not exported by this package (e.g., `Input`, `Argument`, `Transport`), you can install and import from `@teamsparkai/mcp-registry-client` separately.

@@ -1,6 +1,6 @@
 # Tailwind CSS Integration Guide
 
-This guide explains how to integrate `@teamsparkai/mcp-registry-ux` into a Tailwind CSS application, ensuring that package components use your application's Tailwind theme configuration.
+This guide explains how to integrate `@teamsparkai/mcp-registry-ux` into a Tailwind CSS application, ensuring that package components use your application's Tailwind theme configuration (including dark mode support).
 
 ## How It Works
 
@@ -31,13 +31,17 @@ Add the package's `dist/` files to your Tailwind `content` configuration so Tail
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // Enable class-based dark mode (recommended for React apps)
+  darkMode: 'class', // or 'media' for system preference
   content: [
-    // Your application files
+    // Your application files (adapt these to your project structure)
+    // Examples (choose paths that match your app):
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    // or for src-based projects: './src/**/*.{js,ts,jsx,tsx}',
     
-    // Package dist files (REQUIRED)
+    // Package dist files (REQUIRED - add exactly as shown)
     './node_modules/@teamsparkai/mcp-registry-ux/dist/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
@@ -155,9 +159,30 @@ Any Tailwind plugins or extensions you've configured in your `tailwind.config.js
 - **Typography plugin**: If you use `@tailwindcss/typography`, package text elements will use those styles
 - **Custom utilities**: Any custom utilities you've defined will be available to package components
 
+## Dark Mode Support
+
+The package components include full dark mode support using Tailwind's `dark:` variants. To enable dark mode:
+
+1. Configure dark mode in your `tailwind.config.js`:
+   ```javascript
+   module.exports = {
+     darkMode: 'class', // Enable class-based dark mode
+     // ...
+   }
+   ```
+
+2. Toggle the `dark` class on your root element (typically `<html>`) based on user preference:
+   ```tsx
+   // Example: Toggle dark mode
+   document.documentElement.classList.toggle('dark');
+   ```
+
+All package components will automatically adapt to dark mode when the `dark` class is present on your root element.
+
 ## Benefits
 
 ✅ **Full Theme Compatibility** - Package components automatically use your theme values  
+✅ **Dark Mode Support** - All components include dark mode variants  
 ✅ **No Conflicts** - Single CSS output with no duplicate class definitions  
 ✅ **Plugin Support** - Your Tailwind plugins apply to package components  
 ✅ **Maintainable** - You control all styling through your Tailwind config  
