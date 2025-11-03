@@ -21870,6 +21870,96 @@
           "url": "https://github.com/Asthanaji05/MCP_Pokemon",
           "source": "github"
         },
+        "version": "1.10.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.10.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T07:14:19.580163Z",
+          "updatedAt": "2025-11-02T07:14:19.580163Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.11.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.11.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T07:16:42.1918Z",
+          "updatedAt": "2025-11-02T07:16:42.1918Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.12.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.12.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T07:21:36.863462Z",
+          "updatedAt": "2025-11-02T07:21:36.863462Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
         "version": "1.2.7",
         "packages": [
           {
@@ -22007,7 +22097,127 @@
           "status": "active",
           "publishedAt": "2025-11-01T17:30:39.886078Z",
           "updatedAt": "2025-11-01T17:30:39.886078Z",
-          "isLatest": true
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.5.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.5.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T06:25:37.381227Z",
+          "updatedAt": "2025-11-02T06:25:37.381227Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.7.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.7.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T06:57:02.388523Z",
+          "updatedAt": "2025-11-02T06:57:02.388523Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.8.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.8.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T07:06:25.790947Z",
+          "updatedAt": "2025-11-02T07:06:25.790947Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Asthanaji05/pokeapi-mcp-server",
+        "description": "Empower your AI with Pokédex powers! Fetch and explore Pokémon data seamlessly via PokeAPI.",
+        "repository": {
+          "url": "https://github.com/Asthanaji05/MCP_Pokemon",
+          "source": "github"
+        },
+        "version": "1.9.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "pokeapi-mcp-server",
+            "version": "1.9.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T07:10:33.355751Z",
+          "updatedAt": "2025-11-02T07:10:33.355751Z",
+          "isLatest": false
         }
       }
     },
@@ -22286,6 +22496,37 @@
           "status": "active",
           "publishedAt": "2025-10-06T22:06:15.773924Z",
           "updatedAt": "2025-10-06T22:06:15.773924Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.BenAHammond/code-auditor-mcp",
+        "description": "Code Quality Auditor: Analyze code for SOLID principles, DRY violations, and more",
+        "repository": {
+          "url": "https://github.com/BenAHammond/code-auditor-mcp",
+          "source": "github"
+        },
+        "version": "2.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "code-auditor-mcp",
+            "version": "2.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T18:28:45.941423Z",
+          "updatedAt": "2025-11-02T18:28:45.941423Z",
           "isLatest": true
         }
       }
@@ -29202,6 +29443,44 @@
           "status": "active",
           "publishedAt": "2025-10-31T11:02:37.233096Z",
           "updatedAt": "2025-10-31T11:02:37.233096Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-aktools",
+        "description": "MCP Server for stock and crypto",
+        "title": "AkTools MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-aktools",
+          "source": "github"
+        },
+        "version": "0.1.11",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-aktools",
+            "version": "0.1.11",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-aktools:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T08:57:11.728246Z",
+          "updatedAt": "2025-11-02T08:57:11.728246Z",
           "isLatest": true
         }
       }
@@ -29617,6 +29896,44 @@
           "status": "active",
           "publishedAt": "2025-10-28T06:07:06.819101Z",
           "updatedAt": "2025-10-28T06:07:06.819101Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-notify",
+        "description": "MCP Server for notify",
+        "title": "Notify MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-notify",
+          "source": "github"
+        },
+        "version": "0.1.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-notify",
+            "version": "0.1.4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-notify:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T09:53:25.104649Z",
+          "updatedAt": "2025-11-02T09:53:25.104649Z",
           "isLatest": true
         }
       }
@@ -33872,6 +34189,754 @@
           "status": "active",
           "publishedAt": "2025-10-31T23:11:14.156008Z",
           "updatedAt": "2025-10-31T23:11:14.156008Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aimoda/rigol-dho824-mcp",
+        "description": "Control and query Rigol DHO824 oscilloscope for waveform capture and measurements",
+        "title": "Rigol DHO824 Oscilloscope",
+        "repository": {
+          "url": "https://github.com/aimoda/rigol-dho824-mcp",
+          "source": "github",
+          "id": "1043349028"
+        },
+        "version": "0.1.138-main.1a22ff2",
+        "websiteUrl": "https://aimoda.github.io/rigol-dho824-mcp/",
+        "icons": [
+          {
+            "src": "https://rigol-dho824-mcp.email.ai.moda/bimi/logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aimoda/rigol-dho824-mcp:0.1.138-main.1a22ff2",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Bind mount a host directory into the container",
+                "type": "named",
+                "name": "-v"
+              },
+              {
+                "description": "Bind mount path for waveform and screenshot data",
+                "value": "/tmp/rigol-data:/tmp/rigol",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_RESOURCE",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "VISA_TIMEOUT",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_BEEPER_ENABLED",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_TEMP_DIR",
+                "type": "positional"
+              },
+              {
+                "description": "The container image to run",
+                "value": "ghcr.io/aimoda/rigol-dho824-mcp",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              },
+              {
+                "description": "Host-side path for returned file paths. The container writes to /tmp/rigol internally and translates paths to this value in responses. Must match the host path in your -v mount. Required for Docker usage.",
+                "isRequired": true,
+                "format": "filepath",
+                "placeholder": "/tmp/rigol-data",
+                "name": "RIGOL_TEMP_DIR"
+              }
+            ]
+          },
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "rigol-dho824-mcp",
+            "version": "0.1.138",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "buildInfo": {
+              "imageSha256": "309aa6ebcf17eafb7d47f8e861e6d6296792910079bab5f48a17dd524d92ce5b"
+            },
+            "tool": "github-actions",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T14:02:19.285548Z",
+          "updatedAt": "2025-11-02T14:02:19.285548Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aimoda/rigol-dho824-mcp",
+        "description": "Control and query Rigol DHO824 oscilloscope for waveform capture and measurements",
+        "title": "Rigol DHO824 Oscilloscope",
+        "repository": {
+          "url": "https://github.com/aimoda/rigol-dho824-mcp",
+          "source": "github",
+          "id": "1043349028"
+        },
+        "version": "0.1.139-main.cab1ce4",
+        "websiteUrl": "https://aimoda.github.io/rigol-dho824-mcp/",
+        "icons": [
+          {
+            "src": "https://rigol-dho824-mcp.email.ai.moda/bimi/logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aimoda/rigol-dho824-mcp:0.1.139-main.cab1ce4",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Bind mount a host directory into the container",
+                "type": "named",
+                "name": "-v"
+              },
+              {
+                "description": "Bind mount path for waveform and screenshot data",
+                "value": "/tmp/rigol-data:/tmp/rigol",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_RESOURCE",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "VISA_TIMEOUT",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_BEEPER_ENABLED",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_TEMP_DIR",
+                "type": "positional"
+              },
+              {
+                "description": "The container image to run",
+                "value": "ghcr.io/aimoda/rigol-dho824-mcp",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              },
+              {
+                "description": "Host-side path for returned file paths. The container writes to /tmp/rigol internally and translates paths to this value in responses. Must match the host path in your -v mount. Required for Docker usage.",
+                "isRequired": true,
+                "format": "filepath",
+                "placeholder": "/tmp/rigol-data",
+                "name": "RIGOL_TEMP_DIR"
+              }
+            ]
+          },
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "rigol-dho824-mcp",
+            "version": "0.1.139",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "buildInfo": {
+              "imageSha256": "aa3ff7d422546171dbb20faeabde46401848037816d5c4ba7881614fdf375a67"
+            },
+            "tool": "github-actions",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T14:22:38.993719Z",
+          "updatedAt": "2025-11-02T14:22:38.993719Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aimoda/rigol-dho824-mcp",
+        "description": "Control and query Rigol DHO824 oscilloscope for waveform capture and measurements",
+        "title": "Rigol DHO824 Oscilloscope",
+        "repository": {
+          "url": "https://github.com/aimoda/rigol-dho824-mcp",
+          "source": "github",
+          "id": "1043349028"
+        },
+        "version": "0.1.142-main.ce02f4e",
+        "websiteUrl": "https://aimoda.github.io/rigol-dho824-mcp/",
+        "icons": [
+          {
+            "src": "https://rigol-dho824-mcp.email.ai.moda/bimi/logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aimoda/rigol-dho824-mcp:0.1.142-main.ce02f4e",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Bind mount a host directory into the container",
+                "type": "named",
+                "name": "-v"
+              },
+              {
+                "description": "Bind mount path for waveform and screenshot data",
+                "value": "/tmp/rigol-data:/tmp/rigol",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_RESOURCE",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "VISA_TIMEOUT",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_BEEPER_ENABLED",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_TEMP_DIR",
+                "type": "positional"
+              },
+              {
+                "description": "The container image to run",
+                "value": "ghcr.io/aimoda/rigol-dho824-mcp",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              },
+              {
+                "description": "Host-side path for returned file paths. The container writes to /tmp/rigol internally and translates paths to this value in responses. Must match the host path in your -v mount. Required for Docker usage.",
+                "isRequired": true,
+                "format": "filepath",
+                "placeholder": "/tmp/rigol-data",
+                "name": "RIGOL_TEMP_DIR"
+              }
+            ]
+          },
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "rigol-dho824-mcp",
+            "version": "0.1.142",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "buildInfo": {
+              "imageSha256": "30eddcb590666c4423cb6399be3f5ddf808c9aae3bb7141a71f2d948383bcd46"
+            },
+            "tool": "github-actions",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T20:31:44.573512Z",
+          "updatedAt": "2025-11-02T20:31:44.573512Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aimoda/rigol-dho824-mcp",
+        "description": "Control and query Rigol DHO824 oscilloscope for waveform capture and measurements",
+        "title": "Rigol DHO824 Oscilloscope",
+        "repository": {
+          "url": "https://github.com/aimoda/rigol-dho824-mcp",
+          "source": "github",
+          "id": "1043349028"
+        },
+        "version": "0.1.143-main.2b177ae",
+        "websiteUrl": "https://aimoda.github.io/rigol-dho824-mcp/",
+        "icons": [
+          {
+            "src": "https://rigol-dho824-mcp.email.ai.moda/bimi/logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aimoda/rigol-dho824-mcp:0.1.143-main.2b177ae",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Bind mount a host directory into the container",
+                "type": "named",
+                "name": "-v"
+              },
+              {
+                "description": "Bind mount path for waveform and screenshot data",
+                "value": "/tmp/rigol-data:/tmp/rigol",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_RESOURCE",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "VISA_TIMEOUT",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_BEEPER_ENABLED",
+                "type": "positional"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Environment variable name",
+                "value": "RIGOL_TEMP_DIR",
+                "type": "positional"
+              },
+              {
+                "description": "The container image to run",
+                "value": "ghcr.io/aimoda/rigol-dho824-mcp",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              },
+              {
+                "description": "Host-side path for returned file paths. The container writes to /tmp/rigol internally and translates paths to this value in responses. Must match the host path in your -v mount. Required for Docker usage.",
+                "isRequired": true,
+                "format": "filepath",
+                "placeholder": "/tmp/rigol-data",
+                "name": "RIGOL_TEMP_DIR"
+              }
+            ]
+          },
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "rigol-dho824-mcp",
+            "version": "0.1.143",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "VISA resource string for connecting to the oscilloscope (e.g., 'TCPIP0::192.168.1.100::inst0::INSTR').",
+                "isRequired": true,
+                "placeholder": "TCPIP0::192.168.1.100::inst0::INSTR",
+                "name": "RIGOL_RESOURCE"
+              },
+              {
+                "description": "Communication timeout in milliseconds",
+                "format": "number",
+                "default": "30000",
+                "name": "VISA_TIMEOUT"
+              },
+              {
+                "description": "Enable or disable oscilloscope beeper sounds",
+                "format": "boolean",
+                "default": "false",
+                "choices": [
+                  "true",
+                  "false"
+                ],
+                "name": "RIGOL_BEEPER_ENABLED"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "buildInfo": {
+              "imageSha256": "015ce7258ddd28720acdaee31b643bd9ecb45a2d1ab95074902d7d5fe1946a14"
+            },
+            "tool": "github-actions",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T21:24:26.031162Z",
+          "updatedAt": "2025-11-02T21:24:26.031162Z",
           "isLatest": true
         }
       }
@@ -49509,6 +50574,38 @@
           "status": "active",
           "publishedAt": "2025-10-28T00:39:35.755478Z",
           "updatedAt": "2025-10-28T00:39:35.755478Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.gattjoe/ACMS",
+        "description": "Apple Container MCP Server (ACMS) provides access to Apple's container CLI tool on macOS",
+        "repository": {
+          "url": "https://github.com/gattjoe/ACMS",
+          "source": "github"
+        },
+        "version": "0.0.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "ACMS",
+            "version": "0.0.5",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:8765/mcp"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T03:00:09.737281Z",
+          "updatedAt": "2025-11-02T03:00:09.737281Z",
           "isLatest": true
         }
       }
@@ -61927,6 +63024,90 @@
           "status": "active",
           "publishedAt": "2025-10-07T02:03:49.611586Z",
           "updatedAt": "2025-10-07T02:03:49.611586Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.schemacrawler/schemacrawler-ai",
+        "description": "Enables natural language schema queries — explore tables, keys, procedures, and get SQL help fast",
+        "repository": {
+          "url": "https://github.com/schemacrawler/SchemaCrawler-AI",
+          "source": "github"
+        },
+        "version": "v16.29.1-2",
+        "websiteUrl": "https://schemacrawler.github.io",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/schemacrawler/schemacrawler-ai:v16.29.1-1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "MCP Server transport type - valid values are 'http' or 'stdio', defaulting to 'stdio'.",
+                "format": "string",
+                "name": "SCHCRWLR_MCP_SERVER_TRANSPORT"
+              },
+              {
+                "description": "Database user name. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_USER"
+              },
+              {
+                "description": "Database user password. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_PASSWORD"
+              },
+              {
+                "description": "JDBC URL for database connection. If this is provided, the server, host, port and database are not used.",
+                "format": "string",
+                "name": "SCHCRWLR_JDBC_URL"
+              },
+              {
+                "description": "SchemaCrawler database plugin, for example, 'sqlserver' or 'sqlite'. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_SERVER"
+              },
+              {
+                "description": "Database host. Defaults to localhost. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_HOST"
+              },
+              {
+                "description": "Database port. Defaults to the default port for the server type. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_PORT"
+              },
+              {
+                "description": "Database to connect to (optional). Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_DATABASE"
+              },
+              {
+                "description": "How much database metadata to retrieve. Values are 'minimum', 'standard', 'detailed' or 'maximum'.",
+                "format": "string",
+                "name": "SCHCRWLR_INFO_LEVEL"
+              },
+              {
+                "description": "Logging verbosity level. Values are 'SEVERE', 'WARNING', 'INFO', 'CONFIG', or 'FINE'.",
+                "format": "string",
+                "name": "SCHCRWLR_LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T20:17:48.39404Z",
+          "updatedAt": "2025-11-02T20:17:48.39404Z",
           "isLatest": true
         }
       }
@@ -62298,6 +63479,192 @@
           "status": "active",
           "publishedAt": "2025-10-31T17:51:46.571565Z",
           "updatedAt": "2025-10-31T17:51:46.571565Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shinpr/mcp-local-rag",
+        "description": "Easy-to-setup local RAG server with minimal configuration",
+        "repository": {
+          "url": "https://github.com/shinpr/mcp-local-rag",
+          "source": "github"
+        },
+        "version": "0.1.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-local-rag",
+            "version": "0.1.4",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Base directory for document storage (defaults to current working directory)",
+                "format": "string",
+                "name": "BASE_DIR"
+              },
+              {
+                "description": "Path to LanceDB database directory (defaults to ./lancedb/)",
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Directory where Transformers.js models are cached (defaults to ./models/)",
+                "format": "string",
+                "name": "CACHE_DIR"
+              },
+              {
+                "description": "Embedding model name (defaults to Xenova/all-MiniLM-L6-v2)",
+                "format": "string",
+                "name": "MODEL_NAME"
+              },
+              {
+                "description": "Maximum file size in bytes (defaults to 104857600 / 100MB)",
+                "format": "string",
+                "name": "MAX_FILE_SIZE"
+              },
+              {
+                "description": "Text chunk size for splitting documents (defaults to 512)",
+                "format": "string",
+                "name": "CHUNK_SIZE"
+              },
+              {
+                "description": "Overlap between consecutive chunks (defaults to 100)",
+                "format": "string",
+                "name": "CHUNK_OVERLAP"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T06:39:44.525019Z",
+          "updatedAt": "2025-11-02T06:39:44.525019Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shinpr/mcp-local-rag",
+        "description": "Easy-to-setup local RAG server with minimal configuration",
+        "repository": {
+          "url": "https://github.com/shinpr/mcp-local-rag",
+          "source": "github"
+        },
+        "version": "0.1.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-local-rag",
+            "version": "0.1.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Base directory for document storage (defaults to current working directory)",
+                "format": "string",
+                "name": "BASE_DIR"
+              },
+              {
+                "description": "Path to LanceDB database directory (defaults to ./lancedb/)",
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Directory where Transformers.js models are cached (defaults to ./models/)",
+                "format": "string",
+                "name": "CACHE_DIR"
+              },
+              {
+                "description": "Embedding model name (defaults to Xenova/all-MiniLM-L6-v2)",
+                "format": "string",
+                "name": "MODEL_NAME"
+              },
+              {
+                "description": "Maximum file size in bytes (defaults to 104857600 / 100MB)",
+                "format": "string",
+                "name": "MAX_FILE_SIZE"
+              },
+              {
+                "description": "Text chunk size for splitting documents (defaults to 512)",
+                "format": "string",
+                "name": "CHUNK_SIZE"
+              },
+              {
+                "description": "Overlap between consecutive chunks (defaults to 100)",
+                "format": "string",
+                "name": "CHUNK_OVERLAP"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T09:10:14.925884Z",
+          "updatedAt": "2025-11-02T09:10:14.925884Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shinpr/sub-agents-mcp",
+        "description": "MCP server for delegating tasks to specialized AI assistants in Cursor and other tools",
+        "repository": {
+          "url": "https://github.com/shinpr/sub-agents-mcp",
+          "source": "github"
+        },
+        "version": "0.1.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "sub-agents-mcp",
+            "version": "0.1.4",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Absolute path to the directory containing agent definition files (.md or .txt)",
+                "isRequired": true,
+                "format": "string",
+                "name": "AGENTS_DIR"
+              },
+              {
+                "description": "Type of AI CLI to use: 'cursor' or 'claude'",
+                "isRequired": true,
+                "format": "string",
+                "name": "AGENT_TYPE"
+              },
+              {
+                "description": "Maximum execution time for agents in milliseconds (default: 300000, max: 600000)",
+                "format": "string",
+                "name": "EXECUTION_TIMEOUT_MS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T04:38:51.530175Z",
+          "updatedAt": "2025-11-02T04:38:51.530175Z",
           "isLatest": true
         }
       }
@@ -62769,6 +64136,47 @@
           "status": "active",
           "publishedAt": "2025-09-09T07:06:26.344648Z",
           "updatedAt": "2025-09-09T07:06:26.344648Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sumup/mcp",
+        "description": "Tools to explore SumUp accounts, payments, customers, and payouts.",
+        "title": "SumUp MCP Server",
+        "repository": {
+          "url": "https://github.com/sumup/sumup-agent-toolkit",
+          "source": "github",
+          "subfolder": "mcp"
+        },
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@sumup/mcp",
+            "version": "0.1.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "SumUp API key with permissions for the requested operations.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "SUMUP_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T09:23:34.97206Z",
+          "updatedAt": "2025-11-02T09:23:34.97206Z",
           "isLatest": true
         }
       }
@@ -66694,6 +68102,77 @@
           "status": "active",
           "publishedAt": "2025-10-25T20:00:28.362753Z",
           "updatedAt": "2025-10-25T20:00:28.362753Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xorrkaz/cml-mcp",
+        "description": "An MCP server that provides access to common Cisco Modeling Labs (CML) operations.",
+        "title": "Cisco Modeling Labs (CML)",
+        "repository": {
+          "url": "https://github.com/xorrkaz/cml-mcp",
+          "source": "github"
+        },
+        "version": "0.12.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "cml-mcp",
+            "version": "0.12.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL for the CML Server",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_URL"
+              },
+              {
+                "description": "Username for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_USERNAME"
+              },
+              {
+                "description": "Password for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CML_PASSWORD"
+              },
+              {
+                "description": "Username for authentication to devices running in CML",
+                "format": "string",
+                "name": "PYATS_USERNAME"
+              },
+              {
+                "description": "Password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_PASSWORD"
+              },
+              {
+                "description": "Enable password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_AUTH_PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T22:33:14.955019Z",
+          "updatedAt": "2025-11-02T22:33:14.955019Z",
           "isLatest": true
         }
       }
@@ -67220,6 +68699,36 @@
           "status": "active",
           "publishedAt": "2025-10-21T06:10:48.210915Z",
           "updatedAt": "2025-10-21T06:10:48.210915Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.yarnabrina/mcp-learning",
+        "description": "MCP server that can perform basic arithmetic operations and parse/evaluate arithmetic expressions.",
+        "repository": {
+          "url": "https://github.com/yarnabrina/learn-model-context-protocol",
+          "source": "github"
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-learning",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-02T15:43:14.313963Z",
+          "updatedAt": "2025-11-02T15:43:14.313963Z",
           "isLatest": true
         }
       }
@@ -69862,6 +71371,6 @@
     }
   ],
   "metadata": {
-    "count": 1516
+    "count": 1538
   }
 }
