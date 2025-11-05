@@ -13234,6 +13234,67 @@
           "status": "active",
           "publishedAt": "2025-10-21T12:30:16.003976Z",
           "updatedAt": "2025-10-21T12:30:16.003976Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.codescene/codescene-mcp-server",
+        "description": "An MCP server that provides CodeScene Code Health analysis tools.",
+        "repository": {
+          "url": "https://github.com/codescene-oss/codescene-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/codescene/codescene-mcp:latest",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Mount the path to code to be analysed by CodeScene",
+                "isRequired": true,
+                "value": "type=bind,src={source_path},dst=/mount/,ro",
+                "variables": {
+                  "source_path": {
+                    "description": "Path to code to be analysed by CodeScene",
+                    "isRequired": true,
+                    "format": "filepath"
+                  }
+                },
+                "type": "named",
+                "name": "--mount"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "CodeScene API Token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CS_ACCESS_TOKEN"
+              },
+              {
+                "description": "CodeScene Path to code",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CS_MOUNT_PATH"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T13:50:39.80944Z",
+          "updatedAt": "2025-11-04T13:50:39.80944Z",
           "isLatest": true
         }
       }
@@ -13658,6 +13719,147 @@
           "status": "active",
           "publishedAt": "2025-10-05T06:53:01.577028Z",
           "updatedAt": "2025-10-05T06:53:01.577028Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.docfork/docfork-mcp",
+        "description": "Up-to-date documentation to 9,000+ libraries for devs and AI agents.",
+        "repository": {
+          "url": "https://github.com/docfork/docfork-mcp",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "icons": [
+          {
+            "src": "https://mcp.docfork.com/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "48x48",
+              "96x96",
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "docfork",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.docfork.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T12:32:50.302169Z",
+          "updatedAt": "2025-11-04T12:32:50.302169Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.docfork/docfork-mcp",
+        "description": "Up-to-date documentation to 9,000+ libraries for devs and AI agents.",
+        "repository": {
+          "url": "https://github.com/docfork/docfork-mcp",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "icons": [
+          {
+            "src": "https://mcp.docfork.com/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "48x48",
+              "96x96",
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "docfork",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.docfork.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T12:33:52.063007Z",
+          "updatedAt": "2025-11-04T12:33:52.063007Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.docfork/docfork-mcp",
+        "description": "Up-to-date documentation to 9,000+ libraries for devs and AI agents.",
+        "repository": {
+          "url": "https://github.com/docfork/docfork-mcp",
+          "source": "github"
+        },
+        "version": "1.0.4",
+        "icons": [
+          {
+            "src": "https://mcp.docfork.com/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "48x48",
+              "96x96",
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "docfork",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.docfork.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T12:35:13.780332Z",
+          "updatedAt": "2025-11-04T12:35:13.780332Z",
           "isLatest": true
         }
       }
@@ -14841,6 +15043,38 @@
           "status": "active",
           "publishedAt": "2025-10-02T04:59:37.530539Z",
           "updatedAt": "2025-10-02T04:59:37.530539Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.glean/mcp",
+        "description": "Remote MCP Server that securely connects Glean Enterprise Knowledge with your IDE, LLM, or agents.",
+        "title": "Glean",
+        "repository": {},
+        "version": "0.5.0",
+        "websiteUrl": "https://docs.glean.com/administration/platform/mcp/enable-mcp-servers",
+        "icons": [
+          {
+            "src": "https://developers.glean.com/img/glean-logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://developers.glean.com/img/glean-logo.png",
+            "mimeType": "image/png"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T23:56:15.139119Z",
+          "updatedAt": "2025-11-04T23:56:15.139119Z",
           "isLatest": true
         }
       }
@@ -17331,6 +17565,60 @@
           "status": "active",
           "publishedAt": "2025-09-15T16:48:08.37917Z",
           "updatedAt": "2025-09-15T16:48:08.37917Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.scoutapm/scout-mcp-local",
+        "description": "An MCP server for Scout Monitoring data interactions.",
+        "repository": {
+          "url": "https://github.com/scoutapp/scout-mcp-local",
+          "source": "github"
+        },
+        "version": "2025.11.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "scout-mcp-local",
+            "version": "2025.11.4",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for Scout Monitoring.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SCOUT_API_KEY"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/scoutapp/scout-mcp-local:latest",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for Scout Monitoring.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "SCOUT_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T19:01:23.101955Z",
+          "updatedAt": "2025-11-04T19:01:23.101955Z",
           "isLatest": true
         }
       }
@@ -20583,6 +20871,86 @@
           "status": "active",
           "publishedAt": "2025-10-17T17:31:54.847262Z",
           "updatedAt": "2025-10-17T17:31:54.847262Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "finance.orbt/intelligence",
+        "description": "Bitcoin-native credit ratings. ⚡ Lightning pay-per-query (99 sats) or API subscriptions.",
+        "title": "ORBT - The first Bitcoin-native credit rating agency!",
+        "version": "3.2.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@orbt-finance/mcp-server",
+            "version": "3.2.1",
+            "runtimeHint": "node",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "OPTIONAL! Use Lightning pay-per-query (99 sats) OR get an API key at https://orbt.finance/mcp/register",
+                "isSecret": true,
+                "name": "ORBT_API_KEY"
+              },
+              {
+                "description": "ORBT API endpoint (default: https://orbt.finance)",
+                "name": "ORBT_API_URL"
+              }
+            ]
+          }
+        ],
+        "_meta": {}
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T19:20:03.632766Z",
+          "updatedAt": "2025-11-04T19:20:03.632766Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "finance.orbt/intelligence",
+        "description": "Bitcoin-native credit ratings. ⚡ Lightning pay-per-query (99 sats) or API subscriptions.",
+        "title": "ORBT - The first Bitcoin-native credit rating agency!",
+        "version": "3.2.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@orbt-finance/mcp-server",
+            "version": "3.2.3",
+            "runtimeHint": "node",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "OPTIONAL! Use Lightning pay-per-query (99 sats) OR visit https://orbt.finance for API access",
+                "isSecret": true,
+                "name": "ORBT_API_KEY"
+              },
+              {
+                "description": "ORBT API endpoint (default: https://orbt.finance)",
+                "name": "ORBT_API_URL"
+              }
+            ]
+          }
+        ],
+        "_meta": {}
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T20:17:29.487419Z",
+          "updatedAt": "2025-11-04T20:17:29.487419Z",
           "isLatest": true
         }
       }
@@ -54381,6 +54749,52 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jkawamoto/mcp-memos",
+        "description": "An MCP server for interacting with Memos.",
+        "repository": {
+          "url": "https://github.com/jkawamoto/mcp-memos",
+          "source": "github"
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/jkawamoto/mcp-memos/releases/download/v0.1.0/mcp-memos.mcpb",
+            "fileSha256": "bb37c2bd76fd1f7d9df536fbc24ec5fab3bc158c3fb5e407e060a3c38234ee2b",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Memos API endpoint",
+                "isRequired": true,
+                "format": "string",
+                "default": "localhost:5230",
+                "name": "MEMOS_API_ENDPOINT"
+              },
+              {
+                "description": "Memos API token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "MEMOS_API_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T16:46:37.385025Z",
+          "updatedAt": "2025-11-04T16:46:37.385025Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.jkawamoto/mcp-youtube-transcript",
         "description": "An MCP server retrieving transcripts of YouTube videos",
@@ -55680,6 +56094,86 @@
           "status": "active",
           "publishedAt": "2025-09-16T01:51:47.021732Z",
           "updatedAt": "2025-09-16T01:51:47.021732Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.kkjdaniel/bgg-mcp",
+        "description": "BoardGameGeek MCP server providing access to BGG API data through standardized tools",
+        "title": "BoardGameGeek MCP Server",
+        "repository": {
+          "url": "https://github.com/kkjdaniel/bgg-mcp",
+          "source": "github"
+        },
+        "version": "1.5.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/kdaniel/bgg-mcp:1.5.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your BoardGameGeek username for references such as ME or MY in prompts",
+                "name": "BGG_USERNAME"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T10:35:40.931273Z",
+          "updatedAt": "2025-11-04T10:35:40.931273Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.kkjdaniel/bgg-mcp",
+        "description": "BoardGameGeek MCP server providing access to BGG API data through standardized tools",
+        "title": "BoardGameGeek MCP Server",
+        "repository": {
+          "url": "https://github.com/kkjdaniel/bgg-mcp",
+          "source": "github"
+        },
+        "version": "1.5.1",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/kdaniel/bgg-mcp:1.5.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "API key for BoardGameGeek authentication (recommended). Obtain from https://boardgamegeek.com/applications",
+                "name": "BGG_API_KEY"
+              },
+              {
+                "description": "Cookie string for BGG authentication (alternative to API key). Format: 'bggusername=user; bggpassword=pass; SessionID=xyz'",
+                "name": "BGG_COOKIE"
+              },
+              {
+                "description": "Your BoardGameGeek username for references such as ME or MY in prompts",
+                "name": "BGG_USERNAME"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T10:48:29.655959Z",
+          "updatedAt": "2025-11-04T10:48:29.655959Z",
           "isLatest": true
         }
       }
@@ -61527,6 +62021,27 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.retailbox-automation/clickup-mcp",
+        "description": "Audit ClickUp workspaces: spaces, folders, lists, custom fields, tasks, and views.",
+        "title": "ClickUp MCP Server",
+        "repository": {
+          "url": "https://github.com/retailbox-automation/clickup-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T23:06:20.120235Z",
+          "updatedAt": "2025-11-04T23:06:20.120235Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.rfdez/pvpc-mcp-server",
         "description": "Fetch the Voluntary Price for the Small Consumer (PVPC) published daily by Red Eléctrica.",
@@ -63680,6 +64195,95 @@
           "status": "active",
           "publishedAt": "2025-11-02T20:17:48.39404Z",
           "updatedAt": "2025-11-02T20:17:48.39404Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.schemacrawler/schemacrawler-ai",
+        "description": "Enables natural language schema queries — explore tables, keys, procedures, and get SQL help fast",
+        "repository": {
+          "url": "https://github.com/schemacrawler/SchemaCrawler-AI",
+          "source": "github"
+        },
+        "version": "v17.1.4-1",
+        "websiteUrl": "https://schemacrawler.github.io",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/schemacrawler/schemacrawler-ai:v17.1.4-1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "MCP Server transport type - valid values are 'http' or 'stdio', defaulting to 'stdio'.",
+                "format": "string",
+                "name": "SCHCRWLR_MCP_SERVER_TRANSPORT"
+              },
+              {
+                "description": "Database user name. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_USER"
+              },
+              {
+                "description": "Database user password. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_PASSWORD"
+              },
+              {
+                "description": "JDBC URL for database connection. If this is provided, the server, host, port and database are not used.",
+                "format": "string",
+                "name": "SCHCRWLR_JDBC_URL"
+              },
+              {
+                "description": "SchemaCrawler database plugin, for example, 'sqlserver' or 'sqlite'. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_SERVER"
+              },
+              {
+                "description": "Database host. Defaults to localhost. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_HOST"
+              },
+              {
+                "description": "Database port. Defaults to the default port for the server type. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_PORT"
+              },
+              {
+                "description": "Database to connect to (optional). Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_DATABASE"
+              },
+              {
+                "description": "How much database metadata to retrieve. Values are 'minimum', 'standard', 'detailed' or 'maximum'.",
+                "format": "string",
+                "name": "SCHCRWLR_INFO_LEVEL"
+              },
+              {
+                "description": "Logging verbosity level. Values are 'SEVERE', 'WARNING', 'INFO', 'CONFIG', or 'FINE'.",
+                "format": "string",
+                "name": "SCHCRWLR_LOG_LEVEL"
+              },
+              {
+                "description": "MCP Server tools to exclude, as a comma-separated list.",
+                "format": "string",
+                "name": "SCHCRWLR_EXCLUDE_TOOLS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-04T13:29:41.051497Z",
+          "updatedAt": "2025-11-04T13:29:41.051497Z",
           "isLatest": true
         }
       }
@@ -72092,6 +72696,6 @@
     }
   ],
   "metadata": {
-    "count": 1557
+    "count": 1570
   }
 }
