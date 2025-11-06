@@ -15883,6 +15883,75 @@
           "status": "active",
           "publishedAt": "2025-10-15T07:44:42.399935Z",
           "updatedAt": "2025-10-15T07:44:42.399935Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.iunera/druid-mcp-server",
+        "description": "AI-powered MCP server for Apache Druid cluster management and analytic",
+        "repository": {
+          "url": "https://github.com/iunera/druid-mcp-server",
+          "source": "github"
+        },
+        "version": "1.5.2",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/iunera/druid-mcp-server:1.5.2",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Druid router URL for connecting to the Druid cluster",
+                "isRequired": true,
+                "format": "string",
+                "name": "DRUID_ROUTER_URL"
+              },
+              {
+                "description": "Druid coordinator URL for querying metadata endpoints (optional)",
+                "format": "string",
+                "name": "DRUID_COORDINATOR_URL"
+              },
+              {
+                "description": "Username for Druid authentication (optional)",
+                "format": "string",
+                "name": "DRUID_AUTH_USERNAME"
+              },
+              {
+                "description": "Password for Druid authentication (optional)",
+                "format": "string",
+                "isSecret": true,
+                "name": "DRUID_AUTH_PASSWORD"
+              },
+              {
+                "description": "Enable SSL/TLS support for Druid connections",
+                "format": "boolean",
+                "name": "DRUID_SSL_ENABLED"
+              },
+              {
+                "description": "Skip SSL certificate verification (for development/testing only)",
+                "format": "boolean",
+                "name": "DRUID_SSL_SKIP_VERIFICATION"
+              },
+              {
+                "description": "Enable read-only mode (only GET requests and SQL queries allowed)",
+                "format": "boolean",
+                "name": "DRUID_MCP_READONLY_ENABLED"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T14:16:31.519052Z",
+          "updatedAt": "2025-11-05T14:16:31.519052Z",
           "isLatest": true
         }
       }
@@ -20951,7 +21020,87 @@
           "status": "active",
           "publishedAt": "2025-11-04T20:17:29.487419Z",
           "updatedAt": "2025-11-04T20:17:29.487419Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "finance.orbt/intelligence",
+        "description": "Bitcoin-native credit ratings. ⚡ Lightning pay-per-query (99 sats) or API subscriptions.",
+        "title": "ORBT - The first Bitcoin-native credit rating agency!",
+        "version": "3.3.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@orbt-finance/mcp-server",
+            "version": "3.2.3",
+            "runtimeHint": "node",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "OPTIONAL! Use Lightning pay-per-query (99 sats) OR visit https://orbt.finance for API access",
+                "isSecret": true,
+                "name": "ORBT_API_KEY"
+              },
+              {
+                "description": "ORBT API endpoint (default: https://orbt.finance)",
+                "name": "ORBT_API_URL"
+              }
+            ]
+          }
+        ],
+        "_meta": {}
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T02:28:08.740175Z",
+          "updatedAt": "2025-11-06T02:28:08.740175Z",
           "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "finance.orbt/intelligence",
+        "description": "Bitcoin-native credit ratings. ⚡ Lightning pay-per-query (99 sats) or API subscriptions.",
+        "title": "ORBT - The first Bitcoin-native credit rating agency!",
+        "version": "3.3.0.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@orbt-finance/mcp-server",
+            "version": "3.3.0",
+            "runtimeHint": "node",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "OPTIONAL! Use Lightning pay-per-query (99 sats) OR visit https://orbt.finance for API access",
+                "isSecret": true,
+                "name": "ORBT_API_KEY"
+              },
+              {
+                "description": "ORBT API endpoint (default: https://orbt.finance)",
+                "name": "ORBT_API_URL"
+              }
+            ]
+          }
+        ],
+        "_meta": {}
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T02:30:03.099818Z",
+          "updatedAt": "2025-11-06T02:30:03.099818Z",
+          "isLatest": false
         }
       }
     },
@@ -23618,6 +23767,37 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ChromeDevTools/chrome-devtools-mcp",
+        "description": "MCP server for Chrome DevTools",
+        "repository": {
+          "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+          "source": "github"
+        },
+        "version": "0.10.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "chrome-devtools-mcp",
+            "version": "0.10.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T11:40:11.826996Z",
+          "updatedAt": "2025-11-05T11:40:11.826996Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.ChromeDevTools/chrome-devtools-mcp",
         "description": "MCP server for Chrome DevTools",
@@ -23984,7 +24164,7 @@
           "status": "active",
           "publishedAt": "2025-10-22T11:49:06.571748Z",
           "updatedAt": "2025-10-22T11:49:06.571748Z",
-          "isLatest": true
+          "isLatest": false
         }
       }
     },
@@ -25843,6 +26023,32 @@
           "status": "active",
           "publishedAt": "2025-10-10T06:34:43.517731Z",
           "updatedAt": "2025-10-10T06:34:43.517731Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.NeerajG03/vector-memory",
+        "description": "Semantic document memory using Redis vector store. Save and recall files with natural language.",
+        "version": "0.4.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-server-vector-memory",
+            "version": "0.4.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T11:31:58.471835Z",
+          "updatedAt": "2025-11-05T11:31:58.471835Z",
           "isLatest": true
         }
       }
@@ -48768,6 +48974,60 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.dgahagan/weather-mcp",
+        "description": "Weather data from NOAA and Open-Meteo APIs. Forecasts, current conditions, and historical data.",
+        "title": "Weather Data MCP Server",
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dangahagan/weather-mcp",
+            "version": "0.1.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T16:29:36.562966Z",
+          "updatedAt": "2025-11-05T16:29:36.562966Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.dgahagan/weather-mcp",
+        "description": "Weather data from NOAA and Open-Meteo APIs. Forecasts, current conditions, and historical data.",
+        "title": "Weather Data MCP Server",
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dangahagan/weather-mcp",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T17:04:37.397963Z",
+          "updatedAt": "2025-11-05T17:04:37.397963Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.dockersamples/mcp-docker-release-information",
         "description": "MCP server providing Docker Desktop release notes and security information.",
@@ -51735,6 +51995,48 @@
           "status": "active",
           "publishedAt": "2025-10-30T14:58:52.352045Z",
           "updatedAt": "2025-10-30T14:58:52.352045Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ggozad/haiku-rag",
+        "description": "Agentic Retrieval Augmented Generation (RAG) with LanceDB",
+        "repository": {
+          "url": "https://github.com/ggozad/haiku.rag",
+          "source": "github"
+        },
+        "version": "0.14.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "haiku-rag",
+            "version": "0.14.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "serve",
+                "type": "positional"
+              },
+              {
+                "type": "named",
+                "name": "--mcp"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T11:40:06.260798Z",
+          "updatedAt": "2025-11-05T11:40:06.260798Z",
           "isLatest": true
         }
       }
@@ -68818,6 +69120,38 @@
           "status": "active",
           "publishedAt": "2025-10-24T12:13:10.633681Z",
           "updatedAt": "2025-10-24T12:13:10.633681Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.wonderwhy-er/desktop-commander",
+        "description": "MCP server for terminal commands, file operations, and process management",
+        "title": "Desktop Commander",
+        "repository": {
+          "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+          "source": "github"
+        },
+        "version": "0.2.21",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@wonderwhy-er/desktop-commander",
+            "version": "0.2.21",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T09:05:07.938909Z",
+          "updatedAt": "2025-11-05T09:05:07.938909Z",
           "isLatest": true
         }
       }
@@ -70146,6 +70480,87 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.yuna0x0/anilist-mcp",
+        "description": "AniList MCP server for accessing AniList API data",
+        "title": "AniList",
+        "repository": {
+          "url": "https://github.com/yuna0x0/anilist-mcp",
+          "source": "github",
+          "id": "952023806"
+        },
+        "version": "1.3.10",
+        "icons": [
+          {
+            "src": "https://anilist.co/img/icons/icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "anilist-mcp",
+            "version": "1.3.10",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "AniList API token for authenticated requests",
+                "format": "string",
+                "isSecret": true,
+                "name": "ANILIST_TOKEN"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/yuna0x0/anilist-mcp:1.3.10",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "AniList API token for authenticated requests",
+                "format": "string",
+                "isSecret": true,
+                "name": "ANILIST_TOKEN"
+              }
+            ]
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/yuna0x0/anilist-mcp/releases/download/v1.3.10/anilist-mcp-1.3.10.mcpb",
+            "fileSha256": "58e694078422a2a2a7545c5301c18c2af1019c56ef082a5019471389f05f2bd4",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "AniList API token for authenticated requests",
+                "format": "string",
+                "isSecret": true,
+                "name": "ANILIST_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T06:31:52.276339Z",
+          "updatedAt": "2025-11-05T06:31:52.276339Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.yuna0x0/anilist-mcp",
         "description": "AniList MCP server for accessing AniList API data",
@@ -70571,7 +70986,7 @@
           "status": "active",
           "publishedAt": "2025-10-20T10:18:38.483744Z",
           "updatedAt": "2025-10-20T10:18:38.483744Z",
-          "isLatest": true
+          "isLatest": false
         }
       }
     },
@@ -71128,6 +71543,108 @@
           "status": "active",
           "publishedAt": "2025-10-20T10:24:39.262572Z",
           "updatedAt": "2025-10-20T10:24:39.262572Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.yuna0x0/hackmd-mcp",
+        "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
+        "title": "HackMD",
+        "repository": {
+          "url": "https://github.com/yuna0x0/hackmd-mcp",
+          "source": "github",
+          "id": "950658365"
+        },
+        "version": "1.5.6",
+        "icons": [
+          {
+            "src": "https://hackmd.io/logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "hackmd-mcp",
+            "version": "1.5.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your HackMD API token for API authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "HACKMD_API_TOKEN"
+              },
+              {
+                "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+                "format": "string",
+                "default": "https://api.hackmd.io/v1",
+                "name": "HACKMD_API_URL"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/yuna0x0/hackmd-mcp:1.5.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your HackMD API token for API authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "HACKMD_API_TOKEN"
+              },
+              {
+                "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+                "format": "string",
+                "default": "https://api.hackmd.io/v1",
+                "name": "HACKMD_API_URL"
+              }
+            ]
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/yuna0x0/hackmd-mcp/releases/download/v1.5.6/hackmd-mcp-1.5.6.mcpb",
+            "fileSha256": "1da5cfb4969e89c6542cd9b2b697e7e75f03b360a97da447c2730851d4cb510f",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your HackMD API token for API authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "HACKMD_API_TOKEN"
+              },
+              {
+                "description": "Optional HackMD API URL, defaults to https://api.hackmd.io/v1",
+                "format": "string",
+                "default": "https://api.hackmd.io/v1",
+                "name": "HACKMD_API_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T05:54:01.345183Z",
+          "updatedAt": "2025-11-05T05:54:01.345183Z",
           "isLatest": true
         }
       }
@@ -72222,6 +72739,56 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "repository": {
+          "url": "https://github.com/neil-ac/node-email-mcp",
+          "source": "github"
+        },
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T14:02:50.605034Z",
+          "updatedAt": "2025-11-05T14:02:50.605034Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-05T14:04:40.58228Z",
+          "updatedAt": "2025-11-05T14:04:40.58228Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "md.install/try",
         "description": "Create guides to instruct coding agents to use your software (SDK, library, framework, API, etc).",
@@ -72696,6 +73263,6 @@
     }
   ],
   "metadata": {
-    "count": 1570
+    "count": 1583
   }
 }
