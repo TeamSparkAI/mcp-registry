@@ -82,6 +82,32 @@
           "status": "active",
           "publishedAt": "2025-10-30T10:19:26.892476Z",
           "updatedAt": "2025-10-30T10:19:26.892476Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.exa/exa",
+        "description": "Fast, intelligent web search and web crawling.\n\nNew mcp tool: Exa-code is a context tool for coding ",
+        "repository": {
+          "url": "https://github.com/exa-labs/exa-mcp-server",
+          "source": "github"
+        },
+        "version": "3.0.9",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-07T01:00:19.262705Z",
+          "updatedAt": "2025-11-07T01:00:19.262705Z",
           "isLatest": true
         }
       }
@@ -13643,6 +13669,58 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.dillilabs.deva/dilli-email-validation-api-server",
+        "description": "An MCP server that provides tools to validate an email address using Dilli Email Validation API. ",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://deva.dillilabs.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-07T02:03:08.35621Z",
+          "updatedAt": "2025-11-07T02:03:08.35621Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.dillilabs.deva/dilli-email-validation-api-server",
+        "description": "An MCP server that provides tools to validate an email address using Dilli Email Validation API. ",
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://deva.dillilabs.com/mcp",
+            "headers": [
+              {
+                "description": "API key for authentication. Can be obtained from https://deva.dillilabs.com/register",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-DEVA-API-Key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-07T02:13:08.922286Z",
+          "updatedAt": "2025-11-07T02:13:08.922286Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.docfork/docfork-mcp",
         "description": "MCP server for Docfork",
@@ -15075,6 +15153,37 @@
           "status": "active",
           "publishedAt": "2025-11-04T23:56:15.139119Z",
           "updatedAt": "2025-11-04T23:56:15.139119Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.glean/mcp",
+        "description": "Remote MCP Server that securely connects Glean Enterprise Knowledge with your IDE, LLM, or agents.",
+        "title": "Glean",
+        "version": "1.0.0",
+        "websiteUrl": "https://docs.glean.com/administration/platform/mcp/enable-mcp-servers",
+        "icons": [
+          {
+            "src": "https://developers.glean.com/img/glean-logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "any"
+            ]
+          },
+          {
+            "src": "https://developers.glean.com/img/glean-logo.png",
+            "mimeType": "image/png"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T19:26:20.649919Z",
+          "updatedAt": "2025-11-06T19:26:20.649919Z",
           "isLatest": true
         }
       }
@@ -18090,6 +18199,29 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.stackoverflow.mcp/mcp",
+        "description": "Access Stack Overflow's trusted and verified technical questions and answers.",
+        "title": "Stack Overflow MCP Server",
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.stackoverflow.com"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T16:34:36.798555Z",
+          "updatedAt": "2025-11-06T16:34:36.798555Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.statsig/statsig-mcp-server",
         "description": "MCP server for Statsig API - interact with Statsig's feature flags, experiments, and analytics",
@@ -20419,6 +20551,66 @@
           "status": "active",
           "publishedAt": "2025-10-02T18:08:05.667746Z",
           "updatedAt": "2025-10-02T18:08:05.667746Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.ohmyposh/validator",
+        "description": "Validate oh-my-posh configurations and segment snippets against the official schema.",
+        "title": "Oh My Posh Validator",
+        "repository": {
+          "url": "https://github.com/JanDeDobbeleer/oh-my-posh",
+          "source": "github",
+          "id": "175405157",
+          "subfolder": "website/api/mcp"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://ohmyposh.dev/docs/advanced/mcp-server",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://ohmyposh.dev/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T12:09:38.659521Z",
+          "updatedAt": "2025-11-06T12:09:38.659521Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.ohmyposh/validator",
+        "description": "Validate oh-my-posh configurations and segment snippets against the official schema.",
+        "title": "Oh My Posh Validator",
+        "repository": {
+          "url": "https://github.com/JanDeDobbeleer/oh-my-posh",
+          "source": "github",
+          "id": "175405157",
+          "subfolder": "website/api/mcp"
+        },
+        "version": "27.5.2",
+        "websiteUrl": "https://ohmyposh.dev/docs/advanced/mcp-server",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://ohmyposh.dev/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T12:18:55.269434Z",
+          "updatedAt": "2025-11-06T12:18:55.269434Z",
           "isLatest": true
         }
       }
@@ -49022,6 +49214,60 @@
           "status": "active",
           "publishedAt": "2025-11-05T17:04:37.397963Z",
           "updatedAt": "2025-11-05T17:04:37.397963Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.dgahagan/weather-mcp",
+        "description": "Weather forecasts, current conditions, and historical data (1940-present) with intelligent caching.",
+        "title": "Weather Data MCP Server",
+        "version": "0.2.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dangahagan/weather-mcp",
+            "version": "0.2.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T02:56:19.590116Z",
+          "updatedAt": "2025-11-06T02:56:19.590116Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.dgahagan/weather-mcp",
+        "description": "Global weather forecasts, location search, current conditions & historical data (1940-present).",
+        "title": "Weather Data MCP Server",
+        "version": "0.4.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dangahagan/weather-mcp",
+            "version": "0.4.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T20:56:46.956515Z",
+          "updatedAt": "2025-11-06T20:56:46.956515Z",
           "isLatest": true
         }
       }
@@ -52037,6 +52283,48 @@
           "status": "active",
           "publishedAt": "2025-11-05T11:40:06.260798Z",
           "updatedAt": "2025-11-05T11:40:06.260798Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ggozad/haiku-rag",
+        "description": "Agentic Retrieval Augmented Generation (RAG) with LanceDB",
+        "repository": {
+          "url": "https://github.com/ggozad/haiku.rag",
+          "source": "github"
+        },
+        "version": "0.14.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "haiku-rag",
+            "version": "0.14.1",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "serve",
+                "type": "positional"
+              },
+              {
+                "type": "named",
+                "name": "--mcp"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T14:15:01.153779Z",
+          "updatedAt": "2025-11-06T14:15:01.153779Z",
           "isLatest": true
         }
       }
@@ -52831,6 +53119,36 @@
           "status": "active",
           "publishedAt": "2025-10-23T00:29:46.200611Z",
           "updatedAt": "2025-10-23T00:29:46.200611Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.goldbergyoni/test-coverage-mcp",
+        "description": "Analyze test coverage from LCOV files - makes AI agents coverage-aware without wasting tokens",
+        "repository": {
+          "url": "https://github.com/goldbergyoni/test-coverage-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "test-coverage-mcp",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T10:46:07.784043Z",
+          "updatedAt": "2025-11-06T10:46:07.784043Z",
           "isLatest": true
         }
       }
@@ -62828,6 +63146,68 @@
           "status": "active",
           "publishedAt": "2025-10-27T05:29:41.770164Z",
           "updatedAt": "2025-10-27T05:29:41.770164Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.robotmcp/ros-mcp-server",
+        "description": "Connect AI models like Claude & ChatGPT with ROS robots using MCP",
+        "repository": {
+          "url": "https://github.com/robotmcp/ros-mcp-server",
+          "source": "github"
+        },
+        "version": "2.2.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "ros-mcp",
+            "version": "2.2.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T06:02:36.275868Z",
+          "updatedAt": "2025-11-06T06:02:36.275868Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.robotmcp/ros-mcp-server",
+        "description": "Connect AI models like Claude & ChatGPT with ROS robots using MCP",
+        "repository": {
+          "url": "https://github.com/robotmcp/ros-mcp-server",
+          "source": "github"
+        },
+        "version": "2.2.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "ros-mcp",
+            "version": "2.2.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T06:42:34.741306Z",
+          "updatedAt": "2025-11-06T06:42:34.741306Z",
           "isLatest": true
         }
       }
@@ -65218,6 +65598,138 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.simonenavifare/navifare-mcp",
+        "description": "Flight price comparison MCP server. Search multiple booking sources to find better flight prices.",
+        "repository": {
+          "url": "https://github.com/navifare/navifare-mcp",
+          "source": "github"
+        },
+        "version": "0.1.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "navifare-mcp",
+            "version": "0.1.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Google Gemini API key for image extraction (required)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "GEMINI_API_KEY"
+              },
+              {
+                "description": "Navifare API base URL (optional, defaults to https://api.navifare.com/api/v1/price-discovery/flights)",
+                "format": "string",
+                "name": "NAVIFARE_API_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T11:13:34.574046Z",
+          "updatedAt": "2025-11-06T11:13:34.574046Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.simonenavifare/navifare-mcp",
+        "description": "Flight price comparison MCP server. Search multiple booking sources to find better flight prices.",
+        "repository": {
+          "url": "https://github.com/navifare/navifare-mcp",
+          "source": "github"
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "navifare-mcp",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Google Gemini API key for image extraction (required)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "GEMINI_API_KEY"
+              },
+              {
+                "description": "Navifare API base URL (optional, defaults to https://api.navifare.com/api/v1/price-discovery/flights)",
+                "format": "string",
+                "name": "NAVIFARE_API_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T11:27:57.950959Z",
+          "updatedAt": "2025-11-06T11:27:57.950959Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.simonenavifare/navifare-mcp",
+        "description": "Flight price comparison MCP server. Search multiple booking sources to find better flight prices.",
+        "repository": {
+          "url": "https://github.com/navifare/navifare-mcp",
+          "source": "github"
+        },
+        "version": "0.1.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "navifare-mcp",
+            "version": "0.1.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Google Gemini API key for image extraction (required)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "GEMINI_API_KEY"
+              },
+              {
+                "description": "Navifare API base URL (optional, defaults to https://api.navifare.com/api/v1/price-discovery/flights)",
+                "format": "string",
+                "name": "NAVIFARE_API_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-06T11:52:00.575097Z",
+          "updatedAt": "2025-11-06T11:52:00.575097Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.simplemindedbot/mnemex",
         "description": "Temporal memory for AI with decay and reinforcement. Two-layer storage (JSONL + Markdown).",
         "repository": {
@@ -65682,6 +66194,57 @@
           "status": "active",
           "publishedAt": "2025-09-09T07:06:26.344648Z",
           "updatedAt": "2025-09-09T07:06:26.344648Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stevenvo/slack-mcp-server",
+        "description": "Read Slack conversations, threads, user info, and search messages from your MCP client.",
+        "repository": {
+          "url": "https://github.com/stevenvo/slack-mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "slack-mcp-server-v2",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Slack User OAuth Token (starts with xoxp-). Get from https://api.slack.com/apps",
+                "format": "string",
+                "isSecret": true,
+                "name": "SLACK_USER_TOKEN"
+              },
+              {
+                "description": "Slack Bot User OAuth Token (starts with xoxb-). Alternative to user token.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SLACK_BOT_TOKEN"
+              },
+              {
+                "description": "Your Slack workspace URL (e.g., https://your-company.slack.com). Required for generating message links.",
+                "isRequired": true,
+                "format": "string",
+                "name": "SLACK_WORKSPACE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-07T00:44:35.804181Z",
+          "updatedAt": "2025-11-07T00:44:35.804181Z",
           "isLatest": true
         }
       }
@@ -73263,6 +73826,6 @@
     }
   ],
   "metadata": {
-    "count": 1583
+    "count": 1600
   }
 }
