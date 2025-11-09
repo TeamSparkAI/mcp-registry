@@ -11447,6 +11447,344 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T09:40:29.683436Z",
+          "updatedAt": "2025-11-08T09:40:29.683436Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T09:51:11.171237Z",
+          "updatedAt": "2025-11-08T09:51:11.171237Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.6",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T10:24:41.805857Z",
+          "updatedAt": "2025-11-08T10:24:41.805857Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.7",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T10:28:55.300035Z",
+          "updatedAt": "2025-11-08T10:28:55.300035Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.8",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T10:39:25.95843Z",
+          "updatedAt": "2025-11-08T10:39:25.95843Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.9",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T11:03:06.064376Z",
+          "updatedAt": "2025-11-08T11:03:06.064376Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T11:07:54.151404Z",
+          "updatedAt": "2025-11-08T11:07:54.151404Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T11:39:14.821401Z",
+          "updatedAt": "2025-11-08T11:39:14.821401Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T11:47:30.301184Z",
+          "updatedAt": "2025-11-08T11:47:30.301184Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T12:12:25.466052Z",
+          "updatedAt": "2025-11-08T12:12:25.466052Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T12:15:13.061323Z",
+          "updatedAt": "2025-11-08T12:15:13.061323Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T12:24:01.579345Z",
+          "updatedAt": "2025-11-08T12:24:01.579345Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.6",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T19:40:45.449991Z",
+          "updatedAt": "2025-11-08T19:40:45.449991Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "ci.git/mymlh-mcp-server",
         "description": "OAuth-enabled MyMLH MCP server for accessing MyMLH data.",
@@ -19288,6 +19626,80 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.teamwork/mcp",
+        "description": "The Teamwork.com official MCP server helps teams efficiently manage client projects with AI.",
+        "repository": {
+          "url": "https://github.com/teamwork/mcp",
+          "source": "github"
+        },
+        "version": "1.6.10",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/teamwork/mcp:v1.6.10",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "API key generated from the Teamwork.com OAuth2 process: https://apidocs.teamwork.com/guides/teamwork/app-login-flow",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "TW_MCP_BEARER_TOKEN"
+              },
+              {
+                "description": "Choose log output format between 'text' or 'json'. Default is 'text'.",
+                "format": "string",
+                "name": "TW_MCP_LOG_FORMAT"
+              },
+              {
+                "description": "Choose log level between 'debug', 'info', 'warn' or 'error'. Default is 'info'.",
+                "format": "string",
+                "name": "TW_MCP_LOG_LEVEL"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.ai.teamwork.com",
+            "headers": [
+              {
+                "description": "API key generated from the Teamwork.com OAuth2 process: https://apidocs.teamwork.com/guides/teamwork/app-login-flow",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.ai.teamwork.com",
+            "headers": [
+              {
+                "description": "API key generated from the Teamwork.com OAuth2 process: https://apidocs.teamwork.com/guides/teamwork/app-login-flow",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T19:30:59.468868Z",
+          "updatedAt": "2025-11-08T19:30:59.468868Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.teamwork/mcp",
         "description": "The Teamwork.com official MCP server helps teams efficiently manage client projects with AI.",
@@ -19652,7 +20064,7 @@
           "status": "active",
           "publishedAt": "2025-10-30T22:39:54.408029Z",
           "updatedAt": "2025-10-30T22:39:54.408029Z",
-          "isLatest": true
+          "isLatest": false
         }
       }
     },
@@ -24958,6 +25370,64 @@
           "status": "active",
           "publishedAt": "2025-10-29T07:11:29.765209Z",
           "updatedAt": "2025-10-29T07:11:29.765209Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Fannon/u-he-preset-randomizer",
+        "description": "Generate, randomize, explain, and manage u-he synthesizer presets via the Model Context Protocol.",
+        "title": "u-he Preset Randomizer",
+        "repository": {
+          "url": "https://github.com/Fannon/u-he-preset-randomizer",
+          "source": "github"
+        },
+        "version": "1.1.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "u-he-preset-randomizer",
+            "version": "1.1.2",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "--yes",
+                "type": "positional"
+              },
+              {
+                "value": "u-he-preset-randomizer@1.1.2",
+                "type": "positional"
+              },
+              {
+                "value": "u-he-mcp-server",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Optional override for preset root discovery when synths are stored outside default locations.",
+                "name": "UHE_CUSTOM_FOLDER"
+              },
+              {
+                "description": "Enable verbose logging for troubleshooting.",
+                "default": "false",
+                "name": "DEBUG"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T17:02:29.646134Z",
+          "updatedAt": "2025-11-08T17:02:29.646134Z",
           "isLatest": true
         }
       }
@@ -29004,6 +29474,82 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SajmustafaKe/frappe-dev-mcp-server",
+        "description": "MCP server for Frappe/ERPNext development with DocTypes, bench commands, and app management",
+        "title": "Frappe Dev MCP Server",
+        "repository": {
+          "url": "https://github.com/SajmustafaKe/frappe-dev-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "frappe-dev-mcp-server",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to your Frappe/ERPNext bench directory (defaults to current directory if not specified)",
+                "format": "string",
+                "name": "FRAPPE_PATH"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T06:35:50.642561Z",
+          "updatedAt": "2025-11-08T06:35:50.642561Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SajmustafaKe/frappe-dev-mcp-server",
+        "description": "MCP server for Frappe/ERPNext development with AI assistance for DocTypes, bench commands, and APIs",
+        "title": "Frappe Dev MCP Server",
+        "repository": {
+          "url": "https://github.com/SajmustafaKe/frappe-dev-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "frappe-dev-mcp-server",
+            "version": "1.0.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to your Frappe/ERPNext bench directory (defaults to current directory if not specified)",
+                "format": "string",
+                "name": "FRAPPE_PATH"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T07:45:49.892351Z",
+          "updatedAt": "2025-11-08T07:45:49.892351Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.SamYuan1990/i18n-agent-action",
         "description": "An i18n github action for language translate",
@@ -31305,6 +31851,44 @@
           "status": "active",
           "publishedAt": "2025-11-02T09:53:25.104649Z",
           "updatedAt": "2025-11-02T09:53:25.104649Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-notify",
+        "description": "MCP Server for notify to Weixin, Telegram, Bark, Lark, Feishu, DingTalk",
+        "title": "Notify MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-notify",
+          "source": "github"
+        },
+        "version": "0.1.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-notify",
+            "version": "0.1.5",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-notify:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T02:46:50.636131Z",
+          "updatedAt": "2025-11-08T02:46:50.636131Z",
           "isLatest": true
         }
       }
@@ -54256,6 +54840,38 @@
           "status": "active",
           "publishedAt": "2025-09-27T08:52:54.853353Z",
           "updatedAt": "2025-09-27T08:52:54.853353Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.habedi/omni-lpr",
+        "description": "An MCP server for automatic license plate recognition",
+        "repository": {
+          "url": "https://github.com/habedi/omni-lpr",
+          "source": "github"
+        },
+        "version": "0.3.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "omni-lpr",
+            "version": "0.3.4",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://127.0.0.1:8000/mcp/"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T19:08:09.281817Z",
+          "updatedAt": "2025-11-08T19:08:09.281817Z",
           "isLatest": true
         }
       }
@@ -62213,6 +62829,60 @@
           "status": "active",
           "publishedAt": "2025-11-07T15:49:45.45246Z",
           "updatedAt": "2025-11-07T15:49:45.45246Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.perplexityai/mcp-server",
+        "description": "Real-time web search, reasoning, and research through Perplexity's API",
+        "title": "Perplexity API Platform",
+        "version": "0.4.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@perplexity-ai/mcp-server",
+            "version": "0.4.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T01:49:48.566515Z",
+          "updatedAt": "2025-11-09T01:49:48.566515Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.perplexityai/mcp-server",
+        "description": "Real-time web search, reasoning, and research through Perplexity's API",
+        "title": "Perplexity API Platform",
+        "version": "0.4.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@perplexity-ai/mcp-server",
+            "version": "0.4.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T02:32:55.37107Z",
+          "updatedAt": "2025-11-09T02:32:55.37107Z",
           "isLatest": true
         }
       }
@@ -63738,6 +64408,32 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rkdpa/local-skills-mcp",
+        "description": "Universal MCP server for local filesystem skills with lazy loading and context-efficient discovery",
+        "version": "0.2.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "local-skills-mcp",
+            "version": "0.2.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T21:25:50.658274Z",
+          "updatedAt": "2025-11-08T21:25:50.658274Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.rnaga/wp-mcp",
         "description": "MCP server for WordPress. Manage posts, users, comments, terms, metadata, and settings.",
         "title": "WordPress MCP Server",
@@ -63940,6 +64636,238 @@
           "status": "active",
           "publishedAt": "2025-10-21T00:13:20.720044Z",
           "updatedAt": "2025-10-21T00:13:20.720044Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rnaga/wp-mcp",
+        "description": "MCP server for WordPress. Manage posts, users, comments, terms, metadata, and settings.",
+        "title": "WordPress MCP Server",
+        "repository": {
+          "url": "https://github.com/rnaga/wp-mcp",
+          "source": "github"
+        },
+        "version": "1.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rnaga/wp-mcp",
+            "version": "1.0.5",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Automatically confirm npx package installation",
+                "type": "named",
+                "name": "-y"
+              }
+            ],
+            "packageArguments": [
+              {
+                "description": "Command to run (local, remote, http, utils)",
+                "value": "local",
+                "type": "positional"
+              },
+              {
+                "description": "Subcommand to start the local MCP server",
+                "value": "start",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "WordPress username to assume for capability checks",
+                "isRequired": true,
+                "name": "LOCAL_USERNAME"
+              },
+              {
+                "description": "WordPress database host",
+                "isRequired": true,
+                "name": "WP_DB_HOST"
+              },
+              {
+                "description": "WordPress database port",
+                "default": "3306",
+                "name": "WP_DB_PORT"
+              },
+              {
+                "description": "WordPress database name",
+                "isRequired": true,
+                "name": "WP_DB_NAME"
+              },
+              {
+                "description": "WordPress database user",
+                "isRequired": true,
+                "name": "WP_DB_USER"
+              },
+              {
+                "description": "WordPress database password",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "WP_DB_PASSWORD"
+              },
+              {
+                "description": "Enable WordPress multisite mode",
+                "default": "false",
+                "name": "LOCAL_MULTISITE"
+              },
+              {
+                "description": "Default blog ID for multisite",
+                "default": "1",
+                "name": "LOCAL_DEFAULT_BLOG_ID"
+              },
+              {
+                "description": "Default site ID for multisite",
+                "default": "1",
+                "name": "LOCAL_DEFAULT_SITE_ID"
+              },
+              {
+                "description": "Enable SSL for database connection",
+                "default": "false",
+                "name": "LOCAL_SSL_ENABLED"
+              },
+              {
+                "description": "Path to SSL CA certificate file",
+                "name": "LOCAL_SSL_CA_FILEPATH"
+              },
+              {
+                "description": "Path to SSL certificate file",
+                "name": "LOCAL_SSL_CERT_FILEPATH"
+              },
+              {
+                "description": "Path to SSL key file",
+                "name": "LOCAL_SSL_KEY_FILEPATH"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T20:18:17.144048Z",
+          "updatedAt": "2025-11-08T20:18:17.144048Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rnaga/wp-mcp",
+        "description": "MCP server for WordPress. Manage posts, users, comments, terms, metadata, and settings.",
+        "title": "WordPress MCP Server",
+        "repository": {
+          "url": "https://github.com/rnaga/wp-mcp",
+          "source": "github"
+        },
+        "version": "1.0.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@rnaga/wp-mcp",
+            "version": "1.0.6",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Automatically confirm npx package installation",
+                "type": "named",
+                "name": "-y"
+              }
+            ],
+            "packageArguments": [
+              {
+                "description": "Command to run (local, remote, http, utils)",
+                "value": "local",
+                "type": "positional"
+              },
+              {
+                "description": "Subcommand to start the local MCP server",
+                "value": "start",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "WordPress username to assume for capability checks",
+                "isRequired": true,
+                "name": "LOCAL_USERNAME"
+              },
+              {
+                "description": "WordPress database host",
+                "isRequired": true,
+                "name": "WP_DB_HOST"
+              },
+              {
+                "description": "WordPress database port",
+                "default": "3306",
+                "name": "WP_DB_PORT"
+              },
+              {
+                "description": "WordPress database name",
+                "isRequired": true,
+                "name": "WP_DB_NAME"
+              },
+              {
+                "description": "WordPress database user",
+                "isRequired": true,
+                "name": "WP_DB_USER"
+              },
+              {
+                "description": "WordPress database password",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "WP_DB_PASSWORD"
+              },
+              {
+                "description": "Enable WordPress multisite mode",
+                "default": "false",
+                "name": "LOCAL_MULTISITE"
+              },
+              {
+                "description": "Default blog ID for multisite",
+                "default": "1",
+                "name": "LOCAL_DEFAULT_BLOG_ID"
+              },
+              {
+                "description": "Default site ID for multisite",
+                "default": "1",
+                "name": "LOCAL_DEFAULT_SITE_ID"
+              },
+              {
+                "description": "Enable SSL for database connection",
+                "default": "false",
+                "name": "LOCAL_SSL_ENABLED"
+              },
+              {
+                "description": "Path to SSL CA certificate file",
+                "name": "LOCAL_SSL_CA_FILEPATH"
+              },
+              {
+                "description": "Path to SSL certificate file",
+                "name": "LOCAL_SSL_CERT_FILEPATH"
+              },
+              {
+                "description": "Path to SSL key file",
+                "name": "LOCAL_SSL_KEY_FILEPATH"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T20:32:52.599216Z",
+          "updatedAt": "2025-11-08T20:32:52.599216Z",
           "isLatest": true
         }
       }
@@ -67081,6 +68009,32 @@
           "status": "active",
           "publishedAt": "2025-09-09T07:06:26.344648Z",
           "updatedAt": "2025-09-09T07:06:26.344648Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stepbot/stockfish-mcp",
+        "description": "An MCP server for playing chess against Stockfish.",
+        "title": "Stockfish MCP",
+        "version": "v0.1.3",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/stepbot/stockfish-mcp:v0.1.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T04:05:29.753356Z",
+          "updatedAt": "2025-11-08T04:05:29.753356Z",
           "isLatest": true
         }
       }
@@ -70632,6 +71586,33 @@
           "status": "active",
           "publishedAt": "2025-10-28T16:06:38.491691Z",
           "updatedAt": "2025-10-28T16:06:38.491691Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.wtfregia/mtg-mcp",
+        "description": "Comprehensive Magic: The Gathering info with rules, cards, combos, and Commander deck generation",
+        "title": "MTG-MCP",
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mtg-mcp",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-08T02:51:50.236798Z",
+          "updatedAt": "2025-11-08T02:51:50.236798Z",
           "isLatest": true
         }
       }
@@ -74907,6 +75888,6 @@
     }
   ],
   "metadata": {
-    "count": 1632
+    "count": 1658
   }
 }
