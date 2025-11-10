@@ -31889,6 +31889,44 @@
           "status": "active",
           "publishedAt": "2025-11-08T02:46:50.636131Z",
           "updatedAt": "2025-11-08T02:46:50.636131Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-notify",
+        "description": "MCP Server for notify to Weixin, Telegram, Bark, Lark, Feishu, DingTalk",
+        "title": "Notify MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-notify",
+          "source": "github"
+        },
+        "version": "0.1.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-notify",
+            "version": "0.1.6",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-notify:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T06:42:21.015717Z",
+          "updatedAt": "2025-11-09T06:42:21.015717Z",
           "isLatest": true
         }
       }
@@ -54203,6 +54241,81 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.goreleaser/mcp",
+        "description": "GoReleaser MCP server for build automation",
+        "repository": {
+          "url": "https://github.com/goreleaser/mcp",
+          "source": "github"
+        },
+        "version": "0.1.4",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/goreleaser/mcp:0.1.4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "npm",
+            "identifier": "@goreleaser/mcp",
+            "version": "0.1.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T19:38:24.028484Z",
+          "updatedAt": "2025-11-09T19:38:24.028484Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.goreleaser/mcp",
+        "description": "GoReleaser MCP server",
+        "title": "The MCP server for GoReleaser",
+        "repository": {
+          "url": "https://github.com/goreleaser/mcp",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/goreleaser/mcp:0.2.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "npm",
+            "identifier": "@goreleaser/mcp",
+            "version": "0.2.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T23:57:32.910329Z",
+          "updatedAt": "2025-11-09T23:57:32.910329Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.gradion-ai/ipybox",
         "description": "An MCP server for sandboxed Python code execution with IPython and Docker, and file transfer.",
@@ -55234,6 +55347,43 @@
           "status": "active",
           "publishedAt": "2025-09-14T14:57:18.596181Z",
           "updatedAt": "2025-09-14T14:57:18.596181Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "3.4.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "3.4.3",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:3.4.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T03:58:39.914854Z",
+          "updatedAt": "2025-11-09T03:58:39.914854Z",
           "isLatest": true
         }
       }
@@ -56669,6 +56819,37 @@
           "status": "active",
           "publishedAt": "2025-10-13T23:22:37.679968Z",
           "updatedAt": "2025-10-13T23:22:37.679968Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jkawamoto/mcp-youtube-transcript",
+        "description": "An MCP server retrieving transcripts of YouTube videos",
+        "repository": {
+          "url": "https://github.com/jkawamoto/mcp-youtube-transcript",
+          "source": "github"
+        },
+        "version": "0.5.6",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/jkawamoto/mcp-youtube-transcript/releases/download/v0.5.6/mcp-youtube-transcript.mcpb",
+            "version": "0.5.6",
+            "fileSha256": "26bf9974b076b799ed33665fe800c86d164b751dc917b37c262ddd9779180781",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T06:35:27.051258Z",
+          "updatedAt": "2025-11-09T06:35:27.051258Z",
           "isLatest": true
         }
       }
@@ -64192,6 +64373,33 @@
           "status": "active",
           "publishedAt": "2025-10-30T14:57:55.874537Z",
           "updatedAt": "2025-10-30T14:57:55.874537Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.respawn-app/tool-filter-mcp",
+        "description": "MCP proxy server that filters tools from upstream MCP servers via regex-based deny list",
+        "title": "Tool Filter MCP",
+        "version": "0.4.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@respawn-app/tool-filter-mcp",
+            "version": "0.4.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T15:50:30.901478Z",
+          "updatedAt": "2025-11-09T15:50:30.901478Z",
           "isLatest": true
         }
       }
@@ -67406,6 +67614,56 @@
           "status": "active",
           "publishedAt": "2025-11-02T04:38:51.530175Z",
           "updatedAt": "2025-11-02T04:38:51.530175Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shinpr/sub-agents-mcp",
+        "description": "MCP server for delegating tasks to specialized AI assistants in Cursor and other tools",
+        "repository": {
+          "url": "https://github.com/shinpr/sub-agents-mcp",
+          "source": "github"
+        },
+        "version": "0.1.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "sub-agents-mcp",
+            "version": "0.1.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Absolute path to the directory containing agent definition files (.md or .txt)",
+                "isRequired": true,
+                "format": "string",
+                "name": "AGENTS_DIR"
+              },
+              {
+                "description": "Type of AI CLI to use: 'cursor' or 'claude'",
+                "isRequired": true,
+                "format": "string",
+                "name": "AGENT_TYPE"
+              },
+              {
+                "description": "Maximum execution time for agents in milliseconds (default: 300000, max: 600000)",
+                "format": "string",
+                "name": "EXECUTION_TIMEOUT_MS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T03:13:22.118486Z",
+          "updatedAt": "2025-11-09T03:13:22.118486Z",
           "isLatest": true
         }
       }
@@ -68035,6 +68293,114 @@
           "status": "active",
           "publishedAt": "2025-11-08T04:05:29.753356Z",
           "updatedAt": "2025-11-08T04:05:29.753356Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stepbot/stockfish-mcp",
+        "description": "A Stockfish MCP server to allow an LLM to play chess against Stockfish",
+        "title": "Stockfish MCP",
+        "version": "v0.2.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "stockfish-mcp",
+            "version": "v0.2.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T23:09:55.772236Z",
+          "updatedAt": "2025-11-09T23:09:55.772236Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stepbot/stockfish-mcp",
+        "description": "A Stockfish MCP server to allow an LLM to play chess against Stockfish",
+        "title": "Stockfish MCP",
+        "version": "v0.2.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "stockfish-mcp",
+            "version": "v0.2.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T23:39:00.274457Z",
+          "updatedAt": "2025-11-09T23:39:00.274457Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stepbot/stockfish-mcp",
+        "description": "A Stockfish MCP server to allow an LLM to play chess against Stockfish",
+        "title": "Stockfish MCP",
+        "version": "v1.0.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "stockfish-mcp",
+            "version": "v1.0.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T01:15:46.735021Z",
+          "updatedAt": "2025-11-10T01:15:46.735021Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stepbot/stockfish-mcp",
+        "description": "A Stockfish MCP server to allow an LLM to play chess against Stockfish",
+        "title": "Stockfish MCP",
+        "version": "v1.0.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "stockfish-mcp",
+            "version": "v1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T01:28:47.646677Z",
+          "updatedAt": "2025-11-10T01:28:47.646677Z",
           "isLatest": true
         }
       }
@@ -72182,6 +72548,148 @@
           "status": "active",
           "publishedAt": "2025-11-02T22:33:14.955019Z",
           "updatedAt": "2025-11-02T22:33:14.955019Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xorrkaz/cml-mcp",
+        "description": "An MCP server that provides access to common Cisco Modeling Labs (CML) operations.",
+        "title": "Cisco Modeling Labs (CML)",
+        "repository": {
+          "url": "https://github.com/xorrkaz/cml-mcp",
+          "source": "github"
+        },
+        "version": "0.13.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "cml-mcp",
+            "version": "0.13.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL for the CML Server",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_URL"
+              },
+              {
+                "description": "Username for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_USERNAME"
+              },
+              {
+                "description": "Password for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CML_PASSWORD"
+              },
+              {
+                "description": "Username for authentication to devices running in CML",
+                "format": "string",
+                "name": "PYATS_USERNAME"
+              },
+              {
+                "description": "Password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_PASSWORD"
+              },
+              {
+                "description": "Enable password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_AUTH_PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T16:24:06.227608Z",
+          "updatedAt": "2025-11-09T16:24:06.227608Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xorrkaz/cml-mcp",
+        "description": "An MCP server that provides access to common Cisco Modeling Labs (CML) operations.",
+        "title": "Cisco Modeling Labs (CML)",
+        "repository": {
+          "url": "https://github.com/xorrkaz/cml-mcp",
+          "source": "github"
+        },
+        "version": "0.13.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "cml-mcp",
+            "version": "0.13.1",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL for the CML Server",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_URL"
+              },
+              {
+                "description": "Username for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_USERNAME"
+              },
+              {
+                "description": "Password for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CML_PASSWORD"
+              },
+              {
+                "description": "Username for authentication to devices running in CML",
+                "format": "string",
+                "name": "PYATS_USERNAME"
+              },
+              {
+                "description": "Password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_PASSWORD"
+              },
+              {
+                "description": "Enable password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_AUTH_PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T16:34:56.169596Z",
+          "updatedAt": "2025-11-09T16:34:56.169596Z",
           "isLatest": true
         }
       }
@@ -72738,6 +73246,89 @@
           "status": "active",
           "publishedAt": "2025-11-02T15:43:14.313963Z",
           "updatedAt": "2025-11-02T15:43:14.313963Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.yarnabrina/mcp-learning",
+        "description": "MCP server that can perform basic arithmetic operations and parse/evaluate arithmetic expressions.",
+        "title": "Learning Model Context Protocol",
+        "repository": {
+          "url": "https://github.com/yarnabrina/learn-model-context-protocol",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "websiteUrl": "https://yarnabrina.github.io/learn-model-context-protocol/",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcp-learning",
+            "version": "0.2.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://127.0.0.1:8000/mcp"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Resolve console scripts from the published package.",
+                "value": "mcp-learning",
+                "type": "named",
+                "name": "--from"
+              },
+              {
+                "description": "Invoke the entry point that starts the MCP server.",
+                "value": "mcp-server",
+                "type": "positional"
+              },
+              {
+                "description": "Log level for server output.",
+                "value": "{log_level}",
+                "default": "WARNING",
+                "choices": [
+                  "DEBUG",
+                  "INFO",
+                  "WARNING",
+                  "ERROR",
+                  "CRITICAL"
+                ],
+                "type": "named",
+                "name": "--log_level"
+              }
+            ]
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "cliOptions": [
+              {
+                "default": false,
+                "description": "Enable additional debug logging output.",
+                "flag": "--debug"
+              },
+              {
+                "default": false,
+                "description": "Return JSON payloads for HTTP responses instead of newline-delimited JSON.",
+                "flag": "--json_response"
+              },
+              {
+                "default": false,
+                "description": "Disable HTTP keep-alive to serve each request independently.",
+                "flag": "--stateless_http"
+              }
+            ]
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-09T08:22:31.297416Z",
+          "updatedAt": "2025-11-09T08:22:31.297416Z",
           "isLatest": true
         }
       }
@@ -75888,6 +76479,6 @@
     }
   ],
   "metadata": {
-    "count": 1658
+    "count": 1672
   }
 }
