@@ -29827,6 +29827,33 @@
           "status": "active",
           "publishedAt": "2025-10-28T17:59:22.34318Z",
           "updatedAt": "2025-10-28T17:59:22.34318Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SigNoz/signoz-mcp-server",
+        "description": "SigNoz MCP server: access metrics, traces, logs, alerts, and dashboards via AI assistants",
+        "title": "SigNoz MCP Server",
+        "repository": {},
+        "version": "0.0.4",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "signoz/signoz-mcp-server:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T11:44:49.046114Z",
+          "updatedAt": "2025-11-10T11:44:49.046114Z",
           "isLatest": true
         }
       }
@@ -31229,6 +31256,36 @@
           "status": "active",
           "publishedAt": "2025-10-18T22:42:49.479189Z",
           "updatedAt": "2025-10-18T22:42:49.479189Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Wolfe-Jam/claude-faf-mcp",
+        "description": "Persistent project context via IANA-registered .faf format. 50 MCP tools. 6k+ downloads.",
+        "repository": {
+          "url": "https://github.com/Wolfe-Jam/claude-faf-mcp",
+          "source": "github"
+        },
+        "version": "3.1.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "claude-faf-mcp",
+            "version": "3.1.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T19:53:33.354154Z",
+          "updatedAt": "2025-11-10T19:53:33.354154Z",
           "isLatest": true
         }
       }
@@ -31927,6 +31984,44 @@
           "status": "active",
           "publishedAt": "2025-11-09T06:42:21.015717Z",
           "updatedAt": "2025-11-09T06:42:21.015717Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-okx",
+        "description": "MCP Server for okx.com",
+        "title": "OKX MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-okx",
+          "source": "github"
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-okx",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-okx:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T10:08:56.611262Z",
+          "updatedAt": "2025-11-10T10:08:56.611262Z",
           "isLatest": true
         }
       }
@@ -39179,6 +39274,44 @@
           "status": "active",
           "publishedAt": "2025-10-25T01:41:56.111014Z",
           "updatedAt": "2025-10-25T01:41:56.111014Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.bgauryy/octocode-mcp",
+        "description": "AI code research platform. Search, analyze, and extract insights from any GitHub repository.",
+        "title": "Octocode MCP - AI Context Platform",
+        "repository": {
+          "url": "https://github.com/bgauryy/octocode-mcp",
+          "source": "github"
+        },
+        "version": "7.0.9",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "octocode-mcp",
+            "version": "7.0.9",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "GitHub Personal Access Token. Optional - authenticate via GitHub CLI (gh auth login) for automatic token management, or set this token manually for CI/CD environments.",
+                "isSecret": true,
+                "name": "GITHUB_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T13:33:37.116251Z",
+          "updatedAt": "2025-11-10T13:33:37.116251Z",
           "isLatest": true
         }
       }
@@ -50243,6 +50376,33 @@
           "status": "active",
           "publishedAt": "2025-11-07T21:11:48.397013Z",
           "updatedAt": "2025-11-07T21:11:48.397013Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.dgahagan/weather-mcp",
+        "description": "Weather forecasts, alerts, air quality, marine, radar imagery, lightning. NOAA + Open-Meteo.",
+        "title": "Weather Data MCP Server",
+        "version": "1.6.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dangahagan/weather-mcp",
+            "version": "1.6.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T20:04:44.609135Z",
+          "updatedAt": "2025-11-10T20:04:44.609135Z",
           "isLatest": true
         }
       }
@@ -53920,6 +54080,79 @@
           "status": "active",
           "publishedAt": "2025-10-27T15:36:10.895783Z",
           "updatedAt": "2025-10-27T15:36:10.895783Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.github/github-mcp-server",
+        "description": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.",
+        "repository": {
+          "url": "https://github.com/github/github-mcp-server",
+          "source": "github"
+        },
+        "version": "0.20.2",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/github/github-mcp-server:0.20.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "isRequired": true,
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "isRequired": true,
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "isRequired": true,
+                "value": "GITHUB_PERSONAL_ACCESS_TOKEN={token}",
+                "variables": {
+                  "token": {
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "The container image to run",
+                "isRequired": true,
+                "value": "ghcr.io/github/github-mcp-server",
+                "type": "positional",
+                "valueHint": "image_name"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T09:36:19.127074Z",
+          "updatedAt": "2025-11-10T09:36:19.127074Z",
           "isLatest": true
         }
       }
@@ -72690,6 +72923,77 @@
           "status": "active",
           "publishedAt": "2025-11-09T16:34:56.169596Z",
           "updatedAt": "2025-11-09T16:34:56.169596Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xorrkaz/cml-mcp",
+        "description": "An MCP server that provides access to common Cisco Modeling Labs (CML) operations.",
+        "title": "Cisco Modeling Labs (CML)",
+        "repository": {
+          "url": "https://github.com/xorrkaz/cml-mcp",
+          "source": "github"
+        },
+        "version": "0.13.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "cml-mcp",
+            "version": "0.13.2",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL for the CML Server",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_URL"
+              },
+              {
+                "description": "Username for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_USERNAME"
+              },
+              {
+                "description": "Password for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CML_PASSWORD"
+              },
+              {
+                "description": "Username for authentication to devices running in CML",
+                "format": "string",
+                "name": "PYATS_USERNAME"
+              },
+              {
+                "description": "Password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_PASSWORD"
+              },
+              {
+                "description": "Enable password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_AUTH_PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T19:28:17.778166Z",
+          "updatedAt": "2025-11-10T19:28:17.778166Z",
           "isLatest": true
         }
       }
@@ -75792,6 +76096,213 @@
         "name": "live.alpic.staging/email-server",
         "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
         "title": "Email Server",
+        "version": "0.0.10",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T11:20:11.187646Z",
+          "updatedAt": "2025-11-10T11:20:11.187646Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.11",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T11:21:18.021744Z",
+          "updatedAt": "2025-11-10T11:21:18.021744Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.12",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T11:23:41.488069Z",
+          "updatedAt": "2025-11-10T11:23:41.488069Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.13",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T11:31:58.748717Z",
+          "updatedAt": "2025-11-10T11:31:58.748717Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.14",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T14:28:19.758542Z",
+          "updatedAt": "2025-11-10T14:28:19.758542Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.16",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T14:33:48.122099Z",
+          "updatedAt": "2025-11-10T14:33:48.122099Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.17",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T15:02:57.537981Z",
+          "updatedAt": "2025-11-10T15:02:57.537981Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.18",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T15:09:10.441844Z",
+          "updatedAt": "2025-11-10T15:09:10.441844Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.0.19",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T15:25:58.202068Z",
+          "updatedAt": "2025-11-10T15:25:58.202068Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
         "version": "0.0.2",
         "remotes": [
           {
@@ -75966,6 +76477,29 @@
           "status": "active",
           "publishedAt": "2025-11-07T20:35:00.103601Z",
           "updatedAt": "2025-11-07T20:35:00.103601Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
+        "version": "0.1.14",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-10T14:33:07.810445Z",
+          "updatedAt": "2025-11-10T14:33:07.810445Z",
           "isLatest": true
         }
       }
@@ -76479,6 +77013,6 @@
     }
   ],
   "metadata": {
-    "count": 1672
+    "count": 1689
   }
 }
