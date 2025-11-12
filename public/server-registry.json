@@ -12787,6 +12787,29 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.appsflyer/mcp",
+        "description": "Analyze your campaigns any way you want, with AI.",
+        "version": "1.0.0",
+        "websiteUrl": "https://www.appsflyer.com/",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.appsflyer.com/auth/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T15:21:47.037331Z",
+          "updatedAt": "2025-11-11T15:21:47.037331Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "com.aribadernatal/sideways",
         "description": "Unexpected questions and lateral thinking prompts to break through mental blocks. 86 strategies.",
         "title": "Sideways",
@@ -17815,6 +17838,126 @@
           "status": "active",
           "publishedAt": "2025-10-31T11:39:18.79638Z",
           "updatedAt": "2025-10-31T11:39:18.79638Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.postman/postman-mcp-server",
+        "description": "A basic MCP server to operate on the Postman API.",
+        "repository": {
+          "url": "https://github.com/postmanlabs/postman-mcp-server",
+          "source": "github"
+        },
+        "version": "2.4.9",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@postman/postman-mcp-server",
+            "version": "2.4.9",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "A valid Postman API key.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "POSTMAN_API_KEY"
+              }
+            ]
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/postmanlabs/postman-mcp-server/releases/download/v2.4.9/postman-mcp-server-minimal.mcpb",
+            "fileSha256": "64fe7c9c2b3d193de095a948f1ae7c8e5bcc8b4dbf2bfb5fb3713df85f4e28e9",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "A valid Postman API key.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "POSTMAN_API_KEY"
+              }
+            ]
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/postmanlabs/postman-mcp-server/releases/download/v2.4.9/postman-mcp-server-full.mcpb",
+            "fileSha256": "14a777004ee020b3527b2c01ce662da94f1cdc0cf52dc83b3881971533f655f7",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "A valid Postman API key.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "POSTMAN_API_KEY"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.postman.com/mcp",
+            "headers": [
+              {
+                "description": "A Bearer token and a valid Postman API key for authentication.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.postman.com/minimal",
+            "headers": [
+              {
+                "description": "A Bearer token and a valid Postman API key for authentication.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.eu.postman.com/mcp",
+            "headers": [
+              {
+                "description": "A Bearer token and a valid Postman API key for authentication.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.eu.postman.com/minimal",
+            "headers": [
+              {
+                "description": "A Bearer token and a valid Postman API key for authentication.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T17:42:09.501595Z",
+          "updatedAt": "2025-11-11T17:42:09.501595Z",
           "isLatest": true
         }
       }
@@ -18214,6 +18357,86 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json#/definitions/ServerDetail",
+        "name": "com.smartbear/smartbear-mcp",
+        "description": "MCP server for AI access to SmartBear tools, including BugSnag, Reflect, API Hub, PactFlow.",
+        "title": "SmartBear MCP",
+        "repository": {
+          "url": "https://github.com/SmartBear/smartbear-mcp",
+          "source": "github"
+        },
+        "version": "0.10.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@smartbear/mcp",
+            "version": "0.10.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "BugSnag auth token. Leave empty to disable BugSnag tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "isSecret": true,
+                "name": "BUGSNAG_AUTH_TOKEN"
+              },
+              {
+                "description": "BugSnag project API key (optional; narrows interactions to a single project). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "name": "BUGSNAG_PROJECT_API_KEY"
+              },
+              {
+                "description": "Reflect API token. Leave empty to disable Reflect tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/test-hub-integration",
+                "isSecret": true,
+                "name": "REFLECT_API_TOKEN"
+              },
+              {
+                "description": "API Hub API key. Leave empty to disable API Hub tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/api-hub-integration",
+                "isSecret": true,
+                "name": "API_HUB_API_KEY"
+              },
+              {
+                "description": "PactFlow/Pact Broker base URL. Leave empty to disable Pact tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_BASE_URL"
+              },
+              {
+                "description": "PactFlow authentication token. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_TOKEN"
+              },
+              {
+                "description": "Pact Broker username (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_USERNAME"
+              },
+              {
+                "description": "Pact Broker password (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_PASSWORD"
+              },
+              {
+                "description": "The Zephyr Cloud API token for authentication. Learn more: https://support.smartbear.com/zephyr/docs/en/rest-api/api-access-tokens-management.html",
+                "isSecret": true,
+                "name": "ZEPHYR_API_TOKEN"
+              },
+              {
+                "description": " The Zephyr Cloud API base url. Should be changed depending on the region of your Jira instance. Learn more: https://support.smartbear.com/zephyr-scale-cloud/api-docs/#section/Authentication/Accessing-the-API",
+                "name": "ZEPHYR_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T13:12:40.66456Z",
+          "updatedAt": "2025-11-11T13:12:40.66456Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "com.smartbear/smartbear-mcp",
         "description": "MCP server for AI access to SmartBear tools, including BugSnag, Reflect, API Hub, PactFlow.",
@@ -18507,7 +18730,7 @@
           "status": "active",
           "publishedAt": "2025-10-23T09:02:53.292595Z",
           "updatedAt": "2025-10-23T09:02:53.292595Z",
-          "isLatest": true
+          "isLatest": false
         }
       }
     },
@@ -21571,6 +21794,50 @@
           "status": "active",
           "publishedAt": "2025-10-23T13:21:29.97224Z",
           "updatedAt": "2025-10-23T13:21:29.97224Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "directory.brick/mcp",
+        "description": "Provides data for LEGO sets, minifigures, parts and elements. Not affiliated with LEGO® Group.",
+        "title": "Brick Directory",
+        "version": "2025.11.11.1009",
+        "websiteUrl": "https://brick.directory",
+        "icons": [
+          {
+            "src": "https://brick.directory/assets/logo.svg",
+            "mimeType": "image/svg+xml"
+          },
+          {
+            "src": "https://brick.directory/assets/logo-1024-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "1024x1024"
+            ]
+          },
+          {
+            "src": "https://brick.directory/assets/logo-512-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.brick.directory/connect"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T10:09:15.016409Z",
+          "updatedAt": "2025-11-11T10:09:15.016409Z",
           "isLatest": true
         }
       }
@@ -61056,6 +61323,146 @@
           "status": "active",
           "publishedAt": "2025-10-13T23:32:14.916459Z",
           "updatedAt": "2025-10-13T23:32:14.916459Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.motherduckdb/mcp-server-motherduck",
+        "description": "Fast analytics and data processing with DuckDB and MotherDuck",
+        "repository": {
+          "url": "https://github.com/motherduckdb/mcp-server-motherduck",
+          "source": "github"
+        },
+        "version": "0.8.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcp-server-motherduck",
+            "version": "0.8.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Transport type for MCP server",
+                "default": "stdio",
+                "choices": [
+                  "stdio",
+                  "sse",
+                  "stream"
+                ],
+                "type": "named",
+                "name": "--transport"
+              },
+              {
+                "description": "Port to listen on for sse and stream transport mode",
+                "format": "number",
+                "default": "8000",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Host to bind the MCP server for sse and stream transport mode",
+                "default": "127.0.0.1",
+                "type": "named",
+                "name": "--host"
+              },
+              {
+                "description": "Path to local DuckDB database file or MotherDuck database",
+                "default": "md:",
+                "type": "named",
+                "name": "--db-path"
+              },
+              {
+                "description": "Access token to use for MotherDuck database connections",
+                "isSecret": true,
+                "type": "named",
+                "name": "--motherduck-token"
+              },
+              {
+                "description": "Flag for connecting to DuckDB or MotherDuck in read-only mode",
+                "type": "named",
+                "name": "--read-only"
+              },
+              {
+                "description": "Home directory for DuckDB",
+                "type": "named",
+                "name": "--home-dir"
+              },
+              {
+                "description": "Flag for connecting to MotherDuck in SaaS mode (disables filesystem and write permissions for local DuckDB)",
+                "type": "named",
+                "name": "--saas-mode"
+              },
+              {
+                "description": "Enable JSON responses for HTTP stream (only supported for stream transport)",
+                "type": "named",
+                "name": "--json-response"
+              },
+              {
+                "description": "Maximum number of rows to return from queries",
+                "format": "number",
+                "default": "1024",
+                "type": "named",
+                "name": "--max-rows"
+              },
+              {
+                "description": "Maximum number of characters in query results",
+                "format": "number",
+                "default": "50000",
+                "type": "named",
+                "name": "--max-chars"
+              },
+              {
+                "description": "Query execution timeout in seconds. Set to -1 to disable timeout",
+                "format": "number",
+                "default": "-1",
+                "type": "named",
+                "name": "--query-timeout"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Access token to use for MotherDuck database connections",
+                "isSecret": true,
+                "name": "motherduck_token"
+              },
+              {
+                "description": "Home directory for DuckDB (used as default if --home-dir not specified)",
+                "name": "HOME"
+              },
+              {
+                "description": "AWS access key for S3 database connections",
+                "isSecret": true,
+                "name": "AWS_ACCESS_KEY_ID"
+              },
+              {
+                "description": "AWS secret access key for S3 database connections",
+                "isSecret": true,
+                "name": "AWS_SECRET_ACCESS_KEY"
+              },
+              {
+                "description": "AWS session token for temporary credentials (IAM roles, AWS SSO, EC2 instance profiles)",
+                "isSecret": true,
+                "name": "AWS_SESSION_TOKEN"
+              },
+              {
+                "description": "AWS region for S3 database connections",
+                "name": "AWS_DEFAULT_REGION"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T03:01:45.572967Z",
+          "updatedAt": "2025-11-11T03:01:45.572967Z",
           "isLatest": true
         }
       }
@@ -67904,6 +68311,45 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sidart10/runway-mcp-server",
+        "description": "AI video generation with Gen-4, Veo 3, and Aleph editing. Text-to-video, image-to-video, 4K upscale",
+        "title": "Runway AI Video Generation",
+        "repository": {
+          "url": "https://github.com/sidart10/runway-mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "runway-mcp-server",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "API key from dev.runwayml.com for authenticating with Runway ML services",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "RUNWAY_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T23:16:56.459044Z",
+          "updatedAt": "2025-11-11T23:16:56.459044Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.simonenavifare/navifare-mcp",
         "description": "Flight price comparison MCP server. Search multiple booking sources to find better flight prices.",
         "repository": {
@@ -72994,6 +73440,77 @@
           "status": "active",
           "publishedAt": "2025-11-10T19:28:17.778166Z",
           "updatedAt": "2025-11-10T19:28:17.778166Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xorrkaz/cml-mcp",
+        "description": "An MCP server that provides access to common Cisco Modeling Labs (CML) operations.",
+        "title": "Cisco Modeling Labs (CML)",
+        "repository": {
+          "url": "https://github.com/xorrkaz/cml-mcp",
+          "source": "github"
+        },
+        "version": "0.14.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "cml-mcp",
+            "version": "0.14.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL for the CML Server",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_URL"
+              },
+              {
+                "description": "Username for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "name": "CML_USERNAME"
+              },
+              {
+                "description": "Password for CML authentication",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "CML_PASSWORD"
+              },
+              {
+                "description": "Username for authentication to devices running in CML",
+                "format": "string",
+                "name": "PYATS_USERNAME"
+              },
+              {
+                "description": "Password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_PASSWORD"
+              },
+              {
+                "description": "Enable password for authentication to devices running in CML",
+                "format": "string",
+                "isSecret": true,
+                "name": "PYATS_AUTH_PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T17:53:14.408195Z",
+          "updatedAt": "2025-11-11T17:53:14.408195Z",
           "isLatest": true
         }
       }
@@ -76326,6 +76843,29 @@
         "name": "live.alpic.staging/email-server",
         "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
         "title": "Email Server",
+        "version": "0.0.21",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-ead34801.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-11T15:55:37.257971Z",
+          "updatedAt": "2025-11-11T15:55:37.257971Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/email-server",
+        "description": "An MCP server that provides email capabilities, hosted on Alpic platform",
+        "title": "Email Server",
         "version": "0.0.3",
         "remotes": [
           {
@@ -77013,6 +77553,6 @@
     }
   ],
   "metadata": {
-    "count": 1689
+    "count": 1697
   }
 }
