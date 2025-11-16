@@ -11829,6 +11829,32 @@
           "status": "active",
           "publishedAt": "2025-11-13T08:42:11.236142Z",
           "updatedAt": "2025-11-13T08:42:11.236142Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ch.pfx/mcp-server",
+        "description": "MCP Server für Forterro Proffix Px5 ERP",
+        "repository": {
+          "url": "https://github.com/pitwch/pfx-mcp-server",
+          "source": "github"
+        },
+        "version": "1.1.9",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.pfx.ch/api/server"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T11:36:10.224083Z",
+          "updatedAt": "2025-11-15T11:36:10.224083Z",
           "isLatest": true
         }
       }
@@ -18524,6 +18550,33 @@
           "status": "active",
           "publishedAt": "2025-09-24T16:34:00.228681Z",
           "updatedAt": "2025-09-24T16:34:00.228681Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.redpanda/docs-mcp",
+        "description": "Get authoritative answers to questions about Redpanda.",
+        "repository": {
+          "url": "https://github.com/redpanda-data/docs-site",
+          "source": "github",
+          "subfolder": "netlify"
+        },
+        "version": "2025.11.13+pr147-5d1f8b0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://docs.redpanda.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T06:12:54.132992Z",
+          "updatedAt": "2025-11-15T06:12:54.132992Z",
           "isLatest": true
         }
       }
@@ -22610,6 +22663,40 @@
           "status": "active",
           "publishedAt": "2025-10-09T10:03:16.606919Z",
           "updatedAt": "2025-10-09T10:03:16.606919Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "host.justcall.mcp/justcall-mcp-server",
+        "description": "JustCall MCP Server",
+        "repository": {
+          "url": "https://github.com/saaslabsco/justcall-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.justcall.host/mcp",
+            "headers": [
+              {
+                "description": "API key and Secret for authentication in the format of <API_KEY>:<API_SECRET>",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T18:55:00.183991Z",
+          "updatedAt": "2025-11-15T18:55:00.183991Z",
           "isLatest": true
         }
       }
@@ -31110,6 +31197,36 @@
           "status": "active",
           "publishedAt": "2025-11-15T01:25:39.894915Z",
           "updatedAt": "2025-11-15T01:25:39.894915Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.PromptExecution/just-mcp",
+        "description": "Expose curated Justfile recipes via MCP for safe deterministic automation.",
+        "title": "Just MCP Server",
+        "repository": {
+          "url": "https://github.com/PromptExecution/just-mcp",
+          "source": "github"
+        },
+        "version": "0.1.5",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/promptexecution/just-mcp:0.1.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T10:16:34.699806Z",
+          "updatedAt": "2025-11-15T10:16:34.699806Z",
           "isLatest": true
         }
       }
@@ -44405,6 +44522,33 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.cornelcroi/bookmark-lens",
+        "description": "Local-first bookmark management with semantic search and AI-powered organization",
+        "title": "Bookmark Lens",
+        "version": "0.0.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "bookmark-lens",
+            "version": "0.0.7",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T15:37:05.166153Z",
+          "updatedAt": "2025-11-15T15:37:05.166153Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.cornelcroi/context-lens",
         "description": "Semantic search knowledge base for AI assistants with vector storage",
         "title": "Context Lens",
@@ -44479,6 +44623,33 @@
           "status": "active",
           "publishedAt": "2025-11-12T18:34:58.91184Z",
           "updatedAt": "2025-11-12T18:34:58.91184Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.cornelcroi/context-lens",
+        "description": "Semantic search knowledge base with serverless LanceDB. Zero setup, 100% local, 25+ file types",
+        "title": "Context Lens",
+        "version": "0.1.8",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "context-lens",
+            "version": "0.1.8",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T15:49:07.580015Z",
+          "updatedAt": "2025-11-15T15:49:07.580015Z",
           "isLatest": true
         }
       }
@@ -54469,6 +54640,66 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.fkom13/gencodedoc",
+        "description": "Versioning de code et génération de documentation intelligents. Supporte CLI, API REST, et MCP.",
+        "repository": {
+          "url": "https://github.com/fkom13/gencodedoc",
+          "source": "github"
+        },
+        "version": "2.0.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "gencodedoc",
+            "version": "2.0.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T07:01:54.706781Z",
+          "updatedAt": "2025-11-15T07:01:54.706781Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.fkom13/gencodedoc",
+        "description": "Versioning de code et génération de documentation intelligents. Supporte CLI, API REST, et MCP.",
+        "repository": {
+          "url": "https://github.com/fkom13/gencodedoc",
+          "source": "github"
+        },
+        "version": "2.0.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "gencodedoc",
+            "version": "2.0.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T07:03:37.651233Z",
+          "updatedAt": "2025-11-15T07:03:37.651233Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.fkom13/mcp-sftp-orchestrator",
         "description": "Serveur MCP pour l'orchestration de tâches distantes (SSH/SFTP) avec une file d'attente persistante.",
         "repository": {
@@ -61719,6 +61950,66 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mcp-fortress/mcp-fortress",
+        "description": "Security scanner for MCP servers with vulnerability detection and prompt injection analysis.",
+        "repository": {
+          "url": "https://github.com/mcp-fortress/mcp-fortress",
+          "source": "github"
+        },
+        "version": "0.3.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "mcp-fortress",
+            "version": "0.3.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T18:24:04.434793Z",
+          "updatedAt": "2025-11-15T18:24:04.434793Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mcp-fortress/mcp-fortress",
+        "description": "Security scanner for MCP servers with vulnerability detection and prompt injection analysis.",
+        "repository": {
+          "url": "https://github.com/mcp-fortress/mcp-fortress",
+          "source": "github"
+        },
+        "version": "0.3.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "mcp-fortress",
+            "version": "0.3.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T18:25:08.229385Z",
+          "updatedAt": "2025-11-15T18:25:08.229385Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.mcp-z/mcp-pdf",
         "description": "MCP server for creative PDF generation with full emoji, Unicode, and offline support",
@@ -62156,6 +62447,36 @@
           "status": "active",
           "publishedAt": "2025-09-11T12:17:16.50839Z",
           "updatedAt": "2025-09-11T12:17:16.50839Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mgaruccio/openapi-navigator",
+        "description": "Navigate and query OpenAPI specs with fuzzy search, pagination, and API testing",
+        "repository": {
+          "url": "https://github.com/mikegaruccio/openapi-navigator",
+          "source": "github"
+        },
+        "version": "0.5.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "openapi-navigator",
+            "version": "0.5.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T03:29:15.146815Z",
+          "updatedAt": "2025-11-15T03:29:15.146815Z",
           "isLatest": true
         }
       }
@@ -69961,6 +70282,95 @@
           "status": "active",
           "publishedAt": "2025-11-12T22:11:17.478929Z",
           "updatedAt": "2025-11-12T22:11:17.478929Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.schemacrawler/schemacrawler-ai",
+        "description": "Enables natural language schema queries — explore tables, keys, procedures, and get SQL help fast",
+        "repository": {
+          "url": "https://github.com/schemacrawler/SchemaCrawler-AI",
+          "source": "github"
+        },
+        "version": "v17.1.5-2",
+        "websiteUrl": "https://schemacrawler.github.io",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/schemacrawler/schemacrawler-ai:v17.1.5-2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "MCP Server transport type - valid values are 'http' or 'stdio', defaulting to 'stdio'.",
+                "format": "string",
+                "name": "SCHCRWLR_MCP_SERVER_TRANSPORT"
+              },
+              {
+                "description": "Database user name. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_USER"
+              },
+              {
+                "description": "Database user password. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_PASSWORD"
+              },
+              {
+                "description": "JDBC URL for database connection. If this is provided, the server, host, port and database are not used.",
+                "format": "string",
+                "name": "SCHCRWLR_JDBC_URL"
+              },
+              {
+                "description": "SchemaCrawler database plugin, for example, 'sqlserver' or 'sqlite'. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_SERVER"
+              },
+              {
+                "description": "Database host. Defaults to localhost. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_HOST"
+              },
+              {
+                "description": "Database port. Defaults to the default port for the server type. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_PORT"
+              },
+              {
+                "description": "Database to connect to (optional). Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_DATABASE"
+              },
+              {
+                "description": "How much database metadata to retrieve. Values are 'minimum', 'standard', 'detailed' or 'maximum'.",
+                "format": "string",
+                "name": "SCHCRWLR_INFO_LEVEL"
+              },
+              {
+                "description": "Logging verbosity level. Values are 'SEVERE', 'WARNING', 'INFO', 'CONFIG', or 'FINE'.",
+                "format": "string",
+                "name": "SCHCRWLR_LOG_LEVEL"
+              },
+              {
+                "description": "MCP Server tools to exclude, as a comma-separated list.",
+                "format": "string",
+                "name": "SCHCRWLR_EXCLUDE_TOOLS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T14:53:49.732983Z",
+          "updatedAt": "2025-11-15T14:53:49.732983Z",
           "isLatest": true
         }
       }
@@ -75145,6 +75555,70 @@
           "status": "active",
           "publishedAt": "2025-11-05T09:05:07.938909Z",
           "updatedAt": "2025-11-05T09:05:07.938909Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.wonderwhy-er/desktop-commander",
+        "description": "MCP server for terminal commands, file operations, and process management",
+        "title": "Desktop Commander",
+        "repository": {
+          "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+          "source": "github"
+        },
+        "version": "0.2.22",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@wonderwhy-er/desktop-commander",
+            "version": "0.2.22",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T17:50:51.651393Z",
+          "updatedAt": "2025-11-15T17:50:51.651393Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.wonderwhy-er/desktop-commander",
+        "description": "MCP server for terminal commands, file operations, and process management",
+        "title": "Desktop Commander",
+        "repository": {
+          "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+          "source": "github"
+        },
+        "version": "0.2.23",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@wonderwhy-er/desktop-commander",
+            "version": "0.2.23",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-15T22:24:54.096028Z",
+          "updatedAt": "2025-11-15T22:24:54.096028Z",
           "isLatest": true
         }
       }
@@ -81008,6 +81482,6 @@
     }
   ],
   "metadata": {
-    "count": 1785
+    "count": 1799
   }
 }
