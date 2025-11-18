@@ -13443,6 +13443,34 @@
           "status": "active",
           "publishedAt": "2025-11-16T08:56:18.386744Z",
           "updatedAt": "2025-11-16T08:56:18.386744Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.40",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T12:05:50.210325Z",
+          "updatedAt": "2025-11-17T12:05:50.210325Z",
           "isLatest": true
         }
       }
@@ -15761,6 +15789,42 @@
           "status": "active",
           "publishedAt": "2025-10-21T18:27:55.098714Z",
           "updatedAt": "2025-10-21T18:27:55.098714Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.gitkraken/gk-cli",
+        "description": "The GitKraken MCP Server for managing repos, PRs, issues across GitHub, GitLab, Bitbucket and more.",
+        "repository": {
+          "url": "https://github.com/gitkraken/gk-cli",
+          "source": "github"
+        },
+        "version": "3.1.48",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@gitkraken/gk",
+            "version": "3.1.48",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "value": "mcp",
+                "type": "positional"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T15:51:23.707989Z",
+          "updatedAt": "2025-11-17T15:51:23.707989Z",
           "isLatest": true
         }
       }
@@ -16760,6 +16824,75 @@
           "status": "active",
           "publishedAt": "2025-11-05T14:16:31.519052Z",
           "updatedAt": "2025-11-05T14:16:31.519052Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.iunera/druid-mcp-server",
+        "description": "AI-powered MCP server for Apache Druid cluster management and analytic",
+        "repository": {
+          "url": "https://github.com/iunera/druid-mcp-server",
+          "source": "github"
+        },
+        "version": "1.6.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/iunera/druid-mcp-server:1.6.0",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Druid router URL for connecting to the Druid cluster",
+                "isRequired": true,
+                "format": "string",
+                "name": "DRUID_ROUTER_URL"
+              },
+              {
+                "description": "Druid coordinator URL for querying metadata endpoints (optional)",
+                "format": "string",
+                "name": "DRUID_COORDINATOR_URL"
+              },
+              {
+                "description": "Username for Druid authentication (optional)",
+                "format": "string",
+                "name": "DRUID_AUTH_USERNAME"
+              },
+              {
+                "description": "Password for Druid authentication (optional)",
+                "format": "string",
+                "isSecret": true,
+                "name": "DRUID_AUTH_PASSWORD"
+              },
+              {
+                "description": "Enable SSL/TLS support for Druid connections",
+                "format": "boolean",
+                "name": "DRUID_SSL_ENABLED"
+              },
+              {
+                "description": "Skip SSL certificate verification (for development/testing only)",
+                "format": "boolean",
+                "name": "DRUID_SSL_SKIP_VERIFICATION"
+              },
+              {
+                "description": "Enable read-only mode (only GET requests and SQL queries allowed)",
+                "format": "boolean",
+                "name": "DRUID_MCP_READONLY_ENABLED"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T15:15:59.629614Z",
+          "updatedAt": "2025-11-17T15:15:59.629614Z",
           "isLatest": true
         }
       }
@@ -17128,6 +17261,602 @@
           "status": "active",
           "publishedAt": "2025-11-14T09:55:13.161842Z",
           "updatedAt": "2025-11-14T09:55:13.161842Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.14",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.14",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T19:21:15.002557Z",
+          "updatedAt": "2025-11-17T19:21:15.002557Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.19",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.19",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T22:44:35.101081Z",
+          "updatedAt": "2025-11-17T22:44:35.101081Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.20",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.20",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T22:57:50.294791Z",
+          "updatedAt": "2025-11-17T22:57:50.294791Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.21",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.21",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T23:14:49.834879Z",
+          "updatedAt": "2025-11-17T23:14:49.834879Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.25",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.25",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T01:45:32.938627Z",
+          "updatedAt": "2025-11-18T01:45:32.938627Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.26",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.26",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T02:00:47.788538Z",
+          "updatedAt": "2025-11-18T02:00:47.788538Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.27",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.27",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T02:23:37.479754Z",
+          "updatedAt": "2025-11-18T02:23:37.479754Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - Fast, standalone binaries for AI-powered meeting scheduling",
+        "version": "1.0.20",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.20",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T22:45:33.130305Z",
+          "updatedAt": "2025-11-17T22:45:33.130305Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - Fast, standalone binaries for AI-powered meeting scheduling",
+        "version": "1.0.21",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.21",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T22:58:58.350386Z",
+          "updatedAt": "2025-11-17T22:58:58.350386Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.22",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.22",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T23:15:57.816792Z",
+          "updatedAt": "2025-11-17T23:15:57.816792Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.25",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.25",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T01:45:45.371325Z",
+          "updatedAt": "2025-11-18T01:45:45.371325Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.26",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.26",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T02:00:55.678697Z",
+          "updatedAt": "2025-11-18T02:00:55.678697Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.27",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.27",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T02:23:47.313968Z",
+          "updatedAt": "2025-11-18T02:23:47.313968Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-python",
+        "description": "Model Context Protocol server for Syncline - AI-powered meeting scheduling (Python)",
+        "version": "1.0.20",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "syncline-mcp-server",
+            "version": "1.0.20",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T22:58:10.079941Z",
+          "updatedAt": "2025-11-17T22:58:10.079941Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-python",
+        "description": "Syncline MCP Server (Python) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Python)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-python"
+        },
+        "version": "1.0.21",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "syncline-mcp-server",
+            "version": "1.0.21",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T23:14:58.273723Z",
+          "updatedAt": "2025-11-17T23:14:58.273723Z",
           "isLatest": true
         }
       }
@@ -22092,6 +22821,176 @@
           "status": "active",
           "publishedAt": "2025-11-14T09:39:10.986315Z",
           "updatedAt": "2025-11-14T09:39:10.986315Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.storage/mcp",
+        "description": "Tigris MCP Server seamlessly connects AI agents to Tigris bucket and object management.",
+        "title": "Tigris MCP Server",
+        "repository": {
+          "url": "https://github.com/tigrisdata/mcp",
+          "source": "github"
+        },
+        "version": "1.5.0",
+        "websiteUrl": "https://mcp.storage.dev",
+        "icons": [
+          {
+            "src": "https://mcp.storage.dev/favicon.jpg",
+            "mimeType": "image/jpg"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.storage.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T10:11:34.85986Z",
+          "updatedAt": "2025-11-17T10:11:34.85986Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.storage/mcp",
+        "description": "Tigris MCP Server seamlessly connects AI agents to Tigris bucket and object management.",
+        "title": "Tigris MCP Server",
+        "repository": {
+          "url": "https://github.com/tigrisdata/mcp",
+          "source": "github"
+        },
+        "version": "1.5.1",
+        "websiteUrl": "https://mcp.storage.dev",
+        "icons": [
+          {
+            "src": "https://mcp.storage.dev/favicon.jpg",
+            "mimeType": "image/jpg"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.storage.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T10:15:37.180821Z",
+          "updatedAt": "2025-11-17T10:15:37.180821Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.storage/mcp",
+        "description": "Tigris MCP Server seamlessly connects AI agents to Tigris bucket and object management.",
+        "title": "Tigris MCP Server",
+        "repository": {
+          "url": "https://github.com/tigrisdata/mcp",
+          "source": "github"
+        },
+        "version": "1.5.2",
+        "websiteUrl": "https://mcp.storage.dev",
+        "icons": [
+          {
+            "src": "https://mcp.storage.dev/favicon.jpg",
+            "mimeType": "image/jpg"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.storage.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T12:43:06.254242Z",
+          "updatedAt": "2025-11-17T12:43:06.254242Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.storage/mcp",
+        "description": "Tigris MCP Server seamlessly connects AI agents to Tigris bucket and object management.",
+        "title": "Tigris MCP Server",
+        "repository": {
+          "url": "https://github.com/tigrisdata/mcp",
+          "source": "github"
+        },
+        "version": "1.6.1",
+        "websiteUrl": "https://mcp.storage.dev",
+        "icons": [
+          {
+            "src": "https://mcp.storage.dev/favicon.jpg",
+            "mimeType": "image/jpg"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.storage.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T16:03:28.559187Z",
+          "updatedAt": "2025-11-17T16:03:28.559187Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.storage/mcp",
+        "description": "Tigris MCP Server seamlessly connects AI agents to Tigris bucket and object management.",
+        "title": "Tigris MCP Server",
+        "repository": {
+          "url": "https://github.com/tigrisdata/mcp",
+          "source": "github"
+        },
+        "version": "1.6.2",
+        "websiteUrl": "https://mcp.storage.dev",
+        "icons": [
+          {
+            "src": "https://mcp.storage.dev/favicon.jpg",
+            "mimeType": "image/jpg"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.storage.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T19:54:12.478023Z",
+          "updatedAt": "2025-11-17T19:54:12.478023Z",
           "isLatest": true
         }
       }
@@ -22441,6 +23340,94 @@
           "status": "active",
           "publishedAt": "2025-11-11T10:09:15.016409Z",
           "updatedAt": "2025-11-11T10:09:15.016409Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "directory.brick/mcp",
+        "description": "Provides data for LEGO sets, minifigures, parts and elements. Not affiliated with LEGO® Group.",
+        "title": "Brick Directory",
+        "version": "2025.11.17.0704",
+        "websiteUrl": "https://brick.directory",
+        "icons": [
+          {
+            "src": "https://brick.directory/assets/logo.svg",
+            "mimeType": "image/svg+xml"
+          },
+          {
+            "src": "https://brick.directory/assets/logo-1024-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "1024x1024"
+            ]
+          },
+          {
+            "src": "https://brick.directory/assets/logo-512-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.brick.directory/connect"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T07:04:46.701843Z",
+          "updatedAt": "2025-11-17T07:04:46.701843Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "directory.brick/mcp",
+        "description": "Provides data for LEGO sets, minifigures, parts and elements. Not affiliated with LEGO® Group.",
+        "title": "Brick Directory",
+        "version": "2025.11.17.0708",
+        "websiteUrl": "https://brick.directory",
+        "icons": [
+          {
+            "src": "https://brick.directory/assets/logo.svg",
+            "mimeType": "image/svg+xml"
+          },
+          {
+            "src": "https://brick.directory/assets/logo-1024-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "1024x1024"
+            ]
+          },
+          {
+            "src": "https://brick.directory/assets/logo-512-transparent.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.brick.directory/connect"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T07:08:24.337957Z",
+          "updatedAt": "2025-11-17T07:08:24.337957Z",
           "isLatest": true
         }
       }
@@ -22768,6 +23755,73 @@
           "status": "active",
           "publishedAt": "2025-11-15T18:55:00.183991Z",
           "updatedAt": "2025-11-15T18:55:00.183991Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "host.justcall.mcp/justcall-mcp-server",
+        "description": "JustCall MCP Server enables LLMs and AI agents to make voice calls and send SMS via JustCall APIs.",
+        "title": "JustCall MCP Server",
+        "repository": {
+          "url": "https://github.com/saaslabsco/justcall-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "icons": [
+          {
+            "src": "https://cdn.justcall.io/assets-marketing/images/favicon.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "45x44"
+            ],
+            "theme": "light"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.justcall.host/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.justcall.host/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T08:38:15.688615Z",
+          "updatedAt": "2025-11-17T08:38:15.688615Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "icu.steeped.registry/nodejsmcp",
+        "description": "A Forgejo MCP Server",
+        "version": "1.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "nodejsmcp",
+            "version": "1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T01:27:31.961785Z",
+          "updatedAt": "2025-11-18T01:27:31.961785Z",
           "isLatest": true
         }
       }
@@ -26959,6 +28013,38 @@
           "status": "active",
           "publishedAt": "2025-11-16T18:09:19.993425Z",
           "updatedAt": "2025-11-16T18:09:19.993425Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Defenter-AI/defenter-proxy",
+        "description": "Real-time semantic security for AI coding agents and MCP tools",
+        "title": "Defenter Proxy",
+        "repository": {
+          "url": "https://github.com/Defenter-AI/defenter-proxy",
+          "source": "github"
+        },
+        "version": "0.0.95",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "defenter-proxy",
+            "version": "0.0.95",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T13:35:26.735291Z",
+          "updatedAt": "2025-11-17T13:35:26.735291Z",
           "isLatest": true
         }
       }
@@ -27627,6 +28713,45 @@
           "status": "active",
           "publishedAt": "2025-10-08T14:44:05.256925Z",
           "updatedAt": "2025-10-08T14:44:05.256925Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.IncodeTechnologies/incode-idv-mcp",
+        "description": "MCP server for Incode IDV, providing identity verification tools for AI assistants.",
+        "repository": {
+          "url": "https://github.com/IncodeTechnologies/incode-idv-mcp",
+          "source": "github"
+        },
+        "version": "1.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@incodetech/incode-idv-mcp",
+            "version": "1.0.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for the service",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T21:37:37.341645Z",
+          "updatedAt": "2025-11-17T21:37:37.341645Z",
           "isLatest": true
         }
       }
@@ -31396,6 +32521,60 @@
           "status": "active",
           "publishedAt": "2025-11-15T01:25:39.894915Z",
           "updatedAt": "2025-11-15T01:25:39.894915Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ProfessionalWiki/mediawiki-mcp-server",
+        "description": "MCP server enabling AI clients to interact with any MediaWiki wiki through standard tools",
+        "title": "MediaWiki MCP Server",
+        "repository": {
+          "url": "https://github.com/ProfessionalWiki/MediaWiki-MCP-Server",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@professional-wiki/mediawiki-mcp-server",
+            "version": "0.6.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to your configuration file",
+                "format": "filepath",
+                "default": "config.json",
+                "name": "CONFIG"
+              },
+              {
+                "description": "Type of MCP server transport",
+                "default": "stdio",
+                "choices": [
+                  "stdio",
+                  "http"
+                ],
+                "name": "MCP_TRANSPORT"
+              },
+              {
+                "description": "Port used for StreamableHTTP transport",
+                "format": "number",
+                "default": "3000",
+                "name": "PORT"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T17:18:03.102737Z",
+          "updatedAt": "2025-11-17T17:18:03.102737Z",
           "isLatest": true
         }
       }
@@ -32582,6 +33761,27 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Swathi-MuraliSrinivasan/tavily-mcp-server",
+        "description": "FastMCP server for Tavily search API with web search and content extraction",
+        "title": "Payx Tavily Search",
+        "repository": {
+          "url": "https://github.com/paychex/tavily-mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.0"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T22:04:42.751174Z",
+          "updatedAt": "2025-11-17T22:04:42.751174Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.Synclub-tech/synclub-dxt",
         "description": "SynClub MCP Server for AI-powered comic creation with script generation and image tools",
@@ -33596,6 +34796,44 @@
           "status": "active",
           "publishedAt": "2025-11-14T07:13:56.837401Z",
           "updatedAt": "2025-11-14T07:13:56.837401Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-aktools",
+        "description": "MCP Server for stock and crypto",
+        "title": "AkTools MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-aktools",
+          "source": "github"
+        },
+        "version": "0.1.13",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-aktools",
+            "version": "0.1.13",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-aktools:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T08:25:30.720365Z",
+          "updatedAt": "2025-11-17T08:25:30.720365Z",
           "isLatest": true
         }
       }
@@ -34125,6 +35363,44 @@
           "status": "active",
           "publishedAt": "2025-11-09T06:42:21.015717Z",
           "updatedAt": "2025-11-09T06:42:21.015717Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aahl/mcp-notify",
+        "description": "MCP Server for notify to Weixin, Telegram, Bark, Lark, Feishu, DingTalk",
+        "title": "Notify MCP Server",
+        "repository": {
+          "url": "https://github.com/aahl/mcp-notify",
+          "source": "github"
+        },
+        "version": "0.1.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-notify",
+            "version": "0.1.7",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/aahl/mcp-notify:latest",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T07:33:49.807877Z",
+          "updatedAt": "2025-11-17T07:33:49.807877Z",
           "isLatest": true
         }
       }
@@ -40299,6 +41575,56 @@
           "status": "active",
           "publishedAt": "2025-10-30T16:55:05.94022Z",
           "updatedAt": "2025-10-30T16:55:05.94022Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.altmetric/altmetric-mcp",
+        "description": "MCP server for Altmetric APIs - track research attention across news, policy, social media, and more",
+        "repository": {
+          "url": "https://github.com/altmetric/altmetric-mcp",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "altmetric-mcp",
+            "version": "0.2.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "API key for Altmetric Details Page API. At least one credential set required: either this key OR both Explorer API credentials",
+                "format": "string",
+                "isSecret": true,
+                "name": "ALTMETRIC_DETAILS_API_KEY"
+              },
+              {
+                "description": "API key for Altmetric Explorer API (requires ALTMETRIC_EXPLORER_API_SECRET). At least one credential set required",
+                "format": "string",
+                "isSecret": true,
+                "name": "ALTMETRIC_EXPLORER_API_KEY"
+              },
+              {
+                "description": "API secret for Altmetric Explorer API HMAC authentication (requires ALTMETRIC_EXPLORER_API_KEY)",
+                "format": "string",
+                "isSecret": true,
+                "name": "ALTMETRIC_EXPLORER_API_SECRET"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T16:25:20.403523Z",
+          "updatedAt": "2025-11-17T16:25:20.403523Z",
           "isLatest": true
         }
       }
@@ -44107,6 +45433,45 @@
           "status": "active",
           "publishedAt": "2025-11-03T03:55:45.761826Z",
           "updatedAt": "2025-11-03T03:55:45.761826Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.clarenceh/expenselm-mcp-server",
+        "description": "An MCP server that provides access to your expense data on ExpenseLM.",
+        "repository": {
+          "url": "https://github.com/expenselm/expenselm-mcp-server",
+          "source": "github"
+        },
+        "version": "0.2.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "expenselm-mcp-server",
+            "version": "0.2.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your ExpenseLM API key",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "EXPENSELM_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T06:20:59.62896Z",
+          "updatedAt": "2025-11-17T06:20:59.62896Z",
           "isLatest": true
         }
       }
@@ -52889,6 +54254,61 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.dinesh-nalla-se/playwright-mcp",
+        "description": "Playwright Tools for MCP",
+        "repository": {
+          "url": "https://github.com/dinesh-nalla-se/playwright-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@dinesh-nalla-se/playwright-mcp",
+            "version": "0.0.47",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for the service",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "YOUR_API_KEY"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/dineshn51331/playwright-mcp:1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for the service",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "YOUR_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T10:25:36.916523Z",
+          "updatedAt": "2025-11-17T10:25:36.916523Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.dockersamples/mcp-docker-release-information",
         "description": "MCP server providing Docker Desktop release notes and security information.",
@@ -56834,6 +58254,94 @@
           "status": "active",
           "publishedAt": "2025-11-10T09:36:19.127074Z",
           "updatedAt": "2025-11-10T09:36:19.127074Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.github/github-mcp-server",
+        "description": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.",
+        "title": "GitHub",
+        "repository": {
+          "url": "https://github.com/github/github-mcp-server",
+          "source": "github"
+        },
+        "version": "0.21.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/github/github-mcp-server:0.21.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "isRequired": true,
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "isRequired": true,
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Set an environment variable in the runtime",
+                "isRequired": true,
+                "value": "GITHUB_PERSONAL_ACCESS_TOKEN={token}",
+                "variables": {
+                  "token": {
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "The container image to run",
+                "isRequired": true,
+                "value": "ghcr.io/github/github-mcp-server",
+                "type": "positional",
+                "valueHint": "image_name"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.githubcopilot.com/mcp/",
+            "headers": [
+              {
+                "description": "Authentication token (PAT or App token)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T15:25:13.443379Z",
+          "updatedAt": "2025-11-17T15:25:13.443379Z",
           "isLatest": true
         }
       }
@@ -58298,6 +59806,43 @@
           "status": "active",
           "publishedAt": "2025-11-09T03:58:39.914854Z",
           "updatedAt": "2025-11-09T03:58:39.914854Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "3.5.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "3.5.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:3.5.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T14:07:49.726958Z",
+          "updatedAt": "2025-11-17T14:07:49.726958Z",
           "isLatest": true
         }
       }
@@ -61791,6 +63336,33 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.luw2007/skim-mcp-server",
+        "description": "MCP server for Skim code transformation. Compresses code 60-95% for LLM context optimization.",
+        "title": "Skim MCP Server",
+        "version": "1.0.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "skim-mcp-server",
+            "version": "1.0.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T15:32:42.74884Z",
+          "updatedAt": "2025-11-17T15:32:42.74884Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.macuse-app/macuse",
         "description": "Bridges AI assistants with native macOS functionality through the Model Context Protocol (MCP).",
@@ -62843,6 +64415,33 @@
           "status": "active",
           "publishedAt": "2025-09-12T01:24:42.862303Z",
           "updatedAt": "2025-09-12T01:24:42.862303Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.microsoft/EnterpriseMCP",
+        "description": "Official Microsoft MCP Server to query Microsoft Entra data using natural language",
+        "title": "Microsoft MCP Server for Enterprise",
+        "repository": {
+          "url": "https://github.com/microsoft/EnterpriseMCP",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.svc.cloud.microsoft/enterprise"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-18T00:01:16.627197Z",
+          "updatedAt": "2025-11-18T00:01:16.627197Z",
           "isLatest": true
         }
       }
@@ -67045,6 +68644,34 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.propstreet/agenthub",
+        "description": "Enables coding agents to coordinate edits, reviews, and escalations without file locking conflicts",
+        "title": "AgentHub - Lean MCP Orchestrator",
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@propstreet/agenthub",
+            "version": "1.0.0",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:3333/mcp"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T07:50:38.72583Z",
+          "updatedAt": "2025-11-17T07:50:38.72583Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.pshivapr/selenium-mcp",
         "description": "Selenium Tools for MCP",
@@ -69401,6 +71028,94 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-sqlite",
+        "description": "MCP server for SQLCipher 4 encrypted SQLite databases with full CRUD operations and query support",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-sqlite",
+          "source": "github"
+        },
+        "version": "0.2.1",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-sqlite:0.2.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T15:50:01.633559Z",
+          "updatedAt": "2025-11-17T15:50:01.633559Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-sqlite",
+        "description": "MCP server for SQLCipher 4 encrypted SQLite databases with full CRUD operations and query support",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-sqlite",
+          "source": "github"
+        },
+        "version": "0.2.2",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-sqlite:0.2.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T17:12:29.125333Z",
+          "updatedAt": "2025-11-17T17:12:29.125333Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.rsys-vtiwari/weather-mcp",
         "description": "US NWS alerts by state and short-term (next 5 periods) point forecasts.",
         "title": "Weather Alerts & Forecast",
@@ -71667,6 +73382,73 @@
           "status": "active",
           "publishedAt": "2025-11-14T08:40:40.608132Z",
           "updatedAt": "2025-11-14T08:40:40.608132Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.simplifier-ag/simplifier-mcp",
+        "description": "MCP Server for Simplifier - manage Connectors, BusinessObjects, Datatypes and logins",
+        "repository": {
+          "url": "https://github.com/simplifier-ag/simplifier-mcp",
+          "source": "github"
+        },
+        "version": "0.9.56",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@simplifierag/simplifier-mcp",
+            "version": "0.9.56",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your current Simplifier token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SIMPLIFIER_TOKEN"
+              },
+              {
+                "description": "The base URL of your Simplifier instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "SIMPLIFIER_BASE_URL"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/simplifierag/simplifier-mcp:0.9.56",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your current Simplifier token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SIMPLIFIER_TOKEN"
+              },
+              {
+                "description": "The base URL of your Simplifier instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "SIMPLIFIER_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T13:06:10.213288Z",
+          "updatedAt": "2025-11-17T13:06:10.213288Z",
           "isLatest": true
         }
       }
@@ -79474,6 +81256,86 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.zyntx-lab/periphery-mcp-server",
+        "description": "Swift code analysis with Periphery - detect unused code and improve code quality",
+        "title": "Periphery Code Audit",
+        "repository": {
+          "url": "https://github.com/zyntx-lab/periphery-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://github.com/zyntx-lab/periphery-mcp-server",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/zyntx-lab/periphery-mcp-server/releases/download/v1.0.0/periphery-mcp-server",
+            "version": "1.0.0",
+            "fileSha256": "623b6af38289e1b19cefb2dfdcfe11e15a8676b530ec89b92072a8c48217ecdd",
+            "runtimeHint": "binary",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ],
+        "_meta": {
+          "io.modelcontextprotocol.registry/publisher-provided": {
+            "capabilities": {
+              "tools": [
+                {
+                  "description": "Verify Periphery CLI is installed and accessible",
+                  "name": "check_periphery_installed"
+                },
+                {
+                  "description": "Get the installed version of Periphery",
+                  "name": "get_periphery_version"
+                },
+                {
+                  "description": "Run a basic Periphery scan on a project",
+                  "name": "scan_project"
+                },
+                {
+                  "description": "Run Periphery scan using a YAML configuration file",
+                  "name": "scan_with_config"
+                },
+                {
+                  "description": "Focus specifically on detecting unused imports",
+                  "name": "analyze_unused_imports"
+                },
+                {
+                  "description": "Identify public declarations that could be internal",
+                  "name": "find_redundant_public"
+                },
+                {
+                  "description": "Advanced scanning with custom Periphery flags",
+                  "name": "scan_with_options"
+                }
+              ]
+            },
+            "categories": [
+              "code-analysis",
+              "development-tools"
+            ],
+            "license": "MIT",
+            "platform": "darwin-arm64",
+            "vendor": {
+              "name": "Zyntx Lab",
+              "url": "https://github.com/zyntx-lab"
+            }
+          }
+        }
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T18:00:01.391035Z",
+          "updatedAt": "2025-11-17T18:00:01.391035Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.zzstoatzz/tangled-mcp",
         "description": "MCP server for Tangled git platform. Manage repositories, branches, and issues on tangled.org.",
@@ -80218,6 +82080,98 @@
           "status": "active",
           "publishedAt": "2025-11-14T00:21:24.100953Z",
           "updatedAt": "2025-11-14T00:21:24.100953Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.twelvelabs/twelvelabs-mcp-server",
+        "description": "TwelveLabs MCP: video indexing, search, analysis, and embeddings for AI applications.",
+        "version": "1.0.0",
+        "websiteUrl": "https://twelvelabs.io",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/77832019?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.twelvelabs.io",
+            "headers": [
+              {
+                "description": "Twelvelabs API key for authentication",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T14:04:40.549594Z",
+          "updatedAt": "2025-11-17T14:04:40.549594Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.twelvelabs/twelvelabs-mcp-server",
+        "description": "TwelveLabs MCP: video indexing, search, analysis, and embeddings for AI applications.",
+        "version": "1.0.1",
+        "websiteUrl": "https://twelvelabs.io",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/77832019?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.twelvelabs.io",
+            "headers": [
+              {
+                "description": "Twelvelabs API key for authentication",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-api-key"
+              }
+            ]
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp.twelvelabs.io/mcp",
+            "headers": [
+              {
+                "description": "Twelvelabs API key for authentication",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "X-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T14:11:53.688463Z",
+          "updatedAt": "2025-11-17T14:11:53.688463Z",
           "isLatest": true
         }
       }
@@ -81714,6 +83668,195 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T08:08:27.027035Z",
+          "updatedAt": "2025-11-17T08:08:27.027035Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T09:06:05.09268Z",
+          "updatedAt": "2025-11-17T09:06:05.09268Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T14:50:54.878566Z",
+          "updatedAt": "2025-11-17T14:50:54.878566Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T14:54:18.567386Z",
+          "updatedAt": "2025-11-17T14:54:18.567386Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.7",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.7",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T14:57:05.662269Z",
+          "updatedAt": "2025-11-17T14:57:05.662269Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.8",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.8",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T16:49:13.925805Z",
+          "updatedAt": "2025-11-17T16:49:13.925805Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "run.syncline/mcp-server",
+        "description": "AI-powered meeting scheduling with intelligent auto-scheduling for Claude and AI agents.",
+        "title": "Syncline MCP Server",
+        "version": "1.0.9",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.9",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-17T17:04:20.191855Z",
+          "updatedAt": "2025-11-17T17:04:20.191855Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "so.jinko/jinko-mcp",
         "description": "Jinko is a travel MCP server that provides hotel search and booking capabilities.",
@@ -81908,6 +84051,6 @@
     }
   ],
   "metadata": {
-    "count": 1811
+    "count": 1865
   }
 }
