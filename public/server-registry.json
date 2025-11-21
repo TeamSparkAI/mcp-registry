@@ -108,6 +108,32 @@
           "status": "active",
           "publishedAt": "2025-11-07T01:00:19.262705Z",
           "updatedAt": "2025-11-07T01:00:19.262705Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.exa/exa",
+        "description": "Fast, intelligent web search and web crawling.\n\nNew mcp tool: Exa-code is a context tool for coding ",
+        "repository": {
+          "url": "https://github.com/exa-labs/exa-mcp-server",
+          "source": "github"
+        },
+        "version": "3.1.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T18:00:55.174988Z",
+          "updatedAt": "2025-11-20T18:00:55.174988Z",
           "isLatest": true
         }
       }
@@ -13522,6 +13548,34 @@
           "status": "active",
           "publishedAt": "2025-11-19T13:06:06.26316Z",
           "updatedAt": "2025-11-19T13:06:06.26316Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.42",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T12:10:54.513432Z",
+          "updatedAt": "2025-11-20T12:10:54.513432Z",
           "isLatest": true
         }
       }
@@ -17742,6 +17796,90 @@
           "status": "active",
           "publishedAt": "2025-11-18T03:55:54.366789Z",
           "updatedAt": "2025-11-18T03:55:54.366789Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.31",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.31",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T23:48:04.484731Z",
+          "updatedAt": "2025-11-20T23:48:04.484731Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.32",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.32",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-21T01:58:52.782545Z",
+          "updatedAt": "2025-11-21T01:58:52.782545Z",
           "isLatest": true
         }
       }
@@ -18106,6 +18244,90 @@
           "status": "active",
           "publishedAt": "2025-11-18T03:56:03.569176Z",
           "updatedAt": "2025-11-18T03:56:03.569176Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.31",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.31",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T23:48:13.860137Z",
+          "updatedAt": "2025-11-20T23:48:13.860137Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.32",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.32",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-21T01:59:01.598582Z",
+          "updatedAt": "2025-11-21T01:59:01.598582Z",
           "isLatest": true
         }
       }
@@ -19987,6 +20209,86 @@
           "status": "active",
           "publishedAt": "2025-11-11T13:12:40.66456Z",
           "updatedAt": "2025-11-11T13:12:40.66456Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json#/definitions/ServerDetail",
+        "name": "com.smartbear/smartbear-mcp",
+        "description": "MCP server for AI access to SmartBear tools, including BugSnag, Reflect, Swagger, PactFlow.",
+        "title": "SmartBear MCP",
+        "repository": {
+          "url": "https://github.com/SmartBear/smartbear-mcp",
+          "source": "github"
+        },
+        "version": "0.11.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@smartbear/mcp",
+            "version": "0.11.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "BugSnag auth token. Leave empty to disable BugSnag tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "isSecret": true,
+                "name": "BUGSNAG_AUTH_TOKEN"
+              },
+              {
+                "description": "BugSnag project API key (optional; narrows interactions to a single project). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "name": "BUGSNAG_PROJECT_API_KEY"
+              },
+              {
+                "description": "Reflect API token. Leave empty to disable Reflect tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/test-hub-integration",
+                "isSecret": true,
+                "name": "REFLECT_API_TOKEN"
+              },
+              {
+                "description": "Swagger API key. Leave empty to disable Swagger tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/swagger-portal-integration",
+                "isSecret": true,
+                "name": "SWAGGER_API_KEY"
+              },
+              {
+                "description": "PactFlow/Pact Broker base URL. Leave empty to disable Pact tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_BASE_URL"
+              },
+              {
+                "description": "PactFlow authentication token. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_TOKEN"
+              },
+              {
+                "description": "Pact Broker username (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_USERNAME"
+              },
+              {
+                "description": "Pact Broker password (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_PASSWORD"
+              },
+              {
+                "description": "The Zephyr Cloud API token for authentication. Learn more: https://support.smartbear.com/zephyr/docs/en/rest-api/api-access-tokens-management.html",
+                "isSecret": true,
+                "name": "ZEPHYR_API_TOKEN"
+              },
+              {
+                "description": " The Zephyr Cloud API base url. Should be changed depending on the region of your Jira instance. Learn more: https://support.smartbear.com/zephyr-scale-cloud/api-docs/#section/Authentication/Accessing-the-API",
+                "name": "ZEPHYR_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T13:16:17.21701Z",
+          "updatedAt": "2025-11-20T13:16:17.21701Z",
           "isLatest": true
         }
       }
@@ -43102,6 +43404,32 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ax-platform/ax-platform",
+        "description": "Multi-agent collaboration platform with real-time messaging, tasks, and shared context.",
+        "repository": {
+          "url": "https://github.com/ax-platform/ax-platform-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.paxai.app/mcp/agents/user"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T04:43:01.152316Z",
+          "updatedAt": "2025-11-20T04:43:01.152316Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.b1ff/atlassian-dc-mcp-bitbucket",
         "description": "MCP server for Atlassian Bitbucket Data Center - interact with repositories and code",
@@ -45500,6 +45828,76 @@
           "status": "active",
           "publishedAt": "2025-09-12T12:58:23.949573Z",
           "updatedAt": "2025-09-12T12:58:23.949573Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.byPawel/tachibot-mcp",
+        "description": "Multi-model AI orchestration with 31 tools, YAML workflows, and 5 token-optimized profiles.",
+        "repository": {
+          "url": "https://github.com/byPawel/tachibot-mcp",
+          "source": "github"
+        },
+        "version": "2.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "tachibot-mcp",
+            "version": "2.0.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Perplexity API key for web search, research, and reasoning (https://www.perplexity.ai/settings/api)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "PERPLEXITY_API_KEY"
+              },
+              {
+                "description": "Grok/xAI API key for code analysis, debugging, and architecture (https://console.x.ai/)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "GROK_API_KEY"
+              },
+              {
+                "description": "OpenAI API key for GPT-5 analysis and comparison (https://platform.openai.com/api-keys)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "OPENAI_API_KEY"
+              },
+              {
+                "description": "Google Gemini API key for brainstorming and code/text analysis (https://aistudio.google.com/apikey)",
+                "format": "string",
+                "isSecret": true,
+                "name": "GOOGLE_API_KEY"
+              },
+              {
+                "description": "OpenRouter API key for Qwen3 Coder and other models",
+                "format": "string",
+                "isSecret": true,
+                "name": "OPENROUTER_API_KEY"
+              },
+              {
+                "description": "Tool profile selection: minimal, research_power, code_focus, balanced, or full (default: balanced)",
+                "format": "string",
+                "name": "TACHIBOT_PROFILE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T21:38:25.23954Z",
+          "updatedAt": "2025-11-20T21:38:25.23954Z",
           "isLatest": true
         }
       }
@@ -55915,6 +56313,77 @@
           "status": "active",
           "publishedAt": "2025-10-26T02:11:39.865561Z",
           "updatedAt": "2025-10-26T02:11:39.865561Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.domdomegg/airtable-mcp-server",
+        "description": "Read and write access to Airtable database schemas, tables, and records.",
+        "title": "Airtable",
+        "repository": {
+          "url": "https://github.com/domdomegg/airtable-mcp-server.git",
+          "source": "github"
+        },
+        "version": "1.9.5",
+        "websiteUrl": "https://github.com/domdomegg/airtable-mcp-server#readme",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/domdomegg/airtable-mcp-server/refs/heads/master/icon.png",
+            "mimeType": "image/png"
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "airtable-mcp-server",
+            "version": "1.9.5",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Airtable personal access token (e.g., pat123.abc123). Create at https://airtable.com/create/tokens/new with scopes: schema.bases:read, data.records:read, and optionally schema.bases:write and data.records:write.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "AIRTABLE_API_KEY"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/domdomegg/airtable-mcp-server:1.9.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Airtable personal access token (e.g., pat123.abc123). Create at https://airtable.com/create/tokens/new with scopes: schema.bases:read, data.records:read, and optionally schema.bases:write and data.records:write.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "AIRTABLE_API_KEY"
+              }
+            ]
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/domdomegg/airtable-mcp-server/releases/download/v1.9.5/airtable-mcp-server.mcpb",
+            "version": "1.9.5",
+            "fileSha256": "f39140a57f02b3e3cf9c3a246f909cf6ca417c06722e6e1e9a126cc7a276d653",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T15:45:28.037863Z",
+          "updatedAt": "2025-11-20T15:45:28.037863Z",
           "isLatest": true
         }
       }
@@ -66280,6 +66749,132 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mia-platform/console-mcp-server",
+        "description": "The official MCP Server from Mia-Platform to interact with Mia-Platform Console",
+        "repository": {
+          "url": "https://github.com/mia-platform/console-mcp-server",
+          "source": "github"
+        },
+        "version": "1.2.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@mia-platform/console-mcp-server",
+            "version": "1.2.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "The runtime command to execute",
+                "isRequired": true,
+                "value": "run",
+                "type": "positional"
+              },
+              {
+                "description": "Run container in interactive mode",
+                "isRequired": true,
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "-i"
+              },
+              {
+                "description": "Automatically remove the container when it exits",
+                "format": "boolean",
+                "value": "true",
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "description": "Set the MIA_PLATFORM_CLIENT_ID environment variable in the runtime, which is the client ID of the Service Account of the Mia-Platform Company you want to access.",
+                "isRequired": true,
+                "value": "MIA_PLATFORM_CLIENT_ID={mia-platform-client-id}",
+                "variables": {
+                  "token": {
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "Set the MIA_PLATFORM_CLIENT_ID environment variable in the runtime, which is the client secret of the Service Account of the Mia-Platform Company you want to access.",
+                "isRequired": true,
+                "value": "MIA_PLATFORM_CLIENT_SECRET={mia-platform-client-secret}",
+                "variables": {
+                  "token": {
+                    "isRequired": true,
+                    "format": "string",
+                    "isSecret": true
+                  }
+                },
+                "type": "named",
+                "name": "-e"
+              },
+              {
+                "description": "The container image to run",
+                "isRequired": true,
+                "value": "ghcr.io/github/github-mcp-server",
+                "type": "positional",
+                "valueHint": "image_name"
+              },
+              {
+                "description": "This is to specify the MCP server application",
+                "isRequired": true,
+                "value": "mcp-server",
+                "type": "positional"
+              },
+              {
+                "description": "This is the command to start the MCP server",
+                "isRequired": true,
+                "value": "start",
+                "type": "positional"
+              },
+              {
+                "description": "Flag to inform the server to use the stdio transport",
+                "isRequired": true,
+                "value": "--stdio",
+                "type": "positional"
+              },
+              {
+                "description": "Flag to inform the server about the MCP host to connect to",
+                "isRequired": true,
+                "value": "--host=https://console.cloud.mia-platform.eu",
+                "type": "positional"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://console.cloud.mia-platform.eu/console-mcp-server/mcp",
+            "headers": [
+              {
+                "description": "Authentication token (PAT or App token)",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T13:53:36.781603Z",
+          "updatedAt": "2025-11-20T13:53:36.781603Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.mickymultani/crypto-bytes",
         "description": "Crypto Bytes MCP Server",
@@ -71227,6 +71822,37 @@
           "status": "active",
           "publishedAt": "2025-11-12T23:17:10.670332Z",
           "updatedAt": "2025-11-12T23:17:10.670332Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.pubnub/mcp-server",
+        "description": "PubNub MCP for Real-time messaging. API Access and SDK documentation.",
+        "repository": {
+          "url": "https://github.com/pubnub/pubnub-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.124",
+        "websiteUrl": "https://pubnub.github.io/pubnub-mcp-server",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@pubnub/mcp",
+            "version": "1.0.124",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-21T01:09:50.221695Z",
+          "updatedAt": "2025-11-21T01:09:50.221695Z",
           "isLatest": true
         }
       }
@@ -74922,6 +75548,56 @@
           "status": "active",
           "publishedAt": "2025-10-31T18:04:03.448221Z",
           "updatedAt": "2025-10-31T18:04:03.448221Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shinpr/mcp-image",
+        "description": "AI image generation MCP server using Nano Banana Pro with intelligent prompt enhancement",
+        "repository": {
+          "url": "https://github.com/shinpr/mcp-image",
+          "source": "github"
+        },
+        "version": "0.4.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-image",
+            "version": "0.4.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Google Gemini API key for image generation (get from https://aistudio.google.com/apikey)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "GEMINI_API_KEY"
+              },
+              {
+                "description": "Absolute path to directory where generated images will be saved (defaults to ./output)",
+                "format": "string",
+                "name": "IMAGE_OUTPUT_DIR"
+              },
+              {
+                "description": "Set to 'true' to disable automatic prompt optimization and use direct prompts",
+                "format": "boolean",
+                "name": "SKIP_PROMPT_ENHANCEMENT"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T22:45:53.441693Z",
+          "updatedAt": "2025-11-20T22:45:53.441693Z",
           "isLatest": true
         }
       }
@@ -75362,6 +76038,56 @@
           "status": "active",
           "publishedAt": "2025-11-09T03:13:22.118486Z",
           "updatedAt": "2025-11-09T03:13:22.118486Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shopanaio/novaposhta",
+        "description": "MCP Server for Nova Poshta API integration with AI assistants",
+        "repository": {
+          "url": "https://github.com/shopanaio/carrier-api",
+          "source": "github",
+          "subfolder": "packages/novaposhta-mcp-server"
+        },
+        "version": "0.0.1-alpha.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@shopana/novaposhta-mcp-server",
+            "version": "0.0.1-alpha.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Nova Poshta API key",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "NOVA_POSHTA_API_KEY"
+              },
+              {
+                "description": "System identifier (e.g., 'DevCentre' for development/testing)",
+                "format": "string",
+                "name": "NOVA_POSHTA_SYSTEM"
+              },
+              {
+                "description": "Logging level (debug, info, warn, error)",
+                "format": "string",
+                "name": "LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T22:44:48.984001Z",
+          "updatedAt": "2025-11-20T22:44:48.984001Z",
           "isLatest": true
         }
       }
@@ -76946,6 +77672,33 @@
           "status": "active",
           "publishedAt": "2025-10-25T05:47:47.503794Z",
           "updatedAt": "2025-10-25T05:47:47.503794Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.team-earth/datagraph",
+        "description": "Urban intelligence knowledge graph. Structured city data for civic problem-solving.",
+        "title": "DataGraph",
+        "version": "1.2.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "datagraph-city-mcp-server",
+            "version": "1.2.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T04:52:16.375435Z",
+          "updatedAt": "2025-11-20T04:52:16.375435Z",
           "isLatest": true
         }
       }
@@ -84893,7 +85646,122 @@
           "status": "active",
           "publishedAt": "2025-11-20T02:18:28.12919Z",
           "updatedAt": "2025-11-20T02:18:28.12919Z",
-          "isLatest": true
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capability",
+        "title": "My MCP",
+        "version": "0.0.25",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T03:19:54.935115Z",
+          "updatedAt": "2025-11-20T03:19:54.935115Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capability",
+        "title": "My MCP server",
+        "version": "0.0.26",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T03:43:23.224784Z",
+          "updatedAt": "2025-11-20T03:43:23.224784Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP server",
+        "version": "0.0.27",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T03:43:32.824141Z",
+          "updatedAt": "2025-11-20T03:43:32.824141Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP",
+        "version": "0.0.28",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T10:07:06.774823Z",
+          "updatedAt": "2025-11-20T10:07:06.774823Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP server",
+        "version": "0.0.29",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T10:07:24.482073Z",
+          "updatedAt": "2025-11-20T10:07:24.482073Z",
+          "isLatest": false
         }
       }
     },
@@ -84917,6 +85785,121 @@
           "publishedAt": "2025-11-18T09:59:48.527706Z",
           "updatedAt": "2025-11-18T09:59:48.527706Z",
           "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP serve",
+        "version": "0.0.30",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T11:11:05.816526Z",
+          "updatedAt": "2025-11-20T11:11:05.816526Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP server",
+        "version": "0.0.31",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T11:15:44.774793Z",
+          "updatedAt": "2025-11-20T11:15:44.774793Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP serve",
+        "version": "0.0.32",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T11:16:59.194269Z",
+          "updatedAt": "2025-11-20T11:16:59.194269Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities",
+        "title": "My MCP server",
+        "version": "0.0.33",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T14:21:46.61962Z",
+          "updatedAt": "2025-11-20T14:21:46.61962Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/alpic-poc-frontend-9eb5bfc8",
+        "description": "Description of my MCP server mega cool capabilities, lesgo",
+        "title": "My MCP server",
+        "version": "0.0.34",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-9eb5bfc8.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T16:34:18.9573Z",
+          "updatedAt": "2025-11-20T16:34:18.9573Z",
+          "isLatest": true
         }
       }
     },
@@ -85725,6 +86708,52 @@
           "status": "active",
           "publishedAt": "2025-11-10T14:33:07.810445Z",
           "updatedAt": "2025-11-10T14:33:07.810445Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/mcp-server-template--43874b8f",
+        "description": "Description of my MCP server",
+        "title": "My MCP Serve",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--43874b8f.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T11:14:02.371877Z",
+          "updatedAt": "2025-11-20T11:14:02.371877Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging/mcp-server-template--de51cc9a",
+        "description": "Description of my MCP server",
+        "title": "My MCP Serve",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--de51cc9a.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-20T14:34:33.952358Z",
+          "updatedAt": "2025-11-20T14:34:33.952358Z",
           "isLatest": true
         }
       }
@@ -86956,6 +87985,6 @@
     }
   ],
   "metadata": {
-    "count": 1944
+    "count": 1971
   }
 }
