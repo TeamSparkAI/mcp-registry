@@ -13666,6 +13666,34 @@
           "status": "active",
           "publishedAt": "2025-11-24T11:55:10.821514Z",
           "updatedAt": "2025-11-24T11:55:10.821514Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.45",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T12:18:31.047465Z",
+          "updatedAt": "2025-11-25T12:18:31.047465Z",
           "isLatest": true
         }
       }
@@ -29490,6 +29518,128 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.DavidFuchs/mcp-uptime-kuma",
+        "description": "A Model Context Protocol (MCP) server for Uptime Kuma version 2.",
+        "repository": {
+          "url": "https://github.com/DavidFuchs/mcp-uptime-kuma",
+          "source": "github"
+        },
+        "version": "0.5.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@davidfuchs/mcp-uptime-kuma",
+            "version": "0.5.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "The URL of your Uptime Kuma instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "UPTIME_KUMA_URL"
+              },
+              {
+                "description": "Your Uptime Kuma username (not required if using JWT token authentication or if authentication is disabled)",
+                "format": "string",
+                "name": "UPTIME_KUMA_USERNAME"
+              },
+              {
+                "description": "Your Uptime Kuma password (not required if using JWT token authentication or if authentication is disabled)",
+                "format": "string",
+                "isSecret": true,
+                "name": "UPTIME_KUMA_PASSWORD"
+              },
+              {
+                "description": "Your 2FA token (only required if two-factor authentication is enabled on your account)",
+                "format": "string",
+                "isSecret": true,
+                "name": "UPTIME_KUMA_2FA_TOKEN"
+              },
+              {
+                "description": "Your JWT token for authentication (takes precedence over username/password if provided)",
+                "format": "string",
+                "isSecret": true,
+                "name": "UPTIME_KUMA_JWT_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T23:10:25.123236Z",
+          "updatedAt": "2025-11-25T23:10:25.123236Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.DavidFuchs/mcp-uptime-kuma",
+        "description": "A Model Context Protocol (MCP) server for Uptime Kuma version 2.",
+        "repository": {
+          "url": "https://github.com/DavidFuchs/mcp-uptime-kuma",
+          "source": "github"
+        },
+        "version": "0.5.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@davidfuchs/mcp-uptime-kuma",
+            "version": "0.5.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "The URL of your Uptime Kuma instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "UPTIME_KUMA_URL"
+              },
+              {
+                "description": "Your Uptime Kuma username (not required if using JWT token authentication or if authentication is disabled)",
+                "format": "string",
+                "name": "UPTIME_KUMA_USERNAME"
+              },
+              {
+                "description": "Your Uptime Kuma password (not required if using JWT token authentication or if authentication is disabled)",
+                "format": "string",
+                "isSecret": true,
+                "name": "UPTIME_KUMA_PASSWORD"
+              },
+              {
+                "description": "Your 2FA token (only required if two-factor authentication is enabled on your account)",
+                "format": "string",
+                "isSecret": true,
+                "name": "UPTIME_KUMA_2FA_TOKEN"
+              },
+              {
+                "description": "Your JWT token for authentication (takes precedence over username/password if provided)",
+                "format": "string",
+                "isSecret": true,
+                "name": "UPTIME_KUMA_JWT_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-26T00:19:14.580242Z",
+          "updatedAt": "2025-11-26T00:19:14.580242Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.DeanWard/HAL",
         "description": "HAL (HTTP API Layer) - An MCP server that provides HTTP API capabilities to Large Language Models",
@@ -30919,6 +31069,36 @@
           "status": "active",
           "publishedAt": "2025-10-31T16:14:12.916822Z",
           "updatedAt": "2025-10-31T16:14:12.916822Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Kastalien-Research/thoughtbox",
+        "description": "Extended reasoning with structured processes, persistence, and workflow guidance",
+        "repository": {
+          "url": "https://github.com/Kastalien-Research/thoughtbox",
+          "source": "github"
+        },
+        "version": "1.0.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kastalien-research/thoughtbox",
+            "version": "1.0.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T03:56:35.380259Z",
+          "updatedAt": "2025-11-25T03:56:35.380259Z",
           "isLatest": true
         }
       }
@@ -43764,6 +43944,276 @@
           "status": "active",
           "publishedAt": "2025-11-23T22:59:02.614503Z",
           "updatedAt": "2025-11-23T22:59:02.614503Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.alex-feel/mcp-context-server",
+        "description": "An MCP server that provides persistent multimodal context storage for LLM agents.",
+        "repository": {
+          "url": "https://github.com/alex-feel/mcp-context-server",
+          "source": "github"
+        },
+        "version": "0.5.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcp-context-server",
+            "version": "0.5.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Log level",
+                "format": "string",
+                "name": "LOG_LEVEL"
+              },
+              {
+                "description": "Storage backend type: sqlite (default) or postgresql",
+                "format": "string",
+                "name": "STORAGE_BACKEND"
+              },
+              {
+                "description": "Maximum individual image size in megabytes",
+                "format": "number",
+                "name": "MAX_IMAGE_SIZE_MB"
+              },
+              {
+                "description": "Maximum total request size in megabytes",
+                "format": "number",
+                "name": "MAX_TOTAL_SIZE_MB"
+              },
+              {
+                "description": "Custom database file location path",
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Maximum number of concurrent read connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_READERS"
+              },
+              {
+                "description": "Maximum number of concurrent write connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_WRITERS"
+              },
+              {
+                "description": "Connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_CONNECTION_TIMEOUT_S"
+              },
+              {
+                "description": "Idle connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_IDLE_TIMEOUT_S"
+              },
+              {
+                "description": "Connection health check interval in seconds",
+                "format": "number",
+                "name": "POOL_HEALTH_CHECK_INTERVAL_S"
+              },
+              {
+                "description": "Maximum number of retry attempts for failed operations",
+                "format": "number",
+                "name": "RETRY_MAX_RETRIES"
+              },
+              {
+                "description": "Base delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_BASE_DELAY_S"
+              },
+              {
+                "description": "Maximum delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_MAX_DELAY_S"
+              },
+              {
+                "description": "Enable random jitter in retry delays",
+                "format": "boolean",
+                "name": "RETRY_JITTER"
+              },
+              {
+                "description": "Exponential backoff multiplication factor for retries",
+                "format": "number",
+                "name": "RETRY_BACKOFF_FACTOR"
+              },
+              {
+                "description": "Enable SQLite foreign key constraints",
+                "format": "boolean",
+                "name": "SQLITE_FOREIGN_KEYS"
+              },
+              {
+                "description": "SQLite journal mode (e.g., WAL, DELETE)",
+                "format": "string",
+                "name": "SQLITE_JOURNAL_MODE"
+              },
+              {
+                "description": "SQLite synchronous mode (e.g., NORMAL, FULL, OFF)",
+                "format": "string",
+                "name": "SQLITE_SYNCHRONOUS"
+              },
+              {
+                "description": "SQLite temporary storage location (e.g., MEMORY, FILE)",
+                "format": "string",
+                "name": "SQLITE_TEMP_STORE"
+              },
+              {
+                "description": "SQLite memory-mapped I/O size in bytes",
+                "format": "number",
+                "name": "SQLITE_MMAP_SIZE"
+              },
+              {
+                "description": "SQLite cache size (negative value for KB, positive for pages)",
+                "format": "number",
+                "name": "SQLITE_CACHE_SIZE"
+              },
+              {
+                "description": "SQLite page size in bytes",
+                "format": "number",
+                "name": "SQLITE_PAGE_SIZE"
+              },
+              {
+                "description": "SQLite WAL autocheckpoint threshold in pages",
+                "format": "number",
+                "name": "SQLITE_WAL_AUTOCHECKPOINT"
+              },
+              {
+                "description": "SQLite busy timeout in milliseconds",
+                "format": "number",
+                "name": "SQLITE_BUSY_TIMEOUT_MS"
+              },
+              {
+                "description": "SQLite WAL checkpoint mode (e.g., PASSIVE, FULL, RESTART)",
+                "format": "string",
+                "name": "SQLITE_WAL_CHECKPOINT"
+              },
+              {
+                "description": "Server shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Queue operation timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode queue timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Circuit breaker failure threshold before opening",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_FAILURE_THRESHOLD"
+              },
+              {
+                "description": "Circuit breaker recovery timeout in seconds",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_RECOVERY_TIMEOUT_S"
+              },
+              {
+                "description": "Maximum calls allowed in circuit breaker half-open state",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_HALF_OPEN_MAX_CALLS"
+              },
+              {
+                "description": "Complete PostgreSQL connection string (overrides individual settings if provided)",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_CONNECTION_STRING"
+              },
+              {
+                "description": "PostgreSQL server host address",
+                "format": "string",
+                "name": "POSTGRESQL_HOST"
+              },
+              {
+                "description": "PostgreSQL server port number",
+                "format": "number",
+                "name": "POSTGRESQL_PORT"
+              },
+              {
+                "description": "PostgreSQL database username",
+                "format": "string",
+                "name": "POSTGRESQL_USER"
+              },
+              {
+                "description": "PostgreSQL database password",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_PASSWORD"
+              },
+              {
+                "description": "PostgreSQL database name",
+                "format": "string",
+                "name": "POSTGRESQL_DATABASE"
+              },
+              {
+                "description": "PostgreSQL connection pool minimum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MIN"
+              },
+              {
+                "description": "PostgreSQL connection pool maximum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MAX"
+              },
+              {
+                "description": "PostgreSQL connection pool timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL command execution timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_COMMAND_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL SSL mode (disable, allow, prefer, require, verify-ca, verify-full)",
+                "format": "string",
+                "name": "POSTGRESQL_SSL_MODE"
+              },
+              {
+                "description": "Enable semantic search functionality",
+                "format": "boolean",
+                "name": "ENABLE_SEMANTIC_SEARCH"
+              },
+              {
+                "description": "Ollama API host URL for embedding generation",
+                "format": "string",
+                "name": "OLLAMA_HOST"
+              },
+              {
+                "description": "Embedding model name for semantic search",
+                "format": "string",
+                "name": "EMBEDDING_MODEL"
+              },
+              {
+                "description": "Embedding vector dimensions",
+                "format": "number",
+                "name": "EMBEDDING_DIM"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-26T00:40:34.481147Z",
+          "updatedAt": "2025-11-26T00:40:34.481147Z",
           "isLatest": true
         }
       }
@@ -46510,6 +46960,46 @@
           "status": "active",
           "publishedAt": "2025-11-14T12:44:52.953325Z",
           "updatedAt": "2025-11-14T12:44:52.953325Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.brave/brave-search-mcp-server",
+        "description": "Brave Search MCP Server: web results, images, videos, rich results, AI summaries, and more.",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.60",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@brave/brave-search-mcp-server",
+            "version": "2.0.60",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for the service",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "BRAVE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T18:00:33.154054Z",
+          "updatedAt": "2025-11-25T18:00:33.154054Z",
           "isLatest": true
         }
       }
@@ -59534,6 +60024,57 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.evalor/dida365",
+        "description": "MCP Server for Dida365 (TickTick) Task Management Integration",
+        "repository": {
+          "url": "https://github.com/evalor/Dida365MCP",
+          "source": "github"
+        },
+        "version": "0.2.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "dida365-mcp-server",
+            "version": "0.2.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "OAuth2 Client ID for Dida365/TickTick API",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DIDA365_CLIENT_ID"
+              },
+              {
+                "description": "OAuth2 Client Secret for Dida365/TickTick API",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DIDA365_CLIENT_SECRET"
+              },
+              {
+                "description": "Region for the service (china or international)",
+                "format": "string",
+                "name": "DIDA365_REGION"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T14:03:30.561817Z",
+          "updatedAt": "2025-11-25T14:03:30.561817Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
         "name": "io.github.fengcl/mcp-sse-demo-02",
         "description": "Spring Boot MCP 服务器（示例占位描述），通过 GHCR 以 OCI 镜像发布至 MCP Registry。",
@@ -61062,6 +61603,48 @@
           "status": "active",
           "publishedAt": "2025-11-21T14:40:21.032891Z",
           "updatedAt": "2025-11-21T14:40:21.032891Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ggozad/haiku-rag",
+        "description": "Agentic Retrieval Augmented Generation (RAG) with LanceDB",
+        "repository": {
+          "url": "https://github.com/ggozad/haiku.rag",
+          "source": "github"
+        },
+        "version": "0.19.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "haiku-rag",
+            "version": "0.19.0",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "serve",
+                "type": "positional"
+              },
+              {
+                "type": "named",
+                "name": "--mcp"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T11:46:30.792332Z",
+          "updatedAt": "2025-11-25T11:46:30.792332Z",
           "isLatest": true
         }
       }
@@ -62947,6 +63530,86 @@
           "status": "active",
           "publishedAt": "2025-09-14T09:57:57.864977Z",
           "updatedAt": "2025-09-14T09:57:57.864977Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.gradion-ai/ipybox",
+        "description": "An MCP server for sandboxed Python code execution with IPython and Docker, and file transfer.",
+        "repository": {
+          "url": "https://github.com/gradion-ai/ipybox",
+          "source": "github"
+        },
+        "version": "0.6.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "ipybox",
+            "version": "0.6.7",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "packageArguments": [
+              {
+                "description": "Required MCP server subcommand",
+                "isRequired": true,
+                "value": "mcp",
+                "type": "positional"
+              },
+              {
+                "description": "Directory allowed for host filesystem operations",
+                "type": "named",
+                "name": "--allowed-dir",
+                "valueHint": "directory_path",
+                "isRepeated": true
+              },
+              {
+                "description": "Domain, IP address, or CIDR range allowed for outbound network access",
+                "type": "named",
+                "name": "--allowed-domain",
+                "valueHint": "domain_or_ip",
+                "isRepeated": true
+              },
+              {
+                "description": "Docker image tag to use",
+                "type": "named",
+                "name": "--container-tag",
+                "valueHint": "docker_image_tag"
+              },
+              {
+                "description": "Environment variable for container (KEY=VALUE format)",
+                "type": "named",
+                "name": "--container-env-var",
+                "valueHint": "env_var",
+                "isRepeated": true
+              },
+              {
+                "description": "Path to file containing container environment variables",
+                "type": "named",
+                "name": "--container-env-file",
+                "valueHint": "file_path"
+              },
+              {
+                "description": "Bind mount for container (host_path:container_path format)",
+                "type": "named",
+                "name": "--container-bind",
+                "valueHint": "bind_mount",
+                "isRepeated": true
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T06:44:18.707221Z",
+          "updatedAt": "2025-11-25T06:44:18.707221Z",
           "isLatest": true
         }
       }
@@ -72949,6 +73612,47 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.photoxpedia/bolor-brain-mcp",
+        "description": "Cognitive architecture MCP server with memory, learning, and contextual understanding",
+        "repository": {
+          "url": "https://github.com/photoxpedia/bolor-brain-mcp.git",
+          "source": "github"
+        },
+        "version": "1.1.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "bolor-brain-mcp",
+            "version": "1.1.0",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Enable SQLite storage (default: true)",
+                "name": "BRAIN_USE_SQLITE"
+              },
+              {
+                "description": "Log level (default: INFO)",
+                "name": "BRAIN_LOG_LEVEL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-26T01:01:09.811479Z",
+          "updatedAt": "2025-11-26T01:01:09.811479Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.pi22by7/in-memoria",
         "description": "Persistent codebase intelligence that gives AI assistants memory across sessions",
         "version": "0.5.7",
@@ -74302,6 +75006,33 @@
           "status": "active",
           "publishedAt": "2025-11-07T17:48:19.391721Z",
           "updatedAt": "2025-11-07T17:48:19.391721Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.redis/mcp-redis",
+        "description": "Natural language interface designed for agentic applications to manage and search data in Redis.",
+        "title": "Redis MCP Server",
+        "version": "0.4.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "redis-mcp-server",
+            "version": "0.4.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T12:55:19.77085Z",
+          "updatedAt": "2025-11-25T12:55:19.77085Z",
           "isLatest": true
         }
       }
@@ -88141,6 +88872,103 @@
           "status": "active",
           "publishedAt": "2025-11-24T18:17:10.568671Z",
           "updatedAt": "2025-11-24T18:17:10.568671Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
+        "description": "Work in progress (for now)",
+        "title": "Melo property search MCP",
+        "version": "0.0.5",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/206831205?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://property-search-mcp-ce598409.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T08:00:23.377521Z",
+          "updatedAt": "2025-11-25T08:00:23.377521Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
+        "description": "Work in progress (for now)",
+        "title": "Melo property search MCP",
+        "version": "0.0.6",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/206831205?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://property-search-mcp-ce598409.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T10:03:32.134332Z",
+          "updatedAt": "2025-11-25T10:03:32.134332Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
+        "description": "Work in progress (for now)",
+        "title": "Melo property search MCP",
+        "version": "0.0.7",
+        "websiteUrl": "https://github.com",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/206831205?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://property-search-mcp-ce598409.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-25T10:19:52.01703Z",
+          "updatedAt": "2025-11-25T10:19:52.01703Z",
           "isLatest": true
         }
       }
@@ -91063,6 +91891,6 @@
     }
   ],
   "metadata": {
-    "count": 2047
+    "count": 2061
   }
 }
