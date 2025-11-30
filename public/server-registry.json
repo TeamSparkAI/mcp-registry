@@ -21056,6 +21056,48 @@
           "status": "active",
           "publishedAt": "2025-11-23T21:35:56.839786Z",
           "updatedAt": "2025-11-23T21:35:56.839786Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server",
+        "description": "Syncline MCP Server (TypeScript) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (TypeScript)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "1.0.35",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server",
+            "version": "1.0.35",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T15:23:51.320603Z",
+          "updatedAt": "2025-11-29T15:23:51.320603Z",
           "isLatest": true
         }
       }
@@ -21546,6 +21588,90 @@
           "status": "active",
           "publishedAt": "2025-11-23T21:36:06.731959Z",
           "updatedAt": "2025-11-23T21:36:06.731959Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.35",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.35",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T15:23:51.806115Z",
+          "updatedAt": "2025-11-29T15:23:51.806115Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-go",
+        "description": "Syncline MCP Server (Go) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Go)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-go"
+        },
+        "version": "1.0.36",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@kekwanulabs/syncline-mcp-server-go",
+            "version": "1.0.36",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T17:48:52.978895Z",
+          "updatedAt": "2025-11-29T17:48:52.978895Z",
           "isLatest": true
         }
       }
@@ -21665,6 +21791,48 @@
           "status": "active",
           "publishedAt": "2025-11-23T21:36:16.79769Z",
           "updatedAt": "2025-11-23T21:36:16.79769Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.kekwanu/syncline-mcp-server-python",
+        "description": "Syncline MCP Server (Python) - AI-powered meeting scheduling with intelligent auto-scheduling",
+        "title": "Syncline MCP Server (Python)",
+        "repository": {
+          "url": "https://github.com/KekwanuLabs/syncline",
+          "source": "github",
+          "subfolder": "mcp-server-python"
+        },
+        "version": "1.0.35",
+        "websiteUrl": "https://syncline.run",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "syncline-mcp-server",
+            "version": "1.0.35",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Syncline API key from https://syncline.run/developer",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SYNCLINE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T15:23:52.105418Z",
+          "updatedAt": "2025-11-29T15:23:52.105418Z",
           "isLatest": true
         }
       }
@@ -50715,6 +50883,546 @@
           "status": "active",
           "publishedAt": "2025-11-26T00:40:34.481147Z",
           "updatedAt": "2025-11-26T00:40:34.481147Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.alex-feel/mcp-context-server",
+        "description": "An MCP server that provides persistent multimodal context storage for LLM agents.",
+        "repository": {
+          "url": "https://github.com/alex-feel/mcp-context-server",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcp-context-server",
+            "version": "0.6.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Log level",
+                "format": "string",
+                "name": "LOG_LEVEL"
+              },
+              {
+                "description": "Storage backend type: sqlite (default) or postgresql",
+                "format": "string",
+                "name": "STORAGE_BACKEND"
+              },
+              {
+                "description": "Maximum individual image size in megabytes",
+                "format": "number",
+                "name": "MAX_IMAGE_SIZE_MB"
+              },
+              {
+                "description": "Maximum total request size in megabytes",
+                "format": "number",
+                "name": "MAX_TOTAL_SIZE_MB"
+              },
+              {
+                "description": "Custom database file location path",
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Maximum number of concurrent read connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_READERS"
+              },
+              {
+                "description": "Maximum number of concurrent write connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_WRITERS"
+              },
+              {
+                "description": "Connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_CONNECTION_TIMEOUT_S"
+              },
+              {
+                "description": "Idle connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_IDLE_TIMEOUT_S"
+              },
+              {
+                "description": "Connection health check interval in seconds",
+                "format": "number",
+                "name": "POOL_HEALTH_CHECK_INTERVAL_S"
+              },
+              {
+                "description": "Maximum number of retry attempts for failed operations",
+                "format": "number",
+                "name": "RETRY_MAX_RETRIES"
+              },
+              {
+                "description": "Base delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_BASE_DELAY_S"
+              },
+              {
+                "description": "Maximum delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_MAX_DELAY_S"
+              },
+              {
+                "description": "Enable random jitter in retry delays",
+                "format": "boolean",
+                "name": "RETRY_JITTER"
+              },
+              {
+                "description": "Exponential backoff multiplication factor for retries",
+                "format": "number",
+                "name": "RETRY_BACKOFF_FACTOR"
+              },
+              {
+                "description": "Enable SQLite foreign key constraints",
+                "format": "boolean",
+                "name": "SQLITE_FOREIGN_KEYS"
+              },
+              {
+                "description": "SQLite journal mode (e.g., WAL, DELETE)",
+                "format": "string",
+                "name": "SQLITE_JOURNAL_MODE"
+              },
+              {
+                "description": "SQLite synchronous mode (e.g., NORMAL, FULL, OFF)",
+                "format": "string",
+                "name": "SQLITE_SYNCHRONOUS"
+              },
+              {
+                "description": "SQLite temporary storage location (e.g., MEMORY, FILE)",
+                "format": "string",
+                "name": "SQLITE_TEMP_STORE"
+              },
+              {
+                "description": "SQLite memory-mapped I/O size in bytes",
+                "format": "number",
+                "name": "SQLITE_MMAP_SIZE"
+              },
+              {
+                "description": "SQLite cache size (negative value for KB, positive for pages)",
+                "format": "number",
+                "name": "SQLITE_CACHE_SIZE"
+              },
+              {
+                "description": "SQLite page size in bytes",
+                "format": "number",
+                "name": "SQLITE_PAGE_SIZE"
+              },
+              {
+                "description": "SQLite WAL autocheckpoint threshold in pages",
+                "format": "number",
+                "name": "SQLITE_WAL_AUTOCHECKPOINT"
+              },
+              {
+                "description": "SQLite busy timeout in milliseconds",
+                "format": "number",
+                "name": "SQLITE_BUSY_TIMEOUT_MS"
+              },
+              {
+                "description": "SQLite WAL checkpoint mode (e.g., PASSIVE, FULL, RESTART)",
+                "format": "string",
+                "name": "SQLITE_WAL_CHECKPOINT"
+              },
+              {
+                "description": "Server shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Queue operation timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode queue timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Circuit breaker failure threshold before opening",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_FAILURE_THRESHOLD"
+              },
+              {
+                "description": "Circuit breaker recovery timeout in seconds",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_RECOVERY_TIMEOUT_S"
+              },
+              {
+                "description": "Maximum calls allowed in circuit breaker half-open state",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_HALF_OPEN_MAX_CALLS"
+              },
+              {
+                "description": "Complete PostgreSQL connection string (overrides individual settings if provided)",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_CONNECTION_STRING"
+              },
+              {
+                "description": "PostgreSQL server host address",
+                "format": "string",
+                "name": "POSTGRESQL_HOST"
+              },
+              {
+                "description": "PostgreSQL server port number",
+                "format": "number",
+                "name": "POSTGRESQL_PORT"
+              },
+              {
+                "description": "PostgreSQL database username",
+                "format": "string",
+                "name": "POSTGRESQL_USER"
+              },
+              {
+                "description": "PostgreSQL database password",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_PASSWORD"
+              },
+              {
+                "description": "PostgreSQL database name",
+                "format": "string",
+                "name": "POSTGRESQL_DATABASE"
+              },
+              {
+                "description": "PostgreSQL connection pool minimum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MIN"
+              },
+              {
+                "description": "PostgreSQL connection pool maximum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MAX"
+              },
+              {
+                "description": "PostgreSQL connection pool timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL command execution timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_COMMAND_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL SSL mode (disable, allow, prefer, require, verify-ca, verify-full)",
+                "format": "string",
+                "name": "POSTGRESQL_SSL_MODE"
+              },
+              {
+                "description": "Enable semantic search functionality",
+                "format": "boolean",
+                "name": "ENABLE_SEMANTIC_SEARCH"
+              },
+              {
+                "description": "Ollama API host URL for embedding generation",
+                "format": "string",
+                "name": "OLLAMA_HOST"
+              },
+              {
+                "description": "Embedding model name for semantic search",
+                "format": "string",
+                "name": "EMBEDDING_MODEL"
+              },
+              {
+                "description": "Embedding vector dimensions",
+                "format": "number",
+                "name": "EMBEDDING_DIM"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T15:42:26.736777Z",
+          "updatedAt": "2025-11-29T15:42:26.736777Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.alex-feel/mcp-context-server",
+        "description": "An MCP server that provides persistent multimodal context storage for LLM agents.",
+        "repository": {
+          "url": "https://github.com/alex-feel/mcp-context-server",
+          "source": "github"
+        },
+        "version": "0.7.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcp-context-server",
+            "version": "0.7.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Log level",
+                "format": "string",
+                "name": "LOG_LEVEL"
+              },
+              {
+                "description": "Storage backend type: sqlite (default) or postgresql",
+                "format": "string",
+                "name": "STORAGE_BACKEND"
+              },
+              {
+                "description": "Maximum individual image size in megabytes",
+                "format": "number",
+                "name": "MAX_IMAGE_SIZE_MB"
+              },
+              {
+                "description": "Maximum total request size in megabytes",
+                "format": "number",
+                "name": "MAX_TOTAL_SIZE_MB"
+              },
+              {
+                "description": "Custom database file location path",
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Maximum number of concurrent read connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_READERS"
+              },
+              {
+                "description": "Maximum number of concurrent write connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_WRITERS"
+              },
+              {
+                "description": "Connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_CONNECTION_TIMEOUT_S"
+              },
+              {
+                "description": "Idle connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_IDLE_TIMEOUT_S"
+              },
+              {
+                "description": "Connection health check interval in seconds",
+                "format": "number",
+                "name": "POOL_HEALTH_CHECK_INTERVAL_S"
+              },
+              {
+                "description": "Maximum number of retry attempts for failed operations",
+                "format": "number",
+                "name": "RETRY_MAX_RETRIES"
+              },
+              {
+                "description": "Base delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_BASE_DELAY_S"
+              },
+              {
+                "description": "Maximum delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_MAX_DELAY_S"
+              },
+              {
+                "description": "Enable random jitter in retry delays",
+                "format": "boolean",
+                "name": "RETRY_JITTER"
+              },
+              {
+                "description": "Exponential backoff multiplication factor for retries",
+                "format": "number",
+                "name": "RETRY_BACKOFF_FACTOR"
+              },
+              {
+                "description": "Enable SQLite foreign key constraints",
+                "format": "boolean",
+                "name": "SQLITE_FOREIGN_KEYS"
+              },
+              {
+                "description": "SQLite journal mode (e.g., WAL, DELETE)",
+                "format": "string",
+                "name": "SQLITE_JOURNAL_MODE"
+              },
+              {
+                "description": "SQLite synchronous mode (e.g., NORMAL, FULL, OFF)",
+                "format": "string",
+                "name": "SQLITE_SYNCHRONOUS"
+              },
+              {
+                "description": "SQLite temporary storage location (e.g., MEMORY, FILE)",
+                "format": "string",
+                "name": "SQLITE_TEMP_STORE"
+              },
+              {
+                "description": "SQLite memory-mapped I/O size in bytes",
+                "format": "number",
+                "name": "SQLITE_MMAP_SIZE"
+              },
+              {
+                "description": "SQLite cache size (negative value for KB, positive for pages)",
+                "format": "number",
+                "name": "SQLITE_CACHE_SIZE"
+              },
+              {
+                "description": "SQLite page size in bytes",
+                "format": "number",
+                "name": "SQLITE_PAGE_SIZE"
+              },
+              {
+                "description": "SQLite WAL autocheckpoint threshold in pages",
+                "format": "number",
+                "name": "SQLITE_WAL_AUTOCHECKPOINT"
+              },
+              {
+                "description": "SQLite busy timeout in milliseconds",
+                "format": "number",
+                "name": "SQLITE_BUSY_TIMEOUT_MS"
+              },
+              {
+                "description": "SQLite WAL checkpoint mode (e.g., PASSIVE, FULL, RESTART)",
+                "format": "string",
+                "name": "SQLITE_WAL_CHECKPOINT"
+              },
+              {
+                "description": "Server shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Queue operation timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode queue timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Circuit breaker failure threshold before opening",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_FAILURE_THRESHOLD"
+              },
+              {
+                "description": "Circuit breaker recovery timeout in seconds",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_RECOVERY_TIMEOUT_S"
+              },
+              {
+                "description": "Maximum calls allowed in circuit breaker half-open state",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_HALF_OPEN_MAX_CALLS"
+              },
+              {
+                "description": "Complete PostgreSQL connection string (overrides individual settings if provided)",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_CONNECTION_STRING"
+              },
+              {
+                "description": "PostgreSQL server host address",
+                "format": "string",
+                "name": "POSTGRESQL_HOST"
+              },
+              {
+                "description": "PostgreSQL server port number",
+                "format": "number",
+                "name": "POSTGRESQL_PORT"
+              },
+              {
+                "description": "PostgreSQL database username",
+                "format": "string",
+                "name": "POSTGRESQL_USER"
+              },
+              {
+                "description": "PostgreSQL database password",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_PASSWORD"
+              },
+              {
+                "description": "PostgreSQL database name",
+                "format": "string",
+                "name": "POSTGRESQL_DATABASE"
+              },
+              {
+                "description": "PostgreSQL connection pool minimum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MIN"
+              },
+              {
+                "description": "PostgreSQL connection pool maximum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MAX"
+              },
+              {
+                "description": "PostgreSQL connection pool timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL command execution timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_COMMAND_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL SSL mode (disable, allow, prefer, require, verify-ca, verify-full)",
+                "format": "string",
+                "name": "POSTGRESQL_SSL_MODE"
+              },
+              {
+                "description": "Enable semantic search functionality",
+                "format": "boolean",
+                "name": "ENABLE_SEMANTIC_SEARCH"
+              },
+              {
+                "description": "Ollama API host URL for embedding generation",
+                "format": "string",
+                "name": "OLLAMA_HOST"
+              },
+              {
+                "description": "Embedding model name for semantic search",
+                "format": "string",
+                "name": "EMBEDDING_MODEL"
+              },
+              {
+                "description": "Embedding vector dimensions",
+                "format": "number",
+                "name": "EMBEDDING_DIM"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T21:29:51.790299Z",
+          "updatedAt": "2025-11-29T21:29:51.790299Z",
           "isLatest": true
         }
       }
@@ -72175,6 +72883,117 @@
           "status": "active",
           "publishedAt": "2025-11-28T17:23:17.562391Z",
           "updatedAt": "2025-11-28T17:23:17.562391Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.7.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.7.2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.7.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T19:41:19.852768Z",
+          "updatedAt": "2025-11-29T19:41:19.852768Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.7.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.7.3",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.7.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T19:50:57.888674Z",
+          "updatedAt": "2025-11-29T19:50:57.888674Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.7.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.7.4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.7.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T20:54:44.965911Z",
+          "updatedAt": "2025-11-29T20:54:44.965911Z",
           "isLatest": true
         }
       }
@@ -74250,6 +75069,110 @@
           "status": "active",
           "publishedAt": "2025-10-25T04:36:04.299156Z",
           "updatedAt": "2025-10-25T04:36:04.299156Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jztan/redmine-mcp-server",
+        "description": "Production-ready MCP server for Redmine with security, pagination, and enterprise features",
+        "repository": {
+          "url": "https://github.com/jztan/redmine-mcp-server",
+          "source": "github"
+        },
+        "version": "0.7.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "redmine-mcp-server",
+            "version": "0.7.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL of your Redmine server (e.g., https://your-redmine-server.com)",
+                "isRequired": true,
+                "format": "string",
+                "name": "REDMINE_URL"
+              },
+              {
+                "description": "Redmine username for authentication (alternative to API key)",
+                "format": "string",
+                "name": "REDMINE_USERNAME"
+              },
+              {
+                "description": "Redmine password for authentication (alternative to API key)",
+                "format": "string",
+                "isSecret": true,
+                "name": "REDMINE_PASSWORD"
+              },
+              {
+                "description": "Redmine API key for authentication (alternative to username/password)",
+                "format": "string",
+                "isSecret": true,
+                "name": "REDMINE_API_KEY"
+              },
+              {
+                "description": "Host address for the MCP server (default: 0.0.0.0)",
+                "format": "string",
+                "default": "0.0.0.0",
+                "name": "SERVER_HOST"
+              },
+              {
+                "description": "Port for the MCP server (default: 8000)",
+                "format": "number",
+                "default": "8000",
+                "name": "SERVER_PORT"
+              },
+              {
+                "description": "Public hostname for file download URLs (default: localhost)",
+                "format": "string",
+                "default": "localhost",
+                "name": "PUBLIC_HOST"
+              },
+              {
+                "description": "Public port for file download URLs (default: 8000)",
+                "format": "number",
+                "default": "8000",
+                "name": "PUBLIC_PORT"
+              },
+              {
+                "description": "Directory for storing downloaded attachments (default: ./attachments)",
+                "format": "string",
+                "default": "./attachments",
+                "name": "ATTACHMENTS_DIR"
+              },
+              {
+                "description": "Enable automatic cleanup of expired files (default: true)",
+                "format": "boolean",
+                "default": "true",
+                "name": "AUTO_CLEANUP_ENABLED"
+              },
+              {
+                "description": "Interval between cleanup runs in minutes (default: 10)",
+                "format": "number",
+                "default": "10",
+                "name": "CLEANUP_INTERVAL_MINUTES"
+              },
+              {
+                "description": "Default expiry time for attachments in minutes (default: 60)",
+                "format": "number",
+                "default": "60",
+                "name": "ATTACHMENT_EXPIRES_MINUTES"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T11:23:03.658674Z",
+          "updatedAt": "2025-11-29T11:23:03.658674Z",
           "isLatest": true
         }
       }
@@ -76883,6 +77806,37 @@
           "status": "active",
           "publishedAt": "2025-09-18T22:42:06.320771Z",
           "updatedAt": "2025-09-18T22:42:06.320771Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.marshally/mcp-refactoring",
+        "description": "MCP server exposing Martin Fowler's refactoring catalog to LLMs with 71+ refactorings",
+        "title": "Refactoring MCP Server",
+        "repository": {
+          "url": "https://github.com/marshally/mcp-refactoring.git",
+          "source": "github"
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-refactoring",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T21:12:02.462164Z",
+          "updatedAt": "2025-11-29T21:12:02.462164Z",
           "isLatest": true
         }
       }
@@ -85007,6 +85961,94 @@
           "status": "active",
           "publishedAt": "2025-11-18T09:01:07.327152Z",
           "updatedAt": "2025-11-18T09:01:07.327152Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.3.2",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.3.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T17:39:40.677412Z",
+          "updatedAt": "2025-11-29T17:39:40.677412Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.3.3",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.3.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T18:01:30.875383Z",
+          "updatedAt": "2025-11-29T18:01:30.875383Z",
           "isLatest": true
         }
       }
@@ -87143,6 +88185,56 @@
           "status": "active",
           "publishedAt": "2025-11-24T01:50:30.049736Z",
           "updatedAt": "2025-11-24T01:50:30.049736Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shinpr/mcp-image",
+        "description": "AI image generation MCP server using Nano Banana Pro with intelligent prompt enhancement",
+        "repository": {
+          "url": "https://github.com/shinpr/mcp-image",
+          "source": "github"
+        },
+        "version": "0.5.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "mcp-image",
+            "version": "0.5.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Google Gemini API key for image generation (get from https://aistudio.google.com/apikey)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "GEMINI_API_KEY"
+              },
+              {
+                "description": "Absolute path to directory where generated images will be saved (defaults to ./output)",
+                "format": "string",
+                "name": "IMAGE_OUTPUT_DIR"
+              },
+              {
+                "description": "Set to 'true' to disable automatic prompt optimization and use direct prompts",
+                "format": "boolean",
+                "name": "SKIP_PROMPT_ENHANCEMENT"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T04:57:06.461138Z",
+          "updatedAt": "2025-11-29T04:57:06.461138Z",
           "isLatest": true
         }
       }
@@ -88672,6 +89764,33 @@
           "status": "active",
           "publishedAt": "2025-11-27T08:27:15.804427Z",
           "updatedAt": "2025-11-27T08:27:15.804427Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.stefanstranger/avm-mcp-server",
+        "description": "Discover and explore Azure Verified Modules from the Bicep Public Registry",
+        "title": "Azure Verified Modules (AVM) MCP Server",
+        "version": "0.1.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "avm-mcp-server",
+            "version": "0.1.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T12:59:15.880515Z",
+          "updatedAt": "2025-11-29T12:59:15.880515Z",
           "isLatest": true
         }
       }
@@ -89453,6 +90572,33 @@
           "status": "active",
           "publishedAt": "2025-11-20T04:52:16.375435Z",
           "updatedAt": "2025-11-20T04:52:16.375435Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.team-earth/datagraph",
+        "description": "Urban intelligence knowledge graph. Structured city data for civic problem-solving.",
+        "title": "DataGraph",
+        "version": "1.2.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "datagraph-city-mcp-server",
+            "version": "1.2.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T04:11:07.170961Z",
+          "updatedAt": "2025-11-29T04:11:07.170961Z",
           "isLatest": true
         }
       }
@@ -94597,6 +95743,33 @@
           "status": "active",
           "publishedAt": "2025-10-21T06:10:48.210915Z",
           "updatedAt": "2025-10-21T06:10:48.210915Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.xplusplusai/fo-semantic-mcp",
+        "description": "Semantic search over 50,000+ Dynamics 365 F&O artifacts: tables, forms, classes, and more.",
+        "title": "FO Semantic MCP",
+        "version": "2.1.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "fo-semantic-mcp",
+            "version": "2.1.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-29T02:58:09.544291Z",
+          "updatedAt": "2025-11-29T02:58:09.544291Z",
           "isLatest": true
         }
       }
@@ -100752,6 +101925,6 @@
     }
   ],
   "metadata": {
-    "count": 2216
+    "count": 2233
   }
 }
