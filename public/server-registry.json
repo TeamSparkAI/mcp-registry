@@ -14217,6 +14217,34 @@
           "status": "active",
           "publishedAt": "2025-11-28T17:28:11.633656Z",
           "updatedAt": "2025-11-28T17:28:11.633656Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.49",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T07:24:50.665046Z",
+          "updatedAt": "2025-11-30T07:24:50.665046Z",
           "isLatest": true
         }
       }
@@ -33559,6 +33587,36 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.DigitalDefiance/ts-mcp-debugger",
+        "description": "Enterprise debugging for Node.js/TypeScript with 25+ tools: breakpoints, profiling, hang detection",
+        "repository": {
+          "url": "https://github.com/digitaldefiance/ai-capabilities-suite",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@ai-capabilities-suite/mcp-debugger-server",
+            "version": "1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T23:25:59.034281Z",
+          "updatedAt": "2025-11-30T23:25:59.034281Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.DollhouseMCP/mcp-server",
         "description": "OSS to create Personas, Skills, Templates, Agents, and Memories to customize your AI experience.",
         "title": "DollhouseMCP",
@@ -40796,6 +40854,58 @@
           "status": "active",
           "publishedAt": "2025-09-21T04:33:38.866275Z",
           "updatedAt": "2025-09-21T04:33:38.866275Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SELISEdigitalplatforms/l0-py-blocks-mcp",
+        "description": "A Model Context Protocol (MCP) server for Selise Cloud integration.",
+        "repository": {
+          "url": "https://github.com/SELISEdigitalplatforms/l0-py-blocks-mcp",
+          "source": "github"
+        },
+        "version": "0.1.0-beta.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://ai.seliseblocks.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T10:46:43.711344Z",
+          "updatedAt": "2025-11-30T10:46:43.711344Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SELISEdigitalplatforms/l0-py-blocks-mcp",
+        "description": "A Model Context Protocol (MCP) server for Selise Cloud integration.",
+        "repository": {
+          "url": "https://github.com/SELISEdigitalplatforms/l0-py-blocks-mcp",
+          "source": "github"
+        },
+        "version": "0.1.0-beta.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://ai.seliseblocks.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T12:08:25.566179Z",
+          "updatedAt": "2025-11-30T12:08:25.566179Z",
           "isLatest": true
         }
       }
@@ -51423,6 +51533,276 @@
           "status": "active",
           "publishedAt": "2025-11-29T21:29:51.790299Z",
           "updatedAt": "2025-11-29T21:29:51.790299Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.alex-feel/mcp-context-server",
+        "description": "An MCP server that provides persistent multimodal context storage for LLM agents.",
+        "repository": {
+          "url": "https://github.com/alex-feel/mcp-context-server",
+          "source": "github"
+        },
+        "version": "0.8.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "mcp-context-server",
+            "version": "0.8.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Log level",
+                "format": "string",
+                "name": "LOG_LEVEL"
+              },
+              {
+                "description": "Storage backend type: sqlite (default) or postgresql",
+                "format": "string",
+                "name": "STORAGE_BACKEND"
+              },
+              {
+                "description": "Maximum individual image size in megabytes",
+                "format": "number",
+                "name": "MAX_IMAGE_SIZE_MB"
+              },
+              {
+                "description": "Maximum total request size in megabytes",
+                "format": "number",
+                "name": "MAX_TOTAL_SIZE_MB"
+              },
+              {
+                "description": "Custom database file location path",
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Maximum number of concurrent read connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_READERS"
+              },
+              {
+                "description": "Maximum number of concurrent write connections in the pool",
+                "format": "number",
+                "name": "POOL_MAX_WRITERS"
+              },
+              {
+                "description": "Connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_CONNECTION_TIMEOUT_S"
+              },
+              {
+                "description": "Idle connection timeout in seconds",
+                "format": "number",
+                "name": "POOL_IDLE_TIMEOUT_S"
+              },
+              {
+                "description": "Connection health check interval in seconds",
+                "format": "number",
+                "name": "POOL_HEALTH_CHECK_INTERVAL_S"
+              },
+              {
+                "description": "Maximum number of retry attempts for failed operations",
+                "format": "number",
+                "name": "RETRY_MAX_RETRIES"
+              },
+              {
+                "description": "Base delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_BASE_DELAY_S"
+              },
+              {
+                "description": "Maximum delay in seconds between retry attempts",
+                "format": "number",
+                "name": "RETRY_MAX_DELAY_S"
+              },
+              {
+                "description": "Enable random jitter in retry delays",
+                "format": "boolean",
+                "name": "RETRY_JITTER"
+              },
+              {
+                "description": "Exponential backoff multiplication factor for retries",
+                "format": "number",
+                "name": "RETRY_BACKOFF_FACTOR"
+              },
+              {
+                "description": "Enable SQLite foreign key constraints",
+                "format": "boolean",
+                "name": "SQLITE_FOREIGN_KEYS"
+              },
+              {
+                "description": "SQLite journal mode (e.g., WAL, DELETE)",
+                "format": "string",
+                "name": "SQLITE_JOURNAL_MODE"
+              },
+              {
+                "description": "SQLite synchronous mode (e.g., NORMAL, FULL, OFF)",
+                "format": "string",
+                "name": "SQLITE_SYNCHRONOUS"
+              },
+              {
+                "description": "SQLite temporary storage location (e.g., MEMORY, FILE)",
+                "format": "string",
+                "name": "SQLITE_TEMP_STORE"
+              },
+              {
+                "description": "SQLite memory-mapped I/O size in bytes",
+                "format": "number",
+                "name": "SQLITE_MMAP_SIZE"
+              },
+              {
+                "description": "SQLite cache size (negative value for KB, positive for pages)",
+                "format": "number",
+                "name": "SQLITE_CACHE_SIZE"
+              },
+              {
+                "description": "SQLite page size in bytes",
+                "format": "number",
+                "name": "SQLITE_PAGE_SIZE"
+              },
+              {
+                "description": "SQLite WAL autocheckpoint threshold in pages",
+                "format": "number",
+                "name": "SQLITE_WAL_AUTOCHECKPOINT"
+              },
+              {
+                "description": "SQLite busy timeout in milliseconds",
+                "format": "number",
+                "name": "SQLITE_BUSY_TIMEOUT_MS"
+              },
+              {
+                "description": "SQLite WAL checkpoint mode (e.g., PASSIVE, FULL, RESTART)",
+                "format": "string",
+                "name": "SQLITE_WAL_CHECKPOINT"
+              },
+              {
+                "description": "Server shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode shutdown timeout in seconds",
+                "format": "number",
+                "name": "SHUTDOWN_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Queue operation timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_S"
+              },
+              {
+                "description": "Test mode queue timeout in seconds",
+                "format": "number",
+                "name": "QUEUE_TIMEOUT_TEST_S"
+              },
+              {
+                "description": "Circuit breaker failure threshold before opening",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_FAILURE_THRESHOLD"
+              },
+              {
+                "description": "Circuit breaker recovery timeout in seconds",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_RECOVERY_TIMEOUT_S"
+              },
+              {
+                "description": "Maximum calls allowed in circuit breaker half-open state",
+                "format": "number",
+                "name": "CIRCUIT_BREAKER_HALF_OPEN_MAX_CALLS"
+              },
+              {
+                "description": "Complete PostgreSQL connection string (overrides individual settings if provided)",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_CONNECTION_STRING"
+              },
+              {
+                "description": "PostgreSQL server host address",
+                "format": "string",
+                "name": "POSTGRESQL_HOST"
+              },
+              {
+                "description": "PostgreSQL server port number",
+                "format": "number",
+                "name": "POSTGRESQL_PORT"
+              },
+              {
+                "description": "PostgreSQL database username",
+                "format": "string",
+                "name": "POSTGRESQL_USER"
+              },
+              {
+                "description": "PostgreSQL database password",
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRESQL_PASSWORD"
+              },
+              {
+                "description": "PostgreSQL database name",
+                "format": "string",
+                "name": "POSTGRESQL_DATABASE"
+              },
+              {
+                "description": "PostgreSQL connection pool minimum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MIN"
+              },
+              {
+                "description": "PostgreSQL connection pool maximum size",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_MAX"
+              },
+              {
+                "description": "PostgreSQL connection pool timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_POOL_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL command execution timeout in seconds",
+                "format": "number",
+                "name": "POSTGRESQL_COMMAND_TIMEOUT_S"
+              },
+              {
+                "description": "PostgreSQL SSL mode (disable, allow, prefer, require, verify-ca, verify-full)",
+                "format": "string",
+                "name": "POSTGRESQL_SSL_MODE"
+              },
+              {
+                "description": "Enable semantic search functionality",
+                "format": "boolean",
+                "name": "ENABLE_SEMANTIC_SEARCH"
+              },
+              {
+                "description": "Ollama API host URL for embedding generation",
+                "format": "string",
+                "name": "OLLAMA_HOST"
+              },
+              {
+                "description": "Embedding model name for semantic search",
+                "format": "string",
+                "name": "EMBEDDING_MODEL"
+              },
+              {
+                "description": "Embedding vector dimensions",
+                "format": "number",
+                "name": "EMBEDDING_DIM"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T16:30:23.756539Z",
+          "updatedAt": "2025-11-30T16:30:23.756539Z",
           "isLatest": true
         }
       }
@@ -71028,6 +71408,44 @@
           "status": "active",
           "publishedAt": "2025-11-23T01:16:23.68018Z",
           "updatedAt": "2025-11-23T01:16:23.68018Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.goreleaser/mcp",
+        "description": "GoReleaser MCP server",
+        "title": "The MCP server for GoReleaser",
+        "repository": {
+          "url": "https://github.com/goreleaser/mcp",
+          "source": "github"
+        },
+        "version": "0.3.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/goreleaser/mcp:0.3.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "npm",
+            "identifier": "@goreleaser/mcp",
+            "version": "0.3.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T19:51:56.411459Z",
+          "updatedAt": "2025-11-30T19:51:56.411459Z",
           "isLatest": true
         }
       }
@@ -73689,6 +74107,38 @@
           "status": "active",
           "publishedAt": "2025-11-29T02:30:10.318926Z",
           "updatedAt": "2025-11-29T02:30:10.318926Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.isakskogstad/oecd-mcp",
+        "description": "OECD economic and statistical data via SDMX API. Access 5,000+ datasets across 17 categories.",
+        "title": "OECD MCP Server",
+        "repository": {
+          "url": "https://github.com/isakskogstad/OECD-MCP-server",
+          "source": "github"
+        },
+        "version": "3.0.0",
+        "websiteUrl": "https://github.com/isakskogstad/OECD-MCP-server",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://oecd-mcp-server.onrender.com/mcp"
+          },
+          {
+            "type": "sse",
+            "url": "https://oecd-mcp-server.onrender.com/sse"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T23:53:18.006828Z",
+          "updatedAt": "2025-11-30T23:53:18.006828Z",
           "isLatest": true
         }
       }
@@ -78733,6 +79183,182 @@
           "status": "active",
           "publishedAt": "2025-11-18T00:01:16.627197Z",
           "updatedAt": "2025-11-18T00:01:16.627197Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mikhae1/kubeview",
+        "description": "Read-only Model Context Protocol server that surfaces Kubernetes, Helm, and Argo insights safely.",
+        "repository": {
+          "url": "https://github.com/mikhae1/kubeview-mcp",
+          "source": "github"
+        },
+        "version": "1.4.4",
+        "websiteUrl": "https://github.com/mikhae1/kubeview-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "kubeview-mcp",
+            "version": "1.4.4",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to kubeconfig file; defaults to ~/.kube/config if unset.",
+                "format": "filepath",
+                "name": "KUBECONFIG"
+              },
+              {
+                "description": "Server mode: 'all' (default), 'code', or 'tools'. Controls which features are enabled.",
+                "format": "string",
+                "name": "MCP_MODE"
+              },
+              {
+                "description": "Logging level: 'error', 'warn', 'info' (default), or 'debug'.",
+                "format": "string",
+                "name": "MCP_LOG_LEVEL"
+              },
+              {
+                "description": "Kubernetes context name to use. If unset, uses the current context from kubeconfig.",
+                "format": "string",
+                "name": "MCP_KUBE_CONTEXT"
+              },
+              {
+                "description": "Skip TLS certificate verification for Kubernetes API (use 'true' or '1'). Not recommended for production.",
+                "format": "string",
+                "name": "MCP_K8S_SKIP_TLS_VERIFY"
+              },
+              {
+                "description": "Enable global sensitive data masking. Set to 'true' or '1' to mask sensitive values in responses.",
+                "format": "string",
+                "name": "MCP_HIDE_SENSITIVE"
+              },
+              {
+                "description": "Default timeout in milliseconds for operations. If unset, uses plugin-specific defaults.",
+                "format": "string",
+                "name": "MCP_TIMEOUT"
+              },
+              {
+                "description": "Disable Kubernetes plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_KUBERNETES_PLUGIN"
+              },
+              {
+                "description": "Disable Helm plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_HELM_PLUGIN"
+              },
+              {
+                "description": "Disable Argo Workflows plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_ARGO_PLUGIN"
+              },
+              {
+                "description": "Disable Argo CD plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_ARGOCD_PLUGIN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T09:59:01.395736Z",
+          "updatedAt": "2025-11-30T09:59:01.395736Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mikhae1/kubeview",
+        "description": "Read-only Model Context Protocol MCP server enabling code-driven AI analysis of Kubernetes clusters.",
+        "repository": {
+          "url": "https://github.com/mikhae1/kubeview-mcp",
+          "source": "github"
+        },
+        "version": "1.4.6",
+        "websiteUrl": "https://github.com/mikhae1/kubeview-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "kubeview-mcp",
+            "version": "1.4.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to kubeconfig file; defaults to ~/.kube/config if unset.",
+                "format": "filepath",
+                "name": "KUBECONFIG"
+              },
+              {
+                "description": "Server mode: 'all' (default), 'code', or 'tools'. Controls which features are enabled.",
+                "format": "string",
+                "name": "MCP_MODE"
+              },
+              {
+                "description": "Logging level: 'error', 'warn', 'info' (default), or 'debug'.",
+                "format": "string",
+                "name": "MCP_LOG_LEVEL"
+              },
+              {
+                "description": "Kubernetes context name to use. If unset, uses the current context from kubeconfig.",
+                "format": "string",
+                "name": "MCP_KUBE_CONTEXT"
+              },
+              {
+                "description": "Skip TLS certificate verification for Kubernetes API (use 'true' or '1'). Not recommended for production.",
+                "format": "string",
+                "name": "MCP_K8S_SKIP_TLS_VERIFY"
+              },
+              {
+                "description": "Enable global sensitive data masking. Set to 'true' or '1' to mask sensitive values in responses.",
+                "format": "string",
+                "name": "MCP_HIDE_SENSITIVE"
+              },
+              {
+                "description": "Default timeout in milliseconds for operations. If unset, uses plugin-specific defaults.",
+                "format": "string",
+                "name": "MCP_TIMEOUT"
+              },
+              {
+                "description": "Disable Kubernetes plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_KUBERNETES_PLUGIN"
+              },
+              {
+                "description": "Disable Helm plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_HELM_PLUGIN"
+              },
+              {
+                "description": "Disable Argo Workflows plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_ARGO_PLUGIN"
+              },
+              {
+                "description": "Disable Argo CD plugin. Set to 'true' or '1' to disable.",
+                "format": "string",
+                "name": "MCP_DISABLE_ARGOCD_PLUGIN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T11:34:24.826443Z",
+          "updatedAt": "2025-11-30T11:34:24.826443Z",
           "isLatest": true
         }
       }
@@ -86049,6 +86675,276 @@
           "status": "active",
           "publishedAt": "2025-11-29T18:01:30.875383Z",
           "updatedAt": "2025-11-29T18:01:30.875383Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.3.5",
+        "websiteUrl": "https://github.com/rosch100/mcp-encrypted-sqlite",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.3.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T15:32:54.168173Z",
+          "updatedAt": "2025-11-30T15:32:54.168173Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.3.6",
+        "websiteUrl": "https://github.com/rosch100/mcp-encrypted-sqlite",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.3.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T15:58:04.627505Z",
+          "updatedAt": "2025-11-30T15:58:04.627505Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.3.7",
+        "websiteUrl": "https://github.com/rosch100/mcp-encrypted-sqlite",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.3.7",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T16:01:31.255264Z",
+          "updatedAt": "2025-11-30T16:01:31.255264Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.3.8",
+        "websiteUrl": "https://github.com/rosch100/mcp-encrypted-sqlite",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.3.8",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T16:09:51.096473Z",
+          "updatedAt": "2025-11-30T16:09:51.096473Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.4.0",
+        "websiteUrl": "https://github.com/rosch100/mcp-encrypted-sqlite",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.4.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T16:26:49.020024Z",
+          "updatedAt": "2025-11-30T16:26:49.020024Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.rosch100/mcp-encrypted-sqlite",
+        "description": "MCP server for encrypted SQLite databases (SQLCipher 4) - Works with MoneyMoney, KeePass and more",
+        "repository": {
+          "url": "https://github.com/rosch100/mcp-encrypted-sqlite",
+          "source": "github"
+        },
+        "version": "0.4.1",
+        "websiteUrl": "https://github.com/rosch100/mcp-encrypted-sqlite",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/rosch100/mcp-encrypted-sqlite:0.4.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to the encrypted SQLite database file (inside container: /data/database.sqlite)",
+                "isRequired": true,
+                "format": "string",
+                "name": "DB_PATH"
+              },
+              {
+                "description": "Passphrase for decrypting the database (or use encrypted: prefix for encrypted passphrases)",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "DB_PASSPHRASE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T17:08:31.836926Z",
+          "updatedAt": "2025-11-30T17:08:31.836926Z",
           "isLatest": true
         }
       }
@@ -90599,6 +91495,33 @@
           "status": "active",
           "publishedAt": "2025-11-29T04:11:07.170961Z",
           "updatedAt": "2025-11-29T04:11:07.170961Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.team-earth/datagraph",
+        "description": "Urban intelligence knowledge graph. Structured city data for civic problem-solving.",
+        "title": "DataGraph",
+        "version": "1.2.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "datagraph-city-mcp-server",
+            "version": "1.2.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T05:11:10.951318Z",
+          "updatedAt": "2025-11-30T05:11:10.951318Z",
           "isLatest": true
         }
       }
@@ -92443,6 +93366,392 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
+        "version": "0.3.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.5",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T23:11:45.884854Z",
+          "updatedAt": "2025-11-30T23:11:45.884854Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.trondhindenes/code-index-mcp",
+        "description": "Fast local source code searching using Zoekt trigram-based indexing",
+        "title": "Code Index",
+        "repository": {
+          "url": "https://github.com/trondhindenes/code-index-mcp",
+          "source": "github"
+        },
+        "version": "1.0.10",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.10/code-index-mcp-darwin-amd64.mcpb",
+            "version": "1.0.10",
+            "fileSha256": "494400116579fa7b045d52930d7cc2a97e4ac31b3da3e657d3d1a04cc0c11054",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.10/code-index-mcp-darwin-arm64.mcpb",
+            "version": "1.0.10",
+            "fileSha256": "f93e88b3551265df44f06c14e6dae814fb3f4fc631a112def1dbd78439066090",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.10/code-index-mcp-linux-amd64.mcpb",
+            "version": "1.0.10",
+            "fileSha256": "417645328d3a28924cfe32b3683dada8da44136343d29c32d9ef433688cc1bf7",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.10/code-index-mcp-linux-arm64.mcpb",
+            "version": "1.0.10",
+            "fileSha256": "1b5b1b4eb1d3287e3d3b2c3dc3b773c5f56b30185b6da7b0e122e96d5b3c9d00",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T10:37:08.738699Z",
+          "updatedAt": "2025-11-30T10:37:08.738699Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.trondhindenes/code-index-mcp",
+        "description": "Fast local source code searching using Zoekt trigram-based indexing",
+        "title": "Code Index",
+        "repository": {
+          "url": "https://github.com/trondhindenes/code-index-mcp",
+          "source": "github"
+        },
+        "version": "1.0.11",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.11/code-index-mcp-darwin-amd64.mcpb",
+            "version": "1.0.11",
+            "fileSha256": "003c390cdbea409b3d252e91f7ae5f277f1b0ca862e91e6c95fb441ac04bcbe2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.11/code-index-mcp-darwin-arm64.mcpb",
+            "version": "1.0.11",
+            "fileSha256": "7f6db7a2277dc975f546c86073c979f134382bcffe782a9abe8260a6e982f2b3",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.11/code-index-mcp-linux-amd64.mcpb",
+            "version": "1.0.11",
+            "fileSha256": "c430c276e9eaad0e83cf147505b35a5db90a3cfe4bb89fa55afa098a72f3ceb3",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.11/code-index-mcp-linux-arm64.mcpb",
+            "version": "1.0.11",
+            "fileSha256": "dcbeb1e92fa68d2db6715005181756b59b9b4ea76de43c8d0a0777c7d9103c89",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T10:39:55.500197Z",
+          "updatedAt": "2025-11-30T10:39:55.500197Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.trondhindenes/code-index-mcp",
+        "description": "Fast local source code searching using Zoekt trigram-based indexing",
+        "title": "Code Index",
+        "repository": {
+          "url": "https://github.com/trondhindenes/code-index-mcp",
+          "source": "github"
+        },
+        "version": "1.0.12",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.12/code-index-mcp-darwin-amd64.mcpb",
+            "version": "1.0.12",
+            "fileSha256": "0c66594b3ab66f0d8398bf18ff8aa63d7d8d304b5e8e355ec8c8a07667fab2fc",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.12/code-index-mcp-darwin-arm64.mcpb",
+            "version": "1.0.12",
+            "fileSha256": "3eb5ee903a5459dcb656d2120ad4d59c683508a12a75d851cd6f3b18a8098207",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.12/code-index-mcp-linux-amd64.mcpb",
+            "version": "1.0.12",
+            "fileSha256": "c230307480cddb689f4d4b387a204922b5e7f941631c0989659d67b5941d43f4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.12/code-index-mcp-linux-arm64.mcpb",
+            "version": "1.0.12",
+            "fileSha256": "c93033b444b2959df6a967d7731e8260b420c89045ca00d6f66154a3b969af24",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T10:42:21.855942Z",
+          "updatedAt": "2025-11-30T10:42:21.855942Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.trondhindenes/code-index-mcp",
+        "description": "Fast local source code searching using Zoekt trigram-based indexing",
+        "title": "Code Index",
+        "repository": {
+          "url": "https://github.com/trondhindenes/code-index-mcp",
+          "source": "github"
+        },
+        "version": "1.0.13",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.13/code-index-mcp-darwin-amd64.mcpb",
+            "version": "1.0.13",
+            "fileSha256": "b397d87cff4039e8928eb34caa9718d8e59bbc174164a10b3bf5dbac1185946e",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.13/code-index-mcp-darwin-arm64.mcpb",
+            "version": "1.0.13",
+            "fileSha256": "d92cab6a1d2d6bd5a8af2f3fc4a5fe759d8de93cce7812e92438971c4836dfa2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.13/code-index-mcp-linux-amd64.mcpb",
+            "version": "1.0.13",
+            "fileSha256": "c14d1cc99f41a26c3ccfcc2c420711340a1118082bd71a6eb7f60ab925f041eb",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.13/code-index-mcp-linux-arm64.mcpb",
+            "version": "1.0.13",
+            "fileSha256": "d6861df46031e12712429e95ff3c16b33c25b5cf3aa7f25b4bf2c0198d21bc0b",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T10:44:44.060197Z",
+          "updatedAt": "2025-11-30T10:44:44.060197Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.trondhindenes/code-index-mcp",
+        "description": "Fast local source code searching using Zoekt trigram-based indexing",
+        "title": "Code Index",
+        "repository": {
+          "url": "https://github.com/trondhindenes/code-index-mcp",
+          "source": "github"
+        },
+        "version": "1.0.16",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.16/code-index-mcp-darwin-amd64.mcpb",
+            "version": "1.0.16",
+            "fileSha256": "c6e0a39d46283d91f8b82a4fa6f78e8d969ddb94297dc061c4a1f7402c4f56df",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.16/code-index-mcp-darwin-arm64.mcpb",
+            "version": "1.0.16",
+            "fileSha256": "5d09b2eefbd897af26b9d752a765b50cee3aecde6c791de94c3569802a591001",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.16/code-index-mcp-linux-amd64.mcpb",
+            "version": "1.0.16",
+            "fileSha256": "34a77daf332a5b0bab9cef2fb3a1ac9c9cd547ea9b248f31b35c65b383c4e922",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.16/code-index-mcp-linux-arm64.mcpb",
+            "version": "1.0.16",
+            "fileSha256": "194fc0ffaea54b20055f3a492a3d8426daf25bb51a46d87a96cb283e479b5f23",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T18:33:39.778751Z",
+          "updatedAt": "2025-11-30T18:33:39.778751Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.trondhindenes/code-index-mcp",
+        "description": "Fast local source code searching using Zoekt trigram-based indexing",
+        "title": "Code Index",
+        "repository": {
+          "url": "https://github.com/trondhindenes/code-index-mcp",
+          "source": "github"
+        },
+        "version": "1.0.9",
+        "packages": [
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.9/code-index-mcp-darwin-amd64.mcpb",
+            "version": "1.0.9",
+            "fileSha256": "3c0a8b5e3ebabe67c78dd859d9508048c07fdaf4ab6e5382b9dbded9d56de88c",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.9/code-index-mcp-darwin-arm64.mcpb",
+            "version": "1.0.9",
+            "fileSha256": "933bec7343b6dce8374ff3e9812503aa21054572c282e9aed79e5d6edd92e9d8",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.9/code-index-mcp-linux-amd64.mcpb",
+            "version": "1.0.9",
+            "fileSha256": "c5a4ecffee6ea2cb0da2826dd99a5ea385163d72946745123f59071fde20470c",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "mcpb",
+            "identifier": "https://github.com/trondhindenes/code-index-mcp/releases/download/1.0.9/code-index-mcp-linux-arm64.mcpb",
+            "version": "1.0.9",
+            "fileSha256": "959a413c44f80084f13140386094cb13797af913d14fbcf1257749ecf2781355",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-11-30T10:31:13.928413Z",
+          "updatedAt": "2025-11-30T10:31:13.928413Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.tschoonj/repology-mcp-server",
         "description": "MCP server that provides access to Repology package repository data",
@@ -93799,6 +95108,36 @@
           "status": "active",
           "publishedAt": "2025-10-13T20:37:00.067295Z",
           "updatedAt": "2025-10-13T20:37:00.067295Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.winedarksea/AutoTS",
+        "description": "Automated time series forecasting with model search, anomaly detection, and event risk analysis",
+        "repository": {
+          "url": "https://github.com/winedarksea/AutoTS",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "autots",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T02:05:09.552099Z",
+          "updatedAt": "2025-12-01T02:05:09.552099Z",
           "isLatest": true
         }
       }
@@ -101925,6 +103264,6 @@
     }
   ],
   "metadata": {
-    "count": 2233
+    "count": 2257
   }
 }
