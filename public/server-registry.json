@@ -14245,6 +14245,34 @@
           "status": "active",
           "publishedAt": "2025-11-30T07:24:50.665046Z",
           "updatedAt": "2025-11-30T07:24:50.665046Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.50",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T11:53:18.002831Z",
+          "updatedAt": "2025-12-01T11:53:18.002831Z",
           "isLatest": true
         }
       }
@@ -18500,7 +18528,124 @@
           "status": "active",
           "publishedAt": "2025-11-28T14:00:44.068638Z",
           "updatedAt": "2025-11-28T14:00:44.068638Z",
-          "isLatest": true
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.fenetresurciel.verylongmcp/mcp-server-template-nodejs",
+        "description": "A non functional MCP server (yet)",
+        "title": "Second server",
+        "version": "0.0.67",
+        "icons": [
+          {
+            "src": "https://alpic.ai/logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://verylongmcp.fenetresurciel.com",
+            "headers": [
+              {
+                "description": "Just put your api key",
+                "isRequired": true,
+                "name": "x-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T08:32:06.305666Z",
+          "updatedAt": "2025-12-01T08:32:06.305666Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.fenetresurciel.verylongmcp/mcp-server-template-nodejs",
+        "description": "A non functional MCP server (yet)",
+        "title": "Second server!",
+        "version": "0.0.68",
+        "icons": [
+          {
+            "src": "https://alpic.ai/logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://verylongmcp.fenetresurciel.com",
+            "headers": [
+              {
+                "description": "Just put your api key",
+                "isRequired": true,
+                "name": "x-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T08:32:18.169108Z",
+          "updatedAt": "2025-12-01T08:32:18.169108Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.fenetresurciel.verylongmcp/mcp-server-template-nodejs",
+        "description": "A non functional MCP server (yet)",
+        "title": "Second server",
+        "version": "0.0.69",
+        "icons": [
+          {
+            "src": "https://alpic.ai/logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://verylongmcp.fenetresurciel.com",
+            "headers": [
+              {
+                "description": "Just put your api key",
+                "isRequired": true,
+                "name": "x-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:41:23.781969Z",
+          "updatedAt": "2025-12-01T13:41:23.781969Z",
+          "isLatest": false
         }
       }
     },
@@ -18541,6 +18686,123 @@
           "publishedAt": "2025-11-26T16:01:14.242266Z",
           "updatedAt": "2025-11-26T16:01:14.242266Z",
           "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.fenetresurciel.verylongmcp/mcp-server-template-nodejs",
+        "description": "A non functional MCP server (yet)",
+        "title": "Second server!",
+        "version": "0.0.70",
+        "icons": [
+          {
+            "src": "https://alpic.ai/logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://verylongmcp.fenetresurciel.com",
+            "headers": [
+              {
+                "description": "Just put your api key",
+                "isRequired": true,
+                "name": "x-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:41:42.478726Z",
+          "updatedAt": "2025-12-01T13:41:42.478726Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.fenetresurciel.verylongmcp/mcp-server-template-nodejs",
+        "description": "A non functional MCP server (yet)",
+        "title": "Second server",
+        "version": "0.0.71",
+        "icons": [
+          {
+            "src": "https://alpic.ai/logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://verylongmcp.fenetresurciel.com",
+            "headers": [
+              {
+                "description": "Just put your api key",
+                "isRequired": true,
+                "name": "x-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:49:53.700246Z",
+          "updatedAt": "2025-12-01T13:49:53.700246Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.fenetresurciel.verylongmcp/mcp-server-template-nodejs",
+        "description": "A non functional MCP server (yet)",
+        "title": "Second server!",
+        "version": "0.0.72",
+        "icons": [
+          {
+            "src": "https://alpic.ai/logo.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://verylongmcp.fenetresurciel.com",
+            "headers": [
+              {
+                "description": "Just put your api key",
+                "isRequired": true,
+                "name": "x-api-key"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T15:20:53.320491Z",
+          "updatedAt": "2025-12-01T15:20:53.320491Z",
+          "isLatest": true
         }
       }
     },
@@ -21906,6 +22168,51 @@
           "status": "active",
           "publishedAt": "2025-09-09T06:28:26.340373Z",
           "updatedAt": "2025-09-09T06:28:26.340373Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.linklyhq/linkly",
+        "description": "Create and manage short links, track clicks, and automate URL management",
+        "repository": {
+          "url": "https://github.com/Linkly-HQ/linkly-mcp-server",
+          "source": "github"
+        },
+        "version": "1.2.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "linkly-mcp-server",
+            "version": "1.2.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your Linkly API key. Get it from Settings → API in your Linkly dashboard.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "LINKLY_API_KEY"
+              },
+              {
+                "description": "Your Linkly Workspace ID. Find it at Settings → API in your Linkly dashboard.",
+                "isRequired": true,
+                "format": "string",
+                "name": "LINKLY_WORKSPACE_ID"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T10:02:17.114844Z",
+          "updatedAt": "2025-12-01T10:02:17.114844Z",
           "isLatest": true
         }
       }
@@ -40906,6 +41213,32 @@
           "status": "active",
           "publishedAt": "2025-11-30T12:08:25.566179Z",
           "updatedAt": "2025-11-30T12:08:25.566179Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SELISEdigitalplatforms/l0-py-blocks-mcp",
+        "description": "A Model Context Protocol (MCP) server for Selise Blocks Cloud integration",
+        "repository": {
+          "url": "https://github.com/SELISEdigitalplatforms/l0-py-blocks-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0-beta.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://dev-ai.seliseblocks.com/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T18:15:04.162617Z",
+          "updatedAt": "2025-12-01T18:15:04.162617Z",
           "isLatest": true
         }
       }
@@ -41333,6 +41666,46 @@
           "status": "active",
           "publishedAt": "2025-11-28T13:16:54.91324Z",
           "updatedAt": "2025-11-28T13:16:54.91324Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SamMorrowDrums/remarkable",
+        "description": "Access your reMarkable tablet - read documents, browse files, extract text and OCR",
+        "title": "reMarkable MCP Server",
+        "repository": {
+          "url": "https://github.com/SamMorrowDrums/remarkable-mcp",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "remarkable-mcp",
+            "version": "0.6.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Authentication token for reMarkable Cloud API. Get one by registering at https://my.remarkable.com/device/browser/connect",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "REMARKABLE_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:36:19.398985Z",
+          "updatedAt": "2025-12-01T23:36:19.398985Z",
           "isLatest": true
         }
       }
@@ -43501,6 +43874,71 @@
           "status": "active",
           "publishedAt": "2025-11-19T03:12:45.659492Z",
           "updatedAt": "2025-11-19T03:12:45.659492Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Wolfe-Jam/faf-mcp",
+        "description": "Universal persistent project context server - IANA-registered .FAF format",
+        "title": ".FAF Context",
+        "repository": {
+          "url": "https://github.com/Wolfe-Jam/faf-mcp",
+          "source": "github",
+          "subfolder": "packages/faf-mcp"
+        },
+        "version": "1.1.2",
+        "websiteUrl": "https://faf.one",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/Wolfe-Jam/faf-mcp/main/packages/faf-mcp/assets/icons/faf-icon-48.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "48x48"
+            ]
+          },
+          {
+            "src": "https://raw.githubusercontent.com/Wolfe-Jam/faf-mcp/main/packages/faf-mcp/assets/icons/faf-icon-128.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "128x128"
+            ]
+          },
+          {
+            "src": "https://raw.githubusercontent.com/Wolfe-Jam/faf-mcp/main/packages/faf-mcp/assets/icons/faf-icon-256.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "256x256"
+            ]
+          },
+          {
+            "src": "https://raw.githubusercontent.com/Wolfe-Jam/faf-mcp/main/packages/faf-mcp/assets/icons/faf-icon-512.png",
+            "mimeType": "image/png",
+            "sizes": [
+              "512x512"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "faf-mcp",
+            "version": "1.1.2",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T22:08:44.966705Z",
+          "updatedAt": "2025-12-01T22:08:44.966705Z",
           "isLatest": true
         }
       }
@@ -52504,6 +52942,33 @@
           "status": "active",
           "publishedAt": "2025-11-21T17:48:08.66741Z",
           "updatedAt": "2025-11-21T17:48:08.66741Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.appium/appium-mcp",
+        "description": "MCP server for Appium mobile automation on iOS and Android devices with test creation tools.",
+        "title": "MCP Appium - Mobile Development and Automation Server",
+        "version": "1.2.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "appium-mcp",
+            "version": "1.2.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T21:24:38.898467Z",
+          "updatedAt": "2025-12-01T21:24:38.898467Z",
           "isLatest": true
         }
       }
@@ -53424,6 +53889,36 @@
           "status": "active",
           "publishedAt": "2025-10-06T23:10:09.492919Z",
           "updatedAt": "2025-10-06T23:10:09.492919Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.bellvijay/weather",
+        "description": "An MCP server for weather information.",
+        "repository": {
+          "url": "https://github.com/bellvijay/mcp-weather-server",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@vijay-npm/mcp-weather-server",
+            "version": "1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T14:19:45.502062Z",
+          "updatedAt": "2025-12-01T14:19:45.502062Z",
           "isLatest": true
         }
       }
@@ -67385,6 +67880,51 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.equilibrium-team/tweekit",
+        "description": "Normalize and convert more than 400 file types via TweekIT's hosted MCP streamable HTTP endpoint.",
+        "title": "TweekIT MCP Server",
+        "repository": {
+          "url": "https://github.com/equilibrium-team/tweekit-mcp",
+          "source": "github",
+          "id": "1032125130"
+        },
+        "version": "1.6.1",
+        "websiteUrl": "https://www.tweekit.io/",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.tweekit.io/mcp",
+            "headers": [
+              {
+                "description": "TweekIT API key issued from the TweekIT account portal.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ApiKey"
+              },
+              {
+                "description": "API secret paired with the ApiKey for authenticated conversions.",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ApiSecret"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T22:30:26.318306Z",
+          "updatedAt": "2025-12-01T22:30:26.318306Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.esrisaudiarabia/arcgis-mcp-server",
         "description": "Intelligent ArcGIS content search. Works with Online/Enterprise. Requires user credentials.",
@@ -68930,6 +69470,36 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.gander-tools/osm-tagging-schema-mcp",
+        "description": "MCP server for querying and validating OpenStreetMap tags",
+        "repository": {
+          "url": "https://github.com/gander-tools/osm-tagging-schema-mcp",
+          "source": "github"
+        },
+        "version": "3.0.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@gander-tools/osm-tagging-schema-mcp",
+            "version": "3.0.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T10:36:02.765993Z",
+          "updatedAt": "2025-12-01T10:36:02.765993Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.gattjoe/ACMS",
         "description": "Apple Container MCP Server (ACMS) provides access to Apple's container CLI tool on macOS",
         "repository": {
@@ -69839,6 +70409,48 @@
           "status": "active",
           "publishedAt": "2025-11-28T08:17:04.145676Z",
           "updatedAt": "2025-11-28T08:17:04.145676Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ggozad/haiku-rag",
+        "description": "Opinionated agentic RAG powered by LanceDB, Pydantic AI, and Docling",
+        "repository": {
+          "url": "https://github.com/ggozad/haiku.rag",
+          "source": "github"
+        },
+        "version": "0.19.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "haiku-rag",
+            "version": "0.19.5",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "serve",
+                "type": "positional"
+              },
+              {
+                "type": "named",
+                "name": "--mcp"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T16:00:08.751357Z",
+          "updatedAt": "2025-12-01T16:00:08.751357Z",
           "isLatest": true
         }
       }
@@ -73412,6 +74024,339 @@
           "status": "active",
           "publishedAt": "2025-11-29T20:54:44.965911Z",
           "updatedAt": "2025-11-29T20:54:44.965911Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.7.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.7.5",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.7.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T04:35:11.002113Z",
+          "updatedAt": "2025-12-01T04:35:11.002113Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.7.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.7.6",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.7.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T04:54:18.220088Z",
+          "updatedAt": "2025-12-01T04:54:18.220088Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.7.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.7.7",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.7.7",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:00:00.050246Z",
+          "updatedAt": "2025-12-01T13:00:00.050246Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.8.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.8.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.8.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T19:57:56.852166Z",
+          "updatedAt": "2025-12-01T19:57:56.852166Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.8.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.8.1",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.8.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T20:12:57.509603Z",
+          "updatedAt": "2025-12-01T20:12:57.509603Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.8.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.8.2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.8.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T20:16:54.087601Z",
+          "updatedAt": "2025-12-01T20:16:54.087601Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.8.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.8.3",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.8.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T20:22:43.611195Z",
+          "updatedAt": "2025-12-01T20:22:43.611195Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.8.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.8.4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.8.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T20:25:27.704579Z",
+          "updatedAt": "2025-12-01T20:25:27.704579Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.8.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.8.5",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.8.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T21:57:12.54964Z",
+          "updatedAt": "2025-12-01T21:57:12.54964Z",
           "isLatest": true
         }
       }
@@ -77977,6 +78922,53 @@
           "status": "active",
           "publishedAt": "2025-11-27T22:51:12.049449Z",
           "updatedAt": "2025-11-27T22:51:12.049449Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.marcelo-ochoa/mysql",
+        "description": "MCP server for interacting with MySQL databases",
+        "repository": {
+          "url": "https://github.com/marcelo-ochoa/servers",
+          "source": "github",
+          "subfolder": "src/mysql"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@marcelo-ochoa/server-mysql",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "MySQL user",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "MYSQL_USER"
+              },
+              {
+                "description": "MySQL password",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "MYSQL_PASSWORD"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:08:40.729039Z",
+          "updatedAt": "2025-12-01T13:08:40.729039Z",
           "isLatest": true
         }
       }
@@ -78069,6 +79061,52 @@
           "status": "active",
           "publishedAt": "2025-11-27T22:50:59.115329Z",
           "updatedAt": "2025-11-27T22:50:59.115329Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.marcelo-ochoa/oracle",
+        "description": "MCP server for interacting with Oracle databases",
+        "repository": {
+          "url": "https://github.com/marcelo-ochoa/servers",
+          "source": "github",
+          "subfolder": "src/oracle"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@marcelo-ochoa/server-oracle",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Oracle user name",
+                "isRequired": true,
+                "format": "string",
+                "name": "ORACLE_USER"
+              },
+              {
+                "description": "Oracle password",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "ORACLE_PASSWORD"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:08:34.530999Z",
+          "updatedAt": "2025-12-01T13:08:34.530999Z",
           "isLatest": true
         }
       }
@@ -78163,6 +79201,53 @@
           "status": "active",
           "publishedAt": "2025-11-27T22:51:21.061156Z",
           "updatedAt": "2025-11-27T22:51:21.061156Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.marcelo-ochoa/postgres",
+        "description": "MCP server for interacting with PostgreSQL databases",
+        "repository": {
+          "url": "https://github.com/marcelo-ochoa/servers",
+          "source": "github",
+          "subfolder": "src/postgres"
+        },
+        "version": "1.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@marcelo-ochoa/server-postgres",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "PostgreSQL user",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRES_USER"
+              },
+              {
+                "description": "PostgreSQL password",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "POSTGRES_PASSWORD"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:08:46.402806Z",
+          "updatedAt": "2025-12-01T13:08:46.402806Z",
           "isLatest": true
         }
       }
@@ -85847,6 +86932,55 @@
           "status": "active",
           "publishedAt": "2025-11-12T09:04:42.684066Z",
           "updatedAt": "2025-11-12T09:04:42.684066Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.roddutra/agent-mcp-gateway",
+        "description": "On-demand tool discovery for all your MCPs and per-subagent MCP controls to preserve context window.",
+        "title": "Agent MCP Gateway",
+        "repository": {
+          "url": "https://github.com/roddutra/agent-mcp-gateway",
+          "source": "github"
+        },
+        "version": "0.2.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "agent-mcp-gateway",
+            "version": "0.2.5",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Path to MCP servers configuration file (default: .mcp.json)",
+                "name": "GATEWAY_MCP_CONFIG"
+              },
+              {
+                "description": "Path to gateway access control rules file (default: .mcp-gateway-rules.json)",
+                "name": "GATEWAY_RULES"
+              },
+              {
+                "description": "Default agent ID when not provided in tool calls",
+                "name": "GATEWAY_DEFAULT_AGENT"
+              },
+              {
+                "description": "Enable debug mode and expose diagnostic tools (default: false)",
+                "name": "GATEWAY_DEBUG"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-02T00:37:35.611685Z",
+          "updatedAt": "2025-12-02T00:37:35.611685Z",
           "isLatest": true
         }
       }
@@ -87879,6 +89013,68 @@
           "status": "active",
           "publishedAt": "2025-10-30T13:07:46.033914Z",
           "updatedAt": "2025-10-30T13:07:46.033914Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.27",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.27",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T19:54:40.106105Z",
+          "updatedAt": "2025-12-01T19:54:40.106105Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.28",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.28",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T20:28:06.623046Z",
+          "updatedAt": "2025-12-01T20:28:06.623046Z",
           "isLatest": true
         }
       }
@@ -88722,6 +89918,95 @@
           "status": "active",
           "publishedAt": "2025-11-23T22:25:20.441088Z",
           "updatedAt": "2025-11-23T22:25:20.441088Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.schemacrawler/schemacrawler-ai",
+        "description": "Enables natural language schema queries — explore tables, keys, procedures, and get SQL help fast",
+        "repository": {
+          "url": "https://github.com/schemacrawler/SchemaCrawler-AI",
+          "source": "github"
+        },
+        "version": "v17.1.7-1",
+        "websiteUrl": "https://schemacrawler.github.io",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/schemacrawler/schemacrawler-ai:v17.1.7-1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "MCP Server transport type - valid values are 'http' or 'stdio', defaulting to 'stdio'.",
+                "format": "string",
+                "name": "SCHCRWLR_MCP_SERVER_TRANSPORT"
+              },
+              {
+                "description": "Database user name. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_USER"
+              },
+              {
+                "description": "Database user password. Can be optional depending on the database connection type.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SCHCRWLR_DATABASE_PASSWORD"
+              },
+              {
+                "description": "JDBC URL for database connection. If this is provided, the server, host, port and database are not used.",
+                "format": "string",
+                "name": "SCHCRWLR_JDBC_URL"
+              },
+              {
+                "description": "SchemaCrawler database plugin, for example, 'sqlserver' or 'sqlite'. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_SERVER"
+              },
+              {
+                "description": "Database host. Defaults to localhost. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_HOST"
+              },
+              {
+                "description": "Database port. Defaults to the default port for the server type. Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_PORT"
+              },
+              {
+                "description": "Database to connect to (optional). Used only if the JDBC URL is not provided.",
+                "format": "string",
+                "name": "SCHCRWLR_DATABASE"
+              },
+              {
+                "description": "How much database metadata to retrieve. Values are 'minimum', 'standard', 'detailed' or 'maximum'.",
+                "format": "string",
+                "name": "SCHCRWLR_INFO_LEVEL"
+              },
+              {
+                "description": "Logging verbosity level. Values are 'SEVERE', 'WARNING', 'INFO', 'CONFIG', or 'FINE'.",
+                "format": "string",
+                "name": "SCHCRWLR_LOG_LEVEL"
+              },
+              {
+                "description": "MCP Server tools to exclude, as a comma-separated list.",
+                "format": "string",
+                "name": "SCHCRWLR_EXCLUDE_TOOLS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:39:36.939066Z",
+          "updatedAt": "2025-12-01T23:39:36.939066Z",
           "isLatest": true
         }
       }
@@ -90163,6 +91448,73 @@
           "status": "active",
           "publishedAt": "2025-11-21T13:07:38.302689Z",
           "updatedAt": "2025-11-21T13:07:38.302689Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.simplifier-ag/simplifier-mcp",
+        "description": "MCP Server for Simplifier - manage Connectors, BusinessObjects, Datatypes and logins",
+        "repository": {
+          "url": "https://github.com/simplifier-ag/simplifier-mcp",
+          "source": "github"
+        },
+        "version": "0.9.58",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@simplifierag/simplifier-mcp",
+            "version": "0.9.58",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your current Simplifier token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SIMPLIFIER_TOKEN"
+              },
+              {
+                "description": "The base URL of your Simplifier instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "SIMPLIFIER_BASE_URL"
+              }
+            ]
+          },
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/simplifierag/simplifier-mcp:0.9.58",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your current Simplifier token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SIMPLIFIER_TOKEN"
+              },
+              {
+                "description": "The base URL of your Simplifier instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "SIMPLIFIER_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:49:37.042286Z",
+          "updatedAt": "2025-12-01T13:49:37.042286Z",
           "isLatest": true
         }
       }
@@ -93392,6 +94744,38 @@
           "status": "active",
           "publishedAt": "2025-11-30T23:11:45.884854Z",
           "updatedAt": "2025-11-30T23:11:45.884854Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
+        "version": "0.3.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.6",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T22:02:49.064424Z",
+          "updatedAt": "2025-12-01T22:02:49.064424Z",
           "isLatest": true
         }
       }
@@ -100137,6 +101521,546 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.alpic-poc-frontend-c68d130f/alpic-poc-frontend",
+        "description": "Description of my MCP server",
+        "title": "My MCP Serv",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://alpic-poc-frontend-c68d130f.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://alpic-poc-frontend-c68d130f.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:26:53.366225Z",
+          "updatedAt": "2025-12-01T13:26:53.366225Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template--1488dac2/mcp-server-template-nodejs",
+        "description": "Non functional server (yet)",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T22:20:42.232613Z",
+          "updatedAt": "2025-12-01T22:20:42.232613Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template--1488dac2/mcp-server-template-nodejs",
+        "description": "Non functional server (yet)",
+        "title": "Template server!",
+        "version": "0.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:03:30.366456Z",
+          "updatedAt": "2025-12-01T23:03:30.366456Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template--1488dac2/mcp-server-template-nodejs",
+        "description": "Non functional server (yet)",
+        "title": "Template server",
+        "version": "0.0.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:03:57.092565Z",
+          "updatedAt": "2025-12-01T23:03:57.092565Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template--1488dac2/mcp-server-template-nodejs",
+        "description": "Non functional server (yet)",
+        "title": "Template server!",
+        "version": "0.0.4",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:07:43.827796Z",
+          "updatedAt": "2025-12-01T23:07:43.827796Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template--1488dac2/mcp-server-template-nodejs",
+        "description": "Non functional server (yet)",
+        "title": "Template server",
+        "version": "0.0.5",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template--1488dac2.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:08:24.305943Z",
+          "updatedAt": "2025-12-01T23:08:24.305943Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-5eacc5c3/mcp-server-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template serv",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-5eacc5c3.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-5eacc5c3.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T17:04:36.075416Z",
+          "updatedAt": "2025-12-01T17:04:36.075416Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-5eacc5c3/mcp-server-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template server",
+        "version": "0.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-5eacc5c3.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-5eacc5c3.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T17:04:45.244264Z",
+          "updatedAt": "2025-12-01T17:04:45.244264Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-5eacc5c3/mcp-server-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template serv",
+        "version": "0.0.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-5eacc5c3.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-5eacc5c3.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T17:05:00.276034Z",
+          "updatedAt": "2025-12-01T17:05:00.276034Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-7b99436a/mcp-server-template",
+        "description": "Server not ready (yet!)",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-7b99436a.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-7b99436a.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:37:48.483924Z",
+          "updatedAt": "2025-12-01T13:37:48.483924Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-8068f74b/mcp-server-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-8068f74b.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-8068f74b.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T16:10:57.130349Z",
+          "updatedAt": "2025-12-01T16:10:57.130349Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-90a89880/mcp-server-template",
+        "description": "Work in progress",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-90a89880.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-90a89880.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T16:05:00.040442Z",
+          "updatedAt": "2025-12-01T16:05:00.040442Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-server-template-99cbcf02/mcp-server-template",
+        "description": "Not ready (yet!)",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-server-template-99cbcf02.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-server-template-99cbcf02.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:31:11.607797Z",
+          "updatedAt": "2025-12-01T13:31:11.607797Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-template-e37c5898/mcp-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-template-e37c5898.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-template-e37c5898.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:10:29.746894Z",
+          "updatedAt": "2025-12-01T23:10:29.746894Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-template-e37c5898/mcp-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template server!",
+        "version": "0.0.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-template-e37c5898.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-template-e37c5898.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:10:51.360004Z",
+          "updatedAt": "2025-12-01T23:10:51.360004Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.mcp-template-e37c5898/mcp-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template server",
+        "version": "0.0.3",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp-template-e37c5898.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcp-template-e37c5898.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T23:11:06.056174Z",
+          "updatedAt": "2025-12-01T23:11:06.056174Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.node-email-mcp-25ea0992/node-email-mcp",
+        "description": "Still work in progress",
+        "title": "Template MCP server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-25ea0992.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://node-email-mcp-25ea0992.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T15:43:08.317247Z",
+          "updatedAt": "2025-12-01T15:43:08.317247Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.node-email-mcp-731b03b7/node-email-mcp",
+        "description": "Non functional server (yet)",
+        "title": "My MCP Ser",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-731b03b7.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://node-email-mcp-731b03b7.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T15:53:46.612001Z",
+          "updatedAt": "2025-12-01T15:53:46.612001Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.node-email-mcp-a629b9bc/node-email-mcp",
+        "description": "Non functional server (yet)",
+        "title": "My MCP Serv",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://node-email-mcp-a629b9bc.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://node-email-mcp-a629b9bc.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T15:51:42.292526Z",
+          "updatedAt": "2025-12-01T15:51:42.292526Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.personal-chef-chatgp-c951fcb6/personal-chef-chatgpt-app",
+        "description": "Ok",
+        "title": "My MCP Server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://personal-chef-chatgp-c951fcb6.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://personal-chef-chatgp-c951fcb6.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T13:40:02.866147Z",
+          "updatedAt": "2025-12-01T13:40:02.866147Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
         "description": "Description of my MCP server",
         "title": "My MCP Serv",
@@ -100154,6 +102078,39 @@
           "publishedAt": "2025-11-24T08:41:23.205968Z",
           "updatedAt": "2025-11-24T08:41:23.205968Z",
           "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
+        "description": "Work in progress (for now)",
+        "title": "Melo property MCP",
+        "version": "0.0.10",
+        "websiteUrl": "https://github.com",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/206831205?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://property-search-mcp-ce598409.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T17:48:52.990884Z",
+          "updatedAt": "2025-12-01T17:48:52.990884Z",
+          "isLatest": true
         }
       }
     },
@@ -100319,7 +102276,73 @@
           "status": "active",
           "publishedAt": "2025-11-25T10:19:52.01703Z",
           "updatedAt": "2025-11-25T10:19:52.01703Z",
-          "isLatest": true
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
+        "description": "Work in progress (for now)",
+        "title": "Melo property MCP",
+        "version": "0.0.8",
+        "websiteUrl": "https://github.com",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/206831205?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://property-search-mcp-ce598409.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T17:28:25.728466Z",
+          "updatedAt": "2025-12-01T17:28:25.728466Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.property-search-mcp-ce598409/property-search-mcp",
+        "description": "Work in progress (for now)",
+        "title": "Melo property MCP!",
+        "version": "0.0.9",
+        "websiteUrl": "https://github.com",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/206831205?s=200&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "200x200"
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://property-search-mcp-ce598409.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T17:48:45.457996Z",
+          "updatedAt": "2025-12-01T17:48:45.457996Z",
+          "isLatest": false
         }
       }
     },
@@ -100342,6 +102365,33 @@
           "status": "active",
           "publishedAt": "2025-11-26T10:28:02.132725Z",
           "updatedAt": "2025-11-26T10:28:02.132725Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.staging.server-template-3b6131fe/server-template",
+        "description": "A non functional MCP server (yet)",
+        "title": "Template server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://server-template-3b6131fe.staging.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://server-template-3b6131fe.staging.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-01T22:17:31.420169Z",
+          "updatedAt": "2025-12-01T22:17:31.420169Z",
           "isLatest": true
         }
       }
@@ -103264,6 +105314,6 @@
     }
   ],
   "metadata": {
-    "count": 2257
+    "count": 2315
   }
 }
