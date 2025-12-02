@@ -47,15 +47,15 @@ Examples:
 
 ## Validation Summary
 
-📊 VALIDATION SUMMARY (2350 server entries)
+📊 VALIDATION SUMMARY
 ══════════════════════════════════════════════════
-✅ Valid: 1699 servers
-❌ Invalid: 651 servers (398 schema errors, 291 linter errors)
+✅ Valid: 1703 servers
+❌ Invalid (schema or linter errors): 651 servers
 📈 Success rate: 72.3%
 
 📋 SCHEMA VERSIONS
 ──────────────────────────────────────────────────
-  2025-10-17 (current): 1113 servers
+  2025-10-17 (current): 1117 servers
   2025-09-29: 1059 servers
   2025-09-16: 158 servers
   2025-07-09: 3 servers
@@ -81,11 +81,11 @@ Examples:
 🧭 LINTER SUMMARY
 ══════════════════════════════════════════════════
 🚫 Failed linter (error): 291 servers
-⚠️  Any linter issues: 1454 servers
+⚠️  Any linter issues: 1456 servers
 
 📊 LINTER RULE BREAKDOWN
 ──────────────────────────────────────────────────
-  require-config-for-package: 688 instances
+  require-config-for-package: 690 instances
   prefer-config-for-remote: 581 instances
   no-template-variables-missing: 289 instances
   no-value-with-irrelevant-properties: 189 instances
@@ -99,6 +99,7 @@ Examples:
 
 ❌ Validation Failed: 398 server(s) with schema errors, 291 server(s) with linter errors (651 total invalid)
 
+## Many versions
 
 live.alpic.staging/send-email-mcp-01f22b8f (14 versions) - this vendor has many other servers with many versions
 
