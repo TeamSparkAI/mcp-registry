@@ -134,6 +134,32 @@
           "status": "active",
           "publishedAt": "2025-11-20T18:00:55.174988Z",
           "updatedAt": "2025-11-20T18:00:55.174988Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.exa/exa",
+        "description": "Fast, intelligent web search and web crawling.\n\nNew mcp tool: Exa-code is a context tool for coding ",
+        "repository": {
+          "url": "https://github.com/exa-labs/exa-mcp-server",
+          "source": "github"
+        },
+        "version": "3.1.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T16:45:12.14883Z",
+          "updatedAt": "2025-12-03T16:45:12.14883Z",
           "isLatest": true
         }
       }
@@ -14301,6 +14327,34 @@
           "status": "active",
           "publishedAt": "2025-12-02T12:06:51.266372Z",
           "updatedAt": "2025-12-02T12:06:51.266372Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.52",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T21:48:33.15787Z",
+          "updatedAt": "2025-12-03T21:48:33.15787Z",
           "isLatest": true
         }
       }
@@ -25649,6 +25703,86 @@
           "status": "active",
           "publishedAt": "2025-11-20T13:16:17.21701Z",
           "updatedAt": "2025-11-20T13:16:17.21701Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json#/definitions/ServerDetail",
+        "name": "com.smartbear/smartbear-mcp",
+        "description": "MCP server for AI access to SmartBear tools, including BugSnag, Reflect, Swagger, PactFlow.",
+        "title": "SmartBear MCP",
+        "repository": {
+          "url": "https://github.com/SmartBear/smartbear-mcp",
+          "source": "github"
+        },
+        "version": "0.12.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@smartbear/mcp",
+            "version": "0.12.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "BugSnag auth token. Leave empty to disable BugSnag tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "isSecret": true,
+                "name": "BUGSNAG_AUTH_TOKEN"
+              },
+              {
+                "description": "BugSnag project API key (optional; narrows interactions to a single project). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/bugsnag-integration",
+                "name": "BUGSNAG_PROJECT_API_KEY"
+              },
+              {
+                "description": "Reflect API token. Leave empty to disable Reflect tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/test-hub-integration",
+                "isSecret": true,
+                "name": "REFLECT_API_TOKEN"
+              },
+              {
+                "description": "Swagger API key. Leave empty to disable Swagger tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/swagger-portal-integration",
+                "isSecret": true,
+                "name": "SWAGGER_API_KEY"
+              },
+              {
+                "description": "PactFlow/Pact Broker base URL. Leave empty to disable Pact tools. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_BASE_URL"
+              },
+              {
+                "description": "PactFlow authentication token. Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_TOKEN"
+              },
+              {
+                "description": "Pact Broker username (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "name": "PACT_BROKER_USERNAME"
+              },
+              {
+                "description": "Pact Broker password (alternative to token). Learn more: https://developer.smartbear.com/smartbear-mcp/docs/contract-testing-with-pactflow",
+                "isSecret": true,
+                "name": "PACT_BROKER_PASSWORD"
+              },
+              {
+                "description": "The Zephyr Cloud API token for authentication. Learn more: https://support.smartbear.com/zephyr/docs/en/rest-api/api-access-tokens-management.html",
+                "isSecret": true,
+                "name": "ZEPHYR_API_TOKEN"
+              },
+              {
+                "description": " The Zephyr Cloud API base url. Should be changed depending on the region of your Jira instance. Learn more: https://support.smartbear.com/zephyr-scale-cloud/api-docs/#section/Authentication/Accessing-the-API",
+                "name": "ZEPHYR_BASE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T16:47:44.393514Z",
+          "updatedAt": "2025-12-03T16:47:44.393514Z",
           "isLatest": true
         }
       }
@@ -27679,6 +27813,80 @@
           "status": "active",
           "publishedAt": "2025-11-19T11:00:50.777604Z",
           "updatedAt": "2025-11-19T11:00:50.777604Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.teamwork/mcp",
+        "description": "The Teamwork.com official MCP server helps teams efficiently manage client projects with AI.",
+        "repository": {
+          "url": "https://github.com/teamwork/mcp",
+          "source": "github"
+        },
+        "version": "1.7.1",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/teamwork/mcp:v1.7.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "API key generated from the Teamwork.com OAuth2 process: https://apidocs.teamwork.com/guides/teamwork/app-login-flow",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "TW_MCP_BEARER_TOKEN"
+              },
+              {
+                "description": "Choose log output format between 'text' or 'json'. Default is 'text'.",
+                "format": "string",
+                "name": "TW_MCP_LOG_FORMAT"
+              },
+              {
+                "description": "Choose log level between 'debug', 'info', 'warn' or 'error'. Default is 'info'.",
+                "format": "string",
+                "name": "TW_MCP_LOG_LEVEL"
+              }
+            ]
+          }
+        ],
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://mcp.ai.teamwork.com",
+            "headers": [
+              {
+                "description": "API key generated from the Teamwork.com OAuth2 process: https://apidocs.teamwork.com/guides/teamwork/app-login-flow",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.ai.teamwork.com",
+            "headers": [
+              {
+                "description": "API key generated from the Teamwork.com OAuth2 process: https://apidocs.teamwork.com/guides/teamwork/app-login-flow",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T10:19:54.721133Z",
+          "updatedAt": "2025-12-03T10:19:54.721133Z",
           "isLatest": true
         }
       }
@@ -28663,6 +28871,74 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.e18e/e18e",
+        "description": "The official Svelte MCP server providing docs and autofixing tools for Svelte development",
+        "title": "e18e",
+        "repository": {
+          "url": "https://github.com/e18e/mcp",
+          "source": "github",
+          "id": "1103194575",
+          "subfolder": "packages/stdio"
+        },
+        "version": "0.0.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@e18e/mcp",
+            "version": "0.0.4",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T09:12:51.727363Z",
+          "updatedAt": "2025-12-03T09:12:51.727363Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.e18e/e18e",
+        "description": "The official e18e MCP server keeping your agent in check from installing bloated dependencies.",
+        "title": "e18e",
+        "repository": {
+          "url": "https://github.com/e18e/mcp",
+          "source": "github",
+          "id": "1103194575",
+          "subfolder": "packages/stdio"
+        },
+        "version": "0.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@e18e/mcp",
+            "version": "0.0.5",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T09:16:40.656214Z",
+          "updatedAt": "2025-12-03T09:16:40.656214Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "dev.lingo/main",
         "description": "Lingo.dev MCP Server - World-class i18n implementation with ICU MessageFormat.",
@@ -29306,6 +29582,40 @@
           "status": "active",
           "publishedAt": "2025-11-26T14:35:02.178416Z",
           "updatedAt": "2025-11-26T14:35:02.178416Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.storage/mcp",
+        "description": "Tigris MCP Server seamlessly connects AI agents to Tigris bucket and object management.",
+        "title": "Tigris MCP Server",
+        "repository": {
+          "url": "https://github.com/tigrisdata/mcp",
+          "source": "github"
+        },
+        "version": "1.7.3",
+        "websiteUrl": "https://mcp.storage.dev",
+        "icons": [
+          {
+            "src": "https://mcp.storage.dev/favicon.jpg",
+            "mimeType": "image/jpg"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.storage.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T11:16:49.077997Z",
+          "updatedAt": "2025-12-03T11:16:49.077997Z",
           "isLatest": true
         }
       }
@@ -33205,6 +33515,38 @@
           "status": "active",
           "publishedAt": "2025-11-19T09:47:33.054614Z",
           "updatedAt": "2025-11-19T09:47:33.054614Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ChromeDevTools/chrome-devtools-mcp",
+        "description": "MCP server for Chrome DevTools",
+        "title": "Chrome DevTools MCP",
+        "repository": {
+          "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+          "source": "github"
+        },
+        "version": "0.11.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "chrome-devtools-mcp",
+            "version": "0.11.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T10:06:23.627536Z",
+          "updatedAt": "2025-12-03T10:06:23.627536Z",
           "isLatest": true
         }
       }
@@ -33691,6 +34033,81 @@
           "status": "active",
           "publishedAt": "2025-09-24T14:54:45.047401Z",
           "updatedAt": "2025-09-24T14:54:45.047401Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ConnorBritain/mssql",
+        "description": "MCP server for Microsoft SQL Server - schema discovery, profiling, and safe data operations",
+        "repository": {
+          "url": "https://github.com/ConnorBritain/mssql-mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@connorbritain/mssql-mcp-server",
+            "version": "0.1.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "SQL Server hostname or IP address",
+                "isRequired": true,
+                "format": "string",
+                "name": "SERVER_NAME"
+              },
+              {
+                "description": "Target database name",
+                "isRequired": true,
+                "format": "string",
+                "name": "DATABASE_NAME"
+              },
+              {
+                "description": "Authentication mode: sql, windows, or aad",
+                "format": "string",
+                "name": "SQL_AUTH_MODE"
+              },
+              {
+                "description": "Username for SQL or Windows auth",
+                "format": "string",
+                "name": "SQL_USERNAME"
+              },
+              {
+                "description": "Password for SQL or Windows auth",
+                "format": "string",
+                "isSecret": true,
+                "name": "SQL_PASSWORD"
+              },
+              {
+                "description": "SQL Server port (default: 1433)",
+                "format": "string",
+                "name": "SQL_PORT"
+              },
+              {
+                "description": "Set true for self-signed certs",
+                "format": "string",
+                "name": "TRUST_SERVER_CERTIFICATE"
+              },
+              {
+                "description": "Set true to disable write operations",
+                "format": "string",
+                "name": "READONLY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T20:39:13.464159Z",
+          "updatedAt": "2025-12-03T20:39:13.464159Z",
           "isLatest": true
         }
       }
@@ -36469,6 +36886,130 @@
           "status": "active",
           "publishedAt": "2025-12-02T21:31:20.265457Z",
           "updatedAt": "2025-12-02T21:31:20.265457Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.KevinRabun/FedRAMP20xMCP",
+        "description": "An MCP server that provides access to FedRAMP 20x security requirements and controls.",
+        "title": "FedRAMP 20x Requirements",
+        "repository": {
+          "url": "https://github.com/KevinRabun/FedRAMP20xMCP",
+          "source": "github"
+        },
+        "version": "0.4.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fedramp-20x-mcp",
+            "version": "0.4.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T18:31:01.945526Z",
+          "updatedAt": "2025-12-03T18:31:01.945526Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.KevinRabun/FedRAMP20xMCP",
+        "description": "An MCP server that provides access to FedRAMP 20x security requirements and controls.",
+        "title": "FedRAMP 20x Requirements",
+        "repository": {
+          "url": "https://github.com/KevinRabun/FedRAMP20xMCP",
+          "source": "github"
+        },
+        "version": "0.4.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fedramp-20x-mcp",
+            "version": "0.4.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T19:11:16.499911Z",
+          "updatedAt": "2025-12-03T19:11:16.499911Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.KevinRabun/FedRAMP20xMCP",
+        "description": "An MCP server that provides access to FedRAMP 20x security requirements and controls.",
+        "title": "FedRAMP 20x Requirements",
+        "repository": {
+          "url": "https://github.com/KevinRabun/FedRAMP20xMCP",
+          "source": "github"
+        },
+        "version": "0.4.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fedramp-20x-mcp",
+            "version": "0.4.7",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T19:25:14.317443Z",
+          "updatedAt": "2025-12-03T19:25:14.317443Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.KevinRabun/FedRAMP20xMCP",
+        "description": "An MCP server that provides access to FedRAMP 20x security requirements and controls.",
+        "title": "FedRAMP 20x Requirements",
+        "repository": {
+          "url": "https://github.com/KevinRabun/FedRAMP20xMCP",
+          "source": "github"
+        },
+        "version": "0.4.9",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fedramp-20x-mcp",
+            "version": "0.4.9",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T20:45:57.106968Z",
+          "updatedAt": "2025-12-03T20:45:57.106968Z",
           "isLatest": true
         }
       }
@@ -44274,6 +44815,56 @@
           "status": "active",
           "publishedAt": "2025-10-16T17:12:11.698378Z",
           "updatedAt": "2025-10-16T17:12:11.698378Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.SonarSource/sonarqube-mcp-server",
+        "description": "An MCP server that enables integration with SonarQube Server or Cloud for code quality and security.",
+        "repository": {
+          "url": "https://github.com/SonarSource/sonarqube-mcp-server",
+          "source": "github"
+        },
+        "version": "1.3.0",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/mcp/sonarqube:latest",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your SonarQube USER token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "SONARQUBE_TOKEN"
+              },
+              {
+                "description": "Your SonarQube Cloud organization key (if using SonarQube Cloud)",
+                "format": "string",
+                "isSecret": true,
+                "name": "SONARQUBE_ORG"
+              },
+              {
+                "description": "Your SonarQube Server URL (if using SonarQube Server)",
+                "format": "string",
+                "isSecret": true,
+                "name": "SONARQUBE_URL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T09:37:06.74316Z",
+          "updatedAt": "2025-12-03T09:37:06.74316Z",
           "isLatest": true
         }
       }
@@ -44613,6 +45204,69 @@
           "status": "active",
           "publishedAt": "2025-11-26T10:35:42.735379Z",
           "updatedAt": "2025-11-26T10:35:42.735379Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.UI5/mcp-server",
+        "description": "MCP server for UI5 application development",
+        "repository": {
+          "url": "https://github.com/UI5/mcp-server",
+          "source": "github"
+        },
+        "version": "0.1.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@ui5/mcp-server",
+            "version": "0.1.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "A comma-separated list of domains that are allowed to be used in the 'oDataV4Url' parameter of the 'create_ui5_app' tool, for example: 'localhost, example.com, sub.example.com'. Set to an empty string to allow any domains. For wildcard subdomains, prefix the domain with a dot: '.example.com'. This will match 'www.example.com' but not 'example.com'.",
+                "format": "string",
+                "default": "localhost, services.odata.org",
+                "name": "UI5_MCP_SERVER_ALLOWED_ODATA_DOMAINS"
+              },
+              {
+                "description": "Set to any value to disable structured content in the MCP server responses.",
+                "format": "boolean",
+                "default": "false",
+                "name": "UI5_MCP_SERVER_RESPONSE_NO_STRUCTURED_CONTENT"
+              },
+              {
+                "description": "Set to any value to disable resources in the MCP server responses, see https://modelcontextprotocol.io/specification/2025-06-18/server/resource. This is useful for clients that do not support resources, see https://modelcontextprotocol.io/clients, such as Cursor or the Gemini CLI.",
+                "format": "string",
+                "default": "false",
+                "name": "UI5_MCP_SERVER_RESPONSE_NO_RESOURCES"
+              },
+              {
+                "description": "Internal log level (https://ui5.github.io/cli/stable/pages/Troubleshooting/#changing-the-log-level): 'silent', 'error', 'warn', 'info', 'perf', 'verbose' or 'silly'",
+                "format": "string",
+                "default": "info",
+                "name": "UI5_LOG_LVL"
+              },
+              {
+                "description": "Directory where the MCP server stores its data, such as cached API references.",
+                "format": "string",
+                "default": "The '.ui5' directory in the user's home directory",
+                "name": "UI5_DATA_DIR"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T16:27:04.464604Z",
+          "updatedAt": "2025-12-03T16:27:04.464604Z",
           "isLatest": true
         }
       }
@@ -57369,6 +58023,46 @@
           "status": "active",
           "publishedAt": "2025-11-27T17:11:14.735025Z",
           "updatedAt": "2025-11-27T17:11:14.735025Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.brave/brave-search-mcp-server",
+        "description": "Brave Search MCP Server: web results, images, videos, rich results, AI summaries, and more.",
+        "repository": {
+          "url": "https://github.com/brave/brave-search-mcp-server",
+          "source": "github"
+        },
+        "version": "2.0.62",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@brave/brave-search-mcp-server",
+            "version": "2.0.62",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your API key for the service",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "BRAVE_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T17:57:14.921102Z",
+          "updatedAt": "2025-12-03T17:57:14.921102Z",
           "isLatest": true
         }
       }
@@ -72389,6 +73083,48 @@
           "status": "active",
           "publishedAt": "2025-12-01T16:00:08.751357Z",
           "updatedAt": "2025-12-01T16:00:08.751357Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ggozad/haiku-rag",
+        "description": "Opinionated agentic RAG powered by LanceDB, Pydantic AI, and Docling",
+        "repository": {
+          "url": "https://github.com/ggozad/haiku.rag",
+          "source": "github"
+        },
+        "version": "0.19.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "haiku-rag",
+            "version": "0.19.6",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "serve",
+                "type": "positional"
+              },
+              {
+                "type": "named",
+                "name": "--mcp"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T07:01:02.766879Z",
+          "updatedAt": "2025-12-03T07:01:02.766879Z",
           "isLatest": true
         }
       }
@@ -75775,6 +76511,302 @@
           "status": "active",
           "publishedAt": "2025-12-03T00:00:25.746419Z",
           "updatedAt": "2025-12-03T00:00:25.746419Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.3",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T03:15:36.005096Z",
+          "updatedAt": "2025-12-03T03:15:36.005096Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.4",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.4",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T03:29:15.987013Z",
+          "updatedAt": "2025-12-03T03:29:15.987013Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.5",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.5",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T03:39:22.421047Z",
+          "updatedAt": "2025-12-03T03:39:22.421047Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.6",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.6",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T03:51:59.883693Z",
+          "updatedAt": "2025-12-03T03:51:59.883693Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.7",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.7",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T04:04:46.10265Z",
+          "updatedAt": "2025-12-03T04:04:46.10265Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.8",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.8",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.8",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T04:16:27.411352Z",
+          "updatedAt": "2025-12-03T04:16:27.411352Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.11.9",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.11.9",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.11.9",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T04:18:47.876061Z",
+          "updatedAt": "2025-12-03T04:18:47.876061Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.12.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.12.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.12.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T05:03:05.036301Z",
+          "updatedAt": "2025-12-03T05:03:05.036301Z",
           "isLatest": true
         }
       }
@@ -76563,6 +77595,22 @@
           "status": "active",
           "publishedAt": "2025-11-16T13:41:16.648611Z",
           "updatedAt": "2025-11-16T13:41:16.648611Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.hopx-ai/hopx-mcp",
+        "description": "Execute code in isolated cloud containers. Supports Python, JavaScript, Bash, and Go.",
+        "version": "0.2.1"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T19:11:19.714751Z",
+          "updatedAt": "2025-12-03T19:11:19.714751Z",
           "isLatest": true
         }
       }
@@ -80516,6 +81564,69 @@
           "status": "active",
           "publishedAt": "2025-09-17T14:08:48.770809Z",
           "updatedAt": "2025-09-17T14:08:48.770809Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.linggen/linggen",
+        "description": "Local, privacy-focused RAG service for code search via MCP. https://linggen.dev",
+        "title": "Linggen",
+        "repository": {
+          "url": "https://github.com/linggen/linggen-releases",
+          "source": "github"
+        },
+        "version": "0.1.0"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T15:52:32.821482Z",
+          "updatedAt": "2025-12-03T15:52:32.821482Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.linggen/linggen",
+        "description": "Local, privacy-focused RAG service for code search via MCP. https://linggen.dev",
+        "title": "Linggen",
+        "repository": {
+          "url": "https://github.com/linggen/linggen-releases",
+          "source": "github"
+        },
+        "version": "0.1.1"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T15:53:02.818296Z",
+          "updatedAt": "2025-12-03T15:53:02.818296Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.linggen/linggen",
+        "description": "Local, privacy-focused RAG service for code search via MCP. https://linggen.dev",
+        "title": "Linggen - Local RAG",
+        "repository": {
+          "url": "https://github.com/linggen/linggen-releases",
+          "source": "github"
+        },
+        "version": "0.1.2"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T16:03:42.851235Z",
+          "updatedAt": "2025-12-03T16:03:42.851235Z",
           "isLatest": true
         }
       }
@@ -91710,6 +92821,68 @@
           "status": "active",
           "publishedAt": "2025-12-01T20:28:06.623046Z",
           "updatedAt": "2025-12-01T20:28:06.623046Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.29",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.29",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T12:39:38.455327Z",
+          "updatedAt": "2025-12-03T12:39:38.455327Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.30",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.30",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T19:02:27.436392Z",
+          "updatedAt": "2025-12-03T19:02:27.436392Z",
           "isLatest": true
         }
       }
@@ -98166,6 +99339,64 @@
           "status": "active",
           "publishedAt": "2025-11-19T13:35:53.660217Z",
           "updatedAt": "2025-11-19T13:35:53.660217Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.umbraco/Umbraco-CMS-MCP-Dev",
+        "description": "A developer focused model context protocol (MCP) server for Umbraco CMS",
+        "title": "Umbraco CMS Developer MCP",
+        "repository": {
+          "url": "https://github.com/umbraco/Umbraco-CMS-MCP-Dev",
+          "source": "github"
+        },
+        "version": "17.0.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@umbraco-cms/mcp-dev",
+            "version": "17.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Umbraco API user client ID",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "UMBRACO_CLIENT_ID"
+              },
+              {
+                "description": "Umbraco API user client secret",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "UMBRACO_CLIENT_SECRET"
+              },
+              {
+                "description": "Base URL of your Umbraco instance",
+                "isRequired": true,
+                "format": "string",
+                "name": "UMBRACO_BASE_URL"
+              },
+              {
+                "description": "Comma-separated list of tool collections to include (e.g., document,media,document-type)",
+                "format": "string",
+                "name": "UMBRACO_INCLUDE_TOOL_COLLECTIONS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T18:55:28.175078Z",
+          "updatedAt": "2025-12-03T18:55:28.175078Z",
           "isLatest": true
         }
       }
@@ -99256,6 +100487,37 @@
           "status": "active",
           "publishedAt": "2025-12-02T04:54:27.109438Z",
           "updatedAt": "2025-12-02T04:54:27.109438Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.w31r4/codex-mcp-go",
+        "description": "MCP server wrapping Codex CLI for stdio-based tool calls.",
+        "repository": {
+          "url": "https://github.com/w31r4/codex-mcp-go",
+          "source": "github"
+        },
+        "version": "0.0.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@zenfun510/codex-mcp-go",
+            "version": "0.0.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T06:40:02.535868Z",
+          "updatedAt": "2025-12-03T06:40:02.535868Z",
           "isLatest": true
         }
       }
@@ -104489,6 +105751,33 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "live.alpic.mcpimmo-10e693d9/mcpimmo",
+        "description": "Description of my MCP server",
+        "title": "My MCP Server",
+        "version": "0.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcpimmo-10e693d9.alpic.live"
+          },
+          {
+            "type": "sse",
+            "url": "https://mcpimmo-10e693d9.alpic.live"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-03T23:34:44.935536Z",
+          "updatedAt": "2025-12-03T23:34:44.935536Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "live.alpic.staging.alpic-poc-frontend-c68d130f/alpic-poc-frontend",
         "description": "Description of my MCP server",
         "title": "My MCP Serv",
@@ -108525,6 +109814,6 @@
     }
   ],
   "metadata": {
-    "count": 2357
+    "count": 2391
   }
 }
