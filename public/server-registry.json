@@ -160,6 +160,32 @@
           "status": "active",
           "publishedAt": "2025-12-03T16:45:12.14883Z",
           "updatedAt": "2025-12-03T16:45:12.14883Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.exa/exa",
+        "description": "Fast, intelligent web search and web crawling.\n\nNew mcp tool: Exa-code is a context tool for coding ",
+        "repository": {
+          "url": "https://github.com/exa-labs/exa-mcp-server",
+          "source": "github"
+        },
+        "version": "3.1.2",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:59:29.845352Z",
+          "updatedAt": "2025-12-04T20:59:29.845352Z",
           "isLatest": true
         }
       }
@@ -11037,6 +11063,30 @@
           "status": "active",
           "publishedAt": "2025-11-13T17:47:50.690541Z",
           "updatedAt": "2025-11-13T17:47:50.690541Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "ai.xpoz/social-insights",
+        "description": "Twitter/X, Instagram, TikTok data for AI agents. 1.5B+ posts, profiles & comments. No API keys.",
+        "title": "XPOZ Social Insights",
+        "version": "1.1.0",
+        "websiteUrl": "https://www.xpoz.ai",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://mcp.xpoz.ai/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T19:01:17.657631Z",
+          "updatedAt": "2025-12-04T19:01:17.657631Z",
           "isLatest": true
         }
       }
@@ -14355,6 +14405,34 @@
           "status": "active",
           "publishedAt": "2025-12-03T21:48:33.15787Z",
           "updatedAt": "2025-12-03T21:48:33.15787Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.53",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T12:03:55.357109Z",
+          "updatedAt": "2025-12-04T12:03:55.357109Z",
           "isLatest": true
         }
       }
@@ -37010,6 +37088,68 @@
           "status": "active",
           "publishedAt": "2025-12-03T20:45:57.106968Z",
           "updatedAt": "2025-12-03T20:45:57.106968Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.KevinRabun/FedRAMP20xMCP",
+        "description": "An MCP server that provides access to FedRAMP 20x security requirements and controls.",
+        "title": "FedRAMP 20x Requirements",
+        "repository": {
+          "url": "https://github.com/KevinRabun/FedRAMP20xMCP",
+          "source": "github"
+        },
+        "version": "0.5.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fedramp-20x-mcp",
+            "version": "0.5.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T19:07:58.717689Z",
+          "updatedAt": "2025-12-04T19:07:58.717689Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.KevinRabun/FedRAMP20xMCP",
+        "description": "An MCP server that provides access to FedRAMP 20x security requirements and controls.",
+        "title": "FedRAMP 20x Requirements",
+        "repository": {
+          "url": "https://github.com/KevinRabun/FedRAMP20xMCP",
+          "source": "github"
+        },
+        "version": "0.6.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fedramp-20x-mcp",
+            "version": "0.6.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:31:11.339463Z",
+          "updatedAt": "2025-12-04T20:31:11.339463Z",
           "isLatest": true
         }
       }
@@ -37634,6 +37774,119 @@
           "status": "active",
           "publishedAt": "2025-10-07T15:57:22.194069Z",
           "updatedAt": "2025-10-07T15:57:22.194069Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.MindscapeHQ/mcp-server-raygun",
+        "description": "Investigate errors, track deployments, analyze performance, and manage application monitoring",
+        "title": "Raygun",
+        "repository": {
+          "url": "https://github.com/MindscapeHQ/mcp-server-raygun",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.raygun.com/v3/mcp",
+            "headers": [
+              {
+                "description": "Raygun Personal Access Token (PAT) in Bearer format. Get yours at https://app.raygun.com/user/tokens",
+                "isRequired": true,
+                "isSecret": true,
+                "placeholder": "Bearer YOUR_PAT_TOKEN",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-05T01:37:43.524312Z",
+          "updatedAt": "2025-12-05T01:37:43.524312Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.MindscapeHQ/mcp-server-raygun",
+        "description": "Investigate errors, track deployments, analyze performance, and manage application monitoring",
+        "title": "Raygun",
+        "repository": {
+          "url": "https://github.com/MindscapeHQ/mcp-server-raygun",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.raygun.com/v3/mcp",
+            "headers": [
+              {
+                "description": "Raygun Personal Access Token (PAT) in Bearer format. Get yours at https://app.raygun.com/user/tokens",
+                "isRequired": true,
+                "isSecret": true,
+                "placeholder": "Bearer YOUR_PAT_TOKEN",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-05T01:44:40.176027Z",
+          "updatedAt": "2025-12-05T01:44:40.176027Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.MindscapeHQ/mcp-server-raygun",
+        "description": "Investigate errors, track deployments, analyze performance, and manage application monitoring",
+        "title": "Raygun",
+        "repository": {
+          "url": "https://github.com/MindscapeHQ/mcp-server-raygun",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "icons": [
+          {
+            "src": "https://cdn.prod.website-files.com/5e2701b416b6d176f5007781/6321348741e051a778e42e8f_256x256.png"
+          }
+        ],
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://api.raygun.com/v3/mcp",
+            "headers": [
+              {
+                "description": "Raygun Personal Access Token (PAT) in Bearer format. Get yours at https://app.raygun.com/user/tokens",
+                "isRequired": true,
+                "isSecret": true,
+                "placeholder": "Bearer YOUR_PAT_TOKEN",
+                "name": "Authorization"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-05T01:47:38.317303Z",
+          "updatedAt": "2025-12-05T01:47:38.317303Z",
           "isLatest": true
         }
       }
@@ -44888,6 +45141,180 @@
           "status": "active",
           "publishedAt": "2025-11-28T13:00:30.881779Z",
           "updatedAt": "2025-11-28T13:00:30.881779Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.StudiousXiaoYu/oracle-link",
+        "description": "Oracle MCP Query Server (Node.js) - Read-only SELECT via MCP",
+        "repository": {
+          "url": "https://github.com/StudiousXiaoYu/oracle-link",
+          "source": "github"
+        },
+        "version": "0.2.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@studious-xiaoyu/oracle-link",
+            "version": "0.2.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Oracle DB username (optional when using tool url)",
+                "format": "string",
+                "name": "ORACLE_USERNAME"
+              },
+              {
+                "description": "Oracle DB password (optional when using tool url)",
+                "format": "string",
+                "isSecret": true,
+                "name": "ORACLE_PASSWORD"
+              },
+              {
+                "description": "Oracle connect string host:port/service (optional when using tool url)",
+                "format": "string",
+                "name": "ORACLE_CONNECT_STRING"
+              },
+              {
+                "description": "Admin privilege (SYSDBA or SYSOPER), optional",
+                "format": "string",
+                "name": "ORACLE_PRIVILEGE"
+              },
+              {
+                "description": "Default max rows for queries",
+                "format": "string",
+                "name": "DEFAULT_MAX_ROWS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T11:48:38.659495Z",
+          "updatedAt": "2025-12-04T11:48:38.659495Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.StudiousXiaoYu/oracle-link",
+        "description": "Oracle MCP Query Server (Node.js) - Read-only SELECT via MCP",
+        "repository": {
+          "url": "https://github.com/StudiousXiaoYu/oracle-link",
+          "source": "github"
+        },
+        "version": "0.2.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@studious-xiaoyu/oracle-link",
+            "version": "0.2.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Oracle DB username (optional when using tool url)",
+                "format": "string",
+                "name": "ORACLE_USERNAME"
+              },
+              {
+                "description": "Oracle DB password (optional when using tool url)",
+                "format": "string",
+                "isSecret": true,
+                "name": "ORACLE_PASSWORD"
+              },
+              {
+                "description": "Oracle connect string host:port/service (optional when using tool url)",
+                "format": "string",
+                "name": "ORACLE_CONNECT_STRING"
+              },
+              {
+                "description": "Admin privilege (SYSDBA or SYSOPER), optional",
+                "format": "string",
+                "name": "ORACLE_PRIVILEGE"
+              },
+              {
+                "description": "Default max rows for queries",
+                "format": "string",
+                "name": "DEFAULT_MAX_ROWS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T12:28:58.404015Z",
+          "updatedAt": "2025-12-04T12:28:58.404015Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.StudiousXiaoYu/oracle-link",
+        "description": "Oracle MCP Query Server (Node.js) - Read-only SELECT via MCP",
+        "repository": {
+          "url": "https://github.com/StudiousXiaoYu/oracle-link",
+          "source": "github"
+        },
+        "version": "0.2.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@studious-xiaoyu/oracle-link",
+            "version": "0.2.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Oracle DB username (optional when using tool url)",
+                "format": "string",
+                "name": "ORACLE_USERNAME"
+              },
+              {
+                "description": "Oracle DB password (optional when using tool url)",
+                "format": "string",
+                "isSecret": true,
+                "name": "ORACLE_PASSWORD"
+              },
+              {
+                "description": "Oracle connect string host:port/service (optional when using tool url)",
+                "format": "string",
+                "name": "ORACLE_CONNECT_STRING"
+              },
+              {
+                "description": "Admin privilege (SYSDBA or SYSOPER), optional",
+                "format": "string",
+                "name": "ORACLE_PRIVILEGE"
+              },
+              {
+                "description": "Default max rows for queries",
+                "format": "string",
+                "name": "DEFAULT_MAX_ROWS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T12:51:51.721686Z",
+          "updatedAt": "2025-12-04T12:51:51.721686Z",
           "isLatest": true
         }
       }
@@ -55096,6 +55523,56 @@
           "status": "active",
           "publishedAt": "2025-09-29T02:21:18.645027Z",
           "updatedAt": "2025-09-29T02:21:18.645027Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.antvis/mcp-server-chart",
+        "description": "A Model Context Protocol server for generating charts using AntV.",
+        "repository": {
+          "url": "https://github.com/antvis/mcp-server-chart",
+          "source": "github"
+        },
+        "version": "0.9.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@antv/mcp-server-chart",
+            "version": "0.9.6",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL for the chart generation service. Defaults to the public AntV service, but can be overridden for private deployments.",
+                "format": "string",
+                "default": "https://antv-studio.alipay.com/api/gpt-vis",
+                "name": "VIS_REQUEST_SERVER"
+              },
+              {
+                "description": "A unique identifier for your service, used for tracking chart generation records. This may be required for certain service levels or features.",
+                "format": "string",
+                "isSecret": true,
+                "name": "SERVICE_ID"
+              },
+              {
+                "description": "Comma-separated list of tool names to disable.",
+                "format": "string",
+                "name": "DISABLED_TOOLS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T09:45:03.80826Z",
+          "updatedAt": "2025-12-04T09:45:03.80826Z",
           "isLatest": false
         }
       }
@@ -70486,6 +70963,30 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.elankeeran/companies-house-mcp",
+        "description": "Search UK companies, retrieve profiles, officers, charges, and generate due diligence reports",
+        "title": "UK Companies House",
+        "version": "1.0.0",
+        "websiteUrl": "https://github.com/elankeeran/Companies-House-MCP-Server",
+        "remotes": [
+          {
+            "type": "sse",
+            "url": "https://companies-house-mcp-server.onrender.com"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:27:15.485463Z",
+          "updatedAt": "2025-12-04T20:27:15.485463Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.elpadev/sample-mcp-server-python-package",
         "description": "A sample MCP server for testing",
         "title": "Elias MCP Sample Server",
@@ -71336,6 +71837,44 @@
           "status": "active",
           "publishedAt": "2025-10-10T06:58:59.102576Z",
           "updatedAt": "2025-10-10T06:58:59.102576Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.firebase/firebase-mcp",
+        "description": "Gives AI development tools Firebase-specific capabilities and expertise.",
+        "repository": {
+          "url": "https://github.com/firebase/firebase-tools",
+          "source": "github",
+          "subfolder": "src/mcp"
+        },
+        "version": "0.3.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "firebase-tools",
+            "version": "14.27.0",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "mcp",
+                "type": "positional"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T17:56:29.057916Z",
+          "updatedAt": "2025-12-04T17:56:29.057916Z",
           "isLatest": true
         }
       }
@@ -79342,6 +79881,51 @@
           "status": "active",
           "publishedAt": "2025-10-21T16:42:43.411081Z",
           "updatedAt": "2025-10-21T16:42:43.411081Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jongalloway/dotnet-mcp",
+        "description": "AI assistant access to .NET SDK for projects, packages, building, testing, and development tools.",
+        "title": ".NET MCP Server",
+        "repository": {
+          "url": "https://github.com/jongalloway/dotnet-mcp",
+          "source": "github"
+        },
+        "version": "0.1.0-rc1",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "registryBaseUrl": "https://api.nuget.org",
+            "identifier": "Community.Mcp.DotNet",
+            "version": "0.1.0-rc1",
+            "runtimeHint": "dnx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Skip .NET CLI first-time setup experience",
+                "value": "1",
+                "name": "DOTNET_SKIP_FIRST_TIME_EXPERIENCE"
+              },
+              {
+                "description": "Suppress .NET logo and startup messages",
+                "value": "1",
+                "name": "DOTNET_NOLOGO"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T06:50:39.415289Z",
+          "updatedAt": "2025-12-04T06:50:39.415289Z",
           "isLatest": true
         }
       }
@@ -89358,6 +89942,67 @@
           "status": "active",
           "publishedAt": "2025-11-21T01:09:50.221695Z",
           "updatedAt": "2025-11-21T01:09:50.221695Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.pubnub/mcp-server",
+        "description": "PubNub MCP for Real-time messaging. API Access and SDK documentation.",
+        "title": "PubNub MCP Server",
+        "repository": {
+          "url": "https://github.com/pubnub/pubnub-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.125",
+        "websiteUrl": "https://pubnub.github.io/pubnub-mcp-server",
+        "icons": [
+          {
+            "src": "https://avatars.githubusercontent.com/u/297109?s=64&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "64x64"
+            ]
+          },
+          {
+            "src": "https://avatars.githubusercontent.com/u/297109?s=128&v=4",
+            "mimeType": "image/png",
+            "sizes": [
+              "128x128"
+            ]
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@pubnub/mcp",
+            "version": "1.0.125",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Your PubNub publish key for sending messages",
+                "isSecret": true,
+                "name": "PUBNUB_PUBLISH_KEY"
+              },
+              {
+                "description": "Your PubNub subscribe key for receiving messages and history",
+                "isSecret": true,
+                "name": "PUBNUB_SUBSCRIBE_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-05T00:52:24.572082Z",
+          "updatedAt": "2025-12-05T00:52:24.572082Z",
           "isLatest": true
         }
       }
@@ -92526,6 +93171,87 @@
           "status": "active",
           "publishedAt": "2025-11-27T14:04:20.878491Z",
           "updatedAt": "2025-11-27T14:04:20.878491Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.safedep/vet-mcp",
+        "description": "Protect your AI agents and IDEs from malicious open-source packages.",
+        "title": "SafeDep Vet MCP",
+        "repository": {
+          "url": "https://github.com/safedep/vet",
+          "source": "github"
+        },
+        "version": "1.12.15",
+        "websiteUrl": "https://safedep.io",
+        "icons": [
+          {
+            "src": "https://raw.githubusercontent.com/safedep/.github/9275c7d1b59f718d73e47cecd93df92e7bfbea25/assets/logo/safedep-logo-darkshade.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "48x48",
+              "96x96"
+            ],
+            "theme": "light"
+          },
+          {
+            "src": "https://raw.githubusercontent.com/safedep/.github/9275c7d1b59f718d73e47cecd93df92e7bfbea25/assets/logo/safedep-logo.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": [
+              "48x48",
+              "96x96"
+            ],
+            "theme": "dark"
+          }
+        ],
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/safedep/vet:v1.12.15",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "type": "named",
+                "name": "--rm"
+              },
+              {
+                "type": "named",
+                "name": "-i"
+              }
+            ],
+            "packageArguments": [
+              {
+                "value": "-s",
+                "type": "positional"
+              },
+              {
+                "value": "/tmp/vet-mcp.log",
+                "type": "named",
+                "name": "-l"
+              },
+              {
+                "value": "server",
+                "type": "positional"
+              },
+              {
+                "value": "mcp",
+                "type": "positional"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T14:10:45.257672Z",
+          "updatedAt": "2025-12-04T14:10:45.257672Z",
           "isLatest": true
         }
       }
@@ -92883,6 +93609,99 @@
           "status": "active",
           "publishedAt": "2025-12-03T19:02:27.436392Z",
           "updatedAt": "2025-12-03T19:02:27.436392Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.31",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.31",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T07:16:05.117339Z",
+          "updatedAt": "2025-12-04T07:16:05.117339Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.32",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.32",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T09:48:47.610309Z",
+          "updatedAt": "2025-12-04T09:48:47.610309Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.33",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.33",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T18:19:59.167098Z",
+          "updatedAt": "2025-12-04T18:19:59.167098Z",
           "isLatest": true
         }
       }
@@ -93815,6 +94634,36 @@
           "status": "active",
           "publishedAt": "2025-12-01T23:39:36.939066Z",
           "updatedAt": "2025-12-01T23:39:36.939066Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.secureprivacy/secure-privacy-mcp",
+        "description": "An MCP server that automatically integrate GDPR-compliant cookie consent banners into websites",
+        "repository": {
+          "url": "https://github.com/secureprivacy/secure-privacy-mcp.git",
+          "source": "github"
+        },
+        "version": "1.1.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "secure-privacy-mcp",
+            "version": "1.1.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-05T00:26:13.990197Z",
+          "updatedAt": "2025-12-05T00:26:13.990197Z",
           "isLatest": true
         }
       }
@@ -98717,6 +99566,70 @@
           "url": "https://github.com/totonga/odsbox-jaquel-mcp",
           "source": "github"
         },
+        "version": "0.3.10",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.10",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:52:07.33654Z",
+          "updatedAt": "2025-12-04T20:52:07.33654Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
+        "version": "0.3.12",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.12",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T21:40:36.127523Z",
+          "updatedAt": "2025-12-04T21:40:36.127523Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
         "version": "0.3.5",
         "packages": [
           {
@@ -98767,7 +99680,103 @@
           "status": "active",
           "publishedAt": "2025-12-01T22:02:49.064424Z",
           "updatedAt": "2025-12-01T22:02:49.064424Z",
-          "isLatest": true
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
+        "version": "0.3.7",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.7",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:06:21.45931Z",
+          "updatedAt": "2025-12-04T20:06:21.45931Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
+        "version": "0.3.8",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.8",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:23:59.851285Z",
+          "updatedAt": "2025-12-04T20:23:59.851285Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.totonga/odsbox-jaquel-mcp",
+        "description": "MCP server for ASAM ODS with Jaquel query tools, connection management, and data access",
+        "title": "ASAM ODS odsbox jaquel MCP Server",
+        "repository": {
+          "url": "https://github.com/totonga/odsbox-jaquel-mcp",
+          "source": "github"
+        },
+        "version": "0.3.9",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "odsbox-jaquel-mcp",
+            "version": "0.3.9",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-04T20:37:26.249454Z",
+          "updatedAt": "2025-12-04T20:37:26.249454Z",
+          "isLatest": false
         }
       }
     },
@@ -109814,6 +110823,6 @@
     }
   ],
   "metadata": {
-    "count": 2391
+    "count": 2417
   }
 }
