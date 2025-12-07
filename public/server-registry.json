@@ -35309,6 +35309,555 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.13",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.13",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T17:03:12.904795Z",
+          "updatedAt": "2025-12-06T17:03:12.904795Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.14",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.14",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T18:07:34.311293Z",
+          "updatedAt": "2025-12-06T18:07:34.311293Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.15",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.15",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T18:41:38.499113Z",
+          "updatedAt": "2025-12-06T18:41:38.499113Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.16",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.16",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T18:58:06.782856Z",
+          "updatedAt": "2025-12-06T18:58:06.782856Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.17",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.17",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T19:31:46.337249Z",
+          "updatedAt": "2025-12-06T19:31:46.337249Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.18",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.18",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T19:44:28.785269Z",
+          "updatedAt": "2025-12-06T19:44:28.785269Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.19",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.19",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T19:59:34.55758Z",
+          "updatedAt": "2025-12-06T19:59:34.55758Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.11.20",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.11.20",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T20:05:24.306752Z",
+          "updatedAt": "2025-12-06T20:05:24.306752Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Daghis/teamcity",
+        "description": "MCP server exposing JetBrains TeamCity CI/CD workflows to AI coding assistants",
+        "repository": {
+          "url": "https://github.com/Daghis/teamcity-mcp",
+          "source": "github"
+        },
+        "version": "1.12.0",
+        "websiteUrl": "https://github.com/Daghis/teamcity-mcp",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "@daghis/teamcity-mcp",
+            "version": "1.12.0",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "value": "-y",
+                "type": "positional"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Base URL of your TeamCity server",
+                "isRequired": true,
+                "name": "TEAMCITY_URL"
+              },
+              {
+                "description": "TeamCity personal access token with required permissions",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "TEAMCITY_TOKEN"
+              },
+              {
+                "description": "Operational mode: dev (default) or full for elevated administrative tools",
+                "default": "dev",
+                "choices": [
+                  "dev",
+                  "full"
+                ],
+                "name": "MCP_MODE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T20:26:35.199982Z",
+          "updatedAt": "2025-12-06T20:26:35.199982Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.DavidFuchs/mcp-uptime-kuma",
         "description": "A Model Context Protocol (MCP) server for Uptime Kuma version 2.",
         "repository": {
@@ -38111,6 +38660,46 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.MauriceIsrael/SmartMemory",
+        "description": "Neuro-symbolic memory for LLMs (POC)",
+        "repository": {
+          "url": "https://github.com/MauriceIsrael/SmartMemory",
+          "source": "github"
+        },
+        "version": "1.0.0"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T10:36:41.41321Z",
+          "updatedAt": "2025-12-06T10:36:41.41321Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.MauriceIsrael/SmartMemory",
+        "description": "Neuro-symbolic memory for LLMs (POC)",
+        "repository": {
+          "url": "https://github.com/MauriceIsrael/SmartMemory",
+          "source": "github"
+        },
+        "version": "1.0.1"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T14:28:58.636996Z",
+          "updatedAt": "2025-12-06T14:28:58.636996Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.MauroDruwel/smartschool-mcp",
         "description": "Access Smartschool courses, grades, assignments, and messages through the Model Context Protocol",
@@ -38159,6 +38748,126 @@
           "status": "active",
           "publishedAt": "2025-10-07T15:57:22.194069Z",
           "updatedAt": "2025-10-07T15:57:22.194069Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Maverick7/glue-code-generator",
+        "description": "Maps API JSON to Vue/React components with Zod schemas and live UI previews",
+        "repository": {
+          "url": "https://github.com/Maverick7/mcp-glue-code-generator",
+          "source": "github"
+        },
+        "version": "1.0.3",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "mcp-glue-code-generator",
+            "version": "1.0.3",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T23:30:11.764859Z",
+          "updatedAt": "2025-12-06T23:30:11.764859Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Maverick7/glue-code-generator",
+        "description": "Maps API JSON to Vue/React components with Zod schemas and live UI previews",
+        "repository": {
+          "url": "https://github.com/Maverick7/mcp-glue-code-generator",
+          "source": "github"
+        },
+        "version": "1.0.4",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "mcp-glue-code-generator",
+            "version": "1.0.4",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T23:40:34.006274Z",
+          "updatedAt": "2025-12-06T23:40:34.006274Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Maverick7/glue-code-generator",
+        "description": "Maps API JSON to Vue/React components with Zod schemas and live UI previews",
+        "repository": {
+          "url": "https://github.com/Maverick7/mcp-glue-code-generator",
+          "source": "github"
+        },
+        "version": "1.0.5",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "mcp-glue-code-generator",
+            "version": "1.0.5",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-07T00:07:04.528085Z",
+          "updatedAt": "2025-12-07T00:07:04.528085Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.Maverick7/glue-code-generator",
+        "description": "Maps API JSON to Vue/React components with Zod schemas and live UI previews",
+        "repository": {
+          "url": "https://github.com/Maverick7/mcp-glue-code-generator",
+          "source": "github"
+        },
+        "version": "1.0.6",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "mcp-glue-code-generator",
+            "version": "1.0.6",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-07T00:27:16.365055Z",
+          "updatedAt": "2025-12-07T00:27:16.365055Z",
           "isLatest": true
         }
       }
@@ -78490,6 +79199,302 @@
           "status": "active",
           "publishedAt": "2025-12-05T23:01:20.193653Z",
           "updatedAt": "2025-12-05T23:01:20.193653Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.16.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.16.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.16.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T20:51:29.957689Z",
+          "updatedAt": "2025-12-06T20:51:29.957689Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.16.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.16.1",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.16.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T20:56:31.083335Z",
+          "updatedAt": "2025-12-06T20:56:31.083335Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.16.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.16.2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.16.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T21:36:23.539094Z",
+          "updatedAt": "2025-12-06T21:36:23.539094Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.17.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.17.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.17.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T23:39:28.689241Z",
+          "updatedAt": "2025-12-06T23:39:28.689241Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.17.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.17.1",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.17.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T23:46:40.61494Z",
+          "updatedAt": "2025-12-06T23:46:40.61494Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.18.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.18.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.18.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T23:55:52.771993Z",
+          "updatedAt": "2025-12-06T23:55:52.771993Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.18.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.18.1",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.18.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-07T00:03:24.251299Z",
+          "updatedAt": "2025-12-07T00:03:24.251299Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.18.2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.18.2",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.18.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-07T01:42:31.007545Z",
+          "updatedAt": "2025-12-07T01:42:31.007545Z",
           "isLatest": true
         }
       }
@@ -79816,6 +80821,128 @@
           "status": "active",
           "publishedAt": "2025-09-11T12:44:51.147376Z",
           "updatedAt": "2025-09-11T12:44:51.147376Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.imbenrabi/financial-modeling-prep-mcp-server",
+        "description": "MCP server for Financial Modeling Prep API with 250+ financial data tools",
+        "title": "Financial Modeling Prep MCP Server",
+        "repository": {
+          "url": "https://github.com/imbenrabi/Financial-Modeling-Prep-MCP-Server",
+          "source": "github"
+        },
+        "version": "2.5.3",
+        "websiteUrl": "https://github.com/imbenrabi/Financial-Modeling-Prep-MCP-Server",
+        "packages": [
+          {
+            "registryType": "npm",
+            "registryBaseUrl": "https://registry.npmjs.org",
+            "identifier": "financial-modeling-prep-mcp-server",
+            "version": "2.5.3",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "streamable-http",
+              "url": "https://financial-modeling-prep-mcp-server-production.up.railway.app/mcp"
+            },
+            "packageArguments": [
+              {
+                "description": "Financial Modeling Prep API access token",
+                "format": "string",
+                "type": "named",
+                "name": "--fmp-token"
+              },
+              {
+                "description": "Port number for HTTP server mode",
+                "format": "number",
+                "type": "named",
+                "name": "--port"
+              },
+              {
+                "description": "Enable dynamic tool discovery mode",
+                "format": "boolean",
+                "type": "named",
+                "name": "--dynamic-tool-discovery"
+              },
+              {
+                "description": "Comma-separated list of tool sets to load",
+                "format": "string",
+                "type": "named",
+                "name": "--fmp-tool-sets"
+              }
+            ],
+            "environmentVariables": [
+              {
+                "description": "Financial Modeling Prep API access token",
+                "format": "string",
+                "isSecret": true,
+                "name": "FMP_ACCESS_TOKEN"
+              },
+              {
+                "description": "Port number for HTTP server mode",
+                "format": "number",
+                "name": "PORT"
+              },
+              {
+                "description": "Enable dynamic tool discovery mode",
+                "format": "boolean",
+                "name": "DYNAMIC_TOOL_DISCOVERY"
+              },
+              {
+                "description": "Comma-separated list of tool sets to load",
+                "format": "string",
+                "name": "FMP_TOOL_SETS"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T13:18:36.03235Z",
+          "updatedAt": "2025-12-06T13:18:36.03235Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.index9-org/mcp",
+        "description": "Real-time model intelligence for your AI assistant.",
+        "repository": {
+          "url": "https://github.com/index9-org/mcp",
+          "source": "github"
+        },
+        "version": "1.0.10",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@index9/mcp",
+            "version": "1.0.10",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Optional OpenRouter API key for live model testing.",
+                "format": "string",
+                "isSecret": true,
+                "name": "OPENROUTER_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T07:51:58.415646Z",
+          "updatedAt": "2025-12-06T07:51:58.415646Z",
           "isLatest": true
         }
       }
@@ -88763,6 +89890,36 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.ozanmutlu/gitlab-docs",
+        "description": "GitLab documentation search for AI assistants via Model Context Protocol (MCP)",
+        "repository": {
+          "url": "https://github.com/ozanmutlu/Gitlab-Docs-MCP",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "gitlab-docs-mcp",
+            "version": "1.0.1",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T23:39:24.755209Z",
+          "updatedAt": "2025-12-06T23:39:24.755209Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.p1va/symbols",
         "description": "MCP server to read, inspect and troubleshoot codebase symbols",
@@ -94962,6 +96119,68 @@
           "status": "active",
           "publishedAt": "2025-12-05T14:08:53.049079Z",
           "updatedAt": "2025-12-05T14:08:53.049079Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.36",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.36",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T12:31:51.606912Z",
+          "updatedAt": "2025-12-06T12:31:51.606912Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.sbroenne/mcp-server-excel",
+        "description": "Excel automation for AI - Sheets, Power Query, DAX, VBA, Tables, Ranges and more. Windows only.",
+        "title": "MCP Server for Excel",
+        "repository": {
+          "url": "https://github.com/sbroenne/mcp-server-excel",
+          "source": "github"
+        },
+        "version": "1.4.37",
+        "packages": [
+          {
+            "registryType": "nuget",
+            "identifier": "Sbroenne.ExcelMcp.McpServer",
+            "version": "1.4.37",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T15:04:28.573613Z",
+          "updatedAt": "2025-12-06T15:04:28.573613Z",
           "isLatest": true
         }
       }
@@ -102193,6 +103412,57 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.varun29ankuS/shodh-memory",
+        "description": "Persistent AI memory with semantic search. Store and recall context across sessions.",
+        "repository": {
+          "url": "https://github.com/varun29ankuS/shodh-memory",
+          "source": "github",
+          "subfolder": "mcp-server"
+        },
+        "version": "0.1.0",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@shodh/memory-mcp",
+            "version": "0.1.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL of the shodh-memory backend server",
+                "format": "string",
+                "default": "http://127.0.0.1:3030",
+                "name": "SHODH_API_URL"
+              },
+              {
+                "description": "API key for authentication",
+                "format": "string",
+                "isSecret": true,
+                "name": "SHODH_API_KEY"
+              },
+              {
+                "description": "User ID for memory isolation",
+                "format": "string",
+                "default": "default",
+                "name": "SHODH_USER_ID"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T07:25:48.787938Z",
+          "updatedAt": "2025-12-06T07:25:48.787938Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.vemonet/openroute-mcp",
         "description": "Plan routes using OpenRouteService API, for activities such as hiking or mountain biking",
@@ -103317,6 +104587,45 @@
           "status": "active",
           "publishedAt": "2025-11-26T07:59:38.535007Z",
           "updatedAt": "2025-11-26T07:59:38.535007Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.withinfocus/tba",
+        "description": "The Blue Alliance MCP Server",
+        "repository": {
+          "url": "https://github.com/withinfocus/tba-mcp-server",
+          "source": "github"
+        },
+        "version": "0.3.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@withinfocus/tba-mcp-server",
+            "version": "0.3.2",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "The Blue Alliance API key",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "TBA_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-06T15:19:27.972821Z",
+          "updatedAt": "2025-12-06T15:19:27.972821Z",
           "isLatest": true
         }
       }
@@ -112438,6 +113747,6 @@
     }
   ],
   "metadata": {
-    "count": 2460
+    "count": 2490
   }
 }
