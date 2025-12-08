@@ -19,7 +19,7 @@
 		"@teamsparkai/mcp-registry-ux": "workspace:*",
 		"ajv": "^8.17.1",
 		"ajv-formats": "^3.0.1",
-		"next": "^15.1.7",
+		"next": "^15.1.9",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
