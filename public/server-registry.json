@@ -14637,6 +14637,34 @@
           "status": "active",
           "publishedAt": "2025-12-10T13:14:24.728449Z",
           "updatedAt": "2025-12-10T13:14:24.728449Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "com.civic/nexus",
+        "description": "Zero-setup MCP gateway securely connecting AI to your tools with authentication and workflows",
+        "repository": {
+          "url": "https://github.com/civicteam/civic-mcp",
+          "source": "github",
+          "subfolder": "apps/hub"
+        },
+        "version": "0.1.58",
+        "websiteUrl": "https://nexus.civic.com",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://nexus.civic.com/hub/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T12:04:33.232342Z",
+          "updatedAt": "2025-12-11T12:04:33.232342Z",
           "isLatest": true
         }
       }
@@ -29696,6 +29724,32 @@
           "status": "active",
           "publishedAt": "2025-10-29T14:17:20.136382Z",
           "updatedAt": "2025-10-29T14:17:20.136382Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "dev.openfeature/mcp",
+        "description": "MCP server providing OpenFeature SDK installation guides and OFREP flag evaluation",
+        "version": "0.0.18",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@openfeature/mcp",
+            "version": "0.0.18",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T20:48:13.748117Z",
+          "updatedAt": "2025-12-11T20:48:13.748117Z",
           "isLatest": true
         }
       }
@@ -47841,6 +47895,23 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.TiM00R/remote-terminal",
+        "description": "Complete SSH terminal for Linux with AI/user control and dual-stream visibility",
+        "repository": {},
+        "version": "1.0.0"
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T06:32:40.0934Z",
+          "updatedAt": "2025-12-11T06:32:40.0934Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.TonySimonovsky/claude-code-conversation-search-mcp",
         "description": "Search Claude Code conversation history with natural language queries across all projects",
@@ -58749,6 +58820,106 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aringad/fattureincloud-mcp",
+        "description": "Italian e-invoicing with Fatture in Cloud. Create, send to SDI, manage clients.",
+        "repository": {
+          "url": "https://github.com/aringad/fattureincloud-mcp",
+          "source": "github"
+        },
+        "version": "1.1.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fattureincloud-mcp",
+            "version": "1.1.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Fatture in Cloud API access token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "FIC_ACCESS_TOKEN"
+              },
+              {
+                "description": "Fatture in Cloud company ID",
+                "isRequired": true,
+                "format": "string",
+                "name": "FIC_COMPANY_ID"
+              },
+              {
+                "description": "Email sender for courtesy copies",
+                "format": "string",
+                "name": "FIC_SENDER_EMAIL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T10:48:08.268695Z",
+          "updatedAt": "2025-12-11T10:48:08.268695Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.aringad/fattureincloud-mcp",
+        "description": "Italian e-invoicing with Fatture in Cloud. Create, send to SDI, manage clients.",
+        "repository": {
+          "url": "https://github.com/aringad/fattureincloud-mcp",
+          "source": "github"
+        },
+        "version": "1.2.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "fattureincloud-mcp",
+            "version": "1.2.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Fatture in Cloud API access token",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "FIC_ACCESS_TOKEN"
+              },
+              {
+                "description": "Fatture in Cloud company ID",
+                "isRequired": true,
+                "format": "string",
+                "name": "FIC_COMPANY_ID"
+              },
+              {
+                "description": "Email sender for courtesy copies",
+                "format": "string",
+                "name": "FIC_SENDER_EMAIL"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T11:29:03.567773Z",
+          "updatedAt": "2025-12-11T11:29:03.567773Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.ariroffe72/zmanim-mcp-server",
         "description": "MCP server providing Jewish prayer times (zmanim) calculations for any location worldwide.",
         "title": "Zmanim MCP Server",
@@ -58834,6 +59005,55 @@
           "status": "active",
           "publishedAt": "2025-12-10T18:55:00.806305Z",
           "updatedAt": "2025-12-10T18:55:00.806305Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.arm/arm-mcp",
+        "description": "Official Arm MCP server for code migration, optimization, and Arm architecture guidance",
+        "title": "Arm MCP Server",
+        "repository": {
+          "url": "https://github.com/arm/mcp",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "websiteUrl": "https://github.com/arm/mcp",
+        "packages": [
+          {
+            "registryType": "oci",
+            "identifier": "docker.io/armlimited/arm-mcp:1.0.1",
+            "runtimeHint": "docker",
+            "transport": {
+              "type": "stdio"
+            },
+            "runtimeArguments": [
+              {
+                "description": "Mount a local directory into the container for the MCP server to access",
+                "isRequired": true,
+                "value": "{workspace_path}:/workspace",
+                "variables": {
+                  "workspace_path": {
+                    "description": "Local directory to make accessible to the MCP server (e.g., your project root)",
+                    "isRequired": true,
+                    "format": "filepath",
+                    "placeholder": "/path/to/your/project"
+                  }
+                },
+                "type": "named",
+                "name": "-v"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T22:58:00.039957Z",
+          "updatedAt": "2025-12-11T22:58:00.039957Z",
           "isLatest": true
         }
       }
@@ -59764,6 +59984,32 @@
           "status": "active",
           "publishedAt": "2025-09-13T13:29:18.029023Z",
           "updatedAt": "2025-09-13T13:29:18.029023Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.bahfahh/noteit-mcp",
+        "description": "MCP server for AI agent profiles and smart notes. 60+ coding prompt packs with expert personas.",
+        "repository": {
+          "url": "https://github.com/bahfahh/noteit-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://www.noteit-mcp.com/api/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T13:23:30.700177Z",
+          "updatedAt": "2025-12-11T13:23:30.700177Z",
           "isLatest": true
         }
       }
@@ -62799,6 +63045,106 @@
           "publishedAt": "2025-12-08T15:00:09.282325Z",
           "updatedAt": "2025-12-08T15:00:09.282325Z",
           "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.byteplant-dev/byteplant-mcp",
+        "description": "An MCP server that provides Email, Phone and Address Validation Services from Byteplant",
+        "repository": {
+          "url": "https://github.com/byteplant-dev/byteplant-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0.post1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "byteplant-mcp",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Email Validator API Token",
+                "format": "string",
+                "isSecret": true,
+                "name": "EV_TOKEN"
+              },
+              {
+                "description": "Address Validator API Token",
+                "format": "string",
+                "isSecret": true,
+                "name": "AV_TOKEN"
+              },
+              {
+                "description": "Phone Validator API Token",
+                "format": "string",
+                "isSecret": true,
+                "name": "PV_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T13:11:19.187538Z",
+          "updatedAt": "2025-12-11T13:11:19.187538Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.byteplant-dev/byteplant-mcp",
+        "description": "An MCP server that provides Email, Phone and Address Validation Services from Byteplant",
+        "repository": {
+          "url": "https://github.com/byteplant-dev/byteplant-mcp",
+          "source": "github"
+        },
+        "version": "1.0.0.post2",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "byteplant-mcp",
+            "version": "1.0.0",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Email Validator API Token",
+                "format": "string",
+                "isSecret": true,
+                "name": "EV_TOKEN"
+              },
+              {
+                "description": "Address Validator API Token",
+                "format": "string",
+                "isSecret": true,
+                "name": "AV_TOKEN"
+              },
+              {
+                "description": "Phone Validator API Token",
+                "format": "string",
+                "isSecret": true,
+                "name": "PV_TOKEN"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T15:09:02.912651Z",
+          "updatedAt": "2025-12-11T15:09:02.912651Z",
+          "isLatest": false
         }
       }
     },
@@ -73786,6 +74132,76 @@
     {
       "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.domdomegg/google-drive-mcp",
+        "description": "Allow AI systems to list, search, upload, download, and manage files and folders in Google Drive.",
+        "title": "Google Drive",
+        "repository": {
+          "url": "https://github.com/domdomegg/google-drive-mcp.git",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "websiteUrl": "https://github.com/domdomegg/google-drive-mcp#readme",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "google-drive-mcp",
+            "version": "1.0.0",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Google OAuth access token with Drive scopes.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "GOOGLE_ACCESS_TOKEN"
+              }
+            ]
+          },
+          {
+            "registryType": "npm",
+            "identifier": "google-drive-mcp",
+            "version": "1.0.0",
+            "runtimeHint": "npx",
+            "transport": {
+              "type": "streamable-http",
+              "url": "http://localhost:3000/mcp"
+            },
+            "environmentVariables": [
+              {
+                "description": "Transport type.",
+                "isRequired": true,
+                "value": "http",
+                "name": "MCP_TRANSPORT"
+              },
+              {
+                "description": "Google OAuth client ID.",
+                "isRequired": true,
+                "name": "GOOGLE_CLIENT_ID"
+              },
+              {
+                "description": "Google OAuth client secret.",
+                "isRequired": true,
+                "isSecret": true,
+                "name": "GOOGLE_CLIENT_SECRET"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T03:55:11.964179Z",
+          "updatedAt": "2025-12-11T03:55:11.964179Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
         "name": "io.github.domdomegg/google-maps-places-mcp",
         "description": "Allow AI systems to search for places and get business info via Google Maps Places API.",
         "title": "Google Maps Places",
@@ -82518,6 +82934,43 @@
           "status": "active",
           "publishedAt": "2025-12-09T03:07:55.308865Z",
           "updatedAt": "2025-12-09T03:07:55.308865Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.homeassistant-ai/ha-mcp",
+        "description": "Comprehensive Model Context Protocol server for managing Home Assistant through AI assistants.",
+        "repository": {
+          "url": "https://github.com/homeassistant-ai/ha-mcp.git",
+          "source": "github"
+        },
+        "version": "4.21.0",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "ha-mcp",
+            "version": "4.21.0",
+            "transport": {
+              "type": "stdio"
+            }
+          },
+          {
+            "registryType": "oci",
+            "identifier": "ghcr.io/homeassistant-ai/ha-mcp:4.21.0",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T04:07:13.425509Z",
+          "updatedAt": "2025-12-11T04:07:13.425509Z",
           "isLatest": true
         }
       }
@@ -84081,6 +84534,44 @@
           "status": "active",
           "publishedAt": "2025-12-10T07:48:58.808262Z",
           "updatedAt": "2025-12-10T07:48:58.808262Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.index9-org/mcp",
+        "description": "Real-time model intelligence for your AI assistant.",
+        "repository": {
+          "url": "https://github.com/index9-org/mcp",
+          "source": "github"
+        },
+        "version": "1.0.18",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@index9/mcp",
+            "version": "1.0.18",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Optional OpenRouter API key for live model testing.",
+                "format": "string",
+                "isSecret": true,
+                "name": "OPENROUTER_API_KEY"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-12T01:07:47.813021Z",
+          "updatedAt": "2025-12-12T01:07:47.813021Z",
           "isLatest": true
         }
       }
@@ -86066,6 +86557,110 @@
           "status": "active",
           "publishedAt": "2025-12-08T15:25:35.629134Z",
           "updatedAt": "2025-12-08T15:25:35.629134Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.jztan/redmine-mcp-server",
+        "description": "Production-ready MCP server for Redmine with security, pagination, and enterprise features",
+        "repository": {
+          "url": "https://github.com/jztan/redmine-mcp-server",
+          "source": "github"
+        },
+        "version": "0.8.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "registryBaseUrl": "https://pypi.org",
+            "identifier": "redmine-mcp-server",
+            "version": "0.8.1",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "URL of your Redmine server (e.g., https://your-redmine-server.com)",
+                "isRequired": true,
+                "format": "string",
+                "name": "REDMINE_URL"
+              },
+              {
+                "description": "Redmine username for authentication (alternative to API key)",
+                "format": "string",
+                "name": "REDMINE_USERNAME"
+              },
+              {
+                "description": "Redmine password for authentication (alternative to API key)",
+                "format": "string",
+                "isSecret": true,
+                "name": "REDMINE_PASSWORD"
+              },
+              {
+                "description": "Redmine API key for authentication (alternative to username/password)",
+                "format": "string",
+                "isSecret": true,
+                "name": "REDMINE_API_KEY"
+              },
+              {
+                "description": "Host address for the MCP server (default: 0.0.0.0)",
+                "format": "string",
+                "default": "0.0.0.0",
+                "name": "SERVER_HOST"
+              },
+              {
+                "description": "Port for the MCP server (default: 8000)",
+                "format": "number",
+                "default": "8000",
+                "name": "SERVER_PORT"
+              },
+              {
+                "description": "Public hostname for file download URLs (default: localhost)",
+                "format": "string",
+                "default": "localhost",
+                "name": "PUBLIC_HOST"
+              },
+              {
+                "description": "Public port for file download URLs (default: 8000)",
+                "format": "number",
+                "default": "8000",
+                "name": "PUBLIC_PORT"
+              },
+              {
+                "description": "Directory for storing downloaded attachments (default: ./attachments)",
+                "format": "string",
+                "default": "./attachments",
+                "name": "ATTACHMENTS_DIR"
+              },
+              {
+                "description": "Enable automatic cleanup of expired files (default: true)",
+                "format": "boolean",
+                "default": "true",
+                "name": "AUTO_CLEANUP_ENABLED"
+              },
+              {
+                "description": "Interval between cleanup runs in minutes (default: 10)",
+                "format": "number",
+                "default": "10",
+                "name": "CLEANUP_INTERVAL_MINUTES"
+              },
+              {
+                "description": "Default expiry time for attachments in minutes (default: 60)",
+                "format": "number",
+                "default": "60",
+                "name": "ATTACHMENT_EXPIRES_MINUTES"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T22:23:33.458085Z",
+          "updatedAt": "2025-12-11T22:23:33.458085Z",
           "isLatest": true
         }
       }
@@ -86683,6 +87278,37 @@
           "status": "active",
           "publishedAt": "2025-09-09T03:30:11.72135Z",
           "updatedAt": "2025-09-09T03:30:11.72135Z",
+          "isLatest": false
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.king-of-the-grackles/reddit-research-mcp",
+        "description": "Turn Reddit's chaos into structured insights with full citations - MCP server for Reddit research",
+        "repository": {
+          "url": "https://github.com/king-of-the-grackles/reddit-research-mcp",
+          "source": "github"
+        },
+        "version": "1.0.1",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "reddit-research-mcp",
+            "version": "1.0.1",
+            "runtimeHint": "uvx",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T08:16:39.511285Z",
+          "updatedAt": "2025-12-11T08:16:39.511285Z",
           "isLatest": true
         }
       }
@@ -90604,6 +91230,33 @@
     },
     {
       "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.mmorris35/devplan-mcp-server",
+        "description": "Transform project ideas into paint-by-numbers development plans with phases, tasks, and subtasks.",
+        "title": "DevPlan MCP Server",
+        "repository": {
+          "url": "https://github.com/mmorris35/devplan-mcp-server",
+          "source": "github"
+        },
+        "version": "1.0.0",
+        "remotes": [
+          {
+            "type": "streamable-http",
+            "url": "https://devplan-mcp-server.mike-c63.workers.dev/mcp"
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T17:40:45.445579Z",
+          "updatedAt": "2025-12-11T17:40:45.445579Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
         "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
         "name": "io.github.mobile-next/mobile-mcp",
         "description": "MCP server for iOS and Android Mobile Development, Automation and Testing",
@@ -92525,6 +93178,68 @@
           "publishedAt": "2025-11-07T17:01:17.732358Z",
           "updatedAt": "2025-11-07T17:01:17.732358Z",
           "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.neo4j-contrib/mcp-neo4j-memory",
+        "description": "MCP Neo4j Knowledge Graph Memory Server",
+        "repository": {
+          "url": "https://github.com/neo4j-contrib/mcp-neo4j",
+          "source": "github",
+          "subfolder": "servers/mcp-neo4j-memory"
+        },
+        "version": "0.4.3",
+        "packages": [
+          {
+            "registryType": "pypi",
+            "identifier": "mcp-neo4j-memory",
+            "version": "0.4.3",
+            "transport": {
+              "type": "stdio"
+            },
+            "environmentVariables": [
+              {
+                "description": "Neo4j connection URI",
+                "isRequired": true,
+                "format": "string",
+                "name": "NEO4J_URI"
+              },
+              {
+                "description": "Neo4j username",
+                "isRequired": true,
+                "format": "string",
+                "name": "NEO4J_USERNAME"
+              },
+              {
+                "description": "Neo4j password",
+                "isRequired": true,
+                "format": "string",
+                "isSecret": true,
+                "name": "NEO4J_PASSWORD"
+              },
+              {
+                "description": "Neo4j database name",
+                "format": "string",
+                "name": "NEO4J_DATABASE"
+              },
+              {
+                "description": "Tool namespace prefix",
+                "format": "string",
+                "name": "NEO4J_NAMESPACE"
+              }
+            ]
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T16:59:16.081932Z",
+          "updatedAt": "2025-12-11T16:59:16.081932Z",
+          "isLatest": false
         }
       }
     },
@@ -101801,6 +102516,36 @@
           "status": "active",
           "publishedAt": "2025-10-24T09:20:18.252154Z",
           "updatedAt": "2025-10-24T09:20:18.252154Z",
+          "isLatest": true
+        }
+      }
+    },
+    {
+      "server": {
+        "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+        "name": "io.github.shashwatgtm/gtm-alpha-mcp-server",
+        "description": "Professional GTM consultation MCP server with EPIC framework",
+        "repository": {
+          "url": "https://github.com/shashwatgtm/gtm-expert-schema",
+          "source": "github"
+        },
+        "version": "1.0.2",
+        "packages": [
+          {
+            "registryType": "npm",
+            "identifier": "@shashwatgtmalpha/gtm-alpha-mcp-server",
+            "version": "1.0.2",
+            "transport": {
+              "type": "stdio"
+            }
+          }
+        ]
+      },
+      "_meta": {
+        "io.modelcontextprotocol.registry/official": {
+          "status": "active",
+          "publishedAt": "2025-12-11T16:52:34.684226Z",
+          "updatedAt": "2025-12-11T16:52:34.684226Z",
           "isLatest": true
         }
       }
@@ -119334,6 +120079,6 @@
     }
   ],
   "metadata": {
-    "count": 2611
+    "count": 2628
   }
 }
