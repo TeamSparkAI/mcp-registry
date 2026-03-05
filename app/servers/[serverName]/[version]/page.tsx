@@ -91,7 +91,12 @@ export default function ServerDetailPage() {
   };
 
   const handleBackToRegistry = () => {
-    router.push('/');
+    // Use history.back() when we likely came from the list so scroll position is preserved
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/');
+    }
   };
 
   if (loading) {

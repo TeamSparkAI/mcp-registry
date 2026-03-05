@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from './components/ThemeProvider';
 import { RegistryClientWrapper } from './components/RegistryClientWrapper';
+import { RegistryListCacheProvider } from './context/RegistryListCacheContext';
 
 export const metadata: Metadata = {
   title: 'TeamSpark MCP Server Catalog',
@@ -38,7 +39,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <RegistryClientWrapper>
-            {children}
+            <RegistryListCacheProvider>
+              {children}
+            </RegistryListCacheProvider>
           </RegistryClientWrapper>
         </ThemeProvider>
       </body>

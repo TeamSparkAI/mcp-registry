@@ -6,14 +6,29 @@ import { ServerResponse, ServerList as ServerListComponent, NavigationAdapter, L
 import { encodeServerNameForRoute } from '@/registry-utils/routeUtils';
 import { ThemeToggle } from './components/ThemeToggle';
 import { useRegistryClient } from '@teamsparkai/mcp-registry-ux';
+import { useRegistryListCache } from './context/RegistryListCacheContext';
 
 export default function RegistryPage() {
   const { client } = useRegistryClient();
-  const [servers, setServers] = useState<ServerResponse[]>([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    cachedServers,
+    setCachedServers,
+    searchTerm,
+    setSearchTerm,
+    selectedFilters,
+    setSelectedFilters,
+  } = useRegistryListCache();
+
+  const [servers, setServers] = useState<ServerResponse[]>(cachedServers ?? []);
+  const [loading, setLoading] = useState(!cachedServers);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState<string[]>(['Latest']);
+
+  useEffect(() => {
+    if (cachedServers) {
+      setServers(cachedServers);
+      setLoading(false);
+    }
+  }, [cachedServers]);
 
   useEffect(() => {
     loadServerRegistry();
@@ -21,10 +36,11 @@ export default function RegistryPage() {
 
   const loadServerRegistry = async () => {
     try {
-      setLoading(true);
+      if (!cachedServers) setLoading(true);
       const response = await client.getServers({ limit: 10000 });
       if (response.servers) {
         setServers(response.servers);
+        setCachedServers(response.servers);
       } else {
         throw new Error('Invalid response format');
       }
@@ -64,10 +80,10 @@ export default function RegistryPage() {
   }).sort((a, b) => (a.server.name || '').localeCompare(b.server.name || ''));
 
   const handleFilterToggle = (filter: string) => {
-    setSelectedFilters(prev => 
-      prev.includes(filter) 
-        ? prev.filter(f => f !== filter)
-        : [...prev, filter]
+    setSelectedFilters(
+      selectedFilters.includes(filter)
+        ? selectedFilters.filter(f => f !== filter)
+        : [...selectedFilters, filter]
     );
   };
 
