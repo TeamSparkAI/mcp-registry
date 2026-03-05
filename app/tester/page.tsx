@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { ServerDetail, generateConfiguredServer, ValidationIssues, ServerDetailView as ServerDetailViewComponent, NavigationAdapter, createTrimmedServer } from '@teamsparkai/mcp-registry-ux';
 import type { ValidationIssue, ValidationResult } from '@teamsparkai/mcp-registry-validator';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -359,7 +360,12 @@ export default function TesterPage() {
             {/* Validation Results */}
             {validationResult && (
               <div id="validation-results" className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Validation Results</h3>
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Validation Results</h3>
+                  <Link href="/linter-docs" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                    View linter rules
+                  </Link>
+                </div>
                 <ValidationIssues issues={validationResult.issues} />
               </div>
             )}
