@@ -13,7 +13,9 @@ export default function ServerDetailPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const showTestMode = searchParams.get('test') !== null;
+  const showValidateMode = searchParams.get('mode') === 'validate';
   const [server, setServer] = useState<ServerWithMeta | null>(null);
+  const [validationCounts, setValidationCounts] = useState<{ error: number; warning: number; info: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [configuringServer, setConfiguringServer] = useState<ServerDetail | null>(null);
@@ -27,6 +29,39 @@ export default function ServerDetailPage() {
   useEffect(() => {
     loadServer();
   }, [params.serverName, params.version, client]);
+
+  useEffect(() => {
+    if (!showValidateMode || !server) return;
+    const runValidation = async () => {
+      try {
+        const { _meta, ...serverForValidation } = server;
+        const serverJson = JSON.stringify(serverForValidation);
+        const response = await fetch('/api/validate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ serverJson }),
+        });
+        if (!response.ok) return;
+        const result = await response.json();
+        const issues = result.issues || [];
+        setValidationCounts({
+          error: issues.filter((i: { severity: string }) => i.severity === 'error').length,
+          warning: issues.filter((i: { severity: string }) => i.severity === 'warning').length,
+          info: issues.filter((i: { severity: string }) => i.severity === 'info').length,
+        });
+      } catch {
+        setValidationCounts({ error: 1, warning: 0, info: 0 });
+      }
+    };
+    runValidation();
+  }, [showValidateMode, server]);
+
+  const handleValidateClick = () => {
+    if (!server) return;
+    const name = encodeServerNameForRoute(server.name);
+    const version = encodeURIComponent(server.version);
+    router.push(`/tester/${name}/${version}`);
+  };
 
   const loadServer = async () => {
     try {
@@ -181,6 +216,10 @@ export default function ServerDetailPage() {
         {...(showTestMode && {
           onConfigurationOk: handleConfigurationOk,
           okButtonLabel: "Save"
+        })}
+        {...(showValidateMode && {
+          validationCounts: validationCounts ?? undefined,
+          onValidateClick: handleValidateClick,
         })}
         navigationAdapter={{
           goToServer: (serverName: string, version: string) => {

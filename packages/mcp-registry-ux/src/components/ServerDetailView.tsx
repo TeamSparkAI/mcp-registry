@@ -26,6 +26,9 @@ interface ServerDetailViewProps {
   onConfigurationOk?: (trimmedServer: ServerDetail, config: any) => void;
   okButtonLabel?: string;
   initialMCPConfig?: any; // Optional MCP configuration to populate form from
+  /** When present (e.g. mode=validate), show Validation box next to Registry Information */
+  validationCounts?: { error: number; warning: number; info: number } | null;
+  onValidateClick?: () => void;
 }
 
 export function ServerDetailView({
@@ -46,7 +49,9 @@ export function ServerDetailView({
   onConfigureRemote,
   onConfigurationOk,
   okButtonLabel,
-  initialMCPConfig
+  initialMCPConfig,
+  validationCounts,
+  onValidateClick,
 }: ServerDetailViewProps) {
   const [copied, setCopied] = useState(false);
   
@@ -422,58 +427,104 @@ export function ServerDetailView({
                 </div>
               )}
 
-              {/* Registry Metadata */}
-              {server._meta && (
-                <div className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
-                  <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Registry Information</h2>
-                    <button
-                      onClick={() => onShowRawModal(true)}
-                      className="px-4 py-2 rounded-lg bg-gray-600 dark:bg-gray-700 text-white hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
-                    >
-                      server.json
-                    </button>
-                  </div>
-                  <div className="space-y-3">
-                    {server._meta['io.modelcontextprotocol.registry/official'] && (
-                      <>
-                        {server._meta['io.modelcontextprotocol.registry/official'].status && (
+              {/* Registry Metadata and optional Validation */}
+              {(server._meta || onValidateClick) && (
+                <div className={`grid gap-6 ${server._meta && onValidateClick ? 'grid-cols-1 md:grid-cols-2' : ''}`}>
+                  {server._meta && (
+                    <div className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
+                      <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Registry Information</h2>
+                        <button
+                          onClick={() => onShowRawModal(true)}
+                          className="px-4 py-2 rounded-lg bg-gray-600 dark:bg-gray-700 text-white hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
+                        >
+                          server.json
+                        </button>
+                      </div>
+                      <div className="space-y-3">
+                        {server._meta['io.modelcontextprotocol.registry/official'] && (
+                          <>
+                            {server._meta['io.modelcontextprotocol.registry/official'].status && (
+                              <div>
+                                <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Status</label>
+                                <p className="text-gray-900 dark:text-gray-100">
+                                  <span className={`${
+                                    server._meta['io.modelcontextprotocol.registry/official'].status === 'active' ? 'text-green-600 dark:text-green-400' : 
+                                    server._meta['io.modelcontextprotocol.registry/official'].status === 'deprecated' ? 'text-yellow-600 dark:text-yellow-400' : 
+                                    'text-gray-600 dark:text-gray-400'
+                                  }`}>
+                                    {server._meta['io.modelcontextprotocol.registry/official'].status}
+                                  </span>
+                                </p>
+                              </div>
+                            )}
+                            <div>
+                              <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Published</label>
+                              <p className="text-gray-900 dark:text-gray-100">
+                                {new Date(server._meta['io.modelcontextprotocol.registry/official'].publishedAt).toLocaleDateString()}
+                              </p>
+                            </div>
+                            {server._meta['io.modelcontextprotocol.registry/official'].updatedAt && (
+                              <div>
+                                <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Updated</label>
+                                <p className="text-gray-900 dark:text-gray-100">
+                                  {new Date(server._meta['io.modelcontextprotocol.registry/official'].updatedAt).toLocaleDateString()}
+                                </p>
+                              </div>
+                            )}
+                            <div>
+                              <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Latest Version</label>
+                              <p className="text-gray-900 dark:text-gray-100">
+                                {server._meta['io.modelcontextprotocol.registry/official'].isLatest ? 'Yes' : 'No'}
+                              </p>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  {onValidateClick && (
+                    <div className="bg-white dark:bg-gray-800 rounded-lg border dark:border-gray-700 p-6">
+                      <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Validation</h2>
+                        <button
+                          onClick={onValidateClick}
+                          className="px-4 py-2 rounded-lg bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors text-sm font-medium"
+                        >
+                          Validate
+                        </button>
+                      </div>
+                      <div className="space-y-3">
+                        {validationCounts ? (
+                          <>
+                            <div>
+                              <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Errors</label>
+                              <p className="text-gray-900 dark:text-gray-100 text-red-600 dark:text-red-400 font-medium">
+                                {validationCounts.error}
+                              </p>
+                            </div>
+                            <div>
+                              <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Warnings</label>
+                              <p className="text-gray-900 dark:text-gray-100 text-amber-600 dark:text-amber-400 font-medium">
+                                {validationCounts.warning}
+                              </p>
+                            </div>
+                            <div>
+                              <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Info</label>
+                              <p className="text-gray-900 dark:text-gray-100 text-blue-600 dark:text-blue-400 font-medium">
+                                {validationCounts.info}
+                              </p>
+                            </div>
+                          </>
+                        ) : (
                           <div>
                             <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Status</label>
-                            <p className="text-gray-900 dark:text-gray-100">
-                              <span className={`${
-                                server._meta['io.modelcontextprotocol.registry/official'].status === 'active' ? 'text-green-600 dark:text-green-400' : 
-                                server._meta['io.modelcontextprotocol.registry/official'].status === 'deprecated' ? 'text-yellow-600 dark:text-yellow-400' : 
-                                'text-gray-600 dark:text-gray-400'
-                              }`}>
-                                {server._meta['io.modelcontextprotocol.registry/official'].status}
-                              </span>
-                            </p>
+                            <p className="text-gray-500 dark:text-gray-400">Validating…</p>
                           </div>
                         )}
-                        <div>
-                          <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Published</label>
-                          <p className="text-gray-900 dark:text-gray-100">
-                            {new Date(server._meta['io.modelcontextprotocol.registry/official'].publishedAt).toLocaleDateString()}
-                          </p>
-                        </div>
-                        {server._meta['io.modelcontextprotocol.registry/official'].updatedAt && (
-                          <div>
-                            <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Updated</label>
-                            <p className="text-gray-900 dark:text-gray-100">
-                              {new Date(server._meta['io.modelcontextprotocol.registry/official'].updatedAt).toLocaleDateString()}
-                            </p>
-                          </div>
-                        )}
-                        <div>
-                          <label className="text-sm font-medium text-gray-500 dark:text-gray-400">Latest Version</label>
-                          <p className="text-gray-900 dark:text-gray-100">
-                            {server._meta['io.modelcontextprotocol.registry/official'].isLatest ? 'Yes' : 'No'}
-                          </p>
-                        </div>
-                      </>
-                    )}
-                  </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

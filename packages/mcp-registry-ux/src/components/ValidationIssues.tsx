@@ -171,9 +171,18 @@ function ValidationIssueItem({ issue }: { issue: ValidationIssue }) {
               {issue.path}
             </code>
             {issue.rule && (
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                ({issue.rule})
-              </span>
+              issue.source === 'linter' ? (
+                <a
+                  href={`/linter-docs#${encodeURIComponent(issue.rule)}`}
+                  className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-mono"
+                >
+                  ({issue.rule})
+                </a>
+              ) : (
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  ({issue.rule})
+                </span>
+              )
             )}
           </div>
           <p className={`text-sm ${getTextColor()}`}>
