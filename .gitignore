@@ -42,6 +42,9 @@ next-env.d.ts
 /packages/*/dist/
 /packages/*/styles.css
 
+# Large registry dump — synced to Vercel Blob by CI (not committed)
+/public/server-registry.json
+
 # TypeScript build artifacts (generated when importing external types)
 /types/*.d.ts
 /types/*.d.ts.map

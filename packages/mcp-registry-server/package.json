@@ -33,7 +33,8 @@
     "url": "https://github.com/TeamSparkAI/mcp-registry/issues"
   },
   "dependencies": {
-    "@teamsparkai/mcp-registry-client": "workspace:*"
+    "@teamsparkai/mcp-registry-client": "workspace:*",
+    "@vercel/blob": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

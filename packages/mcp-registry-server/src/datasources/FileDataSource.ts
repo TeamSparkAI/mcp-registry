@@ -1,10 +1,15 @@
 import fs from 'fs';
-import path from 'path';
+import { get } from '@vercel/blob';
 import { RegistryDataSource, ServersQuery, ServerList, ServerResponse } from '../types';
 
 export interface FileDataSourceConfig {
-  registryPath: string; // Path to server-registry.json
+  registryPath: string; // Path to server-registry.json (local fallback)
+  /** Vercel Blob pathname. Default: registry/server-registry.json */
+  blobPathname?: string;
 }
+
+/** Must match scripts/registry/download-registry.ts */
+export const REGISTRY_BLOB_PATHNAME = 'registry/server-registry.json';
 
 interface Registry {
   servers: ServerResponse[];
@@ -12,24 +17,68 @@ interface Registry {
 
 export class FileDataSource implements RegistryDataSource {
   private registryPath: string;
+  private blobPathname: string;
   private cache: Registry | null = null;
+  private loadPromise: Promise<Registry> | null = null;
 
   constructor(config: FileDataSourceConfig) {
     this.registryPath = config.registryPath;
+    this.blobPathname = config.blobPathname ?? REGISTRY_BLOB_PATHNAME;
   }
 
-  private loadRegistry(): Registry {
+  private async loadRegistry(): Promise<Registry> {
     if (this.cache) {
       return this.cache;
     }
+    if (this.loadPromise) {
+      return this.loadPromise;
+    }
 
-    const data = fs.readFileSync(this.registryPath, 'utf8');
-    this.cache = JSON.parse(data);
-    return this.cache!;
+    this.loadPromise = this.loadRegistryUncached()
+      .then((registry) => {
+        this.cache = registry;
+        return registry;
+      })
+      .catch((err) => {
+        this.loadPromise = null;
+        throw err;
+      });
+
+    return this.loadPromise;
+  }
+
+  private async loadRegistryUncached(): Promise<Registry> {
+    const token = process.env.BLOB_READ_WRITE_TOKEN;
+
+    // Prefer Vercel Blob when token is configured (production / Blob-synced data)
+    if (token) {
+      const result = await get(this.blobPathname, {
+        access: 'private',
+        token,
+        useCache: false,
+      });
+      if (!result || result.statusCode !== 200 || !result.stream) {
+        throw new Error(
+          `Failed to load registry from Blob (${this.blobPathname}): status ${result?.statusCode ?? 'null'}`
+        );
+      }
+      const text = await new Response(result.stream).text();
+      return JSON.parse(text) as Registry;
+    }
+
+    // Local fallback: public/server-registry.json (dev without Blob token)
+    if (fs.existsSync(this.registryPath)) {
+      const data = fs.readFileSync(this.registryPath, 'utf8');
+      return JSON.parse(data) as Registry;
+    }
+
+    throw new Error(
+      `Registry not found: set BLOB_READ_WRITE_TOKEN (Vercel Blob) or place a file at ${this.registryPath}`
+    );
   }
 
   async getServers(query: ServersQuery): Promise<ServerList> {
-    const registry = this.loadRegistry();
+    const registry = await this.loadRegistry();
     let filtered = [...registry.servers];
 
     // Apply search filter
@@ -86,7 +135,7 @@ export class FileDataSource implements RegistryDataSource {
   }
 
   async getServerVersions(serverName: string): Promise<ServerList> {
-    const registry = this.loadRegistry();
+    const registry = await this.loadRegistry();
     
     // Find all versions of this server by name
     const versions = registry.servers.filter(s => s.server.name === serverName);
@@ -103,7 +152,7 @@ export class FileDataSource implements RegistryDataSource {
   }
 
   async getServerVersion(serverName: string, version: string): Promise<ServerResponse | null> {
-    const registry = this.loadRegistry();
+    const registry = await this.loadRegistry();
     
     // Find exact match by name and version
     const server = registry.servers.find(s => 

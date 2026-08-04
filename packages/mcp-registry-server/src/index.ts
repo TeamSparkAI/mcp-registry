@@ -5,4 +5,4 @@ export { RegistryService, type RegistryServiceConfig } from './RegistryService';
 export * from './types';
 
 // Data sources
-export { FileDataSource, type FileDataSourceConfig } from './datasources/FileDataSource';
+export { FileDataSource, REGISTRY_BLOB_PATHNAME, type FileDataSourceConfig } from './datasources/FileDataSource';

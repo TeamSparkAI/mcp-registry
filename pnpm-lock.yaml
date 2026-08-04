@@ -90,6 +90,9 @@ importers:
       '@teamsparkai/mcp-registry-client':
         specifier: workspace:*
         version: link:../mcp-registry-client
+      '@vercel/blob':
+        specifier: ^2.6.1
+        version: 2.6.1
       next:
         specifier: '>=13.0.0'
         version: 15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
