@@ -76,24 +76,26 @@ jobs:
           
           echo "✅ Schema sync complete"
         
-      - name: Download MCP Registry
+      - name: Download MCP Registry and upload to Vercel Blob
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
         run: pnpm run registry:download
         
-      - name: Check for changes
+      - name: Check for schema changes
         id: changes
         run: |
-          # Check for both modified and untracked files
-          if [ -n "$(git status --porcelain public/server-registry.json registry/schema/)" ]; then
+          # Registry JSON is stored in Vercel Blob — only commit schema updates
+          if [ -n "$(git status --porcelain registry/schema/)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
           
-      - name: Commit and push changes
+      - name: Commit and push schema changes
         if: steps.changes.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add public/server-registry.json registry/schema/
-          git commit -m "Update MCP registry data and schemas [skip ci]"
+          git add registry/schema/
+          git commit -m "Update MCP registry schemas [skip ci]"
           git push

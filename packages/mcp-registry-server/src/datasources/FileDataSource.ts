@@ -129,4 +129,3 @@ export class FileDataSource implements RegistryDataSource {
     return 0;
   }
 }
-

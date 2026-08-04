@@ -14,9 +14,10 @@
 	},
 	"dependencies": {
 		"@teamsparkai/mcp-registry-client": "workspace:*",
-		"@teamsparkai/mcp-registry-validator": "workspace:*",
 		"@teamsparkai/mcp-registry-server": "workspace:*",
 		"@teamsparkai/mcp-registry-ux": "workspace:*",
+		"@teamsparkai/mcp-registry-validator": "workspace:*",
+		"@vercel/blob": "^2.6.1",
 		"ajv": "^8.17.1",
 		"ajv-formats": "^3.0.1",
 		"next": "^15.1.9",
